@@ -24,13 +24,14 @@
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.4",
-    "tailwindcss": "^3.3.2"
+    "tailwindcss": "^3.3.2",
+    "vercel": "^43.1.0"
   },
   "scripts": {
     "dev": "tailwindcss -i ./css/tailwind.css -o ./css/style.css --watch",
-    "build": "tailwindcss -i ./css/tailwind.css -o ./css/style.css --minify",
+    "build": "tailwindcss -i ./css/tailwind.css -o ./css/style.css --minify && powershell -Command \"New-Item -ItemType Directory -Force -Path public; Get-ChildItem -Path . -File | Copy-Item -Destination public/; Copy-Item -Path css,js,images -Destination public/ -Recurse -Force\"",
     "start": "node server.js",
-    "build:full": "npm run build && npm start"
+    "vercel-build": "npm run build"
   },
   "keywords": [],
   "author": "",
