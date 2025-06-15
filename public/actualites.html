@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ONG MDH International Togo - Restez informé des dernières actualités et événements de l'ONG MDH Togo.">
+    <title>Nos Actualités - MDH</title>
+    
+        <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script src="js/include-navbar.js"></script>
+</head>
+<body class="font-sans">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-mdh-blue focus:text-white focus:z-50">
+        Aller au contenu principal
+    </a>        <main id="main-content" class="container mx-auto px-4 py-12 mt-20">
+        <!-- Hero Section -->
+        <section class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Nos Actualités</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Suivez nos dernières actions et découvrez l'impact de nos projets sur le terrain.
+            </p>
+        </section>
+
+        <!-- Articles Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Article 1 -->
+            <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <img src="images/news-1.jpg" alt="Inauguration de l'école" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <span class="text-mdh-yellow font-semibold">10 juin 2025</span>
+                    <h2 class="text-xl font-bold text-gray-800 mt-2 mb-3">
+                        Inauguration de notre nouvelle école au Sénégal
+                    </h2>
+                    <p class="text-gray-600 mb-4">
+                        Après des mois de travail acharné, nous sommes fiers d'inaugurer notre nouvelle école 
+                        qui accueillera plus de 200 élèves dès la rentrée prochaine.
+                    </p>
+                    <a href="#" class="text-mdh-blue hover:text-mdh-yellow transition duration-300">Lire la suite →</a>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <img src="images/news-2.jpg" alt="Campagne de vaccination" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <span class="text-mdh-yellow font-semibold">5 juin 2025</span>
+                    <h2 class="text-xl font-bold text-gray-800 mt-2 mb-3">
+                        Succès de notre campagne de vaccination
+                    </h2>
+                    <p class="text-gray-600 mb-4">
+                        Plus de 500 enfants ont été vaccinés lors de notre dernière campagne 
+                        de santé dans la région de Kaolack.
+                    </p>
+                    <a href="#" class="text-mdh-blue hover:text-mdh-yellow transition duration-300">Lire la suite →</a>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <img src="images/news-3.jpg" alt="Formation agricole" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <span class="text-mdh-yellow font-semibold">1 juin 2025</span>
+                    <h2 class="text-xl font-bold text-gray-800 mt-2 mb-3">
+                        Lancement du programme de formation agricole
+                    </h2>
+                    <p class="text-gray-600 mb-4">
+                        Notre nouveau programme de formation en agriculture durable 
+                        débute avec 30 participants engagés.
+                    </p>
+                    <a href="#" class="text-mdh-blue hover:text-mdh-yellow transition duration-300">Lire la suite →</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Newsletter Section -->
+        <section class="bg-mdh-blue text-white rounded-lg p-8 mt-16">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-2xl font-bold mb-4">Restez informé de nos actions</h2>
+                <p class="mb-6">
+                    Inscrivez-vous à notre newsletter pour recevoir nos dernières actualités 
+                    et suivre l'avancement de nos projets.
+                </p>
+                <form class="flex flex-col md:flex-row gap-4 justify-center">
+                    <input 
+                        type="email" 
+                        placeholder="Votre adresse email" 
+                        class="px-4 py-2 rounded-full text-gray-800 w-full md:w-96"
+                        required
+                    >
+                    <button 
+                        type="submit" 
+                        class="bg-mdh-yellow text-white px-8 py-2 rounded-full hover:opacity-90 transition duration-300"
+                    >
+                        S'inscrire
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Social Media Feed -->
+        <section class="mt-16">
+            <h2 class="text-3xl font-bold text-center mb-8">Suivez-nous sur les réseaux sociaux</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Social Media Post 1 -->
+                <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
+                    <img src="images/social-1.jpg" alt="Post Instagram" class="w-full h-48 object-cover rounded mb-2">
+                    <p class="text-gray-600 text-sm">
+                        <i class="fab fa-instagram text-mdh-yellow"></i> @mdh_ong
+                    </p>
+                </div>
+                <!-- Add more social media posts as needed -->
+            </div>
+        </section>
+    </main>    <footer class="bg-gray-800 text-white py-12 mt-16"></footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadNavbar();
+        });
+    </script>
+</body>
+</html>
+

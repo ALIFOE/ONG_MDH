@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "main": "postcss.config.js",
   "dependencies": {
+    "body-parser": "^2.2.0",
     "browserslist": "^4.25.0",
     "caniuse-lite": "^1.0.30001721",
     "electron-to-chromium": "^1.5.166",
     "escalade": "^3.2.0",
     "express": "^5.1.0",
+    "express-rate-limit": "^7.5.0",
     "fraction.js": "^4.3.7",
     "helmet": "^8.1.0",
     "http-server": "^14.1.1",
@@ -28,10 +30,9 @@
     "vercel": "^43.1.0"
   },
   "scripts": {
-    "dev": "tailwindcss -i ./css/tailwind.css -o ./css/style.css --watch",
-    "build": "tailwindcss -i ./css/tailwind.css -o ./css/style.css --minify && powershell -Command \"New-Item -ItemType Directory -Force -Path public; Get-ChildItem -Path . -File | Copy-Item -Destination public/; Copy-Item -Path css,js,images -Destination public/ -Recurse -Force\"",
-    "start": "node server.js",
-    "vercel-build": "npm run build"
+    "dev": "tailwindcss -i ./css/tailwind.css -o ./public/css/style.css --watch",
+    "build": "tailwindcss -i ./css/tailwind.css -o ./public/css/style.css --minify",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",

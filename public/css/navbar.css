@@ -1,0 +1,107 @@
+/* Styles pour la barre de navigation */
+header.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-link {
+    color: #374151;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 2px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #87CEEB;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #87CEEB;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #87CEEB;
+    font-weight: 600;
+}
+
+/* Animations pour le menu mobile */
+.mobile-menu {
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+    overflow: hidden;
+}
+
+.mobile-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 500px;
+}
+
+/* Style pour les liens du menu mobile */
+.mobile-menu a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #374151;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu a:hover {
+    background-color: #f3f4f6;
+    color: #87CEEB;
+}
+
+.mobile-menu a.active {
+    background-color: #f3f4f6;
+    color: #87CEEB;
+    font-weight: 600;
+}
+
+/* Style pour le bouton du menu mobile */
+.mobile-menu-button {
+    outline: none;
+}
+
+.mobile-menu-button:focus {
+    outline: 2px solid #87CEEB;
+    outline-offset: 2px;
+}
+
+/* Animation pour l'icône du menu */
+.mobile-menu-button svg {
+    transition: color 0.3s ease;
+}
+
+.mobile-menu-button[aria-expanded="true"] svg {
+    color: #87CEEB;
+}
+
+/* Styles supplémentaires pour la navbar responsive */
+@media (max-width: 768px) {
+    .nav-link::after {
+        display: none;
+    }
+    
+    .mobile-menu {
+        background-color: white;
+        border-top: 1px solid #e5e7eb;
+    }
+}
