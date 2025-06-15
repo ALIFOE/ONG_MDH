@@ -13,15 +13,70 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
-    
-    <!-- Scripts -->
-    <script src="js/script.js"></script>
-    <script src="js/navbar.js"></script>
+      <!-- Scripts -->
+    <script src="js/script.js" defer></script>
 </head>
-<body class="font-sans">
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-mdh-blue focus:text-white focus:z-50">
+<body class="font-sans">    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-mdh-blue focus:text-white focus:z-50">
         Aller au contenu principal
-    </a>        <main id="main-content" class="container mx-auto px-4 py-12 mt-20">
+    </a>
+
+    <header class="bg-white shadow-lg fixed w-full z-50">
+    <nav class="max-w-7xl mx-auto px-4">
+        <div class="flex items-center justify-between h-20">
+            <!-- Logo Container -->
+            <div class="flex-shrink-0 min-w-[192px] w-48 h-20 flex items-center">
+                <a href="index.html" class="block w-full" aria-label="Retour à l'accueil">
+                    <img src="images/logo_mdh.png" alt="ONG MDH International Togo" class="h-12 w-auto object-contain">
+                </a>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="flex-1 flex items-center justify-between px-4">
+                <!-- Primary Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link" data-page="index">Accueil</a>
+                    <a href="association.html" class="nav-link" data-page="association">L'Association</a>
+                    <a href="actions.html" class="nav-link" data-page="actions">Nos Actions</a>
+                    <a href="actualites.html" class="nav-link" data-page="actualites">Nos Actualités</a>
+                    <a href="rejoindre.html" class="nav-link" data-page="rejoindre">Rejoindre-nous</a>
+                    <a href="ecole.html" class="nav-link" data-page="ecole">Notre École</a>
+                    <a href="contact.html" class="nav-link" data-page="contact">Contactez-nous</a>
+                </nav>
+                <!-- Bouton Don -->
+                <div class="hidden md:block">
+                    <a href="donation.html" class="py-2 px-6 bg-mdh-blue text-white rounded-full hover:bg-mdh-yellow transition duration-300">
+                        Faire un don
+                    </a>
+                </div>
+            </div>
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="mobile-menu-button p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-mdh-blue" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg class="h-6 w-6 text-gray-600" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                        <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="hidden mobile-menu md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="index">Accueil</a>
+                <a href="association.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="association">L'Association</a>
+                <a href="actions.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="actions">Nos Actions</a>
+                <a href="actualites.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="actualites">Nos Actualités</a>
+                <a href="rejoindre.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="rejoindre">Rejoindre-nous</a>
+                <a href="ecole.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="ecole">Notre École</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="contact">Contactez-nous</a>
+                <a href="donation.html" class="block px-3 py-2 bg-mdh-blue text-white rounded-md hover:bg-mdh-yellow">Faire un don</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <main id="main-content" class="container mx-auto px-4 py-12 mt-20">
         <!-- Hero Section -->
         <section class="text-center mb-16">
             <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Contactez-nous</h1>
@@ -196,13 +251,34 @@
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </section>    </main>
 
     <footer class="bg-gray-800 text-white py-12 mt-16"></footer>    <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Charger la navigation
-            loadNavbar();
+            // Gestion du menu mobile
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    const menuOpen = document.querySelector('.menu-open');
+                    const menuClose = document.querySelector('.menu-close');
+                    menuOpen.classList.toggle('hidden');
+                    menuClose.classList.toggle('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 
+                        mobileMenuButton.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+                    );
+                });
+            }
+            
+            // Marquer le lien actif dans la navigation
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('text-mdh-yellow', 'font-semibold');
+                }
+            });
             
             // Gestion du formulaire de contact
             const form = document.getElementById('contact-form');
