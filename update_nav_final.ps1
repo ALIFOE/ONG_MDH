@@ -1,28 +1,21 @@
 # Update all pages with new navigation system and styles
-$pages = Get-ChildItem -Filter "*.html" -Exclude @("navbar.html", "template.html") -Path "."
+$files = Get-ChildItem -Path ".\public" -Filter "*.html" -File
+$navbarContent = Get-Content -Path ".\public\includes\navbar.html" -Raw -Encoding UTF8
 
-foreach ($page in $pages) {
-    $content = Get-Content $page.FullName -Raw -Encoding UTF8
-    
-    # Ajouter navbar.css et include-navbar.js
-    $headEnd = "</head>"
-    $newStyles = '    <link href="css/navbar.css" rel="stylesheet">
-</head>'
-    $content = $content -replace [regex]::Escape($headEnd), $newStyles
-    
-    $scriptEnd = '<script src="js/script.js"></script>'
-    $newScripts = '<script src="js/script.js"></script>
-    <script src="js/include-navbar.js"></script>'
-    $content = $content -replace [regex]::Escape($scriptEnd), $newScripts
-    
-    # Supprimer l'ancien header
-    $content = $content -replace "(?s)<header.*?</header>\s*", ""
-    
-    # Ajouter l'ID main-content et class mt-20 au main s'ils n'existent pas
-    $content = $content -replace '<main class="([^"]*)"', '<main id="main-content" class="$1 mt-20"'
-    
-    # Sauvegarder
-    $content | Set-Content $page.FullName -Encoding UTF8
+foreach ($file in $files) {
+    if ($file.Name -ne "404.html" -and $file.Name -ne "500.html") {
+        $content = Get-Content -Path $file.FullName -Raw -Encoding UTF8
+        
+        # Supprimer l'ancienne navbar si elle existe
+        $content = $content -replace '(?s)<header.*?</header>\s*', ''
+        
+        # Insérer la nouvelle navbar après la balise body
+        $content = $content -replace '(<body[^>]*>)', "`$1`n$navbarContent"
+        
+        # Sauvegarder le fichier
+        $content | Set-Content -Path $file.FullName -Encoding UTF8
+        Write-Host "Updated navbar in: $($file.Name)"
+    }
 }
 
 Write-Host "Toutes les pages ont été mises à jour avec les nouveaux styles et scripts."

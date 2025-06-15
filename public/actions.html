@@ -1,13 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="ONG MDH International Togo - Découvrez les actions de l'ONG MDH Togo dans les domaines de l'éducation, la santé et le développement durable.">
     <title>Nos Actions - MDH</title>
     
-        <!-- Styles -->
+    <!-- Styles -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="css/style.css" rel="stylesheet">
@@ -16,9 +15,66 @@
     
     <!-- Scripts -->
     <script src="js/script.js"></script>
-    <script src="js/include-navbar.js"></script>
+    <script src="js/navbar.js"></script>
 </head>
 <body class="font-sans">
+    <!-- Navigation -->
+    <header class="bg-white shadow-lg fixed w-full z-50">
+        <nav class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Container -->
+                <div class="flex-shrink-0 min-w-[192px] w-48 h-20 flex items-center">
+                    <a href="index.html" class="block w-full" aria-label="Retour à l'accueil">
+                        <img src="images/logo_mdh.png" alt="ONG MDH International Togo" class="h-12 w-auto object-contain">
+                    </a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="flex-1 flex items-center justify-between px-4">
+                    <!-- Primary Navigation -->
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="index.html" class="nav-link" data-page="index">Accueil</a>
+                        <a href="association.html" class="nav-link" data-page="association">L'Association</a>
+                        <a href="actions.html" class="nav-link" data-page="actions">Nos Actions</a>
+                        <a href="actualites.html" class="nav-link" data-page="actualites">Nos Actualités</a>
+                        <a href="rejoindre.html" class="nav-link" data-page="rejoindre">Rejoindre-nous</a>
+                        <a href="ecole.html" class="nav-link" data-page="ecole">Notre École</a>
+                        <a href="contact.html" class="nav-link" data-page="contact">Contactez-nous</a>
+                    </nav>
+                    <!-- Bouton Don -->
+                    <div class="hidden md:block">
+                        <a href="donation.html" class="py-2 px-6 bg-mdh-blue text-white rounded-full hover:bg-mdh-yellow transition duration-300">
+                            Faire un don
+                        </a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="mobile-menu-button p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-mdh-blue" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <svg class="h-6 w-6 text-gray-600" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div class="hidden mobile-menu md:hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="index.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="index">Accueil</a>
+                    <a href="association.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="association">L'Association</a>
+                    <a href="actions.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="actions">Nos Actions</a>
+                    <a href="actualites.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="actualites">Nos Actualités</a>
+                    <a href="rejoindre.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="rejoindre">Rejoindre-nous</a>
+                    <a href="ecole.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="ecole">Notre École</a>
+                    <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="contact">Contactez-nous</a>
+                    <a href="donation.html" class="block px-3 py-2 bg-mdh-blue text-white rounded-md hover:bg-mdh-yellow">Faire un don</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-mdh-blue focus:text-white focus:z-50">
         Aller au contenu principal
     </a>
@@ -30,29 +86,29 @@
         <section class="text-center mb-16">
             <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Nos Actions</h1>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Découvrez les différents projets et initiatives que nous menons pour contribuer au développement humain.
+                D�couvrez les diff�rents projets et initiatives que nous menons pour contribuer au d�veloppement humain.
             </p>
         </section>
 
         <!-- Actions Grid -->
         <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <!-- Éducation -->
+            <!-- �ducation -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300">
                 <div class="h-48 bg-gradient-to-r from-mdh-blue to-mdh-blue-dark relative overflow-hidden">
-                    <img src="images/education.jpg" alt="Éducation" class="w-full h-full object-cover opacity-75 group-hover:scale-110 transition-transform duration-300">
+                    <img src="images/education.jpg" alt="�ducation" class="w-full h-full object-cover opacity-75 group-hover:scale-110 transition-transform duration-300">
                     <div class="absolute inset-0 flex items-center justify-center">
                         <i class="fas fa-graduation-cap text-white text-5xl"></i>
                     </div>
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold text-mdh-blue mb-3">Éducation</h3>
+                    <h3 class="text-xl font-bold text-mdh-blue mb-3">�ducation</h3>
                     <p class="text-gray-600 mb-4">
-                        Notre engagement pour une éducation de qualité se concrétise par :
+                        Notre engagement pour une �ducation de qualit� se concr�tise par :
                     </p>
                     <ul class="space-y-2 text-gray-600 mb-4">
                         <li class="flex items-start">
                             <i class="fas fa-check text-mdh-yellow mt-1 mr-2"></i>
-                            <span>Construction et rénovation d'écoles</span>
+                            <span>Construction et r�novation d'�coles</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check text-mdh-yellow mt-1 mr-2"></i>
@@ -60,25 +116,25 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check text-mdh-yellow mt-1 mr-2"></i>
-                            <span>Fourniture de matériel scolaire</span>
+                            <span>Fourniture de mat�riel scolaire</span>
                         </li>
                     </ul>
-                    <a href="#education" class="text-mdh-blue hover:text-mdh-yellow transition duration-300">En savoir plus →</a>
+                    <a href="#education" class="text-mdh-blue hover:text-mdh-yellow transition duration-300">En savoir plus ?</a>
                 </div>
             </div>
 
-            <!-- Santé -->
+            <!-- Sant� -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300">
                 <div class="h-48 bg-gradient-to-r from-mdh-yellow to-mdh-yellow-dark relative overflow-hidden">
-                    <img src="images/sante.jpg" alt="Santé" class="w-full h-full object-cover opacity-75 group-hover:scale-110 transition-transform duration-300">
+                    <img src="images/sante.jpg" alt="Sant�" class="w-full h-full object-cover opacity-75 group-hover:scale-110 transition-transform duration-300">
                     <div class="absolute inset-0 flex items-center justify-center">
                         <i class="fas fa-heartbeat text-white text-5xl"></i>
                     </div>
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold text-mdh-yellow mb-3">Santé</h3>
+                    <h3 class="text-xl font-bold text-mdh-yellow mb-3">Sant�</h3>
                     <p class="text-gray-600 mb-4">
-                        Nos actions pour améliorer la santé des communautés incluent :
+                        Nos actions pour am�liorer la sant� des communaut�s incluent :
                     </p>
                     <ul class="space-y-2 text-gray-600 mb-4">
                         <li class="flex items-start">
@@ -87,29 +143,29 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check text-mdh-blue mt-1 mr-2"></i>
-                            <span>Construction de centres de santé</span>
+                            <span>Construction de centres de sant�</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check text-mdh-blue mt-1 mr-2"></i>
-                            <span>Sensibilisation à l'hygiène</span>
+                            <span>Sensibilisation � l'hygi�ne</span>
                         </li>
                     </ul>
-                    <a href="#sante" class="text-mdh-yellow hover:text-mdh-blue transition duration-300">En savoir plus →</a>
+                    <a href="#sante" class="text-mdh-yellow hover:text-mdh-blue transition duration-300">En savoir plus ?</a>
                 </div>
             </div>
 
-            <!-- Développement Durable -->
+            <!-- D�veloppement Durable -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow duration-300">
                 <div class="h-48 bg-gradient-to-r from-mdh-blue to-mdh-blue-dark relative overflow-hidden">
-                    <img src="images/developpement.jpg" alt="Développement Durable" class="w-full h-full object-cover opacity-75 group-hover:scale-110 transition-transform duration-300">
+                    <img src="images/developpement.jpg" alt="D�veloppement Durable" class="w-full h-full object-cover opacity-75 group-hover:scale-110 transition-transform duration-300">
                     <div class="absolute inset-0 flex items-center justify-center">
                         <i class="fas fa-seedling text-white text-5xl"></i>
                     </div>
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold text-mdh-blue mb-3">Développement Durable</h3>
+                    <h3 class="text-xl font-bold text-mdh-blue mb-3">D�veloppement Durable</h3>
                     <p class="text-gray-600 mb-4">
-                        Nos initiatives pour un développement durable comprennent :
+                        Nos initiatives pour un d�veloppement durable comprennent :
                     </p>
                     <ul class="space-y-2 text-gray-600 mb-4">
                         <li class="flex items-start">
@@ -118,49 +174,49 @@
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check text-mdh-yellow mt-1 mr-2"></i>
-                            <span>Accès à l'eau potable</span>
+                            <span>Acc�s � l'eau potable</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-check text-mdh-yellow mt-1 mr-2"></i>
-                            <span>Énergies renouvelables</span>
+                            <span>�nergies renouvelables</span>
                         </li>
                     </ul>
-                    <a href="#developpement" class="text-mdh-blue hover:text-mdh-yellow transition duration-300">En savoir plus →</a>
+                    <a href="#developpement" class="text-mdh-blue hover:text-mdh-yellow transition duration-300">En savoir plus ?</a>
                 </div>
             </div>
         </section>
 
-        <!-- Sections détaillées -->
+        <!-- Sections d�taill�es -->
         <section id="education" class="mb-16">
             <div class="bg-white rounded-lg shadow-lg p-8">
-                <h2 class="text-3xl font-bold text-mdh-blue mb-6">Nos Actions en Éducation</h2>
+                <h2 class="text-3xl font-bold text-mdh-blue mb-6">Nos Actions en �ducation</h2>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div>
-                        <img src="images/education-detail.jpg" alt="Actions éducatives" class="rounded-lg shadow-md w-full h-96 object-cover">
+                        <img src="images/education-detail.jpg" alt="Actions �ducatives" class="rounded-lg shadow-md w-full h-96 object-cover">
                     </div>
                     <div class="space-y-6">
                         <h3 class="text-2xl font-semibold text-gray-800">Impact en chiffres</h3>
                         <div class="grid grid-cols-2 gap-4">
                             <div class="bg-gray-50 p-4 rounded-lg text-center">
                                 <div class="text-3xl font-bold text-mdh-blue">5</div>
-                                <div class="text-gray-600">Écoles construites</div>
+                                <div class="text-gray-600">�coles construites</div>
                             </div>
                             <div class="bg-gray-50 p-4 rounded-lg text-center">
                                 <div class="text-3xl font-bold text-mdh-blue">1000+</div>
-                                <div class="text-gray-600">Élèves accompagnés</div>
+                                <div class="text-gray-600">�l�ves accompagn�s</div>
                             </div>
                             <div class="bg-gray-50 p-4 rounded-lg text-center">
                                 <div class="text-3xl font-bold text-mdh-blue">50</div>
-                                <div class="text-gray-600">Enseignants formés</div>
+                                <div class="text-gray-600">Enseignants form�s</div>
                             </div>
                             <div class="bg-gray-50 p-4 rounded-lg text-center">
                                 <div class="text-3xl font-bold text-mdh-blue">95%</div>
-                                <div class="text-gray-600">Taux de réussite</div>
+                                <div class="text-gray-600">Taux de r�ussite</div>
                             </div>
                         </div>
                         <p class="text-gray-600">
-                            Notre programme éducatif vise à offrir une éducation de qualité à tous les enfants. 
-                            Nous travaillons en étroite collaboration avec les communautés locales pour identifier 
+                            Notre programme �ducatif vise � offrir une �ducation de qualit� � tous les enfants. 
+                            Nous travaillons en �troite collaboration avec les communaut�s locales pour identifier 
                             les besoins et mettre en place des solutions durables.
                         </p>
                     </div>
@@ -168,20 +224,20 @@
             </div>
         </section>
 
-        <!-- Section Chiffres clés -->
+        <!-- Section Chiffres cl�s -->
         <section class="bg-gradient-to-r from-mdh-blue to-mdh-yellow rounded-lg p-8 mb-16 text-white">
             <div class="text-center mb-8">
                 <h2 class="text-3xl font-bold mb-4">Notre Impact</h2>
-                <p class="text-lg">Ensemble, nous faisons la différence</p>
+                <p class="text-lg">Ensemble, nous faisons la diff�rence</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="text-center">
                     <div class="text-4xl font-bold mb-2">1000+</div>
-                    <div>Bénéficiaires directs</div>
+                    <div>B�n�ficiaires directs</div>
                 </div>
                 <div class="text-center">
                     <div class="text-4xl font-bold mb-2">50+</div>
-                    <div>Projets réalisés</div>
+                    <div>Projets r�alis�s</div>
                 </div>
                 <div class="text-center">
                     <div class="text-4xl font-bold mb-2">10+</div>
@@ -189,14 +245,14 @@
                 </div>
                 <div class="text-center">
                     <div class="text-4xl font-bold mb-2">100+</div>
-                    <div>Bénévoles actifs</div>
+                    <div>B�n�voles actifs</div>
                 </div>
             </div>
         </section>
 
         <!-- Call to Action -->
         <section class="text-center">
-            <h2 class="text-3xl font-bold mb-4">Participez à nos actions</h2>
+            <h2 class="text-3xl font-bold mb-4">Participez � nos actions</h2>
             <p class="text-xl text-gray-600 mb-8">
                 Votre soutien est essentiel pour continuer nos actions et avoir un impact positif 
                 sur la vie de milliers de personnes.
@@ -206,7 +262,7 @@
                     Faire un don
                 </a>
                 <a href="rejoindre.html" class="border-2 border-mdh-blue text-mdh-blue px-8 py-3 rounded-full hover:bg-mdh-blue hover:text-white transition duration-300">
-                    Devenir bénévole
+                    Devenir b�n�vole
                 </a>
             </div>
         </section>
@@ -217,7 +273,7 @@
             // Charger la navigation
             loadNavbar();
             
-            // Animation des statistiques au défilement
+            // Animation des statistiques au d�filement
             const stats = document.querySelectorAll('.text-4xl');
             let animated = false;
 
@@ -241,7 +297,7 @@
                 animated = true;
             }
 
-            // Observer pour déclencher l'animation
+            // Observer pour d�clencher l'animation
             const observer = new IntersectionObserver(
                 (entries) => {
                     entries.forEach(entry => {
@@ -258,4 +314,6 @@
     </script>
 </body>
 </html>
+
+
 
