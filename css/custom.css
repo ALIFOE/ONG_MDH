@@ -1,5 +1,12 @@
 /* Styles personnalisés pour MDH */
 
+/* Variables de couleurs */
+:root {
+    --mdh-blue: #87CEEB;
+    --mdh-blue-dark: #5CAED3;
+    --mdh-blue-light: rgba(135, 206, 235, 0.1);
+}
+
 /* Animation de chargement */
 @keyframes spinAround {
     from { transform: rotate(0deg); }
@@ -10,10 +17,74 @@
     animation: spinAround 1s infinite linear;
 }
 
+/* Styles de base */
+body {
+    color: #2D3748;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--mdh-blue-dark);
+}
+
+/* Liens et boutons */
+a {
+    color: var(--mdh-blue);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--mdh-blue-dark);
+}
+
+.btn-primary {
+    background-color: var(--mdh-blue);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--mdh-blue-dark);
+    transform: translateY(-1px);
+}
+
+.btn-outline {
+    border: 2px solid var(--mdh-blue);
+    color: var(--mdh-blue);
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: var(--mdh-blue);
+    color: white;
+}
+
+/* Sections et conteneurs */
+.section-heading {
+    border-bottom: 3px solid var(--mdh-blue);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    border: 1px solid #E2E8F0;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: var(--mdh-blue);
+    box-shadow: 0 4px 6px rgba(135, 206, 235, 0.1);
+}
+
 /* Styles pour les formulaires */
 .form-input:focus {
     outline: none;
-    border-color: #87CEEB;
+    border-color: var(--mdh-blue);
     box-shadow: 0 0 0 2px rgba(135, 206, 235, 0.2);
 }
 
@@ -68,13 +139,55 @@ button:focus,
 input:focus,
 select:focus,
 textarea:focus {
-    outline: 2px solid #87CEEB;
+    outline: 2px solid var(--mdh-blue);
     outline-offset: 2px;
 }
 
-/* Amélioration du contraste */
-.text-gray-600 {
-    color: #4B5563; /* Un gris plus foncé pour un meilleur contraste */
+/* Backgrounds et motifs */
+.bg-mdh-blue {
+    background-color: var(--mdh-blue);
+}
+
+.bg-mdh-blue-light {
+    background-color: var(--mdh-blue-light);
+}
+
+.text-mdh-blue {
+    color: var(--mdh-blue);
+}
+
+.border-mdh-blue {
+    border-color: var(--mdh-blue);
+}
+
+/* Effets de survol */
+.hover-bg-mdh-blue:hover {
+    background-color: var(--mdh-blue);
+    color: white;
+}
+
+.hover-text-mdh-blue:hover {
+    color: var(--mdh-blue);
+}
+
+/* Animations et transitions */
+.transition-mdh {
+    transition: all 0.3s ease;
+}
+
+/* Styles pour les listes */
+.list-style-mdh {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+
+.list-style-mdh li::before {
+    content: "•";
+    color: var(--mdh-blue);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
 }
 
 /* Pattern de fond */

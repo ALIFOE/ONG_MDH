@@ -41,57 +41,81 @@ header.fixed {
     font-weight: 600;
 }
 
-/* Animations pour le menu mobile */
-.mobile-menu {
-    transition: all 0.3s ease-in-out;
-    opacity: 0;
-    transform: translateY(-10px);
-    max-height: 0;
-    overflow: hidden;
-}
-
-.mobile-menu.show {
+/* Styles pour le menu mobile */
+#mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     opacity: 1;
     transform: translateY(0);
-    max-height: 500px;
+    z-index: 1000;
+}
+
+#mobile-menu.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
 }
 
 /* Style pour les liens du menu mobile */
-.mobile-menu a {
+#mobile-menu a {
     display: block;
-    padding: 0.75rem 1rem;
+    padding: 1rem 1.5rem;
     color: #374151;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease-in-out;
+    border-bottom: 1px solid #f3f4f6;
 }
 
-.mobile-menu a:hover {
-    background-color: #f3f4f6;
+#mobile-menu a:hover,
+#mobile-menu a:focus {
+    background-color: #f9fafb;
     color: #87CEEB;
+    padding-left: 1.75rem;
 }
 
-.mobile-menu a.active {
+#mobile-menu a.active {
     background-color: #f3f4f6;
     color: #87CEEB;
     font-weight: 600;
+    border-left: 3px solid #87CEEB;
 }
 
 /* Style pour le bouton du menu mobile */
-.mobile-menu-button {
+#mobile-menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    color: #374151;
+    transition: color 0.2s ease-in-out;
     outline: none;
 }
 
-.mobile-menu-button:focus {
+#mobile-menu-button:hover,
+#mobile-menu-button:focus {
+    color: #87CEEB;
+}
+
+#mobile-menu-button:focus-visible {
     outline: 2px solid #87CEEB;
     outline-offset: 2px;
+    border-radius: 4px;
 }
 
-/* Animation pour l'icône du menu */
-.mobile-menu-button svg {
-    transition: color 0.3s ease;
+/* Animation pour les icônes du menu */
+.menu-open,
+.menu-close {
+    transition: opacity 0.2s ease-in-out;
 }
 
-.mobile-menu-button[aria-expanded="true"] svg {
-    color: #87CEEB;
+.menu-open.hidden,
+.menu-close.hidden {
+    opacity: 0;
+    position: absolute;
 }
 
 /* Styles supplémentaires pour la navbar responsive */
@@ -99,9 +123,10 @@ header.fixed {
     .nav-link::after {
         display: none;
     }
-    
-    .mobile-menu {
-        background-color: white;
-        border-top: 1px solid #e5e7eb;
+
+    #mobile-menu {
+        max-height: calc(100vh - 4rem); /* Hauteur maximale du menu mobile */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 }

@@ -1,7 +1,12 @@
 {
   "name": "projet_mdh",
   "version": "1.0.0",
-  "main": "postcss.config.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "set NODE_ENV=development && node server.js",
+    "debug": "set NODE_ENV=development && node --inspect server.js"
+  },
   "dependencies": {
     "body-parser": "^2.2.0",
     "browserslist": "^4.25.0",

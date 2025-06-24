@@ -7,6 +7,15 @@ const rateLimit = require('express-rate-limit');
 const bodyParser = require('body-parser');
 
 const app = express();
+const isDev = process.env.NODE_ENV === 'development';
+
+// Middleware de logging pour le développement
+if (isDev) {
+    app.use((req, res, next) => {
+        console.log(`${req.method} ${req.url}`);
+        next();
+    });
+}
 
 // Limiter la taille des requêtes
 app.use(bodyParser.json({ limit: '10mb' }));
@@ -15,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 // Protection contre les attaques par force brute
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100 // limite chaque IP à 100 requêtes par fenêtre
+    max: isDev ? 1000 : 100 // limite plus élevée en développement
 });
 app.use('/api/', limiter);
 
