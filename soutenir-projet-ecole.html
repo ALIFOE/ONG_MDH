@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soutenir le projet - MDH</title>
+    <meta name="description" content="Formulaire de soutien au projet de la nouvelle école primaire MDH. Faites un don par virement ou via un système de paiement sécurisé.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <script src="js/script.js" defer></script>
+</head>
+<body class="font-sans bg-gray-50">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-mdh-blue focus:text-white focus:z-50">Aller au contenu principal</a>
+    <header class="bg-white shadow-lg fixed w-full z-50">
+        <nav class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 min-w-[192px] w-48 h-20 flex items-center">
+                    <a href="index.html" class="block w-full" aria-label="Retour à l'accueil">
+                        <img src="images/logo_mdh.png" alt="ONG MDH International Togo" class="h-12 w-auto object-contain">
+                    </a>
+                </div>
+                <div class="flex-1 flex items-center justify-between px-4">
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="index.html" class="nav-link">Accueil</a>
+                        <a href="association.html" class="nav-link">L'Association</a>
+                        <a href="actions.html" class="nav-link">Nos Actions</a>
+                        <a href="actualites.html" class="nav-link">Nos Actualités</a>
+                        <a href="rejoindre.html" class="nav-link">Rejoindre-nous</a>
+                        <a href="ecole.html" class="nav-link">Notre École</a>
+                        <a href="contact.html" class="nav-link">Contactez-nous</a>
+                    </nav>
+                    <div class="hidden md:block">
+                        <a href="donation.html" class="py-2 px-6 bg-mdh-blue text-white rounded-full hover:bg-mdh-yellow transition duration-300">Faire un don</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main id="main-content" class="container mx-auto px-4 py-24 mt-20">
+        <section class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-10 mb-12">
+            <h1 class="text-3xl font-bold text-mdh-blue mb-6">Soutenir le projet : Nouvelle École Primaire</h1>
+            <p class="text-gray-700 mb-8">Remplissez le formulaire ci-dessous pour soutenir ce projet. Vous pouvez effectuer un don par virement bancaire ou via notre système de paiement sécurisé.</p>
+            <form class="space-y-6 mb-10">
+                <div>
+                    <label for="nom" class="block text-gray-700 font-semibold mb-2">Nom complet</label>
+                    <input type="text" id="nom" name="nom" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-mdh-blue">
+                </div>
+                <div>
+                    <label for="email" class="block text-gray-700 font-semibold mb-2">Adresse email</label>
+                    <input type="email" id="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-mdh-blue">
+                </div>
+                <div>
+                    <label for="montant" class="block text-gray-700 font-semibold mb-2">Montant du don (€)</label>
+                    <input type="number" id="montant" name="montant" min="1" required class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-mdh-blue">
+                </div>
+                <div>
+                    <label for="message" class="block text-gray-700 font-semibold mb-2">Message (optionnel)</label>
+                    <textarea id="message" name="message" rows="3" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-mdh-blue"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-mdh-yellow text-white rounded-full font-semibold hover:bg-mdh-blue transition duration-300">Envoyer ma promesse de don</button>
+            </form>
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold text-mdh-blue mb-2">Informations bancaires pour virement</h2>
+                <div class="bg-gray-50 p-4 rounded-lg border text-gray-700">
+                    <p><span class="font-semibold">Titulaire :</span> ONG MDH International</p>
+                    <p><span class="font-semibold">IBAN :</span> FR76 1234 5678 9012 3456 7890 123</p>
+                    <p><span class="font-semibold">BIC :</span> ABCDFRPPXXX</p>
+                    <p><span class="font-semibold">Banque :</span> Banque de Développement</p>
+                    <p class="mt-2 text-sm text-gray-500">Merci d’indiquer « Don Projet École + votre nom » en référence du virement.</p>
+                </div>
+            </div>
+            <div class="mb-4">
+                <h2 class="text-xl font-semibold text-mdh-yellow mb-2">Paiement en ligne</h2>
+                <a href="#" class="inline-block px-8 py-3 bg-mdh-blue text-white rounded-full hover:bg-mdh-yellow transition duration-300 font-semibold"><i class="fas fa-credit-card mr-2"></i>Faire un don en ligne</a>
+                <p class="text-gray-500 text-sm mt-2">(Lien vers la plateforme de paiement à intégrer)</p>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">À propos de MDH</h3>
+                    <p class="text-gray-400">MDH œuvre pour le développement humain à travers l'éducation et le soutien aux communautés vulnérables.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Liens Rapides</h3>
+                    <ul class="space-y-2">
+                        <li><a href="association.html" class="text-gray-400 hover:text-mdh-yellow transition duration-300">L'Association</a></li>
+                        <li><a href="actions.html" class="text-gray-400 hover:text-mdh-yellow transition duration-300">Nos Actions</a></li>
+                        <li><a href="ecole.html" class="text-gray-400 hover:text-mdh-yellow transition duration-300">Notre École</a></li>
+                        <li><a href="actualites.html" class="text-gray-400 hover:text-mdh-yellow transition duration-300">Actualités</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Email: contact@mdh-asso.org</li>
+                        <li>Tél: +33 X XX XX XX XX</li>
+                        <li>Adresse: XX rue XXXXX, Paris</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Suivez-nous</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-mdh-yellow transition duration-300"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-mdh-yellow transition duration-300"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-mdh-yellow transition duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-mdh-yellow transition duration-300"><i class="fab fa-linkedin text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-400">&copy; 2024 ONG MDH internatinal Togo. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

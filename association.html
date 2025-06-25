@@ -77,29 +77,64 @@
 
     <main id="main-content" class="pt-20 mt-20">
         <!-- Contenu de la page Association -->
-        <section class="pt-20 bg-gradient-to-br from-mdh-blue-light/30 via-white to-mdh-yellow-light/30">
+        <section class="pt-20 bg-gradient-to-br from-[#1e293b]/30 via-white to-mdh-yellow-light/30">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
                     <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-                        <span class="text-mdh-blue">L'Association</span>
+                        <span class="text-[#1e293b]">L'Association</span>
                     </h1>
                     <div class="w-24 h-1 bg-mdh-yellow mx-auto rounded-full mb-8"></div>
+                    <!-- Bloc Qui sommes-nous ? et Vision côte à côte -->
+                    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 text-left">
+                        <div class="bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-md">
+                            <h2 class="text-2xl font-semibold text-[#1e293b] mb-4">Qui sommes-nous ?</h2>
+                            <p class="text-gray-700 leading-relaxed">
+                                Mobilisation pour le Développement Humain est une organisation non gouvernementale fondée en 2018, fruit d'une initiative portée par des jeunes bénévoles animés d'une vision commune : placer l'être humain au cœur de toutes leurs actions pour édifier une société véritablement responsable.<br>
+                                Établie à Lomé, capitale du Togo, notre organisation s'est donné pour mission de développer une approche durable et participative du développement humain, tout en contribuant activement à l'amélioration des conditions de vie socio-économiques et culturelles des populations.
+                            </p>
+                        </div>
+                        <div class="bg-white/70 backdrop-blur-sm p-6 rounded-xl shadow-md">
+                            <h3 class="text-xl font-semibold text-mdh-yellow mb-2">Vision</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                On vise à renforcer le bien-être des populations au niveau communautaire en agissant simultanément sur trois dimensions interconnectées : l'économie locale (revenus, emploi, entrepreneuriat), le social (éducation, santé, cohésion) et la culture (préservation des savoirs, identité collective).
+L'approche privilégie la participation active des bénéficiaires dans l'identification des besoins, la conception des solutions et la mise en œuvre des actions. Cette démarche bottom-up garantit l'appropriation locale des projets et leur pérennité.
+Le développement humain durable place la personne au centre, cherchant à élargir les choix et opportunités tout en préservant les ressources pour les générations futures. Cela implique des interventions qui renforcent les capacités individuelles et collectives, favorisent l'autonomisation et respectent l'environnement naturel et culturel des communautés.
+Version ultra-contractée :
+"Développement communautaire participatif et durable"
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Contenu existant de la section Association -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div class="relative depth-effect">
+                    <div class="relative depth-effect flex flex-col gap-8">
                         <div class="absolute -inset-4 bg-mdh-yellow/20 rounded-3xl blur-lg"></div>
                         <img src="images/association.jpg" alt="Notre association" class="rounded-2xl shadow-2xl relative transform hover:scale-105 transition-transform duration-300">
+                        <!-- Objectifs déplacé à gauche -->
+                        <div class="bg-white/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-[#1e293b]/10 text-left mx-0 relative z-10">
+                            <h2 class="text-2xl font-semibold text-[#1e293b] mb-4">Objectifs</h2>
+                            <ul class="list-disc list-inside text-gray-700 space-y-2">
+                                <li>S’investir dans l’éducation inclusive</li>
+                                <li>Mettre un programme de parrainage en faveur des enfants en situation de vulnérabilité</li>
+                                <li>Faciliter l’accès des soins de qualité aux populations</li>
+                                <li>Promouvoir la démocratie, la Paix, la non-violence, la tolérance</li>
+                                <li>Promouvoir les échanges culturels</li>
+                                <li>Soutenir les initiatives des femmes et jeunes</li>
+                                <li>Œuvrer pour la bonne gouvernance</li>
+                                <li>Promouvoir l’équité genre</li>
+                                <li>Assurer la formation civique des populations à la base</li>
+                                <li>Promouvoir le dialogue</li>
+                                <li>Promouvoir la protection de l’environnement et la lutte contre le réchauffement climatique</li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="space-y-8">
                         <!-- Mission -->
-                        <div class="bg-white/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-mdh-blue/20">
-                            <h2 class="text-2xl font-semibold text-mdh-blue mb-4">Notre Mission</h2>
+                        <div class="bg-white/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-[#1e293b]/20">
+                            <h2 class="text-2xl font-semibold text-[#1e293b] mb-4">Notre Mission</h2>
                             <p class="text-gray-700 leading-relaxed">
-                                MDH est une organisation non gouvernementale dédiée au développement humain durable. 
-                                Notre mission est de créer un impact positif dans les communautés à travers l'éducation, 
-                                la santé et le développement économique.
+                                MDH est une organisation non gouvernementale dédiée au développement humain durable. Notre mission est de créer un impact positif dans les communautés à travers l'éducation, la santé et le développement durable
                             </p>
                         </div>
                         
@@ -108,8 +143,8 @@
                             <h2 class="text-2xl font-semibold text-mdh-yellow mb-6">Nos Valeurs</h2>
                             <div class="grid grid-cols-2 gap-6">
                                 <div class="bg-white/70 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                                    <i class="fas fa-heart text-mdh-blue text-3xl mb-3"></i>
-                                    <h3 class="font-semibold mb-2 text-mdh-blue">Solidarité</h3>
+                                    <i class="fas fa-heart text-[#1e293b] text-3xl mb-3"></i>
+                                    <h3 class="font-semibold mb-2 text-[#1e293b]">Solidarité</h3>
                                     <p class="text-sm text-gray-600">Agir ensemble pour un monde meilleur</p>
                                 </div>
                                 <div class="bg-white/70 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -118,8 +153,8 @@
                                     <p class="text-sm text-gray-600">Valoriser chaque individu</p>
                                 </div>
                                 <div class="bg-white/70 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                                    <i class="fas fa-globe text-mdh-blue text-3xl mb-3"></i>
-                                    <h3 class="font-semibold mb-2 text-mdh-blue">Durabilité</h3>
+                                    <i class="fas fa-globe text-[#1e293b] text-3xl mb-3"></i>
+                                    <h3 class="font-semibold mb-2 text-[#1e293b]">Durabilité</h3>
                                     <p class="text-sm text-gray-600">Penser à long terme</p>
                                 </div>
                                 <div class="bg-white/70 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -131,26 +166,27 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         </section>
 
         <!-- Section Histoire -->
         <section class="py-20 bg-white">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center text-mdh-blue mb-12">Notre Histoire</h2>
+                <h2 class="text-3xl font-bold text-center text-[#1e293b] mb-12">Notre Histoire</h2>
                 <div class="max-w-4xl mx-auto">
                     <div class="relative">
                         <!-- Timeline -->
-                        <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-mdh-blue/20"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-[#1e293b]/20"></div>
                         
                         <!-- Événements -->
                         <div class="space-y-12">
                             <div class="relative">
                                 <div class="ml-1/2 pl-12">
-                                    <div class="absolute left-0 transform -translate-x-1/2 w-8 h-8 bg-mdh-blue rounded-full flex items-center justify-center">
+                                    <div class="absolute left-0 transform -translate-x-1/2 w-8 h-8 bg-[#1e293b] rounded-full flex items-center justify-center">
                                         <span class="text-white font-bold">1</span>
                                     </div>
-                                    <h3 class="text-xl font-semibold text-mdh-blue mb-2">2015 - Création de MDH</h3>
+                                    <h3 class="text-xl font-semibold text-[#1e293b] mb-2">2015 - Création de MDH</h3>
                                     <p class="text-gray-600">Fondation de l'association avec une vision claire : contribuer au développement humain durable.</p>
                                 </div>
                             </div>
@@ -167,10 +203,10 @@
                             
                             <div class="relative">
                                 <div class="ml-1/2 pl-12">
-                                    <div class="absolute left-0 transform -translate-x-1/2 w-8 h-8 bg-mdh-blue rounded-full flex items-center justify-center">
+                                    <div class="absolute left-0 transform -translate-x-1/2 w-8 h-8 bg-[#1e293b] rounded-full flex items-center justify-center">
                                         <span class="text-white font-bold">3</span>
                                     </div>
-                                    <h3 class="text-xl font-semibold text-mdh-blue mb-2">2020 - Expansion des activités</h3>
+                                    <h3 class="text-xl font-semibold text-[#1e293b] mb-2">2020 - Expansion des activités</h3>
                                     <p class="text-gray-600">Développement des programmes de santé et lancement des projets d'agriculture durable.</p>
                                 </div>
                             </div>
