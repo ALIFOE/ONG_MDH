@@ -16,11 +16,12 @@
       <!-- Scripts -->
     <script src="js/script.js" defer></script>
 </head>
-<body class="font-sans">    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-mdh-blue focus:text-white focus:z-50">
+<body class="font-sans bg-gray-100 text-gray-900">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-[#1e293b] focus:text-white focus:z-50">
         Aller au contenu principal
     </a>
 
-    <header class="bg-white shadow-lg fixed w-full z-50">
+    <header class="bg-white/90 shadow-2xl fixed w-full z-50 backdrop-blur-md border-b border-gray-200">
     <nav class="max-w-7xl mx-auto px-4">
         <div class="flex items-center justify-between h-20">
             <!-- Logo Container -->
@@ -44,15 +45,15 @@
                 </nav>
                 <!-- Bouton Don -->
                 <div class="hidden md:block">
-                    <a href="donation.html" class="py-2 px-6 bg-mdh-blue text-white rounded-full hover:bg-mdh-yellow transition duration-300">
+                    <a href="donation.html" class="py-2 px-6 bg-[#1e293b] text-white rounded-full hover:bg-yellow-400 hover:text-[#1e293b] font-bold shadow-md transition duration-300">
                         Faire un don
                     </a>
                 </div>
             </div>
             <!-- Mobile menu button -->
             <div class="md:hidden">
-                <button id="mobile-menu-button" class="mobile-menu-button p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-mdh-blue" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
-                    <svg class="h-6 w-6 text-gray-600" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                <button id="mobile-menu-button" class="mobile-menu-button p-2 rounded-xl hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1e293b]" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg class="h-6 w-6 text-[#1e293b]" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
@@ -63,52 +64,52 @@
         <!-- Mobile menu -->
         <div class="hidden mobile-menu md:hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="index">Accueil</a>
-                <a href="association.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="association">L'Association</a>
-                <a href="actions.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="actions">Nos Actions</a>
-                <a href="actualites.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="actualites">Nos Actualités</a>
-                <a href="rejoindre.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="rejoindre">Rejoindre-nous</a>
-                <a href="ecole.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="ecole">Notre École</a>
-                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="contact">Contactez-nous</a>
-                <a href="donation.html" class="block px-3 py-2 bg-mdh-blue text-white rounded-md hover:bg-mdh-yellow">Faire un don</a>
+                <a href="index.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="index">Accueil</a>
+                <a href="association.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="association">L'Association</a>
+                <a href="actions.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actions">Nos Actions</a>
+                <a href="actualites.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actualites">Nos Actualités</a>
+                <a href="rejoindre.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="rejoindre">Rejoindre-nous</a>
+                <a href="ecole.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="ecole">Notre École</a>
+                <a href="contact.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="contact">Contactez-nous</a>
+                <a href="donation.html" class="block px-3 py-2 bg-[#1e293b] text-white rounded-xl hover:bg-yellow-400 hover:text-[#1e293b] font-bold">Faire un don</a>
             </div>
         </div>
     </nav>
 </header>
 
-    <main id="main-content" class="container mx-auto px-4 py-12 mt-20">
+    <main id="main-content" class="container mx-auto px-4 py-12 mt-24">
         <!-- Hero Section -->
         <section class="text-center mb-16">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Contactez-nous</h1>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-[#1e293b] mb-4">Contactez-nous</h1>
+            <p class="text-xl text-gray-700 max-w-3xl mx-auto">
                 Une question ? Un projet ? N'hésitez pas à nous contacter. Nous sommes là pour vous répondre.
             </p>
         </section>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <!-- Contact Form -->
-            <section class="bg-white rounded-lg shadow-lg p-8">
-                <h2 class="text-2xl font-bold mb-6">Formulaire de contact</h2>
+            <section class="bg-white/90 rounded-3xl shadow-2xl p-8 border border-gray-200">
+                <h2 class="text-2xl font-bold text-[#1e293b] mb-6">Formulaire de contact</h2>
                 <form id="contact-form" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-gray-700 mb-2" for="firstname">Prénom</label>
-                            <input type="text" id="firstname" name="firstname" class="w-full px-4 py-2 border rounded-lg" required>
+                            <label class="block text-[#1e293b] mb-2 font-semibold" for="firstname">Prénom</label>
+                            <input type="text" id="firstname" name="firstname" class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#1e293b] focus:border-[#1e293b] bg-gray-50" required>
                         </div>
                         <div>
-                            <label class="block text-gray-700 mb-2" for="lastname">Nom</label>
-                            <input type="text" id="lastname" name="lastname" class="w-full px-4 py-2 border rounded-lg" required>
+                            <label class="block text-[#1e293b] mb-2 font-semibold" for="lastname">Nom</label>
+                            <input type="text" id="lastname" name="lastname" class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#1e293b] focus:border-[#1e293b] bg-gray-50" required>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 mb-2" for="email">Email</label>
-                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg" required>
+                        <label class="block text-[#1e293b] mb-2 font-semibold" for="email">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#1e293b] focus:border-[#1e293b] bg-gray-50" required>
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 mb-2" for="subject">Sujet</label>
-                        <select id="subject" name="subject" class="w-full px-4 py-2 border rounded-lg" required>
+                        <label class="block text-[#1e293b] mb-2 font-semibold" for="subject">Sujet</label>
+                        <select id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#1e293b] focus:border-[#1e293b] bg-gray-50" required>
                             <option value="">Choisissez un sujet</option>
                             <option value="general">Question générale</option>
                             <option value="donation">Question sur les dons</option>
@@ -120,13 +121,13 @@
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 mb-2" for="message">Message</label>
-                        <textarea id="message" name="message" rows="6" class="w-full px-4 py-2 border rounded-lg" required></textarea>
+                        <label class="block text-[#1e293b] mb-2 font-semibold" for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#1e293b] focus:border-[#1e293b] bg-gray-50" required></textarea>
                     </div>
 
                     <div class="flex items-start">
                         <div class="flex items-center h-5">
-                            <input id="privacy" type="checkbox" class="mr-2" required>
+                            <input id="privacy" type="checkbox" class="mr-2 rounded border-gray-300 focus:ring-[#1e293b]" required>
                         </div>
                         <label class="text-sm text-gray-500" for="privacy">
                             J'accepte que mes données soient traitées pour la gestion de ma demande de contact
@@ -134,7 +135,7 @@
                     </div>
 
                     <div>
-                        <button type="submit" class="bg-mdh-yellow text-white px-8 py-3 rounded-full hover:bg-mdh-blue transition duration-300">
+                        <button type="submit" class="bg-[#1e293b] text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-yellow-400 hover:text-[#1e293b] transition duration-300 w-full md:w-auto">
                             Envoyer le message
                         </button>
                     </div>
@@ -144,14 +145,14 @@
             <!-- Contact Information -->
             <section class="space-y-8">
                 <!-- Address -->
-                <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="bg-white/90 rounded-2xl shadow-xl p-6 border border-gray-200">
                     <div class="flex items-start">
-                        <div class="bg-mdh-blue rounded-full p-3 text-white mr-4">
+                        <div class="bg-[#1e293b] rounded-full p-3 text-white mr-4 shadow-md">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold mb-2">Notre adresse</h3>
-                            <p class="text-gray-600">
+                            <h3 class="text-xl font-bold text-[#1e293b] mb-2">Notre adresse</h3>
+                            <p class="text-gray-700">
                                 123 Rue de l'Espoir<br>
                                 75000 Paris<br>
                                 France
@@ -161,14 +162,14 @@
                 </div>
 
                 <!-- Contact -->
-                <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="bg-white/90 rounded-2xl shadow-xl p-6 border border-gray-200">
                     <div class="flex items-start">
-                        <div class="bg-mdh-blue rounded-full p-3 text-white mr-4">
+                        <div class="bg-[#1e293b] rounded-full p-3 text-white mr-4 shadow-md">
                             <i class="fas fa-phone"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold mb-2">Téléphone</h3>
-                            <p class="text-gray-600">
+                            <h3 class="text-xl font-bold text-[#1e293b] mb-2">Téléphone</h3>
+                            <p class="text-gray-700">
                                 +33 (0)1 23 45 67 89
                             </p>
                         </div>
@@ -176,14 +177,14 @@
                 </div>
 
                 <!-- Email -->
-                <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="bg-white/90 rounded-2xl shadow-xl p-6 border border-gray-200">
                     <div class="flex items-start">
-                        <div class="bg-mdh-blue rounded-full p-3 text-white mr-4">
+                        <div class="bg-[#1e293b] rounded-full p-3 text-white mr-4 shadow-md">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold mb-2">Email</h3>
-                            <p class="text-gray-600">
+                            <h3 class="text-xl font-bold text-[#1e293b] mb-2">Email</h3>
+                            <p class="text-gray-700">
                                 contact@mdh-ong.org
                             </p>
                         </div>
@@ -191,14 +192,14 @@
                 </div>
 
                 <!-- Horaires -->
-                <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="bg-white/90 rounded-2xl shadow-xl p-6 border border-gray-200">
                     <div class="flex items-start">
-                        <div class="bg-mdh-blue rounded-full p-3 text-white mr-4">
+                        <div class="bg-[#1e293b] rounded-full p-3 text-white mr-4 shadow-md">
                             <i class="fas fa-clock"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold mb-2">Horaires d'ouverture</h3>
-                            <ul class="text-gray-600 space-y-1">
+                            <h3 class="text-xl font-bold text-[#1e293b] mb-2">Horaires d'ouverture</h3>
+                            <ul class="text-gray-700 space-y-1">
                                 <li>Lundi - Vendredi : 9h00 - 18h00</li>
                                 <li>Samedi : 10h00 - 16h00</li>
                                 <li>Dimanche : Fermé</li>
@@ -211,12 +212,12 @@
 
         <!-- Map Section -->
         <section class="mt-16">
-            <div class="bg-white rounded-lg shadow-lg p-4">
+            <div class="bg-white/90 rounded-2xl shadow-xl p-4 border border-gray-200">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9916256937604!2d2.292292615674431!3d48.85837007928757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1647291914004!5m2!1sfr!2sfr" 
-                    class="w-full h-96 rounded-lg"
-                    style="border:0;" 
-                    allowfullscreen="" 
+                    class="w-full h-96 rounded-xl border-none"
+                    style="border:0;"
+                    allowfullscreen=""
                     loading="lazy">
                 </iframe>
             </div>
@@ -224,36 +225,95 @@
 
         <!-- FAQ Section -->
         <section class="mt-16">
-            <h2 class="text-3xl font-bold text-center mb-8">Questions fréquentes</h2>
+            <h2 class="text-3xl font-extrabold tracking-tight text-center text-[#1e293b] mb-8">Questions fréquentes</h2>
             <div class="max-w-3xl mx-auto space-y-4">
-                <div class="bg-white rounded-lg shadow-lg">
-                    <button class="w-full px-6 py-4 text-left font-semibold hover:text-mdh-blue transition duration-300">
+                <div class="bg-white/90 rounded-2xl shadow-xl border border-gray-200">
+                    <button class="w-full px-6 py-4 text-left font-bold text-[#1e293b] hover:text-yellow-400 transition duration-300">
                         Comment puis-je devenir bénévole ?
                     </button>
-                    <div class="px-6 pb-4 text-gray-600">
+                    <div class="px-6 pb-4 text-gray-700">
                         Vous pouvez nous rejoindre en tant que bénévole en remplissant le formulaire sur notre page "Nous Rejoindre" ou en nous contactant directement par email.
                     </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-lg">
-                    <button class="w-full px-6 py-4 text-left font-semibold hover:text-mdh-blue transition duration-300">
+                <div class="bg-white/90 rounded-2xl shadow-xl border border-gray-200">
+                    <button class="w-full px-6 py-4 text-left font-bold text-[#1e293b] hover:text-yellow-400 transition duration-300">
                         Comment faire un don ?
                     </button>
-                    <div class="px-6 pb-4 text-gray-600">
+                    <div class="px-6 pb-4 text-gray-700">
                         Vous pouvez faire un don en ligne sur notre page "Faire un don" ou par virement bancaire. Contactez-nous pour plus d'informations.
                     </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-lg">
-                    <button class="w-full px-6 py-4 text-left font-semibold hover:text-mdh-blue transition duration-300">
+                <div class="bg-white/90 rounded-2xl shadow-xl border border-gray-200">
+                    <button class="w-full px-6 py-4 text-left font-bold text-[#1e293b] hover:text-yellow-400 transition duration-300">
                         Comment proposer un partenariat ?
                     </button>
-                    <div class="px-6 pb-4 text-gray-600">
+                    <div class="px-6 pb-4 text-gray-700">
                         Pour toute proposition de partenariat, veuillez nous contacter par email en détaillant votre projet.
                     </div>
                 </div>
             </div>
-        </section>    </main>
+        </section>
+    </main>
 
-    <footer class="bg-gray-800 text-white py-12 mt-16"></footer>    <script>
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 bg-gray-900/95 rounded-2xl p-8 shadow-2xl">
+                <!-- About -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">À propos de MDH</h3>
+                    <p class="text-gray-300">MDH œuvre pour le développement humain à travers l'éducation et le soutien aux communautés vulnérables.</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">Liens Rapides</h3>
+                    <ul class="space-y-2">
+                        <li><a href="association.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">L'Association</a></li>
+                        <li><a href="actions.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">Nos Actions</a></li>
+                        <li><a href="ecole.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">Notre École</a></li>
+                        <li><a href="actualites.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">Actualités</a></li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><span class="font-semibold">Email :</span> modehumain@gmail.com</li>
+                        <li><span class="font-semibold">Tél :</span> +228 92 12 95 49</li>
+                        <li><span class="font-semibold">Adresse :</span> Lomé, Togo</li>
+                    </ul>
+                </div>
+                <!-- Social -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">Suivez-nous</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" aria-label="Facebook" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-facebook text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                        <a href="#" aria-label="Twitter" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-twitter text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-instagram text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                        <a href="#" aria-label="LinkedIn" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-linkedin text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-400">&copy; 2024 ONG MDH international Togo. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>    <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Gestion du menu mobile
             const mobileMenuButton = document.getElementById('mobile-menu-button');

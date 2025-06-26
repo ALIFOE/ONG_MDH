@@ -16,11 +16,12 @@
       <!-- Scripts -->
     <script src="js/script.js" defer></script>
 </head>
-<body class="font-sans">    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-mdh-blue focus:text-white focus:z-50">
+<body class="font-sans bg-gray-100 text-gray-900">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-[#1e293b] focus:text-white focus:z-50">
         Aller au contenu principal
     </a>
 
-    <header class="bg-white shadow-lg fixed w-full z-50">
+    <header class="bg-white/90 shadow-2xl fixed w-full z-50 backdrop-blur-md border-b border-gray-200">
     <nav class="max-w-7xl mx-auto px-4">
         <div class="flex items-center justify-between h-20">
             <!-- Logo Container -->
@@ -44,15 +45,15 @@
                 </nav>
                 <!-- Bouton Don -->
                 <div class="hidden md:block">
-                    <a href="donation.html" class="py-2 px-6 bg-mdh-blue text-white rounded-full hover:bg-mdh-yellow transition duration-300">
+                    <a href="donation.html" class="py-2 px-6 bg-[#1e293b] text-white rounded-full hover:bg-yellow-400 hover:text-[#1e293b] font-bold shadow-md transition duration-300">
                         Faire un don
                     </a>
                 </div>
             </div>
             <!-- Mobile menu button -->
             <div class="md:hidden">
-                <button id="mobile-menu-button" class="mobile-menu-button p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-mdh-blue" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
-                    <svg class="h-6 w-6 text-gray-600" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                <button id="mobile-menu-button" class="mobile-menu-button p-2 rounded-xl hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1e293b]" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <svg class="h-6 w-6 text-[#1e293b]" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
@@ -63,94 +64,98 @@
         <!-- Mobile menu -->
         <div class="hidden mobile-menu md:hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="index">Accueil</a>
-                <a href="association.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="association">L'Association</a>
-                <a href="actions.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="actions">Nos Actions</a>
-                <a href="actualites.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="actualites">Nos Actualités</a>
-                <a href="rejoindre.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="rejoindre">Rejoindre-nous</a>
-                <a href="ecole.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="ecole">Notre École</a>
-                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="contact">Contactez-nous</a>
-                <a href="donation.html" class="block px-3 py-2 bg-mdh-blue text-white rounded-md hover:bg-mdh-yellow">Faire un don</a>
+                <a href="index.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="index">Accueil</a>
+                <a href="association.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="association">L'Association</a>
+                <a href="actions.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actions">Nos Actions</a>
+                <a href="actualites.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actualites">Nos Actualités</a>
+                <a href="rejoindre.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="rejoindre">Rejoindre-nous</a>
+                <a href="ecole.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="ecole">Notre École</a>
+                <a href="contact.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="contact">Contactez-nous</a>
+                <a href="donation.html" class="block px-3 py-2 bg-[#1e293b] text-white rounded-xl hover:bg-yellow-400 hover:text-[#1e293b] font-bold">Faire un don</a>
             </div>
         </div>
     </nav>
 </header>
 
-    <main id="main-content" class="container mx-auto px-4 py-12 mt-20">
+    <main id="main-content" class="container mx-auto px-4 py-12 mt-24">
         <!-- Hero Section -->
         <section class="text-center mb-16">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Faire un don</h1>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+                <span class="text-yellow-400">Faire un don</span>
+            </h1>
+            <p class="text-xl text-gray-700 max-w-3xl mx-auto">
                 Votre générosité permet de soutenir nos actions et de faire la différence dans la vie de nombreuses personnes.
             </p>
         </section>
 
         <!-- Impact Section -->
         <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div class="bg-white rounded-lg p-6 shadow-lg text-center">
-                <div class="text-4xl font-bold text-mdh-blue mb-2">25€</div>
-                <p class="text-gray-600">permettent de fournir du matériel scolaire à un enfant pendant un an</p>
+            <div class="bg-white/90 rounded-2xl p-6 shadow-xl text-center">
+                <div class="text-4xl font-extrabold text-[#1e293b] mb-2">25€</div>
+                <p class="text-gray-700">permettent de fournir du matériel scolaire à un enfant pendant un an</p>
             </div>
-            <div class="bg-white rounded-lg p-6 shadow-lg text-center">
-                <div class="text-4xl font-bold text-mdh-blue mb-2">50€</div>
-                <p class="text-gray-600">financent une formation professionnelle d'une semaine</p>
+            <div class="bg-white/90 rounded-2xl p-6 shadow-xl text-center">
+                <div class="text-4xl font-extrabold text-[#1e293b] mb-2">50€</div>
+                <p class="text-gray-700">financent une formation professionnelle d'une semaine</p>
             </div>
-            <div class="bg-white rounded-lg p-6 shadow-lg text-center">
-                <div class="text-4xl font-bold text-mdh-blue mb-2">100€</div>
-                <p class="text-gray-600">permettent de vacciner 20 enfants</p>
+            <div class="bg-white/90 rounded-2xl p-6 shadow-xl text-center">
+                <div class="text-4xl font-extrabold text-[#1e293b] mb-2">100€</div>
+                <p class="text-gray-700">permettent de vacciner 20 enfants</p>
             </div>
         </section>
 
         <!-- Donation Form -->
-        <section class="bg-white rounded-lg shadow-lg p-8 mb-16">
+        <section class="bg-white/90 rounded-3xl shadow-2xl p-8 mb-16 border border-gray-200">
             <div class="max-w-3xl mx-auto">
-                <h2 class="text-3xl font-bold mb-8 text-center">Formulaire de don</h2>
+                <h2 class="text-3xl font-extrabold tracking-tight mb-8 text-center">
+                    <span class="text-yellow-400">Formulaire de don</span>
+                </h2>
                 
                 <!-- Montant buttons -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                    <button class="donation-amount bg-gray-100 hover:bg-mdh-blue hover:text-white rounded-lg py-3 transition duration-300" data-amount="25">25€</button>
-                    <button class="donation-amount bg-gray-100 hover:bg-mdh-blue hover:text-white rounded-lg py-3 transition duration-300" data-amount="50">50€</button>
-                    <button class="donation-amount bg-gray-100 hover:bg-mdh-blue hover:text-white rounded-lg py-3 transition duration-300" data-amount="100">100€</button>
-                    <button class="donation-amount bg-gray-100 hover:bg-mdh-blue hover:text-white rounded-lg py-3 transition duration-300" data-amount="custom">Autre montant</button>
+                    <button class="donation-amount bg-gray-50 hover:bg-[#1e293b] hover:text-white rounded-xl py-3 font-bold transition duration-300" data-amount="25">25€</button>
+                    <button class="donation-amount bg-gray-50 hover:bg-[#1e293b] hover:text-white rounded-xl py-3 font-bold transition duration-300" data-amount="50">50€</button>
+                    <button class="donation-amount bg-gray-50 hover:bg-[#1e293b] hover:text-white rounded-xl py-3 font-bold transition duration-300" data-amount="100">100€</button>
+                    <button class="donation-amount bg-gray-50 hover:bg-[#1e293b] hover:text-white rounded-xl py-3 font-bold transition duration-300" data-amount="custom">Autre montant</button>
                 </div>
 
                 <form id="donation-form" class="space-y-6">
                     <!-- Montant personnalisé -->
                     <div id="custom-amount" class="hidden">
-                        <label class="block text-gray-700 mb-2" for="amount">Montant personnalisé (€)</label>
-                        <input type="number" id="amount" name="amount" min="1" class="w-full px-4 py-2 border rounded-lg">
+                        <label class="block text-[#1e293b] mb-2 font-semibold" for="amount">Montant personnalisé (€)</label>
+                        <input type="number" id="amount" name="amount" min="1" class="w-full px-4 py-2 border border-gray-300 rounded-xl bg-gray-50 focus:ring-2 focus:ring-[#1e293b] focus:border-[#1e293b]">
                     </div>
 
                     <!-- Informations personnelles -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-gray-700 mb-2" for="firstname">Prénom</label>
-                            <input type="text" id="firstname" name="firstname" class="w-full px-4 py-2 border rounded-lg" required>
+                            <label class="block text-[#1e293b] mb-2 font-semibold" for="firstname">Prénom</label>
+                            <input type="text" id="firstname" name="firstname" class="w-full px-4 py-2 border border-gray-300 rounded-xl bg-gray-50 focus:ring-2 focus:ring-[#1e293b] focus:border-[#1e293b]" required>
                         </div>
                         <div>
-                            <label class="block text-gray-700 mb-2" for="lastname">Nom</label>
-                            <input type="text" id="lastname" name="lastname" class="w-full px-4 py-2 border rounded-lg" required>
+                            <label class="block text-[#1e293b] mb-2 font-semibold" for="lastname">Nom</label>
+                            <input type="text" id="lastname" name="lastname" class="w-full px-4 py-2 border border-gray-300 rounded-xl bg-gray-50 focus:ring-2 focus:ring-[#1e293b] focus:border-[#1e293b]" required>
                         </div>
                         <div>
-                            <label class="block text-gray-700 mb-2" for="email">Email</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg" required>
+                            <label class="block text-[#1e293b] mb-2 font-semibold" for="email">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-xl bg-gray-50 focus:ring-2 focus:ring-[#1e293b] focus:border-[#1e293b]" required>
                         </div>
                         <div>
-                            <label class="block text-gray-700 mb-2" for="phone">Téléphone</label>
-                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border rounded-lg">
+                            <label class="block text-[#1e293b] mb-2 font-semibold" for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-xl bg-gray-50 focus:ring-2 focus:ring-[#1e293b] focus:border-[#1e293b]">
                         </div>
                     </div>
 
                     <!-- Type de don -->
                     <div>
-                        <label class="block text-gray-700 mb-2">Type de don</label>
+                        <label class="block text-[#1e293b] mb-2 font-semibold">Type de don</label>
                         <div class="space-y-2">
                             <label class="flex items-center">
-                                <input type="radio" name="donation-type" value="ponctuel" checked class="mr-2">
+                                <input type="radio" name="donation-type" value="ponctuel" checked class="mr-2 accent-[#1e293b]">
                                 <span>Don ponctuel</span>
                             </label>
                             <label class="flex items-center">
-                                <input type="radio" name="donation-type" value="mensuel" class="mr-2">
+                                <input type="radio" name="donation-type" value="mensuel" class="mr-2 accent-[#1e293b]">
                                 <span>Don mensuel</span>
                             </label>
                         </div>
@@ -158,20 +163,20 @@
 
                     <!-- Message -->
                     <div>
-                        <label class="block text-gray-700 mb-2" for="message">Message (optionnel)</label>
-                        <textarea id="message" name="message" rows="3" class="w-full px-4 py-2 border rounded-lg"></textarea>
+                        <label class="block text-[#1e293b] mb-2 font-semibold" for="message">Message (optionnel)</label>
+                        <textarea id="message" name="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-xl bg-gray-50 focus:ring-2 focus:ring-[#1e293b] focus:border-[#1e293b]"></textarea>
                     </div>
 
                     <!-- Reçu fiscal -->
                     <div>
                         <label class="flex items-center">
-                            <input type="checkbox" name="tax-receipt" class="mr-2">
+                            <input type="checkbox" name="tax-receipt" class="mr-2 accent-[#1e293b]">
                             <span>Je souhaite recevoir un reçu fiscal</span>
                         </label>
                     </div>
 
                     <div class="text-center">
-                        <button type="submit" class="bg-mdh-yellow text-white px-8 py-3 rounded-full hover:bg-mdh-blue transition duration-300">
+                        <button type="submit" class="bg-yellow-400 text-[#1e293b] px-8 py-3 rounded-full font-bold shadow-lg hover:bg-[#1e293b] hover:text-white transition duration-300 w-full md:w-auto">
                             Faire un don sécurisé
                         </button>
                     </div>
@@ -179,20 +184,81 @@
             </div>
         </section>
 
-        <!-- Informations fiscales -->
-        <section class="bg-mdh-blue text-white rounded-lg p-8">
+        <!-- Pourquoi donner à MDH ? -->
+        <section class="bg-[#1e293b] text-white rounded-2xl p-8 shadow-xl">
             <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-2xl font-bold mb-4">Avantages fiscaux</h2>
-                <p class="mb-4">
-                    66% de votre don est déductible de vos impôts dans la limite de 20% de votre revenu imposable.
-                </p>
-                <p class="text-lg">
-                    Un don de 100€ ne vous coûte réellement que 34€ après déduction fiscale.
-                </p>
+                <h2 class="text-2xl font-extrabold tracking-tight mb-4">
+                    <span class="text-yellow-400">Pourquoi donner à MDH&nbsp;?</span>
+                </h2>
+                <ul class="space-y-4 text-lg text-white/90 text-left md:text-center mx-auto max-w-2xl">
+                    <li><span class="font-bold text-yellow-400">Votre don</span> soutient directement des projets concrets sur le terrain&nbsp;: éducation, santé, développement durable.</li>
+                    <li><span class="font-bold text-yellow-400">Chaque euro compte</span>&nbsp;: même un petit don a un impact réel pour les bénéficiaires.</li>
+                    <li>Vous recevez un <span class="font-bold text-yellow-400">suivi transparent</span> de l’utilisation des fonds et des résultats obtenus.</li>
+                    <li><span class="font-bold text-yellow-400">Ensemble</span>, nous construisons un avenir meilleur pour les enfants et les communautés.</li>
+                </ul>
             </div>
-        </section>    </main>
+        </section>
+    </main>
 
-    <footer class="bg-gray-800 text-white py-12 mt-16"></footer>    <script>
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 bg-gray-900/95 rounded-2xl p-8 shadow-2xl">
+                <!-- About -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">À propos de MDH</h3>
+                    <p class="text-gray-300">MDH œuvre pour le développement humain à travers l'éducation et le soutien aux communautés vulnérables.</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">Liens Rapides</h3>
+                    <ul class="space-y-2">
+                        <li><a href="association.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">L'Association</a></li>
+                        <li><a href="actions.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">Nos Actions</a></li>
+                        <li><a href="ecole.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">Notre École</a></li>
+                        <li><a href="actualites.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">Actualités</a></li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><span class="font-semibold">Email :</span> modehumain@gmail.com</li>
+                        <li><span class="font-semibold">Tél :</span> +228 92 12 95 49</li>
+                        <li><span class="font-semibold">Adresse :</span> Lomé, Togo</li>
+                    </ul>
+                </div>
+                <!-- Social -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">Suivez-nous</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" aria-label="Facebook" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-facebook text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                        <a href="#" aria-label="Twitter" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-twitter text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-instagram text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                        <a href="#" aria-label="LinkedIn" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-linkedin text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-400">&copy; 2024 ONG MDH international Togo. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>    <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Gestion du menu mobile
             const mobileMenuButton = document.getElementById('mobile-menu-button');
