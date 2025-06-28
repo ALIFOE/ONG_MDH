@@ -15,6 +15,7 @@
     <link href="css/navbar.css" rel="stylesheet">
       <!-- Scripts -->
     <script src="js/script.js" defer></script>
+    <link rel="icon" href="images/favicon-mdh.png" type="image/png">
 </head>
 <body class="font-sans bg-gray-100 text-gray-900">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-[#1e293b] focus:text-white focus:z-50">
@@ -113,10 +114,10 @@
                 
                 <!-- Montant buttons -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                    <button class="donation-amount bg-gray-50 hover:bg-[#1e293b] hover:text-white rounded-xl py-3 font-bold transition duration-300" data-amount="25">25€</button>
-                    <button class="donation-amount bg-gray-50 hover:bg-[#1e293b] hover:text-white rounded-xl py-3 font-bold transition duration-300" data-amount="50">50€</button>
-                    <button class="donation-amount bg-gray-50 hover:bg-[#1e293b] hover:text-white rounded-xl py-3 font-bold transition duration-300" data-amount="100">100€</button>
-                    <button class="donation-amount bg-gray-50 hover:bg-[#1e293b] hover:text-white rounded-xl py-3 font-bold transition duration-300" data-amount="custom">Autre montant</button>
+                    <button class="donation-amount bg-white text-[#1e293b] hover:bg-[#1e293b] hover:text-white rounded-xl py-3 font-semibold transition duration-300 border border-[#1e293b]/10 shadow-sm" data-amount="25">25€</button>
+                    <button class="donation-amount bg-white text-[#1e293b] hover:bg-[#1e293b] hover:text-white rounded-xl py-3 font-semibold transition duration-300 border border-[#1e293b]/10 shadow-sm" data-amount="50">50€</button>
+                    <button class="donation-amount bg-white text-[#1e293b] hover:bg-[#1e293b] hover:text-white rounded-xl py-3 font-semibold transition duration-300 border border-[#1e293b]/10 shadow-sm" data-amount="100">100€</button>
+                    <button class="donation-amount bg-white text-[#1e293b] hover:bg-[#1e293b] hover:text-white rounded-xl py-3 font-semibold transition duration-300 border border-[#1e293b]/10 shadow-sm" data-amount="custom">Autre montant</button>
                 </div>
 
                 <form id="donation-form" class="space-y-6">
@@ -224,7 +225,7 @@
                     <ul class="space-y-2 text-gray-300">
                         <li><span class="font-semibold">Email :</span> modehumain@gmail.com</li>
                         <li><span class="font-semibold">Tél :</span> +228 92 12 95 49</li>
-                        <li><span class="font-semibold">Adresse :</span> Lomé, Togo</li>
+                        <li><span class="font-semibold">Adresse :</span> Aflao-Sagbado (Apedokoè), Lomé, Togo</li>
                     </ul>
                 </div>
                 <!-- Social -->
@@ -293,11 +294,13 @@
             donationAmounts.forEach(button => {
                 button.addEventListener('click', function() {
                     // Remove active class from all buttons
-                    donationAmounts.forEach(btn => btn.classList.remove('bg-mdh-blue', 'text-white'));
-                    
+                    donationAmounts.forEach(btn => {
+                        btn.classList.remove('bg-[#1e293b]', 'text-white', 'ring-2', 'ring-[#1e293b]');
+                        btn.classList.add('bg-white', 'text-[#1e293b]');
+                    });
                     // Add active class to clicked button
-                    this.classList.add('bg-mdh-blue', 'text-white');
-
+                    this.classList.remove('bg-white', 'text-[#1e293b]');
+                    this.classList.add('bg-[#1e293b]', 'text-white', 'ring-2', 'ring-[#1e293b]');
                     // Show/hide custom amount input
                     if (this.dataset.amount === 'custom') {
                         customAmountDiv.classList.remove('hidden');
