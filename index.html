@@ -112,19 +112,19 @@
                 <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-center text-[#1e293b] mb-12">Notre Impact en Chiffres</h2>
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div class="bg-gray-50 p-6 rounded-2xl shadow-xl text-center transform hover:scale-105 transition duration-300">
-                        <div class="text-4xl font-extrabold text-yellow-400 mb-2 counter" data-target="150">0</div>
-                        <p class="text-gray-700">Enfants Scolarisés</p>
+                        <div class="text-4xl font-extrabold text-yellow-400 mb-2 counter" data-target="150">230</div>
+                        <p class="text-gray-700">accompagnement des enfants</p>
                     </div>
                     <div class="bg-gray-50 p-6 rounded-2xl shadow-xl text-center transform hover:scale-105 transition duration-300">
-                        <div class="text-4xl font-extrabold text-yellow-400 mb-2 counter" data-target="12">0</div>
+                        <div class="text-4xl font-extrabold text-yellow-400 mb-2 counter" data-target="12">6</div>
                         <p class="text-gray-700">Projets Réalisés</p>
                     </div>
                     <div class="bg-gray-50 p-6 rounded-2xl shadow-xl text-center transform hover:scale-105 transition duration-300">
-                        <div class="text-4xl font-extrabold text-yellow-400 mb-2 counter" data-target="25">0</div>
+                        <div class="text-4xl font-extrabold text-yellow-400 mb-2 counter" data-target="25">15</div>
                         <p class="text-gray-700">Bénévoles Actifs</p>
                     </div>
                     <div class="bg-gray-50 p-6 rounded-2xl shadow-xl text-center transform hover:scale-105 transition duration-300">
-                        <div class="text-4xl font-extrabold text-yellow-400 mb-2 counter" data-target="5">0</div>
+                        <div class="text-4xl font-extrabold text-yellow-400 mb-2 counter" data-target="5">7</div>
                         <p class="text-gray-700">Années d'Expérience</p>
                     </div>
                 </div>
@@ -353,7 +353,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <a href="galerie.html" class="inline-block px-10 py-4 bg-yellow-400 text-[#1e293b] rounded-full text-lg font-bold shadow-xl hover:bg-white hover:text-yellow-400 transition duration-300 transform hover:scale-105">
+                    <a href="'galerie.html'" class="inline-block px-10 py-4 bg-yellow-400 text-[#1e293b] rounded-full text-lg font-bold shadow-xl hover:bg-white hover:text-yellow-400 transition duration-300 transform hover:scale-105">
                         Voir toute la galerie
                     </a>
                 </div>
@@ -426,24 +426,24 @@
         loadNavbar().catch(error => console.error('Erreur lors du chargement de la navbar:', error));
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Counter animation
+            // Animation des compteurs statistiques
             const counters = document.querySelectorAll('.counter');
-            const speed = 200;
-
             counters.forEach(counter => {
-                const animate = () => {
-                    const value = +counter.getAttribute('data-target');
-                    const data = +counter.innerText;
-                    const time = value / speed;
-                    
-                    if (data < value) {
-                        counter.innerText = Math.ceil(data + time);
-                        setTimeout(animate, 1);
+                const target = +counter.getAttribute('data-target');
+                let current = 0;
+                counter.innerText = '0';
+                const duration = 5000; // durée totale de l'animation en ms
+                const increment = Math.max(1, Math.ceil(target / (duration / 16)));
+                function updateCounter() {
+                    current += increment;
+                    if (current < target) {
+                        counter.innerText = current;
+                        requestAnimationFrame(updateCounter);
                     } else {
-                        counter.innerText = value;
+                        counter.innerText = target;
                     }
                 }
-                animate();
+                updateCounter();
             });
         });
     </script>
