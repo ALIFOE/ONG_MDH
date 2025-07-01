@@ -1,0 +1,5 @@
+{
+    "require": {
+        "paydunya/paydunya-php": "^2.0"
+    }
+}

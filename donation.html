@@ -120,7 +120,7 @@
                     <button class="donation-amount bg-white text-[#1e293b] hover:bg-[#1e293b] hover:text-white rounded-xl py-3 font-semibold transition duration-300 border border-[#1e293b]/10 shadow-sm" data-amount="custom">Autre montant</button>
                 </div>
 
-                <form id="donation-form" class="space-y-6">
+                <form id="donation-form" class="space-y-6" action="paydunya-checkout.php" method="POST">
                     <!-- Montant personnalisé -->
                     <div id="custom-amount" class="hidden">
                         <label class="block text-[#1e293b] mb-2 font-semibold" for="amount">Montant personnalisé (€)</label>
@@ -185,6 +185,36 @@
             </div>
         </section>
 
+        <!-- Don direct : Banque & Mobile Money -->
+        <section class="bg-white/90 rounded-2xl shadow-xl p-8 mb-12 border border-gray-200">
+            <div class="max-w-2xl mx-auto text-center">
+                <h2 class="text-2xl font-extrabold tracking-tight mb-4 text-[#1e293b]">
+                    <span class="text-yellow-400">Faire un don par virement ou Mobile Money</span>
+                </h2>
+                <p class="mb-6 text-gray-700">Vous pouvez aussi soutenir l'ONG MDH par virement bancaire ou Mobile Money&nbsp;:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                    <div>
+                        <h3 class="font-bold text-[#1e293b] mb-2">Virement bancaire</h3>
+                        <ul class="text-gray-800 space-y-1">
+                            <li><span class="font-semibold">Banque&nbsp;:</span> Ecobank Togo</li>
+                            <li><span class="font-semibold">Titulaire&nbsp;:</span> ONG Mode Humain</li>
+                            <li><span class="font-semibold">IBAN&nbsp;:</span> TG53 0110 0101 0000 1234 5678 90</li>
+                            <li><span class="font-semibold">BIC&nbsp;:</span> ECOCTGTG</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-[#1e293b] mb-2">Mobile Money</h3>
+                        <ul class="text-gray-800 space-y-1">
+                            <li><span class="font-semibold">TMoney&nbsp;:</span> +228 92 12 95 49</li>
+                            <li><span class="font-semibold">Flooz&nbsp;:</span> +228 98 76 54 32</li>
+                            <li><span class="font-semibold">Orange Money&nbsp;:</span> +228 90 00 11 22</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="mt-6 text-gray-500 text-sm">Merci d’indiquer votre nom en référence lors du virement ou de l’envoi Mobile Money.</p>
+            </div>
+        </section>
+
         <!-- Pourquoi donner à MDH ? -->
         <section class="bg-[#1e293b] text-white rounded-2xl p-8 shadow-xl">
             <div class="max-w-3xl mx-auto text-center">
@@ -199,6 +229,8 @@
                 </ul>
             </div>
         </section>
+
+        
     </main>
 
     <footer class="bg-gray-900 text-white py-12 mt-16">
@@ -311,9 +343,8 @@
             });
 
             form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                // Add payment processing logic here
-                alert('Redirection vers la page de paiement sécurisé...');
+                // e.preventDefault(); // On laisse le formulaire s'envoyer normalement
+                // alert('Redirection vers la page de paiement sécurisé...'); // On retire l'alerte
             });
         });
     </script>
