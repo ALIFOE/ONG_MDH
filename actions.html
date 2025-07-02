@@ -170,7 +170,7 @@
                                 <div class="text-gray-600">Enfants déjà accompagnés</div>
                             </div>
                             <div class="bg-gray-50 p-4 rounded-lg text-center">
-                                <div class="text-3xl font-bold text-[#1e293b]">50</div>
+                                <div class="text-3xl font-bold text-[#1e293b]">13</div>
                                 <div class="text-gray-600">Enseignants formés</div>
                             </div>
                             <div class="bg-gray-50 p-4 rounded-lg text-center">
@@ -205,12 +205,12 @@
                 </div>
                 <div class="bg-white/90 rounded-2xl shadow-lg p-8 flex flex-col items-center border-t-4 border-orange-700">
                     <i class="fas fa-globe-africa text-4xl text-orange-700 mb-4"></i>
-                    <div class="text-4xl font-extrabold text-[#1e293b] mb-2">12</div>
+                    <div class="text-4xl font-extrabold text-[#1e293b] mb-2">1</div>
                     <div class="text-gray-700 font-semibold">Pays d'intervention</div>
                 </div>
                 <div class="bg-white/90 rounded-2xl shadow-lg p-8 flex flex-col items-center border-t-4 border-mdh-yellow">
                     <i class="fas fa-hands-helping text-4xl text-mdh-yellow mb-4"></i>
-                    <div class="text-4xl font-extrabold text-[#1e293b] mb-2">110</div>
+                    <div class="text-4xl font-extrabold text-[#1e293b] mb-2">15</div>
                     <div class="text-gray-700 font-semibold">Bénévoles actifs</div>
                 </div>
             </div>
@@ -218,64 +218,96 @@
 
         <!-- Nos Actions large -->
         <div class="bg-gradient-to-br from-white via-yellow-50 to-blue-50/40 p-10 rounded-2xl shadow-2xl border border-[#1e293b]/10 mt-12 animate-fade-in">
-            <h2 class="text-3xl font-extrabold text-center text-[#1e293b] mb-10 drop-shadow">Nos Actions</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <!-- ÉDUCATION -->
-                <div class="bg-white/95 rounded-2xl shadow-xl p-8 flex flex-col items-center hover:scale-105 hover:shadow-2xl transition-all duration-500 border-l-8 border-mdh-yellow/60 animate-slide-up">
-                    <div class="w-16 h-16 flex items-center justify-center rounded-full bg-mdh-yellow/20 mb-4">
-                        <i class="fas fa-graduation-cap text-3xl text-mdh-yellow"></i>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-center text-[#1e293b] mb-12 drop-shadow-lg tracking-tight uppercase relative">
+                <span class="inline-block px-6 py-2 bg-white/80 rounded-full shadow-md border-2 border-orange-700/20">Nos Actions</span>
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- ENFANCE -->
+                <div class="bg-white/95 rounded-3xl shadow-xl p-8 flex flex-col items-center hover:scale-105 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border-l-8 border-orange-700/60 animate-slide-up group relative overflow-hidden enfance-card">
+                    <div class="w-20 h-20 flex items-center justify-center rounded-full bg-orange-700/20 mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                        <i class="fas fa-child text-4xl text-orange-700"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-mdh-yellow mb-4 text-center tracking-tight">ÉDUCATION</h3>
-                    <ul class="columns-2 list-disc list-inside text-[#334155] space-y-1 text-base mb-2">
-                        <li>Construction et rénovation d'écoles</li>
-                        <li>Formation des enseignants</li>
-                        <li>Fourniture de matériel scolaire</li>
-                        <li>Accompagnement personnalisé des enfants en difficulté scolaire</li>
-                        <li>Soutien scolaire</li>
-                        <li>Garderie des enfants et des élèves l’après-midi</li>
-                        <li>Enseigner</li>
-                        <li>Cours privés</li>
-                        <li>Promotion de l’éducation numérique des étudiants</li>
-                        <li>Organisation de débats, séminaires et ateliers pédagogiques</li>
-                        <li>Création de centre de soutien et d'épanouissement des enfants</li>
-                        <li>Suivi des enfants</li>
-                    </ul>
+                    <h3 class="text-2xl font-bold text-orange-700 mb-4 text-center tracking-tight group-hover:underline underline-offset-8">ENFANCE</h3>
+                    <div class="enfance-content transition-all duration-500 max-h-52 overflow-hidden relative w-full">
+                        <div class="enfance-gradient pointer-events-none absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-white to-transparent"></div>
+                        <p class="text-[#334155] mb-4 text-center leading-relaxed">
+                            La protection de l’enfance constitue un pilier fondamental de la réussite scolaire et de l’intégration sociale.<br>
+                            Nombre des enfants que nous accompagnons grandissent dans des contextes familiaux difficiles, souvent marqués par l’abandon, la violence ou des abus.<br>
+                            Notre école solidaire ouvrira ses portes la rentrée prochaine et accueillera des enfants issus de cultures et d’origines diverses, s’exprimant parfois dans des dialectes variés. Cette richesse culturelle renforce notre engagement à créer un cadre bienveillant et inclusif, où chacun peut trouver sa place.
+                        </p>
+                        <h4 class="text-lg font-semibold text-[#1e293b] mb-2 mt-2">Nos engagements concrets :</h4>
+                        <ul class="list-none text-[#334155] mb-4 space-y-2 text-left w-full max-w-xs mx-auto">
+                            <li class="flex items-center"><span class="w-3 h-3 bg-orange-700 rounded-full mr-3"></span>Garantir la sécurité physique et émotionnelle de chaque enfant</li>
+                            <li class="flex items-center"><span class="w-3 h-3 bg-orange-700 rounded-full mr-3"></span>Offrir un environnement d’apprentissage stimulant et respectueux</li>
+                            <li class="flex items-center"><span class="w-3 h-3 bg-orange-700 rounded-full mr-3"></span>Suivi des enfants</li>
+                            <li class="flex items-center"><span class="w-3 h-3 bg-orange-700 rounded-full mr-3"></span>Encourager le respect des différences et valoriser l’unicité de chacun</li>
+                        </ul>
+                        <p class="text-[#334155] text-center italic text-sm">
+                            Pour que chaque enfant puisse se sentir en sécurité et s’épanouir pleinement, il est essentiel de leur transmettre les valeurs du respect mutuel, de l’écoute et de la solidarité.
+                        </p>
+                    </div>
+                    <button class="mt-4 px-6 py-2 bg-orange-700 text-white rounded-full font-semibold shadow hover:bg-orange-800 transition duration-300 enfance-toggle">Voir plus</button>
                 </div>
-                <!-- Santé -->
-                <div class="bg-white/95 rounded-2xl shadow-xl p-8 flex flex-col items-center hover:scale-105 hover:shadow-2xl transition-all duration-500 border-l-8 border-[#1e293b]/60 animate-slide-up delay-100">
-                    <div class="w-16 h-16 flex items-center justify-center rounded-full bg-[#1e293b]/20 mb-4">
-                        <i class="fas fa-heartbeat text-3xl text-[#1e293b]"></i>
+                <!-- ÉDUCATION -->
+                <div class="bg-white/95 rounded-3xl shadow-xl p-8 flex flex-col items-center hover:scale-105 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border-l-8 border-mdh-yellow/60 animate-slide-up group relative overflow-hidden education-card">
+                    <div class="w-20 h-20 flex items-center justify-center rounded-full bg-mdh-yellow/20 mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                        <i class="fas fa-graduation-cap text-4xl text-mdh-yellow"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-[#1e293b] mb-4 text-center tracking-tight">SANTÉ</h3>
-                    <ul class="list-disc list-inside text-[#334155] space-y-1 text-base mb-2">
-                        <li>Campagnes de vaccination</li>
-                        <li>Construction et innovation de centres de santé</li>
-                        <li>Sensibilisation sur l’assainissement et l'hygiène dans les établissements scolaires</li>
-                        <li>Soins d’infirmerie</li>
-                        <li>Création, réhabilitation et équipement des centres de santé</li>
+                    <h3 class="text-2xl font-bold text-mdh-yellow mb-4 text-center tracking-tight group-hover:underline underline-offset-8">ÉDUCATION</h3>
+                    <div class="education-content transition-all duration-500 max-h-52 overflow-hidden relative w-full">
+                        <div class="education-gradient pointer-events-none absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-white to-transparent"></div>
+                        <ul class="columns-1 sm:columns-2 list-none text-[#334155] space-y-2 text-base mb-2 w-full max-w-xs mx-auto">
+                            <li class="flex items-center"><span class="w-3 h-3 bg-mdh-yellow rounded-full mr-3"></span>Construction et rénovation d'écoles</li>
+                            <li class="flex items-center"><span class="w-3 h-3 bg-mdh-yellow rounded-full mr-3"></span>Formation des enseignants</li>
+                            <li class="flex items-center"><span class="w-3 h-3 bg-mdh-yellow rounded-full mr-3"></span>Fourniture de matériel scolaire</li>
+                            <li class="flex items-center"><span class="w-3 h-3 bg-mdh-yellow rounded-full mr-3"></span>Accompagnement personnalisé des enfants en difficulté scolaire</li>
+                            <li class="flex items-center"><span class="w-3 h-3 bg-mdh-yellow rounded-full mr-3"></span>Soutien scolaire</li>
+                            <li class="flex items-center"><span class="w-3 h-3 bg-mdh-yellow rounded-full mr-3"></span>Garderie des enfants et des élèves l’après-midi</li>
+                            <li class="flex items-center"><span class="w-3 h-3 bg-mdh-yellow rounded-full mr-3"></span>Enseigner</li>
+                            <li class="flex items-center"><span class="w-3 h-3 bg-mdh-yellow rounded-full mr-3"></span>Cours privés</li>
+                            <li class="flex items-center"><span class="w-3 h-3 bg-mdh-yellow rounded-full mr-3"></span>Promotion de l’éducation numérique des étudiants</li>
+                            <li class="flex items-center"><span class="w-3 h-3 bg-mdh-yellow rounded-full mr-3"></span>Organisation de débats, séminaires et ateliers pédagogiques</li>
+                            <li class="flex items-center"><span class="w-3 h-3 bg-mdh-yellow rounded-full mr-3"></span>Création de centre de soutien et d'épanouissement des enfants</li>
+                            <li class="flex items-center"><span class="w-3 h-3 bg-mdh-yellow rounded-full mr-3"></span>Suivi des enfants</li>
+                        </ul>
+                    </div>
+                    <button class="mt-4 px-6 py-2 bg-mdh-yellow text-white rounded-full font-semibold shadow hover:bg-yellow-500 transition duration-300 education-toggle">Voir plus</button>
+                </div>
+                <!-- SANTÉ -->
+                <div class="bg-white/95 rounded-3xl shadow-xl p-8 flex flex-col items-center hover:scale-105 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border-l-8 border-[#1e293b]/60 animate-slide-up group">
+                    <div class="w-20 h-20 flex items-center justify-center rounded-full bg-[#1e293b]/20 mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                        <i class="fas fa-heartbeat text-4xl text-[#1e293b]"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-[#1e293b] mb-4 text-center tracking-tight group-hover:underline underline-offset-8">SANTÉ</h3>
+                    <ul class="list-none text-[#334155] space-y-2 text-base mb-2 w-full max-w-xs mx-auto">
+                        <li class="flex items-center"><span class="w-3 h-3 bg-[#1e293b] rounded-full mr-3"></span>Campagnes de vaccination</li>
+                        <li class="flex items-center"><span class="w-3 h-3 bg-[#1e293b] rounded-full mr-3"></span>Construction et innovation de centres de santé</li>
+                        <li class="flex items-center"><span class="w-3 h-3 bg-[#1e293b] rounded-full mr-3"></span>Sensibilisation sur l’assainissement et l'hygiène dans les établissements scolaires</li>
+                        <li class="flex items-center"><span class="w-3 h-3 bg-[#1e293b] rounded-full mr-3"></span>Soins d’infirmerie</li>
+                        <li class="flex items-center"><span class="w-3 h-3 bg-[#1e293b] rounded-full mr-3"></span>Création, réhabilitation et équipement des centres de santé</li>
                     </ul>
                 </div>
                 <!-- À l’International -->
-                <div class="bg-white/95 rounded-2xl shadow-xl p-8 flex flex-col items-center hover:scale-105 hover:shadow-2xl transition-all duration-500 border-l-8 border-orange-700/60 animate-slide-up delay-200">
-                    <div class="w-16 h-16 flex items-center justify-center rounded-full bg-orange-700/20 mb-4">
-                        <i class="fas fa-globe-africa text-3xl text-orange-700"></i>
+                <div class="bg-white/95 rounded-3xl shadow-xl p-8 flex flex-col items-center hover:scale-105 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border-l-8 border-orange-700/60 animate-slide-up group">
+                    <div class="w-20 h-20 flex items-center justify-center rounded-full bg-orange-700/20 mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                        <i class="fas fa-globe-africa text-4xl text-orange-700"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-orange-700 mb-4 text-center tracking-tight">À l’INTERNATIONAL</h3>
-                    <ul class="list-disc list-inside text-[#334155] space-y-1 text-base mb-2">
-                        <li>Recherche de partenaires pour soutien financier, logistique et matériel</li>
-                        <li>Mise en place de projets générateurs de revenus pour viabiliser les projets sociaux</li>
+                    <h3 class="text-2xl font-bold text-orange-700 mb-4 text-center tracking-tight group-hover:underline underline-offset-8">À l’INTERNATIONAL</h3>
+                    <ul class="list-none text-[#334155] space-y-2 text-base mb-2 w-full max-w-xs mx-auto">
+                        <li class="flex items-center"><span class="w-3 h-3 bg-orange-700 rounded-full mr-3"></span>Recherche de partenaires pour soutien financier, logistique et matériel</li>
+                        <li class="flex items-center"><span class="w-3 h-3 bg-orange-700 rounded-full mr-3"></span>Mise en place de projets générateurs de revenus pour viabiliser les projets sociaux</li>
                     </ul>
                 </div>
                 <!-- SOCIAL -->
-                <div class="bg-white/95 rounded-2xl shadow-xl p-8 flex flex-col items-center hover:scale-105 hover:shadow-2xl transition-all duration-500 border-l-8 border-[#1e293b]/60 animate-slide-up delay-300">
-                    <div class="w-16 h-16 flex items-center justify-center rounded-full bg-[#1e293b]/20 mb-4">
-                        <i class="fas fa-hands-helping text-3xl text-mdh-yellow"></i>
+                <div class="bg-white/95 rounded-3xl shadow-xl p-8 flex flex-col items-center hover:scale-105 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border-l-8 border-[#1e293b]/60 animate-slide-up group">
+                    <div class="w-20 h-20 flex items-center justify-center rounded-full bg-[#1e293b]/20 mb-4 shadow-lg group-hover:scale-110 transition-transform">
+                        <i class="fas fa-hands-helping text-4xl text-mdh-yellow"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-mdh-yellow mb-4 text-center tracking-tight">SOCIAL</h3>
-                    <ul class="list-disc list-inside text-[#334155] space-y-1 text-base mb-2">
-                        <li>Réalisation de puits dans les milieux ruraux</li>
-                        <li>Autonomisation financière des groupements de femmes et filles au Togo</li>
-                        <li>Promotion de l’agriculture durable en milieu rural</li>
+                    <h3 class="text-2xl font-bold text-mdh-yellow mb-4 text-center tracking-tight group-hover:underline underline-offset-8">SOCIAL</h3>
+                    <ul class="list-none text-[#334155] space-y-2 text-base mb-2 w-full max-w-xs mx-auto">
+                        <li class="flex items-center"><span class="w-3 h-3 bg-mdh-yellow rounded-full mr-3"></span>Réalisation de puits dans les milieux ruraux</li>
+                        <li class="flex items-center"><span class="w-3 h-3 bg-mdh-yellow rounded-full mr-3"></span>Autonomisation financière des groupements de femmes et filles au Togo</li>
+                        <li class="flex items-center"><span class="w-3 h-3 bg-mdh-yellow rounded-full mr-3"></span>Promotion de l’agriculture durable en milieu rural</li>
                     </ul>
                 </div>
             </div>
@@ -422,6 +454,34 @@
                 }, 400 + i * 200);
             });
         });
+    </script>
+    <script>
+    // Correction : chaque carte "Voir plus" fonctionne indépendamment
+    (function() {
+        function toggleSection(cardSelector, contentSelector, gradientSelector, btnSelector) {
+            const cards = document.querySelectorAll(cardSelector);
+            cards.forEach(card => {
+                const content = card.querySelector(contentSelector);
+                const gradient = card.querySelector(gradientSelector);
+                const btn = card.querySelector(btnSelector);
+                let expanded = false;
+                btn.addEventListener('click', function() {
+                    expanded = !expanded;
+                    if (expanded) {
+                        content.classList.remove('max-h-52', 'overflow-hidden');
+                        if (gradient) gradient.style.display = 'none';
+                        btn.textContent = 'Réduire';
+                    } else {
+                        content.classList.add('max-h-52', 'overflow-hidden');
+                        if (gradient) gradient.style.display = '';
+                        btn.textContent = 'Voir plus';
+                    }
+                });
+            });
+        }
+        toggleSection('.enfance-card', '.enfance-content', '.enfance-gradient', '.enfance-toggle');
+        toggleSection('.education-card', '.education-content', '.education-gradient', '.education-toggle');
+    })();
     </script>
     <style>
     /* Animations custom */

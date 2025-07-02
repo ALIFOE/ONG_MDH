@@ -105,6 +105,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Ajout : gestion du lien actif dans la navbar
+(function() {
+  const links = document.querySelectorAll('nav .nav-link');
+  const page = window.location.pathname.split('/').pop().replace('.html','');
+  links.forEach(link => {
+    if (link.dataset.page === page) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+})();
+
 // Autres fonctionnalités de la page
 document.addEventListener('DOMContentLoaded', function() {
     // Animation au scroll
