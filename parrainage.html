@@ -112,27 +112,123 @@
         </section>
         <section class="w-full max-w-4xl md:max-w-5xl lg:max-w-4xl xl:max-w-3xl mx-auto bg-white/90 rounded-3xl shadow-2xl p-10 md:p-12 mb-12 border border-gray-200">
             <h2 class="text-2xl font-extrabold tracking-tight mb-4 text-[#1e293b]">
-                <span class="text-yellow-400">Formulaire de parrainage</span>
+                <span class="text-yellow-400">Formulaire officiel de parrainage</span>
             </h2>
-            <form action="#" method="post" class="space-y-6">
-                <div>
-                    <label for="nom" class="block text-[#1e293b] font-semibold mb-1">Nom et prénom</label>
-                    <input type="text" id="nom" name="nom" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
+            <form action="https://formspree.io/f/mkgbydwe" method="post" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="nom" class="block text-[#1e293b] font-semibold mb-1">Nom</label>
+                        <input type="text" id="nom" name="nom" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
+                    </div>
+                    <div>
+                        <label for="prenom" class="block text-[#1e293b] font-semibold mb-1">Prénom</label>
+                        <input type="text" id="prenom" name="prenom" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
+                    </div>
+                    <div>
+                        <label for="sexe" class="block text-[#1e293b] font-semibold mb-1">Sexe</label>
+                        <select id="sexe" name="sexe" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
+                            <option value="">Sélectionner</option>
+                            <option value="Femme">Femme</option>
+                            <option value="Homme">Homme</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="date_naissance" class="block text-[#1e293b] font-semibold mb-1">Date de naissance</label>
+                        <input type="date" id="date_naissance" name="date_naissance" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="email" class="block text-[#1e293b] font-semibold mb-1">Email</label>
+                        <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
+                    </div>
+                    <div>
+                        <label for="telephone" class="block text-[#1e293b] font-semibold mb-1">Téléphone</label>
+                        <input type="tel" id="telephone" name="telephone" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
+                    </div>
                 </div>
                 <div>
-                    <label for="email" class="block text-[#1e293b] font-semibold mb-1">Email</label>
-                    <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
+                    <label for="adresse" class="block text-[#1e293b] font-semibold mb-1">Adresse postale</label>
+                    <input type="text" id="adresse" name="adresse" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
                 </div>
                 <div>
-                    <label for="telephone" class="block text-[#1e293b] font-semibold mb-1">Téléphone</label>
-                    <input type="tel" id="telephone" name="telephone" class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
+                    <label for="profession" class="block text-[#1e293b] font-semibold mb-1">Profession</label>
+                    <input type="text" id="profession" name="profession" class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
                 </div>
                 <div>
-                    <label for="message" class="block text-[#1e293b] font-semibold mb-1">Message (optionnel)</label>
+                    <label for="type_parrainage" class="block text-[#1e293b] font-semibold mb-1">Type de parrainage souhaité</label>
+                    <select id="type_parrainage" name="type_parrainage" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
+                        <option value="">Sélectionner</option>
+                        <option value="ponctuel">Ponctuel</option>
+                        <option value="régulier">Régulier</option>
+                        <option value="collectif">Collectif</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="age_prefere" class="block text-[#1e293b] font-semibold mb-1">Âge de l’enfant parrainé (préférence)</label>
+                        <input type="text" id="age_prefere" name="age_prefere" placeholder="ex : 6-12 ans" class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
+                    </div>
+                    <div>
+                        <label for="sexe_prefere" class="block text-[#1e293b] font-semibold mb-1">Sexe de l’enfant (préférence)</label>
+                        <select id="sexe_prefere" name="sexe_prefere" class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
+                            <option value="">Indifférent</option>
+                            <option value="Fille">Fille</option>
+                            <option value="Garçon">Garçon</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label for="message" class="block text-[#1e293b] font-semibold mb-1">Message à l’équipe (optionnel)</label>
                     <textarea id="message" name="message" rows="3" class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg"></textarea>
+                </div>
+                <div class="flex items-start">
+                    <input type="checkbox" id="rgpd" name="rgpd" required class="mr-2 accent-[#1e293b]">
+                    <label for="rgpd" class="text-gray-700 text-sm">J’accepte que mes données soient utilisées par l’ONG MDH dans le cadre du parrainage, conformément à la politique de confidentialité.</label>
+                </div>
+                <div class="flex items-start">
+                    <input type="checkbox" id="engagement" name="engagement" required class="mr-2 accent-[#1e293b]">
+                    <label for="engagement" class="text-gray-700 text-sm">Je m’engage à respecter l’esprit du parrainage et à soutenir l’enfant dans la durée.</label>
                 </div>
                 <button type="submit" class="w-full bg-yellow-400 text-[#1e293b] py-4 rounded-full font-bold shadow-lg hover:bg-[#1e293b] hover:text-white transition duration-300 text-lg">Envoyer ma demande de parrainage</button>
             </form>
+            <div id="parrainage-message" class="mt-4 text-center text-lg font-semibold"></div>
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const form = document.querySelector('form[action="https://formspree.io/f/mkgbydwe"]');
+                const messageDiv = document.getElementById('parrainage-message');
+                if(form) {
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        messageDiv.textContent = '';
+                        const formData = new FormData(form);
+                        fetch(form.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: { 'Accept': 'application/json' }
+                        })
+                        .then(response => {
+                            if(response.ok) {
+                                form.reset();
+                                messageDiv.textContent = 'Merci, votre demande de parrainage a bien été envoyée ! Nous vous contacterons rapidement.';
+                                messageDiv.className = 'mt-4 text-center text-lg font-semibold text-green-600';
+                                alert('Votre demande de parrainage a bien été envoyée ! Nous vous contacterons rapidement.');
+                            } else {
+                                return response.json().then(data => {
+                                    throw new Error(data.error || 'Une erreur est survenue. Merci de réessayer.');
+                                });
+                            }
+                        })
+                        .catch(() => {
+                            messageDiv.textContent = 'Une erreur est survenue lors de l’envoi. Merci de réessayer.';
+                            messageDiv.className = 'mt-4 text-center text-lg font-semibold text-red-600';
+                            alert('Erreur : votre demande n\'a pas pu être envoyée. Merci de réessayer.');
+                        });
+                    });
+                }
+            });
+            </script>
         </section>
         <section class="w-full max-w-5xl mx-auto text-center mb-12">
             <h2 class="text-2xl font-extrabold tracking-tight mb-4 text-[#1e293b]">

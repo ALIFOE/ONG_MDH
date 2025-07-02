@@ -1,0 +1,1 @@
+Tous les liens, fichiers et références à PayDunya ont été supprimés du projet. Le formulaire de don ne redirige plus vers PayDunya et les fichiers PHP associés sont à supprimer définitivement si besoin.
