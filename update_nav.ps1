@@ -14,7 +14,7 @@ $navigationTemplate = @'
                     <!-- Primary Navigation -->
                     <nav class="hidden md:flex items-center space-x-8">
                         <a href="index.html" class="text-gray-700 hover:text-mdh-yellow transition duration-300">Accueil</a>
-                        <a href="association.html" class="text-gray-700 hover:text-mdh-yellow transition duration-300">L'Association</a>
+                        <a href="association.html" class="text-gray-700 hover:text-mdh-yellow transition duration-300">L'Organisation</a>
                         <a href="actions.html" class="text-gray-700 hover:text-mdh-yellow transition duration-300">Nos Actions</a>
                         <a href="actualites.html" class="text-gray-700 hover:text-mdh-yellow transition duration-300">Nos Actualités</a>
                         <a href="rejoindre.html" class="text-gray-700 hover:text-mdh-yellow transition duration-300">Réjoindre-nous</a>
@@ -44,7 +44,7 @@ $navigationTemplate = @'
             <div class="hidden mobile-menu md:hidden" id="mobile-menu">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="index.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Accueil</a>
-                    <a href="association.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">L'Association</a>
+                    <a href="association.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">L'Organisation</a>
                     <a href="actions.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Nos Actions</a>
                     <a href="actualites.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Nos Actualités</a>
                     <a href="rejoindre.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md">Réjoindre-nous</a>
@@ -88,7 +88,7 @@ $pages = @(
     },
     @{
         file = "association.html"
-        title = "L'Association"
+        title = "L'Organisation"
         description = "Découvrez l'histoire, la mission et les valeurs de l'ONG MDH Togo."
         currentPage = "association.html"
     },

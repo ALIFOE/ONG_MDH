@@ -18,7 +18,7 @@ $navigationTemplate = @'
                     <!-- Primary Navigation -->
                     <nav class="hidden md:flex items-center space-x-8">
                         <a href="index.html" class="nav-link" data-page="index">Accueil</a>
-                        <a href="association.html" class="nav-link" data-page="association">L'Association</a>
+                        <a href="association.html" class="nav-link" data-page="association">L'Organisation</a>
                         <a href="actions.html" class="nav-link" data-page="actions">Nos Actions</a>
                         <a href="actualites.html" class="nav-link" data-page="actualites">Nos Actualités</a>
                         <a href="rejoindre.html" class="nav-link" data-page="rejoindre">Réjoindre-nous</a>
@@ -48,7 +48,7 @@ $navigationTemplate = @'
             <div class="hidden mobile-menu md:hidden" id="mobile-menu">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="index.html" class="mobile-nav-link" data-page="index">Accueil</a>
-                    <a href="association.html" class="mobile-nav-link" data-page="association">L'Association</a>
+                    <a href="association.html" class="mobile-nav-link" data-page="association">L'Organisation</a>
                     <a href="actions.html" class="mobile-nav-link" data-page="actions">Nos Actions</a>
                     <a href="actualites.html" class="mobile-nav-link" data-page="actualites">Nos Actualités</a>
                     <a href="rejoindre.html" class="mobile-nav-link" data-page="rejoindre">Réjoindre-nous</a>
@@ -90,7 +90,7 @@ $pages = @(
     },
     @{
         file = "association.html"
-        title = "L'Association"
+        title = "L'Organisation"
         description = "Découvrez l'histoire, la mission et les valeurs de l'ONG MDH Togo."
     },
     @{
