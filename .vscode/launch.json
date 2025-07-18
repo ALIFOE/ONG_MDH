@@ -6,6 +6,21 @@
     "configurations": [
         
         {
+            "name": "Launch Chrome",
+            "request": "launch",
+            "type": "chrome",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Open index.html",
+            "file": "c:\\Users\\conce\\Documents\\PROJETS PERSONNEL\\projet_MDH\\ONG_MDH\\index.html"
+        },
+
+        
+        {
             "name": "Launch Edge",
             "request": "launch",
             "type": "msedge",

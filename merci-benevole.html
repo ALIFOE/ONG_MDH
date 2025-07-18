@@ -9,13 +9,33 @@
     <link href="css/custom.css" rel="stylesheet">
     <link rel="icon" href="images/favicon-mdh.png" type="image/png">
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col justify-center items-center">
-    <div class="bg-white/90 rounded-3xl shadow-2xl p-10 max-w-xl text-center border border-gray-200 mt-24">
-        <h1 class="text-4xl font-extrabold text-[#1e293b] mb-6">Merci pour votre engagement !</h1>
-        <p class="text-lg text-gray-700 mb-6">Votre candidature de bénévolat a bien été envoyée à l'équipe MDH.<br>
-        Nous vous remercions chaleureusement pour votre volonté d'agir à nos côtés.<br>
-        Nous vous contacterons très prochainement.</p>
-        <a href="index.html" class="inline-block mt-6 px-8 py-3 bg-mdh-yellow text-[#1e293b] rounded-full font-bold shadow hover:bg-[#1e293b] hover:text-mdh-yellow transition duration-300">Retour à l'accueil</a>
+<body class="bg-gradient-to-br from-yellow-200 via-white to-[#1e293b] min-h-screen flex flex-col justify-center items-center">
+    <div class="bg-white/95 rounded-3xl shadow-2xl p-10 max-w-xl text-center border-4 border-yellow-400 mt-24 animate-fade-in relative overflow-hidden">
+        <div class="absolute -top-8 -right-8 opacity-20 rotate-12 select-none pointer-events-none">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="60" fill="#fde047"/>
+            </svg>
+        </div>
+        <div class="flex justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-yellow-400 drop-shadow-lg bg-[#1e293b] rounded-full p-2 border-4 border-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <circle cx="12" cy="12" r="10" fill="#fde047"/>
+                <path stroke="#1e293b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
+            </svg>
+        </div>
+        <h1 class="text-4xl font-extrabold text-[#1e293b] mb-4 tracking-tight drop-shadow">Merci pour votre engagement !</h1>
+        <p class="text-lg text-[#1e293b] mb-6 leading-relaxed font-medium">Votre candidature de bénévolat a bien été envoyée à l'équipe <span class="text-yellow-500 font-bold">MDH</span>.<br>
+        <span class="block mt-2 text-[#1e293b]">Nous vous remercions chaleureusement pour votre volonté d'agir à nos côtés.<br>
+        Vous serez contacté(e) très prochainement.</span></p>
+        <a href="index.html" class="inline-block mt-6 px-8 py-3 bg-[#1e293b] text-yellow-400 rounded-full font-bold shadow hover:bg-yellow-400 hover:text-[#1e293b] border-2 border-yellow-400 transition duration-300 text-lg">Retour à l'accueil</a>
     </div>
+    <style>
+        .animate-fade-in {
+            animation: fadeIn 1.2s cubic-bezier(0.4,0,0.2,1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </body>
 </html>
