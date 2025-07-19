@@ -21,61 +21,62 @@
         Aller au contenu principal
     </a>
 
-    <header class="bg-white shadow-lg fixed w-full z-50">
-    <nav class="max-w-7xl mx-auto px-4">
-        <div class="flex items-center justify-between h-20">
-            <!-- Logo Container -->
-            <div class="flex-shrink-0 min-w-[192px] w-48 h-20 flex items-center">
-                <a href="index.html" class="block w-full" aria-label="Retour à l'accueil">
-                    <img src="images/logo_mdh.png" alt="ONG MDH International Togo" class="h-12 w-auto object-contain">
-                </a>
-            </div>
-
-            <!-- Navigation Links -->
-            <div class="flex-1 flex items-center justify-between px-4">
-                <!-- Primary Navigation -->
-                <nav class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="nav-link" data-page="index">Accueil</a>
-                    <a href="association.html" class="nav-link" data-page="association">L'Organisation</a>
-                    <a href="actions.html" class="nav-link" data-page="actions">Nos Actions</a>
-                    <a href="actualites.html" class="nav-link" data-page="actualites">Nos Actualités</a>
-                    <a href="rejoindre.html" class="nav-link" data-page="rejoindre">Rejoindre-nous</a>
-                    <a href="ecole.html" class="nav-link" data-page="ecole">Notre École</a>
-                    <a href="contact.html" class="nav-link" data-page="contact">Contactez-nous</a>
-                </nav>
-                <!-- Bouton Don -->
-                <div class="hidden md:block">
-                    <a href="donation.html" class="py-2 px-6 bg-[#1e293b] text-white rounded-full font-semibold transition duration-300 hover:bg-mdh-yellow hover:text-[#1e293b] focus:outline-none focus:ring-2 focus:ring-mdh-yellow">
-                        Faire un don
+    <header class="bg-white/90 shadow-2xl fixed w-full z-50 backdrop-blur-md border-b border-gray-200">
+        <nav class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 min-w-[192px] w-48 h-20 flex items-center">
+                    <a href="index.html" class="block w-full" aria-label="Retour à l'accueil">
+                        <img src="images/logo_mdh.png" alt="ONG MDH International Togo" class="h-12 w-auto object-contain">
                     </a>
                 </div>
+                <div class="flex-1 flex items-center justify-between px-4">
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="index.html" class="nav-link" data-page="index">Accueil</a>
+                        <div class="relative group" id="organisation-menu">
+                            <button type="button" class="nav-link flex items-center focus:outline-none" id="organisation-btn">
+                                L'Organisation
+                                <svg class="ml-2 w-4 h-4 text-[#1e293b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </button>
+                            <div id="organisation-dropdown" class="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-200 opacity-0 pointer-events-none transition-opacity duration-200 z-50 hidden">
+                                <a href="association.html" class="block px-4 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">L'Organisation</a>
+                                <a href="notre-equipe.html" class="block px-4 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">Notre équipe</a>
+                            </div>
+                        </div>
+                        <a href="actions.html" class="nav-link" data-page="actions">Nos Actions</a>
+                        <a href="actualites.html" class="nav-link" data-page="actualites">Nos Actualités</a>
+                        <a href="rejoindre.html" class="nav-link" data-page="rejoindre">Rejoindre-nous</a>
+                        <a href="ecole.html" class="nav-link" data-page="ecole">Notre École</a>
+                        <a href="contact.html" class="nav-link" data-page="contact">Contactez-nous</a>
+                    </nav>
+                    <div class="hidden md:block">
+                        <a href="donation.html" class="py-2 px-6 bg-[#1e293b] text-white rounded-full hover:bg-yellow-400 hover:text-[#1e293b] font-bold shadow-md transition duration-300">Faire un don</a>
+                    </div>
+                </div>
             </div>
-            <!-- Mobile menu button -->
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="mobile-menu-button p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-mdh-blue" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
-                    <svg class="h-6 w-6 text-gray-600" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile menu -->
-        <div class="hidden mobile-menu md:hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="index">Accueil</a>
-                <a href="association.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="association">L'Organisation</a>
-                <a href="actions.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="actions">Nos Actions</a>
-                <a href="actualites.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="actualites">Nos Actualités</a>
-                <a href="rejoindre.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="rejoindre">Rejoindre-nous</a>
-                <a href="ecole.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="ecole">Notre École</a>
-                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-md" data-page="contact">Contactez-nous</a>
-                <a href="donation.html" class="block px-3 py-2 bg-mdh-blue text-white rounded-md hover:bg-mdh-yellow">Faire un don</a>
-            </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+        <script>
+        // Dropdown menu logic
+        document.addEventListener('DOMContentLoaded', function () {
+            var btn = document.getElementById('organisation-btn');
+            var dropdown = document.getElementById('organisation-dropdown');
+            if (btn && dropdown) {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('hidden');
+                    dropdown.classList.toggle('opacity-0');
+                    dropdown.classList.toggle('pointer-events-none');
+                });
+                document.addEventListener('click', function (e) {
+                    if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.classList.add('hidden');
+                        dropdown.classList.add('opacity-0');
+                        dropdown.classList.add('pointer-events-none');
+                    }
+                });
+            }
+        });
+        </script>
+    </header>
 
     <main id="main-content" class="container mx-auto px-4 py-12 mt-20 bg-gray-100 min-h-screen">
         <!-- Hero Section -->

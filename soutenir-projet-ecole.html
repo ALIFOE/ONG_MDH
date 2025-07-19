@@ -30,7 +30,16 @@
                     <!-- Primary Navigation -->
                     <nav class="hidden md:flex items-center space-x-8">
                         <a href="index.html" class="nav-link" data-page="index">Accueil</a>
-                        <a href="association.html" class="nav-link" data-page="association">L'Organisation</a>
+                        <div class="relative" id="organisation-menu">
+                            <button type="button" class="nav-link flex items-center focus:outline-none" id="organisation-btn">
+                                L'Organisation
+                                <svg class="ml-2 w-4 h-4 text-[#1e293b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </button>
+                            <div id="organisation-dropdown" class="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-200 opacity-0 pointer-events-none transition-opacity duration-200 z-50 hidden">
+                                <a href="association.html" class="block px-4 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">L'Organisation</a>
+                                <a href="notre-equipe.html" class="block px-4 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">Notre équipe</a>
+                            </div>
+                        </div>
                         <a href="actions.html" class="nav-link" data-page="actions">Nos Actions</a>
                         <a href="actualites.html" class="nav-link" data-page="actualites">Nos Actualités</a>
                         <a href="rejoindre.html" class="nav-link" data-page="rejoindre">Rejoindre-nous</a>
@@ -58,7 +67,13 @@
             <div class="hidden mobile-menu md:hidden" id="mobile-menu">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="index.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="index">Accueil</a>
-                    <a href="association.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="association">L'Organisation</a>
+                    <details>
+                        <summary class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl cursor-pointer flex items-center justify-between">L'Organisation <i class="fas fa-chevron-down ml-2 text-xs"></i></summary>
+                        <div class="pl-4">
+                            <a href="association.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-100 rounded-xl">L'Organisation</a>
+                            <a href="notre-equipe.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-100 rounded-xl">Notre équipe</a>
+                        </div>
+                    </details>
                     <a href="actions.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actions">Nos Actions</a>
                     <a href="actualites.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actualites">Nos Actualités</a>
                     <a href="rejoindre.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="rejoindre">Rejoindre-nous</a>
@@ -164,5 +179,51 @@
             </div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion du menu mobile
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    const menuOpen = document.querySelector('.menu-open');
+                    const menuClose = document.querySelector('.menu-close');
+                    menuOpen.classList.toggle('hidden');
+                    menuClose.classList.toggle('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 
+                        mobileMenuButton.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+                    );
+                });
+            }
+
+            // Dropdown desktop : click pour ouvrir/fermer
+            const organisationDropdown = document.getElementById('organisation-dropdown');
+            const organisationMenu = document.getElementById('organisation-menu');
+            if (organisationDropdown && organisationMenu) {
+                organisationDropdown.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const expanded = organisationDropdown.getAttribute('aria-expanded') === 'true';
+                    organisationDropdown.setAttribute('aria-expanded', (!expanded).toString());
+                    organisationMenu.classList.toggle('hidden');
+                });
+                // Fermer le menu si clic en dehors
+                document.addEventListener('click', function(e) {
+                    if (!organisationDropdown.contains(e.target) && !organisationMenu.contains(e.target)) {
+                        organisationMenu.classList.add('hidden');
+                        organisationDropdown.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            // Marquer le lien actif dans la navigation
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('text-mdh-yellow', 'font-semibold');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
