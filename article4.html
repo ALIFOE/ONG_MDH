@@ -58,7 +58,7 @@
                 </div>
             </div>
             <!-- Mobile menu -->
-            <div class="hidden mobile-menu md:hidden" id="mobile-menu">
+            <div class="mobile-menu md:hidden" id="mobile-menu" style="display:none;">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="index.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="index">Accueil</a>
                     <div class="space-y-1">
@@ -80,7 +80,7 @@
             </div>
         </nav>
     </header>
-    <script>
+<script>
     // Script pour le menu déroulant desktop
     (function() {
         var btn = document.getElementById('organisation-btn');
@@ -118,7 +118,32 @@
             }
         });
     })();
-    </script>
+
+    // Script pour le menu mobile
+    (function() {
+        var mobileBtn = document.getElementById('mobile-menu-button');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var menuOpenIcon = document.querySelector('.menu-open');
+        var menuCloseIcon = document.querySelector('.menu-close');
+        var isOpen = false;
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', function() {
+                isOpen = !isOpen;
+                if (isOpen) {
+                    mobileMenu.style.display = 'block';
+                    menuOpenIcon.classList.add('hidden');
+                    menuCloseIcon.classList.remove('hidden');
+                    mobileBtn.setAttribute('aria-expanded', 'true');
+                } else {
+                    mobileMenu.style.display = 'none';
+                    menuOpenIcon.classList.remove('hidden');
+                    menuCloseIcon.classList.add('hidden');
+                    mobileBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    })();
+</script>
     <main id="main-content" class="container mx-auto px-4 py-12 mt-24 bg-gray-100 min-h-screen">
         <article class="max-w-3xl mx-auto bg-white/90 rounded-3xl shadow-xl p-8 border border-[#1e293b]/10">
             <img src="images/blanc2.jpg" alt="Soutien scolaire Logoté" class="w-full h-64 object-cover rounded-xl mb-6">

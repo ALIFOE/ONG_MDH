@@ -47,11 +47,39 @@
                         <a href="actualites.html" class="nav-link" data-page="actualites">Nos Actualités</a>
                         <a href="rejoindre.html" class="nav-link" data-page="rejoindre">Rejoindre-nous</a>
                         <a href="ecole.html" class="nav-link" data-page="ecole">Notre École</a>
-                        <a href="contact.html" class="nav-link" data-page="contact">Contactez-nous</a>
+                        <a href="contact.html" class="nav-link" data-page="contact">Contactez-nous</a>  
                     </nav>
                     <div class="hidden md:block">
                         <a href="donation.html" class="py-2 px-6 bg-[#1e293b] text-white rounded-full hover:bg-yellow-400 hover:text-[#1e293b] font-bold shadow-md transition duration-300">Faire un don</a>
                     </div>
+                </div>
+                 <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="mobile-menu-button p-2 rounded-xl hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1e293b]" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <svg class="h-6 w-6 text-[#1e293b]" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div class="hidden mobile-menu md:hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="index.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="index">Accueil</a>
+                    <details>
+                        <summary class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl cursor-pointer flex items-center justify-between">L'Organisation <i class="fas fa-chevron-down ml-2 text-xs"></i></summary>
+                        <div class="pl-4">
+                            <a href="association.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-100 rounded-xl">L'Organisation</a>
+                            <a href="notre-equipe.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-100 rounded-xl">Notre équipe</a>
+                        </div>
+                    </details>
+                    <a href="actions.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actions">Nos Actions</a>
+                    <a href="actualites.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actualites">Nos Actualités</a>
+                    <a href="rejoindre.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="rejoindre">Rejoindre-nous</a>
+                    <a href="ecole.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="ecole">Notre École</a>
+                    <a href="contact.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="contact">Contactez-nous</a>
+                    <a href="donation.html" class="block px-3 py-2 bg-[#1e293b] text-white rounded-xl hover:bg-yellow-400 hover:text-[#1e293b] font-bold">Faire un don</a>
                 </div>
             </div>
         </nav>
@@ -320,23 +348,36 @@
         </div>
     </footer>    <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Gestion du menu mobile
+            // Gestion du menu mobile avec display block/none
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            
+            const menuOpen = document.querySelector('.menu-open');
+            const menuClose = document.querySelector('.menu-close');
             if (mobileMenuButton && mobileMenu) {
                 mobileMenuButton.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('hidden');
-                    const menuOpen = document.querySelector('.menu-open');
-                    const menuClose = document.querySelector('.menu-close');
-                    menuOpen.classList.toggle('hidden');
-                    menuClose.classList.toggle('hidden');
-                    mobileMenuButton.setAttribute('aria-expanded', 
-                        mobileMenuButton.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
-                    );
+                    const isVisible = mobileMenu.style.display === 'block';
+                    if (!isVisible) {
+                        mobileMenu.style.display = 'block';
+                        menuOpen.classList.add('hidden');
+                        menuClose.classList.remove('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'true');
+                    } else {
+                        mobileMenu.style.display = 'none';
+                        menuOpen.classList.remove('hidden');
+                        menuClose.classList.add('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    }
+                });
+                // Masquer le menu si on clique en dehors
+                document.addEventListener('click', function(e) {
+                    if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                        mobileMenu.style.display = 'none';
+                        menuOpen.classList.remove('hidden');
+                        menuClose.classList.add('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    }
                 });
             }
-            
             // Marquer le lien actif dans la navigation
             const currentPage = window.location.pathname.split('/').pop() || 'index.html';
             document.querySelectorAll('.nav-link').forEach(link => {
@@ -344,23 +385,18 @@
                     link.classList.add('text-mdh-yellow', 'font-semibold');
                 }
             });
-            
             // Gestion du formulaire de don
             const donationAmounts = document.querySelectorAll('.donation-amount');
             const customAmountDiv = document.getElementById('custom-amount');
             const form = document.getElementById('donation-form');
-
             donationAmounts.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all buttons
                     donationAmounts.forEach(btn => {
                         btn.classList.remove('bg-[#1e293b]', 'text-white', 'ring-2', 'ring-[#1e293b]');
                         btn.classList.add('bg-white', 'text-[#1e293b]');
                     });
-                    // Add active class to clicked button
                     this.classList.remove('bg-white', 'text-[#1e293b]');
                     this.classList.add('bg-[#1e293b]', 'text-white', 'ring-2', 'ring-[#1e293b]');
-                    // Show/hide custom amount input
                     if (this.dataset.amount === 'custom') {
                         customAmountDiv.classList.remove('hidden');
                     } else {
@@ -368,7 +404,6 @@
                     }
                 });
             });
-
             form.addEventListener('submit', function(e) {
                 // e.preventDefault(); // On laisse le formulaire s'envoyer normalement
                 // alert('Redirection vers la page de paiement sécurisé...'); // On retire l'alerte

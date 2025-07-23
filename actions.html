@@ -65,7 +65,7 @@
             </div>
         </div>
         <!-- Mobile menu -->
-        <div class="hidden mobile-menu md:hidden" id="mobile-menu">
+        <div class="mobile-menu md:hidden" id="mobile-menu" style="display:none;">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="index.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="index">Accueil</a>
                 <div class="space-y-1">
@@ -124,6 +124,30 @@
             }, 200);
         }
     });
+})();
+// Script pour le menu mobile
+(function() {
+    var mobileBtn = document.getElementById('mobile-menu-button');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var menuOpenIcon = document.querySelector('.menu-open');
+    var menuCloseIcon = document.querySelector('.menu-close');
+    var isOpen = false;
+    if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', function() {
+            isOpen = !isOpen;
+            if (isOpen) {
+                mobileMenu.style.display = 'block';
+                menuOpenIcon.classList.add('hidden');
+                menuCloseIcon.classList.remove('hidden');
+                mobileBtn.setAttribute('aria-expanded', 'true');
+            } else {
+                mobileMenu.style.display = 'none';
+                menuOpenIcon.classList.remove('hidden');
+                menuCloseIcon.classList.add('hidden');
+                mobileBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
 })();
 </script>    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-mdh-blue focus:text-white focus:z-50">
         Aller au contenu principal

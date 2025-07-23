@@ -50,7 +50,7 @@
                     </button>
                 </div>
             </div>
-            <div class="hidden mobile-menu md:hidden" id="mobile-menu">
+            <div class="mobile-menu md:hidden" id="mobile-menu" style="display:none;">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="index.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="index">Accueil</a>
                     <details>
@@ -88,16 +88,23 @@
             // Gestion du menu mobile
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpen = document.querySelector('.menu-open');
+            const menuClose = document.querySelector('.menu-close');
+            let isOpen = false;
             if (mobileMenuButton && mobileMenu) {
                 mobileMenuButton.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('hidden');
-                    const menuOpen = document.querySelector('.menu-open');
-                    const menuClose = document.querySelector('.menu-close');
-                    menuOpen.classList.toggle('hidden');
-                    menuClose.classList.toggle('hidden');
-                    mobileMenuButton.setAttribute('aria-expanded', 
-                        mobileMenuButton.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
-                    );
+                    isOpen = !isOpen;
+                    if (isOpen) {
+                        mobileMenu.style.display = 'block';
+                        menuOpen.classList.add('hidden');
+                        menuClose.classList.remove('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'true');
+                    } else {
+                        mobileMenu.style.display = 'none';
+                        menuOpen.classList.remove('hidden');
+                        menuClose.classList.add('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    }
                 });
             }
 

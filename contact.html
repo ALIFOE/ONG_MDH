@@ -77,6 +77,38 @@
             }
         });
         </script>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="mobile-menu-button p-2 rounded-xl hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1e293b]" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+                <svg class="h-6 w-6 text-[#1e293b]" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile menu -->
+    <div class="mobile-menu md:hidden" id="mobile-menu" style="display:none;">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="index">Accueil</a>
+            <div class="space-y-1">
+                <details>
+                    <summary class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl cursor-pointer select-none">L'Organisation</summary>
+                    <div class="ml-4">
+                        <a href="association.html" class="block px-3 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">L'Organisation</a>
+                        <a href="association.html#notre-equipe" class="block px-3 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">Notre équipe</a>
+                    </div>
+                </details>
+            </div>
+            <a href="actions.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actions">Nos Actions</a>
+            <a href="actualites.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actualites">Nos Actualités</a>
+            <a href="rejoindre.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="rejoindre">Rejoindre-nous</a>
+            <a href="ecole.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="ecole">Notre École</a>
+            <a href="contact.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="contact">Contactez-nous</a>
+            <a href="donation.html" class="block px-3 py-2 bg-[#1e293b] text-white rounded-xl hover:bg-yellow-400 hover:text-[#1e293b] font-bold">Faire un don</a>
+        </div>
+    </div>
     </header>
 
     <main id="main-content" class="container mx-auto px-4 py-12 mt-24">
@@ -363,20 +395,25 @@ src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7487.840307188223!2d1
             // Gestion du menu mobile
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            
+            const menuOpen = document.querySelector('.menu-open');
+            const menuClose = document.querySelector('.menu-close');
+            let isOpen = false;
             if (mobileMenuButton && mobileMenu) {
                 mobileMenuButton.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('hidden');
-                    const menuOpen = document.querySelector('.menu-open');
-                    const menuClose = document.querySelector('.menu-close');
-                    menuOpen.classList.toggle('hidden');
-                    menuClose.classList.toggle('hidden');
-                    mobileMenuButton.setAttribute('aria-expanded', 
-                        mobileMenuButton.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
-                    );
+                    isOpen = !isOpen;
+                    if (isOpen) {
+                        mobileMenu.style.display = 'block';
+                        menuOpen.classList.add('hidden');
+                        menuClose.classList.remove('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'true');
+                    } else {
+                        mobileMenu.style.display = 'none';
+                        menuOpen.classList.remove('hidden');
+                        menuClose.classList.add('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    }
                 });
             }
-            
             // Marquer le lien actif dans la navigation
             const currentPage = window.location.pathname.split('/').pop() || 'index.html';
             document.querySelectorAll('.nav-link').forEach(link => {
