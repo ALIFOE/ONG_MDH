@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 
 <head>
 
@@ -13,13 +13,37 @@
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
     <script src="js/script.js" defer></script>
+    <script src="js/mobile-menu.js" defer></script>
     <link rel="icon" href="images/favicon-mdh.png" type="image/png">
+    <script>
+        // Dropdown menu logic
+        document.addEventListener('DOMContentLoaded', function () {
+            var btn = document.getElementById('organisation-btn');
+            var dropdown = document.getElementById('organisation-dropdown');
+            if (btn && dropdown) {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('hidden');
+                    dropdown.classList.toggle('opacity-0');
+                    dropdown.classList.toggle('pointer-events-none');
+                });
+                document.addEventListener('click', function (e) {
+                    if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.classList.add('hidden');
+                        dropdown.classList.add('opacity-0');
+                        dropdown.classList.add('pointer-events-none');
+                    }
+                });
+            }
+        });
+    </script>
 </head>
 <body class="font-sans bg-gray-100 text-gray-900">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-[#1e293b] focus:text-white focus:z-50">Aller au contenu principal</a>
     <header class="bg-white/90 shadow-2xl fixed w-full z-50 backdrop-blur-md border-b border-gray-200">
         <nav class="max-w-7xl mx-auto px-4">
             <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
                 <div class="flex-shrink-0 min-w-[192px] w-48 h-20 flex items-center">
                     <a href="index.html" class="block w-full" aria-label="Retour à l'accueil">
                         <img src="images/logo_mdh.png" alt="ONG MDH International Togo" class="h-12 w-auto object-contain">
@@ -62,37 +86,10 @@
             <div class="hidden mobile-menu md:hidden" id="mobile-menu">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="index.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="index">Accueil</a>
-                    <details>
-                        <summary class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl cursor-pointer flex items-center justify-between">L'Organisation <i class="fas fa-chevron-down ml-2 text-xs"></i></summary>
-                        <div class="pl-4">
-                            <a href="association.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-100 rounded-xl">L'Organisation</a>
-                            <a href="notre-equipe.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-100 rounded-xl">Notre équipe</a>
-                        </div>
-                    </details>
-                    <a href="actions.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actions">Nos Actions</a>
-                    <a href="actualites.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actualites">Nos Actualités</a>
-                    <a href="rejoindre.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="rejoindre">Rejoindre-nous</a>
-                    <a href="ecole.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="ecole">Notre École</a>
-                    <a href="contact.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="contact">Contactez-nous</a>
-                    <a href="donation.html" class="block px-3 py-2 bg-[#1e293b] text-white rounded-xl hover:bg-yellow-400 hover:text-[#1e293b] font-bold">Faire un don</a>
-                </div>
-            </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="mobile-menu-button p-2 rounded-xl hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1e293b]" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
-                        <svg class="h-6 w-6 text-[#1e293b]" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                            <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                            <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <div class="hidden mobile-menu md:hidden" id="mobile-menu">
-                <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="index.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="index">Accueil</a>
-                    <div class="relative group w-full">
-                        <details class="w-full">
-                            <summary class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl cursor-pointer">L'Organisation</summary>
-                            <div class="pl-4">
+                    <div class="space-y-1">
+                        <details>
+                            <summary class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl cursor-pointer select-none">L'Organisation</summary>
+                            <div class="ml-4">
                                 <a href="association.html" class="block px-3 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">L'Organisation</a>
                                 <a href="notre-equipe.html" class="block px-3 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">Notre équipe</a>
                             </div>
@@ -107,34 +104,13 @@
                 </div>
             </div>
         </nav>
-        <script>
-        // Dropdown menu logic
-        document.addEventListener('DOMContentLoaded', function () {
-            var btn = document.getElementById('organisation-btn');
-            var dropdown = document.getElementById('organisation-dropdown');
-            if (btn && dropdown) {
-                btn.addEventListener('click', function (e) {
-                    e.stopPropagation();
-                    dropdown.classList.toggle('hidden');
-                    dropdown.classList.toggle('opacity-0');
-                    dropdown.classList.toggle('pointer-events-none');
-                });
-                document.addEventListener('click', function (e) {
-                    if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
-                        dropdown.classList.add('hidden');
-                        dropdown.classList.add('opacity-0');
-                        dropdown.classList.add('pointer-events-none');
-                    }
-                });
-            }
-        });
-        </script>
+    </header>
     <main id="main-content" class="container mx-auto px-4 py-24 mt-20">
         <section class="max-w-4xl mx-auto bg-gray-100 rounded-3xl shadow-2xl p-10 mb-12 border border-gray-200">
             <h1 class="text-4xl font-extrabold text-[#1e293b] mb-6">Projet : Nouvelle École Primaire</h1>
             <p class="text-xl text-gray-700 mb-8">L'ONG MDH lance la construction d'une nouvelle école primaire qui accueillera plus de 200 élèves dès la rentrée prochaine. Ce projet phare vise à offrir un environnement d'apprentissage moderne, inclusif et stimulant pour les enfants de la région.</p>
             <div class="mb-8">
-                <img src="images/image ecole 8 MDH.jpg" alt="Nouvelle école primaire" class="rounded-2xl shadow-xl w-full h-72 object-cover border border-gray-200">
+                <img src="images/image ecole 8 MDH.jpg" alt="Nouvelle école primaire" class="rounded-2xl shadow-xl w-full h-72 object-cover border border-gray-200" />
             </div>
             <h2 class="text-2xl font-bold text-yellow-400 mb-4">Caractéristiques du projet</h2>
             <ul class="list-disc list-inside text-gray-800 space-y-2 mb-8">
@@ -155,31 +131,32 @@
             <h2 class="text-2xl font-extrabold text-[#1e293b] mb-6">Galerie du projet</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col">
-                    <img src="images/photo sol MDH.jpg" alt="Vue du terrain avant travaux" class="w-full h-56 object-cover">
+                    <img src="images/photo sol MDH.jpg" alt="Vue du terrain avant travaux" class="w-full h-56 object-cover" />
                     <div class="p-4 flex-1 flex items-center justify-center"><span class="text-gray-700 text-center">Terrain avant le début des travaux</span></div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col">
-                    <img src="images/image debut chantier.jpg" alt="Début du chantier" class="w-full h-56 object-cover">
+                    <img src="images/image debut chantier.jpg" alt="Début du chantier" class="w-full h-56 object-cover" />
                     <div class="p-4 flex-1 flex items-center justify-center"><span class="text-gray-700 text-center">Début du chantier de construction</span></div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col">
-                    <img src="images/image1projet.jpg" alt="Élévation des murs" class="w-full h-56 object-cover">
+                    <img src="images/image1projet.jpg" alt="Élévation des murs" class="w-full h-56 object-cover" />
                     <div class="p-4 flex-1 flex items-center justify-center"><span class="text-gray-700 text-center">Élévation des murs des salles de classe</span></div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col">
-                    <img src="images/image ecole 8 MDH.jpg" alt="Charpente et toiture" class="w-full h-56 object-cover">
+                    <img src="images/image ecole 8 MDH.jpg" alt="Charpente et toiture" class="w-full h-56 object-cover" />
                     <div class="p-4 flex-1 flex items-center justify-center"><span class="text-gray-700 text-center">image en 3D de L'école</span></div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col">
-                    <img src="images/image ecole 5 MDH.jpg" alt="Finitions intérieures" class="w-full h-56 object-cover">
+                    <img src="images/image ecole 5 MDH.jpg" alt="Finitions intérieures" class="w-full h-56 object-cover" />
                     <div class="p-4 flex-1 flex items-center justify-center"><span class="text-gray-700 text-center">Image en 3D de l'école: salle de classe</span></div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col">
-                    <img src="images/image ecole 4 MDH.jpg" alt="Aménagement de la cour" class="w-full h-56 object-cover">
-                    <div class="p-4 flex-1 flex items-center justify-center"><span class="text-gray-700 text-center">la cour et des espacesintérieur</span></div>
+                    <img src="images/image ecole 4 MDH.jpg" alt="Aménagement de la cour" class="w-full h-56 object-cover" />
+                    <div class="p-4 flex-1 flex items-center justify-center"><span class="text-gray-700 text-center">La cour et les espaces intérieurs</span></div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col">
-                    <img src="images/image ecole 3 MDH.jpg" alt="École terminée et élèves" class="w-full h-56 object-cover">Autre cour de l'école</span></div>
+                    <img src="images/image ecole 3 MDH.jpg" alt="École terminée et élèves" class="w-full h-56 object-cover" />
+                    <div class="p-4 flex-1 flex items-center justify-center"><span class="text-gray-700 text-center">Autre cour de l'école</span></div>
                 </div>
             </div>
         </section>
