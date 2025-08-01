@@ -25,7 +25,7 @@ const replacements = {
     'RÃ©joindre-nous': 'Réjoindre-nous',
     'ActualitÃ©s': 'Actualités',
     'Ã‰cole': 'École',
-    'ONG dÃ©diÃ©e': 'ONG dédiée',
+    'L'Organisation dÃ©diÃ©e': 'L'Organisation dédiée',
     'dÃ©veloppement': 'développement',
     'Ã©conomique': 'économique',
     'Ã©ducation': 'éducation',
@@ -39,7 +39,7 @@ function fixEncoding(text) {
         text
     );
 
-    // Deuxième passe pour les méta descriptions et autres contenus longs
+    // Deuxième passe pour les méta descriptions et autres contenus lL'Organisations
     fixed = fixed.replace(/content="([^"]+)"/g, (match, p1) => {
         let content = p1;
         Object.entries(replacements).forEach(([key, value]) => {

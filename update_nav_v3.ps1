@@ -10,7 +10,7 @@ $navigationTemplate = @'
                 <!-- Logo Container -->
                 <div class="flex-shrink-0 min-w-[192px] w-48 h-20 flex items-center">
                     <a href="index.html" class="block w-full" aria-label="Retour à l'accueil">
-                        <img src="images/logo_mdh.png" alt="ONG MDH International Togo" class="h-12 w-auto object-contain">
+                        <img src="images/logo_mdh.png" alt="L'Organisation MDH International Togo" class="h-12 w-auto object-contain">
                     </a>
                 </div>
                 <!-- Navigation Links -->
@@ -64,7 +64,7 @@ $navigationTemplate = @'
 $headTemplate = @'
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ONG MDH International Togo - PAGE_DESCRIPTION">
+    <meta name="description" content="L'Organisation MDH International Togo - PAGE_DESCRIPTION">
     <title>PAGE_TITLE - MDH</title>
     
     <!-- Styles -->
@@ -81,27 +81,27 @@ $pages = @(
     @{
         file = "actions.html"
         title = "Nos Actions"
-        description = "Découvrez les actions de l'ONG MDH Togo dans les domaines de l'éducation, la santé et le développement durable."
+        description = "Découvrez les actions de l'L'Organisation MDH Togo dans les domaines de l'éducation, la santé et le développement durable."
     },
     @{
         file = "actualites.html"
         title = "Nos Actualités"
-        description = "Restez informé des dernières actualités et événements de l'ONG MDH Togo."
+        description = "Restez informé des dernières actualités et événements de l'L'Organisation MDH Togo."
     },
     @{
         file = "association.html"
         title = "L'Organisation"
-        description = "Découvrez l'histoire, la mission et les valeurs de l'ONG MDH Togo."
+        description = "Découvrez l'histoire, la mission et les valeurs de l'L'Organisation MDH Togo."
     },
     @{
         file = "contact.html"
         title = "Nous Contacter"
-        description = "Contactez l'ONG MDH Togo pour plus d'informations ou pour participer à nos actions."
+        description = "Contactez l'L'Organisation MDH Togo pour plus d'informations ou pour participer à nos actions."
     },
     @{
         file = "donation.html"
         title = "Faire un don"
-        description = "Soutenez les actions de l'ONG MDH Togo en faisant un don."
+        description = "Soutenez les actions de l'L'Organisation MDH Togo en faisant un don."
     },
     @{
         file = "ecole.html"
@@ -111,12 +111,12 @@ $pages = @(
     @{
         file = "index.html"
         title = "Accueil"
-        description = "ONG dédiée au développement humain durable à travers l'éducation, la santé et le développement économique."
+        description = "L'Organisation dédiée au développement humain durable à travers l'éducation, la santé et le développement économique."
     },
     @{
         file = "rejoindre.html"
         title = "Nous Rejoindre"
-        description = "Rejoignez l'ONG MDH Togo et participez à nos actions humanitaires."
+        description = "Rejoignez l'L'Organisation MDH Togo et participez à nos actions humanitaires."
     }
 )
 

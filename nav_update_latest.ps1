@@ -11,7 +11,7 @@ foreach ($file in $htmlFiles) {
                 <!-- Logo Container -->
                 <div class="flex-shrink-0 min-w-[192px] w-48 h-20 flex items-center">
                     <a href="index.html" class="block w-full" aria-label="Retour à l'accueil">
-                        <img src="images/logo_mdh.png" alt="ONG MDH International Togo" class="h-12 w-auto object-contain">
+                        <img src="images/logo_mdh.png" alt="L'Organisation MDH International Togo" class="h-12 w-auto object-contain">
                     </a>
                 </div>
 

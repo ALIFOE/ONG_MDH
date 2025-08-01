@@ -11,12 +11,12 @@ $pages = @(
 $headerTemplate = @"
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ONG MDH internatinal Togo est une ONG dédiée au développement humain durable à travers l'éducation, la santé et le développement économique.">
-    <meta name="keywords" content="ONG, humanitaire, développement durable, éducation, santé, aide humanitaire, bénévolat, don">
-    <meta name="author" content="ONG MDH internatinal Togo">
+    <meta name="description" content="L'Organisation MDH internatinal Togo est une L'Organisation dédiée au développement humain durable à travers l'éducation, la santé et le développement économique.">
+    <meta name="keywords" content="L'Organisation, humanitaire, développement durable, éducation, santé, aide humanitaire, bénévolat, don">
+    <meta name="author" content="L'Organisation MDH internatinal Togo">
     <meta name="theme-color" content="#87CEEB">
     
-    <title>ONG MDH internatinal Togo</title>
+    <title>L'Organisation MDH internatinal Togo</title>
     
     <!-- Préchargement des ressources critiques -->
     <link rel="preload" href="css/style.css" as="style">

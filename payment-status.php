@@ -29,7 +29,7 @@ $success = isset($_GET['success']) ? $_GET['success'] === '1' : true;
         <?php if ($success): ?>
             <div class="status-icon success"><i class="fas fa-check-circle"></i></div>
             <h1>Paiement confirmé !</h1>
-            <p>Merci pour votre don et votre soutien à l'ONG MDH.<br>Un reçu vous sera envoyé par email si vous l'avez demandé.</p>
+            <p>Merci pour votre don et votre soutien à l'L'Organisation MDH.<br>Un reçu vous sera envoyé par email si vous l'avez demandé.</p>
         <?php else: ?>
             <div class="status-icon error"><i class="fas fa-times-circle"></i></div>
             <h1>Paiement échoué</h1>

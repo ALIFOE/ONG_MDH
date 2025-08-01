@@ -16,7 +16,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "c:\\Users\\conce\\Documents\\PROJETS PERSONNEL\\projet_MDH\\ONG_MDH\\index.html"
+            "file": "c:\\Users\\conce\\Documents\\PROJETS PERSONNEL\\projet_MDH\\L'Organisation_MDH\\index.html"
         },
 
         
@@ -31,7 +31,7 @@
             "type": "msedge",
             "request": "launch",
             "name": "Open index.html",
-            "file": "c:\\Users\\conce\\Documents\\PROJETS PERSONNEL\\projet_MDH\\ONG_MDH\\index.html"
+            "file": "c:\\Users\\conce\\Documents\\PROJETS PERSONNEL\\projet_MDH\\L'Organisation_MDH\\index.html"
         }
     ]
 }

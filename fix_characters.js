@@ -33,8 +33,8 @@ function fixCharacters(content) {
     };
 
     let fixedContent = content;
-    for (const [wrong, correct] of Object.entries(replacements)) {
-        fixedContent = fixedContent.replaceAll(wrong, correct);
+    for (const [wrL'Organisation, correct] of Object.entries(replacements)) {
+        fixedContent = fixedContent.replaceAll(wrL'Organisation, correct);
     }
     return fixedContent;
 }

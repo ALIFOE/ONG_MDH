@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulaire d'inscription au Programme de Vacances Utiles 2025 de l'ONG MDH">
+    <title>Inscription Vacances Utiles 2025 - ONG MDH</title>
+    
+    <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <link rel="icon" href="images/favicon-mdh.png" type="image/png">
+</head>
+<body class="font-sans bg-gray-100 text-gray-900">
+    <!-- En-tête et navigation commune -->
+    <header class="bg-white/90 shadow-2xl fixed w-full z-50 backdrop-blur-md border-b border-gray-200">
+       <nav class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Container -->
+                <div class="flex-shrink-0 min-w-[192px] w-48 h-20 flex items-center">
+                    <a href="index.html" class="block w-full" aria-label="Retour à l'accueil">
+                        <img src="images/logo_mdh.png" alt="L'Organisation MDH International Togo" class="h-12 w-auto object-contain">
+                    </a>
+                </div>
+                <!-- Navigation Links -->
+                <div class="flex-1 flex items-center justify-between px-4">
+                    <!-- Primary Navigation -->
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="index.html" class="nav-link" data-page="index">Accueil</a>
+                        <div class="relative" id="organisation-menu">
+                            <button type="button" class="nav-link flex items-center focus:outline-none" id="organisation-btn">
+                                L'Organisation
+                                <svg class="ml-2 w-4 h-4 text-[#1e293b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </button>
+                            <div id="organisation-dropdown" class="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-200 opacity-0 pointer-events-none transition-opacity duration-200 z-50 hidden">
+                                <a href="association.html" class="block px-4 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">L'Organisation</a>
+                                <a href="notre-equipe.html" class="block px-4 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">Notre équipe</a>
+                            </div>
+                        </div>
+                        <a href="actions.html" class="nav-link" data-page="actions">Nos Actions</a>
+                        <a href="actualites.html" class="nav-link" data-page="actualites">Nos Actualités</a>
+                        <a href="rejoindre.html" class="nav-link" data-page="rejoindre">Rejoindre-nous</a>
+                        <a href="ecole.html" class="nav-link" data-page="ecole">Notre École</a>
+                        <a href="contact.html" class="nav-link" data-page="contact">Contactez-nous</a>
+                    </nav>
+                    <!-- Bouton Don -->
+                    <div class="hidden md:block">
+                        <a href="donation.html" class="py-2 px-6 bg-[#1e293b] text-white rounded-full hover:bg-yellow-400 hover:text-[#1e293b] font-bold shadow-md transition duration-300">Faire un don</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="mobile-menu-button p-2 rounded-xl hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1e293b]" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <svg class="h-6 w-6 text-[#1e293b]" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div class="hidden mobile-menu md:hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="index.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="index">Accueil</a>
+                    <details>
+                        <summary class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl cursor-pointer flex items-center justify-between">L'Organisation <i class="fas fa-chevron-down ml-2 text-xs"></i></summary>
+                        <div class="pl-4">
+                            <a href="association.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-100 rounded-xl">L'Organisation</a>
+                            <a href="notre-equipe.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-100 rounded-xl">Notre équipe</a>
+                        </div>
+                    </details>
+                    <a href="actions.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actions">Nos Actions</a>
+                    <a href="actualites.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actualites">Nos Actualités</a>
+                    <a href="rejoindre.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="rejoindre">Rejoindre-nous</a>
+                    <a href="ecole.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="ecole">Notre École</a>
+                    <a href="contact.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="contact">Contactez-nous</a>
+                    <a href="donation.html" class="block px-3 py-2 bg-[#1e293b] text-white rounded-xl hover:bg-yellow-400 hover:text-[#1e293b] font-bold">Faire un don</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-32">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- En-tête du formulaire -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-[#1e293b] mb-4">Inscription au Programme de Vacances Utiles 2025</h1>
+                <p class="text-xl text-gray-600">Remplissez ce formulaire pour inscrire votre enfant à l'Académie des Super-Enfants</p>
+            </div>
+
+            <!-- Formulaire -->
+            <form action="https://formspree.io/f/xwpqqyza" method="POST" class="bg-white rounded-xl shadow-lg p-8">
+                <!-- Champ honeypot pour éviter le spam -->
+                <input type="text" name="_gotcha" style="display:none" />
+                <!-- Information sur l'enfant -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-[#1e293b] mb-6 flex items-center">
+                        <i class="fas fa-child text-yellow-400 mr-3"></i>
+                        <span class="relative">
+                            Informations sur l'enfant
+                            <span class="absolute -bottom-2 left-0 w-1/3 h-1 bg-yellow-400"></span>
+                        </span>
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="nom" class="block text-gray-700 font-semibold mb-2">Nom</label>
+                            <input type="text" id="nom" name="nom" required 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="prenom" class="block text-gray-700 font-semibold mb-2">Prénom</label>
+                            <input type="text" id="prenom" name="prenom" required 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="date_naissance" class="block text-gray-700 font-semibold mb-2">Date de naissance</label>
+                            <input type="date" id="date_naissance" name="date_naissance" required 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="sexe" class="block text-gray-700 font-semibold mb-2">Sexe</label>
+                            <select id="sexe" name="sexe" required 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                                <option value="">Sélectionnez</option>
+                                <option value="M">Masculin</option>
+                                <option value="F">Féminin</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="niveau_scolaire" class="block text-gray-700 font-semibold mb-2">Niveau scolaire</label>
+                            <select id="niveau_scolaire" name="niveau_scolaire" required 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                                <option value="">Sélectionnez</option>
+                                <option value="CP">CP</option>
+                                <option value="CE1">CE1</option>
+                                <option value="CE2">CE2</option>
+                                <option value="CM1">CM1</option>
+                                <option value="CM2">CM2</option>
+                                <option value="6eme">6ème</option>
+                                <option value="5eme">5ème</option>
+                                <option value="4eme">4ème</option>
+                                <option value="3eme">3ème</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="ecole" class="block text-gray-700 font-semibold mb-2">École fréquentée</label>
+                            <input type="text" id="ecole" name="ecole" required 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Information sur les parents/tuteurs -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-[#1e293b] mb-6 flex items-center">
+                        <i class="fas fa-users text-yellow-400 mr-3"></i>
+                        <span class="relative">
+                            Informations sur les parents/tuteurs
+                            <span class="absolute -bottom-2 left-0 w-1/3 h-1 bg-yellow-400"></span>
+                        </span>
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="parent_nom" class="block text-gray-700 font-semibold mb-2">Nom du parent/tuteur</label>
+                            <input type="text" id="parent_nom" name="parent_nom" required 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="parent_prenom" class="block text-gray-700 font-semibold mb-2">Prénom du parent/tuteur</label>
+                            <input type="text" id="parent_prenom" name="parent_prenom" required 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="telephone" class="block text-gray-700 font-semibold mb-2">Téléphone</label>
+                            <input type="tel" id="telephone" name="telephone" required 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                                placeholder="Ex: +228 xx xx xx xx">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                            <input type="email" id="email" name="email" 
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="adresse" class="block text-gray-700 font-semibold mb-2">Adresse</label>
+                            <textarea id="adresse" name="adresse" required rows="3"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Informations complémentaires -->
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold text-[#1e293b] mb-6 flex items-center">
+                        <i class="fas fa-info-circle text-yellow-400 mr-3"></i>
+                        <span class="relative">
+                            Informations complémentaires
+                            <span class="absolute -bottom-2 left-0 w-1/3 h-1 bg-yellow-400"></span>
+                        </span>
+                    </h2>
+                    <div class="space-y-6">
+                        <div>
+                            <label for="allergies" class="block text-gray-700 font-semibold mb-2">Allergies ou conditions médicales particulières</label>
+                            <textarea id="allergies" name="allergies" rows="2"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                                placeholder="Si aucune, écrivez 'Aucune'"></textarea>
+                        </div>
+                        <div>
+                            <label for="centres_interet" class="block text-gray-700 font-semibold mb-2">Centres d'intérêt de l'enfant</label>
+                            <textarea id="centres_interet" name="centres_interet" rows="2"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                                placeholder="Sports, arts, lecture, etc."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Activités souhaitées</label>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" name="activites[]" value="informatique" class="form-checkbox text-yellow-400 rounded focus:ring-yellow-400">
+                                    <span>Initiation à l'informatique</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" name="activites[]" value="arts" class="form-checkbox text-yellow-400 rounded focus:ring-yellow-400">
+                                    <span>Ateliers créatifs</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" name="activites[]" value="jeux" class="form-checkbox text-yellow-400 rounded focus:ring-yellow-400">
+                                    <span>Jeux éducatifs</span>
+                                </label>
+                                <label class="flex items-center space-x-3">
+                                    <input type="checkbox" name="activites[]" value="culture" class="form-checkbox text-yellow-400 rounded focus:ring-yellow-400">
+                                    <span>Animations culturelles</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Autorisation parentale -->
+                <div class="mb-10">
+                    <div class="p-6 bg-yellow-50 rounded-lg border border-yellow-200">
+                        <h3 class="text-lg font-bold text-[#1e293b] mb-4">Autorisation parentale</h3>
+                        <label class="flex items-start space-x-3">
+                            <input type="checkbox" name="autorisation" required class="mt-1 form-checkbox text-yellow-400 rounded focus:ring-yellow-400">
+                            <span class="text-sm text-gray-700">
+                                Je soussigné(e), responsable légal de l'enfant, autorise sa participation aux activités du Programme de Vacances Utiles 2025
+                                de l'ONG MDH. J'autorise également l'équipe encadrante à prendre toutes les mesures nécessaires en cas d'urgence.
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Boutons de soumission -->
+                <!-- Page de redirection après soumission -->
+                <input type="hidden" name="_next" value="https://alifoe.github.io/ONG_MDH/merci.html">
+                
+                <!-- Configuration de la langue -->
+                <input type="hidden" name="_language" value="fr">
+
+                <!-- Configuration du sujet de l'email -->
+                <input type="hidden" name="_subject" value="Nouvelle inscription - Programme Vacances Utiles 2025">
+
+                <div class="flex justify-center space-x-4">
+                    <button type="reset" class="px-8 py-3 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition duration-300">
+                        Réinitialiser
+                    </button>
+                    <button type="submit" class="px-8 py-3 bg-[#1e293b] text-white rounded-full hover:bg-yellow-400 hover:text-[#1e293b] transition duration-300 flex items-center">
+                        <span>Envoyer l'inscription</span>
+                        <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+  <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 bg-gray-900/95 rounded-2xl p-8 shadow-2xl">
+                <!-- About -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">À propos de MDH</h3>
+                    <p class="text-gray-300">MDH œuvre pour le développement humain à travers l'éducation et le soutien aux communautés vulnérables.</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">Liens Rapides</h3>
+                    <ul class="space-y-2">
+                        <li><a href="association.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">L'Organisation</a></li>
+                        <li><a href="actions.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">Nos Actions</a></li>
+                        <li><a href="ecole.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">Notre École</a></li>
+                        <li><a href="actualites.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">Actualités</a></li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><span class="font-semibold">Email :</span> modehumain@gmail.com</li>
+                        <li><span class="font-semibold">Tél :</span> +228 92 12 95 49</li>
+                        <li><span class="font-semibold">Adresse :</span> Aflao-Sagbado (Apedokoè), Lomé, Togo</li>
+                    </ul>
+                </div>
+                <!-- Social -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">Suivez-nous</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/www.modehumain.org" aria-label="Facebook" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-facebook text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                        <a href="#" aria-label="Twitter" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-twitter text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                        <a href="https://www.instagram.com/ngo_mdh" aria-label="Instagram" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-instagram text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                        <a href="https://www.linkedin.com/company/assomdh" aria-label="LinkedIn" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-linkedin text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-400">&copy; 2024 L'Organisation MDH international Togo. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script src="js/mobile-menu.js"></script>
+</body>
+</html>

@@ -33,8 +33,8 @@ $tax_receipt = isset($_POST['tax-receipt']) ? 'Oui' : 'Non';
 $invoice = new \Paydunya\Checkout\CheckoutInvoice();
 $invoice->addItem("Don à MDH", 1, $amount, $amount, "Don de $firstname $lastname");
 $invoice->setDescription("Don $type - $message");
-$invoice->setReturnUrl("https://alifoe.github.io/ONG_MDH/payment-status.php?success=1");
-$invoice->setCancelUrl("https://alifoe.github.io/ONG_MDH/payment-status.php?success=0");
+$invoice->setReturnUrl("https://alifoe.github.io/L'Organisation_MDH/payment-status.php?success=1");
+$invoice->setCancelUrl("https://alifoe.github.io/L'Organisation_MDH/payment-status.php?success=0");
 // $invoice->setCallbackUrl("https://votre-domaine/callback-paydunya.php"); // optionnel
 $invoice->setCustomData(["email" => $email, "phone" => $phone, "tax_receipt" => $tax_receipt]);
 
