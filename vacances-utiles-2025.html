@@ -374,5 +374,55 @@
     <!-- Scripts -->
     <script src="js/script.js"></script>
     <script src="js/mobile-menu.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion du menu mobile
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpen = document.querySelector('.menu-open');
+            const menuClose = document.querySelector('.menu-close');
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    menuOpen.classList.toggle('hidden');
+                    menuClose.classList.toggle('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 
+                        mobileMenuButton.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+                    );
+                });
+            }
+
+            // Gestion du menu déroulant de l'organisation
+            const organisationBtn = document.getElementById('organisation-btn');
+            const organisationDropdown = document.getElementById('organisation-dropdown');
+            
+            if (organisationBtn && organisationDropdown) {
+                organisationBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    organisationDropdown.classList.toggle('hidden');
+                    organisationDropdown.classList.toggle('opacity-0');
+                    organisationDropdown.classList.toggle('pointer-events-none');
+                });
+
+                // Fermer le menu si clic en dehors
+                document.addEventListener('click', function(e) {
+                    if (!organisationBtn.contains(e.target) && !organisationDropdown.contains(e.target)) {
+                        organisationDropdown.classList.add('hidden');
+                        organisationDropdown.classList.add('opacity-0');
+                        organisationDropdown.classList.add('pointer-events-none');
+                    }
+                });
+            }
+
+            // Marquer le lien actif dans la navigation
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('text-mdh-yellow', 'font-semibold');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rapport d'Activité du Programme Académie des Super-Enfants - ONG MDH">
+    <title>Rapport d'Activité - Académie des Super-Enfants - MDH</title>
+    
+    <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    
+    <!-- Scripts -->
+    <script src="js/script.js" defer></script>
+    <link rel="icon" href="images/favicon-mdh.png" type="image/png">
+    <link rel="stylesheet" href="css/floating-button.css">
+</head>
+<body class="font-sans bg-gray-100 text-gray-900">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-[#1e293b] focus:text-white focus:z-50">Aller au contenu principal</a>
+    <header class="bg-white/90 shadow-2xl fixed w-full z-50 backdrop-blur-md border-b border-gray-200">
+        <nav class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Container -->
+                <div class="flex-shrink-0 min-w-[192px] w-48 h-20 flex items-center">
+                    <a href="index.html" class="block w-full" aria-label="Retour à l'accueil">
+                        <img src="images/logo_mdh.png" alt="L'Organisation MDH International Togo" class="h-12 w-auto object-contain">
+                    </a>
+                </div>
+                <!-- Navigation Links -->
+                <div class="flex-1 flex items-center justify-between px-4">
+                    <!-- Primary Navigation -->
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="index.html" class="nav-link" data-page="index">Accueil</a>
+                        <div class="relative" id="organisation-menu">
+                            <button type="button" class="nav-link flex items-center focus:outline-none" id="organisation-btn">
+                                L'Organisation
+                                <svg class="ml-2 w-4 h-4 text-[#1e293b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </button>
+                            <div id="organisation-dropdown" class="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-200 opacity-0 pointer-events-none transition-opacity duration-200 z-50 hidden">
+                                <a href="association.html" class="block px-4 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">L'Organisation</a>
+                                <a href="notre-equipe.html" class="block px-4 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">Notre équipe</a>
+                            </div>
+                        </div>
+                        <a href="actions.html" class="nav-link" data-page="actions">Nos Actions</a>
+                        <a href="actualites.html" class="nav-link" data-page="actualites">Nos Actualités</a>
+                        <a href="rejoindre.html" class="nav-link" data-page="rejoindre">Rejoindre-nous</a>
+                        <a href="ecole.html" class="nav-link" data-page="ecole">Notre École</a>
+                        <a href="contact.html" class="nav-link" data-page="contact">Contactez-nous</a>
+                    </nav>
+                    <!-- Bouton Don -->
+                    <div class="hidden md:block">
+                        <a href="donation.html" class="py-2 px-6 bg-[#1e293b] text-white rounded-full hover:bg-yellow-400 hover:text-[#1e293b] font-bold shadow-md transition duration-300">Faire un don</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="mobile-menu-button p-2 rounded-xl hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1e293b]" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <svg class="h-6 w-6 text-[#1e293b]" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div class="mobile-menu md:hidden" id="mobile-menu" style="display:none;">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="index.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="index">Accueil</a>
+                    <div class="space-y-1">
+                        <details>
+                            <summary class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl cursor-pointer select-none">L'Organisation</summary>
+                            <div class="ml-4">
+                                <a href="association.html" class="block px-3 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">L'Organisation</a>
+                                <a href="notre-equipe.html" class="block px-3 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">Notre équipe</a>
+                            </div>
+                        </details>
+                    </div>
+                    <a href="actions.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actions">Nos Actions</a>
+                    <a href="actualites.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actualites">Nos Actualités</a>
+                    <a href="rejoindre.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="rejoindre">Rejoindre-nous</a>
+                    <a href="ecole.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="ecole">Notre École</a>
+                    <a href="contact.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="contact">Contactez-nous</a>
+                    <a href="donation.html" class="block px-3 py-2 bg-[#1e293b] text-white rounded-xl hover:bg-yellow-400 hover:text-[#1e293b] font-bold">Faire un don</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" class="container mx-auto px-4 py-12 mt-20 bg-gray-100 min-h-screen">
+        <!-- Breadcrumb -->
+        <nav class="mb-8" aria-label="Breadcrumb">
+            <ol class="flex items-center space-x-2 text-sm text-gray-600">
+                <li><a href="index.html" class="text-[#1e293b] hover:text-mdh-yellow transition">Accueil</a></li>
+                <li>/</li>
+                <li><a href="actualites.html" class="text-[#1e293b] hover:text-mdh-yellow transition">Actualités</a></li>
+                <li>/</li>
+                <li class="text-gray-900 font-semibold">Académie des Super-Enfants</li>
+            </ol>
+        </nav>
+
+        <!-- Article Header -->
+        <article class="bg-white rounded-3xl shadow-xl overflow-hidden mb-10">
+            <img src="images/article-vacances-utiles.jpg" alt="Programme Académie des Super-Enfants" class="w-full h-96 object-cover">
+            <div class="p-8 md:p-12">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-mdh-yellow font-semibold text-lg">Septembre - Novembre 2025</span>
+                    <span class="text-gray-600">|</span>
+                    <span class="text-gray-600">Vacances Utiles</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-[#1e293b] mb-4">Rapport d'Activité du Programme Académie des Super-Enfants</h1>
+                <div class="w-24 h-1 bg-mdh-yellow rounded-full mb-6"></div>
+                <p class="text-xl text-gray-700 italic">Un programme complet d'occupation saine et éducative pour les enfants durant les vacances scolaires</p>
+            </div>
+        </article>
+
+        <!-- Article Content -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 prose prose-lg max-w-none">
+            
+            <!-- Introduction -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-[#1e293b] mb-6">Introduction</h2>
+                <p class="text-gray-700 text-lg mb-4">
+                    Dans le cadre de l'occupation saine et éducative des enfants pendant la période des vacances, l'ONG MDH a organisé un programme de vacances utiles à l'endroit des enfants du quartier d'Apédokoé, lieu de son siège à Sagbado. L'objectif principal était de permettre aux enfants de profiter de leur temps libre pour apprendre, se divertir et développer des valeurs utiles à leur vie quotidienne et scolaire.
+                </p>
+                <p class="text-gray-700 text-lg">
+                    Le programme s'est déroulé sur plusieurs séances organisées chaque mercredi et samedi tout au long de la période des vacances.
+                </p>
+            </section>
+
+            <!-- Sensibilisation et Mobilisation -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-[#1e293b] mb-6">Sensibilisation et Mobilisation</h2>
+                <p class="text-gray-700 text-lg mb-4">
+                    Le programme a démarré par une activité de sensibilisation porte-à-porte. Cette étape a permis d'informer les parents et les enfants sur les objectifs et le contenu du programme et de susciter leur adhésion.
+                </p>
+                <p class="text-gray-700 text-lg">
+                    Les séances étaient organisées chaque mercredi et samedi après-midi au siège de l'ONG. Ensemble, les enfants et nous animateurs avions passé des moments d'échanges sur des thèmes éducatifs mais aussi de moments de fun.
+                </p>
+            </section>
+
+            <!-- Déroulement des Activités -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-[#1e293b] mb-6">Déroulement des Activités</h2>
+
+                <!-- Séance d'Ouverture -->
+                <div class="mb-8 pl-6 border-l-4 border-mdh-yellow">
+                    <h3 class="text-2xl font-bold text-[#1e293b] mb-4">1. Séance d'Ouverture</h3>
+                    <p class="text-gray-700 text-lg mb-4">
+                        Le programme proprement-dit a commencé le 12 Septembre 2025. La première toute première séance porté sur la prise de connaissance des participants et des échanges pour favoriser la cohésion sociale avec un thème porté sur la diversité.
+                    </p>
+                    <p class="text-gray-700 text-lg">
+                        Ensemble avec les enfants, les animateurs ont échangé également sur l'importance de valoriser leur temps de vacances à travers des activités utiles.
+                    </p>
+                </div>
+
+                <!-- Activités Sportives -->
+                <div class="mb-8 pl-6 border-l-4 border-mdh-yellow">
+                    <h3 class="text-2xl font-bold text-[#1e293b] mb-4">2. Activités Sportives et Jeux</h3>
+                    <p class="text-gray-700 text-lg mb-4">
+                        Afin de favoriser l'esprit d'équipe, la discipline et la convivialité, des activités sportives et des jeux collectifs ont été organisées. Les enfants ont pris plaisir à jouer au ballon et à faire diverses activités sportives pour leur bien-être.
+                    </p>
+                    <p class="text-gray-700 text-lg">
+                        Divers jeux collectifs et animations tels que la course au savoir, les jeux de mimes, les jeux de mots, les histoires racontées, les danses et autres animations ludiques ont permis aux enfants de s'amuser tout en s'épanouissant, en remuant également leurs méninges et en renforçant leur cohésion.
+                    </p>
+                </div>
+
+                <!-- Activités Éducatives -->
+                <div class="mb-8 pl-6 border-l-4 border-mdh-yellow">
+                    <h3 class="text-2xl font-bold text-[#1e293b] mb-4">3. Activités Éducatives Thématiques</h3>
+                    <p class="text-gray-700 text-lg mb-4">
+                        Durant le programme, nous avons organisé des temps d'apprentissage et entretenu les enfants sur plusieurs thématiques notamment l'importance de se former ou de se consacrer à des activités utiles pendant les vacances, l'importance d'être assidus dans leurs études.
+                    </p>
+                    <p class="text-gray-700 text-lg">
+                        Nous avons également partagé avec eux des conseils pour bien préparer leur rentrée et des tips pour bien s'organiser dans leur vie quotidienne. Les enfants au travers de ces temps ont pu exprimer leur talents en dessin et autres et également apprendre de nouvelles choses (de nouveaux mots…)
+                    </p>
+                </div>
+
+                <!-- Clôture -->
+                <div class="pl-6 border-l-4 border-mdh-yellow">
+                    <h3 class="text-2xl font-bold text-[#1e293b] mb-4">4. Clôture du Programme</h3>
+                    <p class="text-gray-700 text-lg">
+                        Pour la clôture, nous avons réalisé un récapitulatif de toutes les activités menées au cours du programme. Les enfants ont partagé leurs appréciation, les moments forts qui les ont marqué, leçons apprises…Ensuite, nous avons procédé à une remise symbolique de dons scolaires pour soutenir les enfants et les encourager dans leurs études.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Résultats et Impacts -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-[#1e293b] mb-6">Résultats et Impacts</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-mdh-yellow/10 rounded-xl p-6 border-l-4 border-mdh-yellow">
+                        <h4 class="font-semibold text-[#1e293b] mb-3 flex items-center gap-2">
+                            <i class="fas fa-check text-mdh-yellow"></i> Participation Active
+                        </h4>
+                        <p class="text-gray-700">Participation active et régulière des enfants aux différentes séances</p>
+                    </div>
+                    <div class="bg-mdh-yellow/10 rounded-xl p-6 border-l-4 border-mdh-yellow">
+                        <h4 class="font-semibold text-[#1e293b] mb-3 flex items-center gap-2">
+                            <i class="fas fa-lightbulb text-mdh-yellow"></i> Nouvelles Connaissances
+                        </h4>
+                        <p class="text-gray-700">Acquisition de nouvelles connaissances et compétences sociales</p>
+                    </div>
+                    <div class="bg-mdh-yellow/10 rounded-xl p-6 border-l-4 border-mdh-yellow">
+                        <h4 class="font-semibold text-[#1e293b] mb-3 flex items-center gap-2">
+                            <i class="fas fa-users text-mdh-yellow"></i> Renforcement de la Cohésion
+                        </h4>
+                        <p class="text-gray-700">Renforcement de la cohésion, l'esprit d'équipe et de la créativité</p>
+                    </div>
+                    <div class="bg-mdh-yellow/10 rounded-xl p-6 border-l-4 border-mdh-yellow">
+                        <h4 class="font-semibold text-[#1e293b] mb-3 flex items-center gap-2">
+                            <i class="fas fa-star text-mdh-yellow"></i> Motivation Accrue
+                        </h4>
+                        <p class="text-gray-700">Motivation accrue des enfants pour aborder la rentrée scolaire avec confiance</p>
+                    </div>
+                </div>
+                <div class="mt-6 bg-green-50 rounded-xl p-6 border-l-4 border-green-500">
+                    <h4 class="font-semibold text-green-900 mb-3 flex items-center gap-2">
+                        <i class="fas fa-smile text-green-500"></i> Satisfaction Générale
+                    </h4>
+                    <p class="text-green-800">Satisfaction exprimée par les enfants et leurs parents</p>
+                </div>
+            </section>
+
+            <!-- Conclusion -->
+            <section class="bg-[#1e293b] text-white rounded-xl p-8">
+                <h2 class="text-3xl font-bold mb-6">Conclusion</h2>
+                <p class="text-lg leading-relaxed mb-4">
+                    Le programme de Vacances utiles dénommé <span class="font-semibold">Académie des Super-Enfants</span>, a atteint ses objectifs en alliant apprentissage, divertissement et éducation. Les enfants en sont sortis renforcés tant sur le plan intellectuel que social.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    L'initiative a permis d'occuper sainement leur temps de vacances et de les préparer à une reprise scolaire réussie. Nous comptons renouveler ce type d'initiative pour les prochaines périodes de vacances scolaires.
+                </p>
+            </section>
+        </div>
+
+        <!-- Call to Action -->
+        <section class="mt-16 bg-mdh-yellow/10 rounded-3xl p-10 border-2 border-mdh-yellow">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-[#1e293b] mb-4">Vous souhaitez soutenir nos initiatives pour les enfants ?</h2>
+                <p class="text-gray-700 mb-8 text-lg">Rejoignez-nous et aidez l'ONG MDH à continuer ses programmes éducatifs et de développement social</p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <a href="donation.html" class="py-3 px-8 bg-[#1e293b] text-white rounded-full hover:bg-mdh-yellow hover:text-[#1e293b] font-bold shadow-md transition duration-300 inline-block">
+                        <i class="fas fa-heart mr-2"></i> Faire un don
+                    </a>
+                    <a href="rejoindre.html" class="py-3 px-8 border-2 border-[#1e293b] text-[#1e293b] rounded-full hover:bg-[#1e293b] hover:text-white font-bold shadow-md transition duration-300 inline-block">
+                        <i class="fas fa-user-plus mr-2"></i> Nous rejoindre
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Articles -->
+        <section class="mt-16 mb-8">
+            <h2 class="text-3xl font-bold text-[#1e293b] mb-8 text-center">Articles Connexes</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <a href="article1.html" class="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                    <img src="images/article2.jpg" alt="Vacances Utiles 2025" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-mdh-yellow font-semibold">Juillet - Août 2025</span>
+                        <h3 class="text-lg font-bold text-[#1e293b] mt-2 mb-3">Vacances Utiles 2025</h3>
+                        <a href="article1.html" class="text-[#1e293b] hover:text-mdh-yellow font-semibold">Lire la suite →</a>
+                    </div>
+                </a>
+                <a href="article4.html" class="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                    <img src="images/blanc2.jpg" alt="Soutien scolaire" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-mdh-yellow font-semibold">Décembre 2023</span>
+                        <h3 class="text-lg font-bold text-[#1e293b] mt-2 mb-3">Soutien scolaire</h3>
+                        <a href="article4.html" class="text-[#1e293b] hover:text-mdh-yellow font-semibold">Lire la suite →</a>
+                    </div>
+                </a>
+                <a href="article5.html" class="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                    <img src="images/education1.jpg" alt="Enseignement" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-mdh-yellow font-semibold">Décembre 2023</span>
+                        <h3 class="text-lg font-bold text-[#1e293b] mt-2 mb-3">Soutien scolaire et enseignement</h3>
+                        <a href="article5.html" class="text-[#1e293b] hover:text-mdh-yellow font-semibold">Lire la suite →</a>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 bg-gray-900/95 rounded-2xl p-8 shadow-2xl">
+                <!-- About -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">À propos de MDH</h3>
+                    <p class="text-gray-300">MDH œuvre pour le développement humain à travers l'éducation et le soutien aux communautés vulnérables.</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">Liens Rapides</h3>
+                    <ul class="space-y-2">
+                        <li><a href="association.html" class="text-gray-300 hover:text-yellow-400 hover:underline transition duration-200">L'Organisation</a></li>
+                        <li><a href="actions.html" class="text-gray-300 hover:text-yellow-400 hover:underline transition duration-200">Nos Actions</a></li>
+                        <li><a href="ecole.html" class="text-gray-300 hover:text-yellow-400 hover:underline transition duration-200">Notre École</a></li>
+                        <li><a href="actualites.html" class="text-gray-300 hover:text-yellow-400 hover:underline transition duration-200">Actualités</a></li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><span class="font-semibold">Email :</span> modehumain@gmail.com</li>
+                        <li><span class="font-semibold">Tél :</span> +228 92 12 95 49</li>
+                        <li><span class="font-semibold">Adresse :</span> Aflao-Sagbado (Apedokoè), Lomé, Togo</li>
+                    </ul>
+                </div>
+                <!-- Social -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">Suivez-nous</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/www.modehumain.org" aria-label="Facebook" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-facebook text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                        <a href="https://www.instagram.com/ngo_mdh" aria-label="Instagram" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-instagram text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                        <a href="https://www.linkedin.com/company/assomdh" aria-label="LinkedIn" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-linkedin text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-400">&copy; 2024 L'Organisation MDH international Togo. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion du menu mobile
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    const menuOpen = document.querySelector('.menu-open');
+                    const menuClose = document.querySelector('.menu-close');
+                    menuOpen.classList.toggle('hidden');
+                    menuClose.classList.toggle('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 
+                        mobileMenuButton.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+                    );
+                });
+            }
+            
+            // Marquer le lien actif dans la navigation
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('text-mdh-yellow', 'font-semibold');
+                }
+            });
+        });
+    </script>
+    <script>
+        // Script pour le menu déroulant desktop
+        (function() {
+            var btn = document.getElementById('organisation-btn');
+            var dropdown = document.getElementById('organisation-dropdown');
+            var menu = document.getElementById('organisation-menu');
+            var open = false;
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                open = !open;
+                if (open) {
+                    dropdown.classList.remove('hidden');
+                    setTimeout(function() {
+                        dropdown.classList.add('opacity-100');
+                        dropdown.classList.remove('opacity-0');
+                        dropdown.classList.remove('pointer-events-none');
+                    }, 10);
+                } else {
+                    dropdown.classList.remove('opacity-100');
+                    dropdown.classList.add('opacity-0');
+                    dropdown.classList.add('pointer-events-none');
+                    setTimeout(function() {
+                        dropdown.classList.add('hidden');
+                    }, 200);
+                }
+            });
+            document.addEventListener('click', function(e) {
+                if (!menu.contains(e.target)) {
+                    open = false;
+                    dropdown.classList.remove('opacity-100');
+                    dropdown.classList.add('opacity-0');
+                    dropdown.classList.add('pointer-events-none');
+                    setTimeout(function() {
+                        dropdown.classList.add('hidden');
+                    }, 200);
+                }
+            });
+        })();
+    </script>
+
+    <a href="vacances-utiles-2025.html" class="floating-button">Programme de Vacances Utiles 2025</a>
+</body>
+</html>
