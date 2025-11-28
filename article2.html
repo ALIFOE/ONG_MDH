@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sensibilisation genre et foncier à Bangéli - MDH</title>
+    <meta name="description" content="Sensibilisation genre et foncier à Bangéli - Projet MDH pour l'autonomisation des femmes">
+    <title>Sensibilisation Genre et Foncier à Bangéli - MDH</title>
+    
+    <!-- Styles -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="css/style.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
-    <link rel="icon" href="images/favicon-mdh.png" type="image/png">
     
-
+    <!-- Scripts -->
+    <script src="js/script.js" defer></script>
+    <link rel="icon" href="images/favicon-mdh.png" type="image/png">
     <link rel="stylesheet" href="css/floating-button.css">
 </head>
 <body class="font-sans bg-gray-100 text-gray-900">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-[#1e293b] focus:text-white focus:z-50">Aller au contenu principal</a>
     <header class="bg-white/90 shadow-2xl fixed w-full z-50 backdrop-blur-md border-b border-gray-200">
         <nav class="max-w-7xl mx-auto px-4">
             <div class="flex items-center justify-between h-20">
@@ -83,92 +88,177 @@
             </div>
         </nav>
     </header>
-<script>
-// Script pour le menu mobile
-(function() {
-    var mobileBtn = document.getElementById('mobile-menu-button');
-    var mobileMenu = document.getElementById('mobile-menu');
-    var menuOpenIcon = document.querySelector('.menu-open');
-    var menuCloseIcon = document.querySelector('.menu-close');
-    var isOpen = false;
-    if (mobileBtn && mobileMenu) {
-        mobileBtn.addEventListener('click', function() {
-            isOpen = !isOpen;
-            if (isOpen) {
-                mobileMenu.style.display = 'block';
-                menuOpenIcon.classList.add('hidden');
-                menuCloseIcon.classList.remove('hidden');
-                mobileBtn.setAttribute('aria-expanded', 'true');
-            } else {
-                mobileMenu.style.display = 'none';
-                menuOpenIcon.classList.remove('hidden');
-                menuCloseIcon.classList.add('hidden');
-                mobileBtn.setAttribute('aria-expanded', 'false');
-            }
-        });
-    }
-})();
 
-    // Script pour le menu déroulant desktop
-    (function() {
-        var btn = document.getElementById('organisation-btn');
-        var dropdown = document.getElementById('organisation-dropdown');
-        var menu = document.getElementById('organisation-menu');
-        var open = false;
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            open = !open;
-            if (open) {
-                dropdown.classList.remove('hidden');
-                setTimeout(function() {
-                    dropdown.classList.add('opacity-100');
-                    dropdown.classList.remove('opacity-0');
-                    dropdown.classList.remove('pointer-events-none');
-                }, 10);
-            } else {
-                dropdown.classList.remove('opacity-100');
-                dropdown.classList.add('opacity-0');
-                dropdown.classList.add('pointer-events-none');
-                setTimeout(function() {
-                    dropdown.classList.add('hidden');
-                }, 200);
-            }
-        });
-        document.addEventListener('click', function(e) {
-            if (!menu.contains(e.target)) {
-                open = false;
-                dropdown.classList.remove('opacity-100');
-                dropdown.classList.add('opacity-0');
-                dropdown.classList.add('pointer-events-none');
-                setTimeout(function() {
-                    dropdown.classList.add('hidden');
-                }, 200);
-            }
-        });
-    })();
-    </script>
-    <main id="main-content" class="container mx-auto px-4 py-12 mt-24 bg-gray-100 min-h-screen">
-        <article class="max-w-3xl mx-auto bg-white/90 rounded-3xl shadow-xl p-8 border border-[#1e293b]/10">
-            <img src="images/sensibilisation1.jpg" alt="Sensibilisation genre et foncier à Bangéli" class="w-full h-64 object-cover rounded-xl mb-6">
-            <span class="text-mdh-yellow font-semibold">Février 2023</span>
-            <h1 class="text-3xl font-bold text-[#1e293b] mt-2 mb-4">Sensibilisation genre et foncier à Bangéli</h1>
-            <p class="text-gray-700 mb-6 text-lg">
-                Sensibilisations communautaires sur le genre et le foncier. Les femmes agricultrices de Bangéli, commune Bassar 2, ont accueilli favorablement cette initiative valorisant le rôle de la femme dans le renforcement de la sécurité alimentaire au Togo.
-            </p>
-            <h2 class="text-xl font-bold text-[#1e293b] mb-2 mt-8">Objectifs de la sensibilisation</h2>
-            <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
-                <li>Informer sur les droits fonciers des femmes</li>
-                <li>Encourager l’autonomisation des femmes rurales</li>
-                <li>Promouvoir l’égalité des genres dans l’accès à la terre</li>
-            </ul>
-            <h2 class="text-xl font-bold text-[#1e293b] mb-2 mt-8">Galerie</h2>
-            <div class="grid grid-cols-2 gap-4 mb-8">
-                <img src="images/sensibilisation1.jpg" alt="Sensibilisation Bangéli - 1" class="rounded-xl object-cover h-40 w-full">
-                <img src="images/agriculture1.jpg" alt="Sensibilisation Bangéli - 2" class="rounded-xl object-cover h-40 w-full">
+    <main id="main-content" class="container mx-auto px-4 py-12 mt-20 bg-gray-100 min-h-screen">
+        <!-- Breadcrumb -->
+        <nav class="mb-8" aria-label="Breadcrumb">
+            <ol class="flex items-center space-x-2 text-sm text-gray-600">
+                <li><a href="index.html" class="text-[#1e293b] hover:text-mdh-yellow transition">Accueil</a></li>
+                <li>/</li>
+                <li><a href="actualites.html" class="text-[#1e293b] hover:text-mdh-yellow transition">Actualités</a></li>
+                <li>/</li>
+                <li class="text-gray-900 font-semibold">Sensibilisation Genre et Foncier</li>
+            </ol>
+        </nav>
+
+        <!-- Article Header -->
+        <article class="bg-white rounded-3xl shadow-xl overflow-hidden mb-10">
+            <img src="images/sensibilisation1.jpg" alt="Sensibilisation genre et foncier à Bangéli" class="w-full h-96 object-cover">
+            <div class="p-8 md:p-12">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="text-mdh-yellow font-semibold text-lg">Février 2023</span>
+                    <span class="text-gray-600">|</span>
+                    <span class="text-gray-600">Égalité des Genres</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-[#1e293b] mb-4">Sensibilisation Genre et Foncier à Bangéli</h1>
+                <div class="w-24 h-1 bg-mdh-yellow rounded-full mb-6"></div>
+                <p class="text-xl text-gray-700 italic">Un projet de sensibilisation communautaire pour promouvoir l'égalité des genres et l'autonomisation des femmes rurales dans l'accès à la terre</p>
             </div>
-            <a href="actualites.html" class="inline-block mt-6 px-6 py-2 bg-mdh-yellow text-white rounded-full font-semibold hover:bg-[#1e293b] hover:text-mdh-yellow transition">← Retour aux actualités</a>
         </article>
+
+        <!-- Article Content -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 prose prose-lg max-w-none">
+            
+            <!-- Introduction -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-[#1e293b] mb-6">Introduction</h2>
+                <p class="text-gray-700 text-lg mb-4">
+                    Sensibilisations communautaires sur le genre et le foncier. Les femmes agricultrices de Bangéli, commune Bassar 2, ont accueilli favorablement cette initiative valorisant le rôle de la femme dans le renforcement de la sécurité alimentaire au Togo.
+                </p>
+                <p class="text-gray-700 text-lg">
+                    Ce projet s'inscrit dans une démarche d'autonomisation des femmes rurales et de promotion de l'égalité des droits fonciers, éléments fondamentaux pour le développement durable des communautés.
+                </p>
+            </section>
+
+            <!-- Contexte et Enjeux -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-[#1e293b] mb-6">Contexte et Enjeux</h2>
+                <div class="bg-mdh-yellow/10 rounded-xl p-6 border-l-4 border-mdh-yellow mb-8">
+                    <p class="text-gray-700 text-lg">
+                        Les femmes rurales au Togo jouent un rôle crucial dans l'agriculture et la sécurité alimentaire familiale. Cependant, elles font face à des défis importants concernant l'accès à la terre et la reconnaissance de leurs droits fonciers.
+                    </p>
+                </div>
+                <p class="text-gray-700 text-lg">
+                    L'égalité des genres dans l'accès à la terre est un catalyseur de développement durable, permettant une meilleure gestion des ressources naturelles et une augmentation de la productivité agricole.
+                </p>
+            </section>
+
+            <!-- Objectifs du Projet -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-[#1e293b] mb-6">Objectifs du Projet</h2>
+
+                <!-- Objectif 1 -->
+                <div class="mb-8 pl-6 border-l-4 border-mdh-yellow">
+                    <h3 class="text-2xl font-bold text-[#1e293b] mb-4">1. Informer sur les Droits Fonciers</h3>
+                    <p class="text-gray-700 text-lg">
+                        Sensibiliser les femmes et les communautés locales sur leurs droits fonciers légaux et les cadres juridiques protégeant l'égalité d'accès à la terre.
+                    </p>
+                </div>
+
+                <!-- Objectif 2 -->
+                <div class="mb-8 pl-6 border-l-4 border-mdh-yellow">
+                    <h3 class="text-2xl font-bold text-[#1e293b] mb-4">2. Promouvoir l'Autonomisation</h3>
+                    <p class="text-gray-700 text-lg mb-4">
+                        Encourager l'autonomisation des femmes rurales en les dotant de connaissances et de compétences pour :
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 text-lg space-y-2 ml-4">
+                        <li>Défendre leurs droits fonciers</li>
+                        <li>Participer aux décisions communautaires</li>
+                        <li>Développer leurs activités agricoles et génératrices de revenus</li>
+                    </ul>
+                </div>
+
+                <!-- Objectif 3 -->
+                <div class="mb-8 pl-6 border-l-4 border-mdh-yellow">
+                    <h3 class="text-2xl font-bold text-[#1e293b] mb-4">3. Favoriser l'Égalité des Genres</h3>
+                    <p class="text-gray-700 text-lg">
+                        Promouvoir l'égalité des genres dans l'accès à la terre en impliquant hommes et femmes dans les discussions communautaires et en questionnant les pratiques traditionnelles discriminantes.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Activités Menées -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-[#1e293b] mb-6">Activités Menées</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-50 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-[#1e293b] mb-3">Ateliers de Sensibilisation</h3>
+                        <p class="text-gray-700">Réunions avec les femmes et les leaders communautaires pour discuter des droits fonciers et des enjeux de genre.</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-[#1e293b] mb-3">Partage d'Expériences</h3>
+                        <p class="text-gray-700">Échanges entre femmes sur leurs défis concernant l'accès à la terre et les solutions trouvées.</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-[#1e293b] mb-3">Formation Juridique</h3>
+                        <p class="text-gray-700">Présentation des lois et droits protégeant l'égalité d'accès à la terre au Togo.</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-6">
+                        <h3 class="text-xl font-bold text-[#1e293b] mb-3">Dialogue Communautaire</h3>
+                        <p class="text-gray-700">Discussions impliquant hommes et femmes pour promouvoir une compréhension commune des enjeux.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Galerie -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-[#1e293b] mb-8">Galerie</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <img src="images/sensibilisation1.jpg" alt="Sensibilisation genre à Bangéli - Atelier" class="rounded-xl object-cover h-64 w-full shadow-lg">
+                    <img src="images/agriculture1.jpg" alt="Femmes agricultres de Bangéli" class="rounded-xl object-cover h-64 w-full shadow-lg">
+                </div>
+            </section>
+
+            <!-- Résultats et Impacts -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-[#1e293b] mb-6">Résultats et Impacts</h2>
+                <div class="bg-mdh-yellow/10 rounded-xl p-6 border-l-4 border-mdh-yellow">
+                    <p class="text-gray-700 text-lg mb-4">
+                        Cette initiative a généré des impacts significatifs dans la communauté de Bangéli :
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 text-lg space-y-2">
+                        <li>Augmentation de la conscience sur les droits fonciers des femmes</li>
+                        <li>Renforcement de la confiance des femmes agricultres</li>
+                        <li>Amélioration du dialogue entre hommes et femmes sur les questions foncières</li>
+                        <li>Engagement des leaders communautaires envers l'égalité des genres</li>
+                        <li>Amélioration de la sécurité alimentaire familiale</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Leçons Apprises -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-[#1e293b] mb-6">Leçons Apprises</h2>
+                <p class="text-gray-700 text-lg mb-4">
+                    Ce projet a démontré que :
+                </p>
+                <ul class="list-disc list-inside text-gray-700 text-lg space-y-3">
+                    <li><span class="font-semibold">L'engagement communautaire est essentiel</span> - Les femmes sont plus motivées quand elles voient que leurs préoccupations sont écoutées</li>
+                    <li><span class="font-semibold">L'inclusion des hommes est cruciale</span> - Pour changer les pratiques, il faut impliquer tous les membres de la communauté</li>
+                    <li><span class="font-semibold">La sensibilisation pérenne crée un changement durable</span> - Les impacts positifs se renforcent au fil du temps</li>
+                </ul>
+            </section>
+
+            <!-- Appel à Action -->
+            <div class="bg-[#1e293b] text-white rounded-xl p-8 mt-12">
+                <h3 class="text-2xl font-bold mb-4">Soutenez nos initiatives d'autonomisation</h3>
+                <p class="mb-6 text-lg">
+                    Votre contribution nous permet de continuer à promouvoir l'égalité des genres et l'autonomisation des femmes rurales au Togo.
+                </p>
+                <a href="donation.html" class="inline-block px-8 py-3 bg-mdh-yellow text-[#1e293b] rounded-full font-bold hover:bg-white transition duration-300">
+                    Faire un Don
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="mt-12 flex justify-between items-center">
+            <a href="actualites.html" class="inline-block px-6 py-3 bg-mdh-yellow text-white rounded-full font-semibold hover:bg-[#1e293b] transition duration-300">
+                ← Retour aux actualités
+            </a>
+        </div>
     </main>
+
     <footer class="bg-gray-900 text-white py-12 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 bg-gray-900/95 rounded-2xl p-8 shadow-2xl">
@@ -226,5 +316,5 @@
     </footer>
 
     <a href="vacances-utiles-2025.html" class="floating-button">Programme de Vacances Utiles 2025</a>
-    </body>
+</body>
 </html>

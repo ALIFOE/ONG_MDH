@@ -3,23 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Vacances Utiles 2025 à Apédokoè - Programme éducatif et loisirs pour enfants">
-    <title>Vacances Utiles 2025 à Apédokoè - MDH</title>
-    
-    <!-- Styles -->
+    <title>Participation des activités pratiques à Logoté - MDH</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="css/style.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
-    
-    <!-- Scripts -->
-    <script src="js/script.js" defer></script>
     <link rel="icon" href="images/favicon-mdh.png" type="image/png">
+    
+
     <link rel="stylesheet" href="css/floating-button.css">
 </head>
 <body class="font-sans bg-gray-100 text-gray-900">
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-[#1e293b] focus:text-white focus:z-50">Aller au contenu principal</a>
     <header class="bg-white/90 shadow-2xl fixed w-full z-50 backdrop-blur-md border-b border-gray-200">
         <nav class="max-w-7xl mx-auto px-4">
             <div class="flex items-center justify-between h-20">
@@ -88,163 +83,89 @@
             </div>
         </nav>
     </header>
+<script>
+    // Script pour le menu déroulant desktop
+    (function() {
+        var btn = document.getElementById('organisation-btn');
+        var dropdown = document.getElementById('organisation-dropdown');
+        var menu = document.getElementById('organisation-menu');
+        var open = false;
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            open = !open;
+            if (open) {
+                dropdown.classList.remove('hidden');
+                setTimeout(function() {
+                    dropdown.classList.add('opacity-100');
+                    dropdown.classList.remove('opacity-0');
+                    dropdown.classList.remove('pointer-events-none');
+                }, 10);
+            } else {
+                dropdown.classList.remove('opacity-100');
+                dropdown.classList.add('opacity-0');
+                dropdown.classList.add('pointer-events-none');
+                setTimeout(function() {
+                    dropdown.classList.add('hidden');
+                }, 200);
+            }
+        });
+        document.addEventListener('click', function(e) {
+            if (!menu.contains(e.target)) {
+                open = false;
+                dropdown.classList.remove('opacity-100');
+                dropdown.classList.add('opacity-0');
+                dropdown.classList.add('pointer-events-none');
+                setTimeout(function() {
+                    dropdown.classList.add('hidden');
+                }, 200);
+            }
+        });
+    })();
 
-    <main id="main-content" class="container mx-auto px-4 py-12 mt-20 bg-gray-100 min-h-screen">
-        <!-- Breadcrumb -->
-        <nav class="mb-8" aria-label="Breadcrumb">
-            <ol class="flex items-center space-x-2 text-sm text-gray-600">
-                <li><a href="index.html" class="text-[#1e293b] hover:text-mdh-yellow transition">Accueil</a></li>
-                <li>/</li>
-                <li><a href="actualites.html" class="text-[#1e293b] hover:text-mdh-yellow transition">Actualités</a></li>
-                <li>/</li>
-                <li class="text-gray-900 font-semibold">Vacances Utiles 2025</li>
-            </ol>
-        </nav>
-
-        <!-- Article Header -->
-        <article class="bg-white rounded-3xl shadow-xl overflow-hidden mb-10">
-            <img src="images/article2.jpg" alt="Vacances Utiles 2025 à Apédokoè" class="w-full h-96 object-cover">
-            <div class="p-8 md:p-12">
-                <div class="flex items-center gap-4 mb-4">
-                    <span class="text-mdh-yellow font-semibold text-lg">Juillet - Août 2025</span>
-                    <span class="text-gray-600">|</span>
-                    <span class="text-gray-600">Programme Éducatif</span>
-                </div>
-                <h1 class="text-4xl md:text-5xl font-extrabold text-[#1e293b] mb-4">Vacances Utiles 2025 à Apédokoè</h1>
-                <div class="w-24 h-1 bg-mdh-yellow rounded-full mb-6"></div>
-                <p class="text-xl text-gray-700 italic">Un programme complet d'occupation saine et éducative pour les enfants du quartier avec ateliers, jeux, sports et sensibilisation à l'environnement</p>
+    // Script pour le menu mobile
+    (function() {
+        var mobileBtn = document.getElementById('mobile-menu-button');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var menuOpenIcon = document.querySelector('.menu-open');
+        var menuCloseIcon = document.querySelector('.menu-close');
+        var isOpen = false;
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', function() {
+                isOpen = !isOpen;
+                if (isOpen) {
+                    mobileMenu.style.display = 'block';
+                    menuOpenIcon.classList.add('hidden');
+                    menuCloseIcon.classList.remove('hidden');
+                    mobileBtn.setAttribute('aria-expanded', 'true');
+                } else {
+                    mobileMenu.style.display = 'none';
+                    menuOpenIcon.classList.remove('hidden');
+                    menuCloseIcon.classList.add('hidden');
+                    mobileBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    })();
+</script>
+    <main id="main-content" class="container mx-auto px-4 py-12 mt-24 bg-gray-100 min-h-screen">
+        <article class="max-w-3xl mx-auto bg-white/90 rounded-3xl shadow-xl p-8 border border-[#1e293b]/10">
+            <img src="images/blanc2.jpg" alt="Soutien scolaire Logoté" class="w-full h-64 object-cover rounded-xl mb-6">
+            <span class="text-mdh-yellow font-semibold">Décembre 2023</span>
+            <h1 class="text-3xl font-bold text-[#1e293b] mt-2 mb-4">Participation des activités pratiques dans le centre de Formation Artisanal à Logoté</h1>
+            <p class="text-gray-700 mb-6 text-lg">
+                Préparation du sable et fabrication des briques écologiques et bricolage dans la construction d’un bâtiment.<br>
+                ........................................................................................<br>
+                Participation in practical activities in the Artisanal Training center in Logoté.<br>
+                Preparation of sand and manufacturing of ecological bricks and DIY in the construction of a building.
+            </p>
+            <h2 class="text-xl font-bold text-[#1e293b] mb-2 mt-8">Galerie</h2>
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <img src="images/blanc2.jpg" alt="Logoté - 1" class="rounded-xl object-cover h-40 w-full">
+                <img src="images/image debut chantier.jpg" alt="Logoté - 2" class="rounded-xl object-cover h-40 w-full">
             </div>
+            <a href="actualites.html" class="inline-block mt-6 px-6 py-2 bg-mdh-yellow text-white rounded-full font-semibold hover:bg-[#1e293b] hover:text-mdh-yellow transition">← Retour aux actualités</a>
         </article>
-
-        <!-- Article Content -->
-        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 prose prose-lg max-w-none">
-            
-            <!-- Introduction -->
-            <section class="mb-12">
-                <h2 class="text-3xl font-bold text-[#1e293b] mb-6">Introduction</h2>
-                <p class="text-gray-700 text-lg mb-4">
-                    Le siège social de l'Organisation MDH à Apédokoè accueille le programme « Vacances Utiles 2025 » : ateliers éducatifs, jeux, activités sportives, sensibilisation à l'environnement, soutien scolaire et développement personnel pour les enfants et jeunes du quartier. Un été riche en apprentissages, découvertes et partage !
-                </p>
-                <p class="text-gray-700 text-lg">
-                    Le programme a pour objectifs principaux de permettre aux enfants de profiter de leur temps libre de manière constructive, en combinant apprentissage et divertissement, tout en développant leurs talents et capacités.
-                </p>
-            </section>
-
-            <!-- Programme Détaillé -->
-            <section class="mb-12">
-                <h2 class="text-3xl font-bold text-[#1e293b] mb-6">Programme Détaillé</h2>
-
-                <!-- Ateliers Éducatifs -->
-                <div class="mb-8 pl-6 border-l-4 border-mdh-yellow">
-                    <h3 class="text-2xl font-bold text-[#1e293b] mb-4">1. Ateliers Éducatifs</h3>
-                    <p class="text-gray-700 text-lg mb-4">
-                        Nos ateliers éducatifs couvrent les domaines fondamentaux pour l'épanouissement des enfants :
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 text-lg space-y-2 ml-4">
-                        <li><span class="font-semibold">Lecture et Écriture :</span> Amélioration des compétences linguistiques</li>
-                        <li><span class="font-semibold">Mathématiques :</span> Jeux et exercices pratiques</li>
-                        <li><span class="font-semibold">Sciences :</span> Découvertes et expériences ludiques</li>
-                        <li><span class="font-semibold">Arts et Culture :</span> Expression créative et artistique</li>
-                    </ul>
-                </div>
-
-                <!-- Jeux et Activités Sportives -->
-                <div class="mb-8 pl-6 border-l-4 border-mdh-yellow">
-                    <h3 class="text-2xl font-bold text-[#1e293b] mb-4">2. Jeux et Activités Sportives</h3>
-                    <p class="text-gray-700 text-lg mb-4">
-                        L'activité physique est essentielle au bien-être des enfants. Nous proposons :
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 text-lg space-y-2 ml-4">
-                        <li>Football et sports collectifs</li>
-                        <li>Jeux de société (stratégie, logique)</li>
-                        <li>Olympiades et compétitions amicales</li>
-                        <li>Jeux traditionnels du Togo</li>
-                    </ul>
-                </div>
-
-                <!-- Sensibilisation à l'Environnement -->
-                <div class="mb-8 pl-6 border-l-4 border-mdh-yellow">
-                    <h3 class="text-2xl font-bold text-[#1e293b] mb-4">3. Sensibilisation à l'Environnement</h3>
-                    <p class="text-gray-700 text-lg mb-4">
-                        Conscients des enjeux environnementaux, nous éduquons les enfants aux bonnes pratiques :
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 text-lg space-y-2 ml-4">
-                        <li>Tri sélectif et gestion des déchets</li>
-                        <li>Jardinage et plantation d'arbres</li>
-                        <li>Écologie et conservation de la nature</li>
-                        <li>Sensibilisation au développement durable</li>
-                    </ul>
-                </div>
-
-                <!-- Soutien Scolaire -->
-                <div class="mb-8 pl-6 border-l-4 border-mdh-yellow">
-                    <h3 class="text-2xl font-bold text-[#1e293b] mb-4">4. Soutien Scolaire Personnalisé</h3>
-                    <p class="text-gray-700 text-lg">
-                        Un accompagnement individuel pour les enfants ayant des difficultés d'apprentissage ou souhaitant progresser rapidement.
-                    </p>
-                </div>
-
-                <!-- Développement Personnel -->
-                <div class="mb-8 pl-6 border-l-4 border-mdh-yellow">
-                    <h3 class="text-2xl font-bold text-[#1e293b] mb-4">5. Développement Personnel</h3>
-                    <p class="text-gray-700 text-lg mb-4">
-                        Au-delà des savoirs académiques, nous accompagnons le développement global des enfants :
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 text-lg space-y-2 ml-4">
-                        <li>Renforcement de la confiance en soi</li>
-                        <li>Développement de l'expression orale</li>
-                        <li>Stimulation de la créativité</li>
-                        <li>Apprentissage du travail en équipe</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Galerie -->
-            <section class="mb-12">
-                <h2 class="text-3xl font-bold text-[#1e293b] mb-8">Galerie</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <img src="images/article2.jpg" alt="Vacances Utiles 2025 - Enfants avec des livres" class="rounded-xl object-cover h-64 w-full shadow-lg">
-                    <img src="images/education2.jpg" alt="Vacances Utiles 2025 - Activités éducatives" class="rounded-xl object-cover h-64 w-full shadow-lg">
-                </div>
-            </section>
-
-            <!-- Impact et Résultats -->
-            <section class="mb-12">
-                <h2 class="text-3xl font-bold text-[#1e293b] mb-6">Impact et Résultats</h2>
-                <div class="bg-mdh-yellow/10 rounded-xl p-6 border-l-4 border-mdh-yellow">
-                    <p class="text-gray-700 text-lg mb-4">
-                        Le programme Vacances Utiles 2025 a permis à de nombreux enfants du quartier d'Apédokoè de :
-                    </p>
-                    <ul class="list-disc list-inside text-gray-700 text-lg space-y-2">
-                        <li>Améliorer leurs performances scolaires</li>
-                        <li>Développer de nouvelles compétences</li>
-                        <li>Renforcer leur confiance en eux</li>
-                        <li>Créer des liens d'amitié durables</li>
-                        <li>S'impliquer dans la protection de l'environnement</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Appel à Action -->
-            <div class="bg-[#1e293b] text-white rounded-xl p-8 mt-12">
-                <h3 class="text-2xl font-bold mb-4">Vous voulez soutenir notre cause ?</h3>
-                <p class="mb-6 text-lg">
-                    Le programme Vacances Utiles ne peut se réaliser que grâce à la générosité de nos donateurs. Chaque contribution, grande ou petite, aide à transformer la vie des enfants.
-                </p>
-                <a href="donation.html" class="inline-block px-8 py-3 bg-mdh-yellow text-[#1e293b] rounded-full font-bold hover:bg-white transition duration-300">
-                    Faire un Don
-                </a>
-            </div>
-        </div>
-
-        <!-- Navigation -->
-        <div class="mt-12 flex justify-between items-center">
-            <a href="actualites.html" class="inline-block px-6 py-3 bg-mdh-yellow text-white rounded-full font-semibold hover:bg-[#1e293b] transition duration-300">
-                ← Retour aux actualités
-            </a>
-        </div>
     </main>
-
     <footer class="bg-gray-900 text-white py-12 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 bg-gray-900/95 rounded-2xl p-8 shadow-2xl">
@@ -302,5 +223,5 @@
     </footer>
 
     <a href="vacances-utiles-2025.html" class="floating-button">Programme de Vacances Utiles 2025</a>
-</body>
+    </body>
 </html>

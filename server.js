@@ -2,10 +2,34 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-// Servir les fichiers statiques
+// Servir les fichiers statiques avec extension automatique .html
 app.use(express.static(path.join(__dirname), {
     extensions: ['html']
 }));
+
+// Middleware pour rediriger les URLs sans extension vers les fichiers .html
+app.use((req, res, next) => {
+    // Ignorer les requêtes pour les fichiers statiques (css, js, images, etc.)
+    if (req.url.includes('.') && !req.url.endsWith('.html')) {
+        return next();
+    }
+    
+    // Si la requête est pour la racine, servir index.html
+    if (req.path === '/') {
+        return res.sendFile(path.join(__dirname, 'index.html'));
+    }
+    
+    // Si l'URL ne se termine pas par .html et n'est pas un dossier, ajouter .html
+    if (!req.url.endsWith('.html') && !req.url.endsWith('/') && !req.path.includes('.')) {
+        const filePath = path.join(__dirname, req.url + '.html');
+        
+        const fs = require('fs');
+        if (fs.existsSync(filePath)) {
+            return res.sendFile(filePath);
+        }
+    }
+    next();
+});
 
 // Middleware simple pour les logs
 app.use((req, res, next) => {

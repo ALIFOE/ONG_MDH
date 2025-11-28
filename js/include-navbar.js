@@ -9,7 +9,9 @@ function getBasePath() {
 // Fonction de navigation
 function navigateTo(page) {
     const basePath = getBasePath();
-    window.location.href = basePath + page;
+    // Retirer l'extension .html pour l'URL affichée
+    const pageUrl = page.replace('.html', '');
+    window.location.href = basePath + pageUrl;
 }
 
 // Fonction pour initialiser le menu mobile
@@ -112,7 +114,10 @@ async function loadNavbar() {
 
 // Fonction pour mettre en surbrillance le lien actif
 function highlightActiveNavLink() {
-    const currentPage = window.location.pathname.split('/').pop().replace('.html', '') || 'index';
+    // Obtenir le nom de la page sans extension et sans chemin
+    const currentPath = window.location.pathname;
+    const currentPage = currentPath.split('/').pop().replace('.html', '') || 'index';
+    
     document.querySelectorAll('[data-page]').forEach(link => {
         if (link.dataset.page === currentPage) {
             link.classList.add('text-mdh-blue', 'font-semibold');
