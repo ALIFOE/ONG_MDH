@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="L'Organisation MDH International Togo - Rejoignez l'L'Organisation MDH Togo et participez à nos actions humanitaires.">
+    <title>Nous Rejoindre - MDH</title>
+    
+        <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+      <!-- Scripts -->
+    <script src="js/script.js" defer></script>
+    <link rel="icon" href="images/favicon-mdh.png" type="image/png">
+    
+
+    <link rel="stylesheet" href="css/floating-button.css">
+</head>
+<body class="font-sans bg-gray-100 text-gray-900">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-[#1e293b] focus:text-white focus:z-50">Aller au contenu principal</a>
+    <header class="bg-white/90 shadow-2xl fixed w-full z-50 backdrop-blur-md border-b border-gray-200">
+        <nav class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Container -->
+                <div class="flex-shrink-0 min-w-[192px] w-48 h-20 flex items-center">
+                    <a href="index.html" class="block w-full" aria-label="Retour à l'accueil">
+                        <img src="images/logo_mdh.png" alt="L'Organisation MDH International Togo" class="h-12 w-auto object-contain">
+                    </a>
+                </div>
+                <!-- Navigation Links -->
+                <div class="flex-1 flex items-center justify-between px-4">
+                    <!-- Primary Navigation -->
+                    <nav class="hidden md:flex items-center space-x-8">
+                        <a href="index.html" class="nav-link" data-page="index">Accueil</a>
+                        <div class="relative" id="organisation-menu">
+                            <button type="button" class="nav-link flex items-center focus:outline-none" id="organisation-btn">
+                                L'Organisation
+                                <svg class="ml-2 w-4 h-4 text-[#1e293b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </button>
+                            <div id="organisation-dropdown" class="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-200 opacity-0 pointer-events-none transition-opacity duration-200 z-50 hidden">
+                                <a href="association.html" class="block px-4 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">L'Organisation</a>
+                                <a href="notre-equipe.html" class="block px-4 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">Notre équipe</a>
+                            </div>
+                        </div>
+                        <a href="actions.html" class="nav-link" data-page="actions">Nos Actions</a>
+                        <a href="actualites.html" class="nav-link" data-page="actualites">Nos Actualités</a>
+                        <a href="rejoindre.html" class="nav-link" data-page="rejoindre">Rejoindre-nous</a>
+                        <a href="ecole.html" class="nav-link" data-page="ecole">Notre École</a>
+                        <a href="contact.html" class="nav-link" data-page="contact">Contactez-nous</a>
+                    </nav>
+                    <!-- Bouton Don -->
+                    <div class="hidden md:block">
+                        <a href="donation.html" class="py-2 px-6 bg-[#1e293b] text-white rounded-full hover:bg-yellow-400 hover:text-[#1e293b] font-bold shadow-md transition duration-300">Faire un don</a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="mobile-menu-button p-2 rounded-xl hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1e293b]" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <svg class="h-6 w-6 text-[#1e293b]" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div class="hidden mobile-menu md:hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="index.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="index">Accueil</a>
+                    <details>
+                        <summary class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl cursor-pointer flex items-center justify-between">L'Organisation <i class="fas fa-chevron-down ml-2 text-xs"></i></summary>
+                        <div class="pl-4">
+                            <a href="association.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-100 rounded-xl">L'Organisation</a>
+                            <a href="notre-equipe.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-100 rounded-xl">Notre équipe</a>
+                        </div>
+                    </details>
+                    <a href="actions.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actions">Nos Actions</a>
+                    <a href="actualites.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actualites">Nos Actualités</a>
+                    <a href="rejoindre.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="rejoindre">Rejoindre-nous</a>
+                    <a href="ecole.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="ecole">Notre École</a>
+                    <a href="contact.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="contact">Contactez-nous</a>
+                    <a href="donation.html" class="block px-3 py-2 bg-[#1e293b] text-white rounded-xl hover:bg-yellow-400 hover:text-[#1e293b] font-bold">Faire un don</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" class="container mx-auto px-4 py-12 mt-20 bg-gray-100 min-h-screen">
+        <!-- Hero Section -->
+        <section class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#1e293b] mb-4 tracking-tight drop-shadow-lg">Rejoignez-nous</h1>
+            <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-2">
+                Ensemble, nous pouvons faire la différence. Découvrez comment vous pouvez contribuer à notre mission.
+            </p>
+            <div class="w-24 h-1 bg-mdh-yellow mx-auto rounded-full mb-4"></div>
+        </section>
+
+        <!-- Ways to Join -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
+            <!-- Bénévole -->
+            <div class="bg-white/90 rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-shadow duration-300 border border-[#1e293b]/10 flex flex-col items-center group">
+                <div class="bg-[#1e293b] text-mdh-yellow rounded-full w-16 h-16 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-hands-helping text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-[#1e293b] tracking-tight">Devenir Bénévole</h3>
+                <p class="text-gray-700 mb-6 text-center">
+                    Donnez de votre temps et de vos compétences pour soutenir nos actions sur le terrain.
+                </p>
+                <a href="#volunteer-form" class="inline-block bg-[#1e293b] text-white px-8 py-3 rounded-full font-semibold shadow hover:bg-mdh-yellow hover:text-[#1e293b] transition duration-300 text-lg tracking-wide">
+                    Je veux aider
+                </a>
+            </div>
+
+            <!-- Adhérent -->
+            <div class="bg-white/90 rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-shadow duration-300 border border-[#1e293b]/10 flex flex-col items-center group">
+                <div class="bg-mdh-yellow text-white rounded-full w-16 h-16 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-user-plus text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-[#1e293b] tracking-tight">Devenir Adhérent</h3>
+                <p class="text-gray-700 mb-6 text-center">
+                    Rejoignez notre association et participez activement à nos décisions et nos actions.
+                </p>
+                <a href="#member-form" class="inline-block bg-mdh-yellow text-white px-8 py-3 rounded-full font-semibold shadow hover:bg-[#1e293b] hover:text-mdh-yellow transition duration-300 text-lg tracking-wide">
+                    Adhérer
+                </a>
+            </div>
+
+            <!-- Donateur -->
+            <div class="bg-white/90 rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-shadow duration-300 border border-[#1e293b]/10 flex flex-col items-center group">
+                <div class="bg-[#1e293b] text-mdh-yellow rounded-full w-16 h-16 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-gift text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-[#1e293b] tracking-tight">Devenir Donateur</h3>
+                <p class="text-gray-700 mb-6 text-center">
+                    Soutenez nos projets financièrement et contribuez à leur réalisation.
+                </p>
+                <a href="donation.html" class="inline-block bg-[#1e293b] text-white px-8 py-3 rounded-full font-semibold shadow hover:bg-mdh-yellow hover:text-[#1e293b] transition duration-300 text-lg tracking-wide">
+                    Faire un don
+                </a>
+            </div>
+        </section>
+
+        <!-- Volunteer Form -->
+        <section id="volunteer-form" class="bg-white/90 rounded-3xl shadow-xl p-10 mb-20 border border-[#1e293b]/10">
+            <h2 class="text-3xl font-bold mb-8 text-center text-[#1e293b] tracking-tight">Formulaire de Bénévolat</h2>
+            <form action="https://formspree.io/f/mwpbyqgw" method="POST" class="max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input type="hidden" name="_next" value="merci-benevole.html">
+                <div>
+                    <label class="block text-[#1e293b] mb-2 font-semibold" for="name">Nom complet</label>
+                    <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-[#1e293b]/20 rounded-lg bg-gray-50 focus:ring-2 focus:ring-mdh-yellow focus:border-mdh-yellow transition" required>
+                </div>
+                <div>
+                    <label class="block text-[#1e293b] mb-2 font-semibold" for="email">Email</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-[#1e293b]/20 rounded-lg bg-gray-50 focus:ring-2 focus:ring-mdh-yellow focus:border-mdh-yellow transition" required>
+                </div>
+                <div>
+                    <label class="block text-[#1e293b] mb-2 font-semibold" for="phone">Numéro de téléphone</label>
+                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-[#1e293b]/20 rounded-lg bg-gray-50 focus:ring-2 focus:ring-mdh-yellow focus:border-mdh-yellow transition" required pattern="[+0-9 ]{7,20}" placeholder="Ex: +228 90 00 00 00">
+                </div>
+                
+                <div class="md:col-span-2">
+                    <label class="block text-[#1e293b] mb-2 font-semibold" for="skills">Compétences</label>
+                    <textarea id="skills" name="skills" rows="3" class="w-full px-4 py-2 border border-[#1e293b]/20 rounded-lg bg-gray-50 focus:ring-2 focus:ring-mdh-yellow focus:border-mdh-yellow transition" required></textarea>
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-[#1e293b] mb-2 font-semibold" for="availability">Disponibilités</label>
+                    <textarea id="availability" name="availability" rows="3" class="w-full px-4 py-2 border border-[#1e293b]/20 rounded-lg bg-gray-50 focus:ring-2 focus:ring-mdh-yellow focus:border-mdh-yellow transition" required></textarea>
+                </div>
+                <div class="md:col-span-2 text-center">
+                    <button type="submit" class="bg-mdh-yellow text-white px-10 py-3 rounded-full font-bold text-lg shadow hover:bg-[#1e293b] hover:text-mdh-yellow transition duration-300">
+                        Envoyer ma candidature
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Member Form -->
+        <section id="member-form" class="bg-white/90 rounded-3xl shadow-xl p-10 border border-[#1e293b]/10">
+            <h2 class="text-3xl font-bold mb-8 text-center text-[#1e293b] tracking-tight">Formulaire d'Adhésion</h2>
+            <form action="https://formspree.io/f/movwrnad" method="POST" class="max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                 <input type="hidden" name="_redirect" value="https://alifoe.github.io/L'Organisation_MDH/merci.html">
+                <div>
+                    <label class="block text-[#1e293b] mb-2 font-semibold" for="member-name">Nom complet</label>
+                    <input type="text" id="member-name" name="member-name" class="w-full px-4 py-2 border border-[#1e293b]/20 rounded-lg bg-gray-50 focus:ring-2 focus:ring-mdh-yellow focus:border-mdh-yellow transition" required>
+                </div>
+                <div>
+                    <label class="block text-[#1e293b] mb-2 font-semibold" for="member-email">Email</label>
+                    <input type="email" id="member-email" name="member-email" class="w-full px-4 py-2 border border-[#1e293b]/20 rounded-lg bg-gray-50 focus:ring-2 focus:ring-mdh-yellow focus:border-mdh-yellow transition" required>
+                </div>
+                <div>
+                    <label class="block text-[#1e293b] mb-2 font-semibold" for="phone">Téléphone</label>
+                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-[#1e293b]/20 rounded-lg bg-gray-50 focus:ring-2 focus:ring-mdh-yellow focus:border-mdh-yellow transition" required>
+                </div>
+                <div>
+                    <label class="block text-[#1e293b] mb-2 font-semibold" for="address">Adresse</label>
+                    <input type="text" id="address" name="address" class="w-full px-4 py-2 border border-[#1e293b]/20 rounded-lg bg-gray-50 focus:ring-2 focus:ring-mdh-yellow focus:border-mdh-yellow transition" required>
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-[#1e293b] mb-2 font-semibold" for="motivation">Motivation</label>
+                    <textarea id="motivation" name="motivation" rows="3" class="w-full px-4 py-2 border border-[#1e293b]/20 rounded-lg bg-gray-50 focus:ring-2 focus:ring-mdh-yellow focus:border-mdh-yellow transition" required></textarea>
+                </div>
+                <div class="md:col-span-2 text-center">
+                    <button type="submit" class="bg-mdh-yellow text-white px-10 py-3 rounded-full font-bold text-lg shadow hover:bg-[#1e293b] hover:text-mdh-yellow transition duration-300">
+                        Envoyer ma demande d'adhésion
+                    </button>
+                </div>
+            </form>
+        </section>    
+    </main>    
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 bg-gray-900/95 rounded-2xl p-8 shadow-2xl">
+                <!-- About -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">À propos de MDH</h3>
+                    <p class="text-gray-300">MDH œuvre pour le développement humain à travers l'éducation et le soutien aux communautés vulnérables.</p>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">Liens Rapides</h3>
+                    <ul class="space-y-2">
+                        <li><a href="association.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">L'Organisation</a></li>
+                        <li><a href="actions.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">Nos Actions</a></li>
+                        <li><a href="ecole.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">Notre École</a></li>
+                        <li><a href="actualites.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">Actualités</a></li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><span class="font-semibold">Email :</span> modehumain@gmail.com</li>
+                        <li><span class="font-semibold">Tél :</span> +228 92 12 95 49</li>
+                        <li><span class="font-semibold">Adresse :</span> Aflao-Sagbado (Apedokoè), Lomé, Togo</li>
+                    </ul>
+                </div>
+                <!-- Social -->
+                <div>
+                    <h3 class="text-xl font-extrabold tracking-tight mb-4">Suivez-nous</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/www.modehumain.org" aria-label="Facebook" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-facebook text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                        <a href="#" aria-label="Twitter" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-twitter text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                        <a href="https://www.instagram.com/ngo_mdh" aria-label="Instagram" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-instagram text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                        <a href="https://www.linkedin.com/company/assomdh" aria-label="LinkedIn" class="group">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 group-hover:bg-yellow-400 transition duration-200">
+                                <i class="fab fa-linkedin text-xl text-gray-300 group-hover:text-[#1e293b]"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-400">&copy; 2024 L'Organisation MDH international Togo. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gestion du menu mobile
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    const menuOpen = document.querySelector('.menu-open');
+                    const menuClose = document.querySelector('.menu-close');
+                    menuOpen.classList.toggle('hidden');
+                    menuClose.classList.toggle('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 
+                        mobileMenuButton.getAttribute('aria-expanded') === 'false' ? 'true' : 'false'
+                    );
+                });
+            }
+
+            // Dropdown desktop : click pour ouvrir/fermer
+            const organisationDropdown = document.getElementById('organisation-dropdown');
+            const organisationMenu = document.getElementById('organisation-menu');
+            if (organisationDropdown && organisationMenu) {
+                organisationDropdown.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const expanded = organisationDropdown.getAttribute('aria-expanded') === 'true';
+                    organisationDropdown.setAttribute('aria-expanded', (!expanded).toString());
+                    organisationMenu.classList.toggle('hidden');
+                });
+                // Fermer le menu si clic en dehors
+                document.addEventListener('click', function(e) {
+                    if (!organisationDropdown.contains(e.target) && !organisationMenu.contains(e.target)) {
+                        organisationMenu.classList.add('hidden');
+                        organisationDropdown.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            // Marquer le lien actif dans la navigation
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('text-mdh-yellow', 'font-semibold');
+                }
+            });
+        });
+    </script>
+
+    <a href="vacances-utiles-2025.html" class="floating-button">Programme de Vacances Utiles 2025</a>
+    </body>
+</html>
+
+
+
