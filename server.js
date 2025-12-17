@@ -33,6 +33,12 @@ app.use((req, res, next) => {
     res.setHeader('X-Frame-Options', 'SAMEORIGIN');
     res.setHeader('X-XSS-Protection', '1; mode=block');
     res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    
+    // Si déployé sur un serveur avec HTTPS
+    if (req.headers['x-forwarded-proto'] === 'http') {
+        return res.redirect(301, `https://${req.headers.host}${req.url}`);
+    }
+    
     next();
 });
 
