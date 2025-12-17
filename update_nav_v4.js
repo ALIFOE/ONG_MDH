@@ -81,27 +81,27 @@ const pages = [
     {
         file: "actions.html",
         title: "Nos Actions",
-        description: "Découvrez les actions de l'L'Organisation MDH Togo dans les domaines de l'éducation, la santé et le développement durable.",
+        description: "Découvrez les actions de L'Organisation MDH Togo dans les domaines de l'éducation, la santé et le développement durable.",
     },
     {
         file: "actualites.html",
         title: "Nos Actualités",
-        description: "Restez informé des dernières actualités et événements de l'L'Organisation MDH Togo.",
+        description: "Restez informé des dernières actualités et événements de L'Organisation MDH Togo.",
     },
     {
         file: "association.html",
         title: "L'Organisation",
-        description: "Découvrez l'histoire, la mission et les valeurs de l'L'Organisation MDH Togo.",
+        description: "Découvrez l'histoire, la mission et les valeurs de L'Organisation MDH Togo.",
     },
     {
         file: "contact.html",
         title: "Nous Contacter",
-        description: "Contactez l'L'Organisation MDH Togo pour plus d'informations ou pour participer à nos actions.",
+        description: "Contactez L'Organisation MDH Togo pour plus d'informations ou pour participer à nos actions.",
     },
     {
         file: "donation.html",
         title: "Faire un don",
-        description: "Soutenez les actions de l'L'Organisation MDH Togo en faisant un don.",
+        description: "Soutenez les actions de L'Organisation MDH Togo en faisant un don.",
     },
     {
         file: "ecole.html",
@@ -116,7 +116,7 @@ const pages = [
     {
         file: "rejoindre.html",
         title: "Nous Rejoindre",
-        description: "Rejoignez l'L'Organisation MDH Togo et participez à nos actions humanitaires.",
+        description: "Rejoignez L'Organisation MDH Togo et participez à nos actions humanitaires.",
     },
 ];
 
