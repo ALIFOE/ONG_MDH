@@ -6,6 +6,9 @@ const compression = require('compression');
 
 const app = express();
 
+// Trust proxy - IMPORTANT pour les hébergeurs avec HTTPS
+app.set('trust proxy', 1);
+
 // Security and Performance Middleware
 app.use(helmet({
     contentSecurityPolicy: {
@@ -29,6 +32,11 @@ app.use((req, res, next) => {
     res.setHeader('X-Frame-Options', 'SAMEORIGIN');
     res.setHeader('X-XSS-Protection', '1; mode=block');
     res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    
+    // Redirection HTTPS seulement si nécessaire et pas déjà HTTPS
+    if (req.get('x-forwarded-proto') !== 'https' && process.env.NODE_ENV === 'production') {
+        return res.redirect(301, 'https://' + req.get('host') + req.url);
+    }
     next();
 });
 
