@@ -1,5 +1,0 @@
-Supprimez manuellement les fichiers suivants si vous ne les voyez plus dans l'interface :
-- paydunya-checkout.php
-- payment-status.php
-
-Ils sont liés à l'intégration PayDunya et ne sont plus nécessaires.
