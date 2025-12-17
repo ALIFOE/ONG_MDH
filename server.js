@@ -10,18 +10,14 @@ const app = express();
 app.use(helmet({
     contentSecurityPolicy: {
         directives: {
-            defaultSrc: ["'self'"],
-            scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.tailwindcss.com", "https://cdnjs.cloudflare.com", "https://www.googletagmanager.com", "https://www.google-analytics.com"],
-            styleSrc: ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com"],
-            imgSrc: ["'self'", "https:", "data:"],
-            connectSrc: ["'self'", "https://www.google-analytics.com", "https://www.googletagmanager.com", "https:"],
+            defaultSrc: ["'self'", "*"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "*"],
+            styleSrc: ["'self'", "'unsafe-inline'", "*"],
+            imgSrc: ["'self'", "https:", "data:", "*"],
+            connectSrc: ["'self'", "*"],
         }
     },
-    hsts: {
-        maxAge: 31536000,
-        includeSubDomains: true,
-        preload: true
-    }
+    hsts: false
 }));
 
 // Compression middleware for better performance
