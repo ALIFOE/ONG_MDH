@@ -18,12 +18,32 @@
 }
 
 /* Styles de base */
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+    overflow-y: scroll;
+}
+
 body {
     color: #2D3748;
+    min-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--mdh-blue-dark);
+}
+
+/* Main content area - ensure proper scrolling */
+main {
+    flex: 1;
+    width: 100%;
+}
+
+/* Ensure no overflow issues */
+.container, main, body {
+    box-sizing: border-box;
 }
 
 /* Liens et boutons */
@@ -304,4 +324,19 @@ textarea:focus {
     object-fit: contain;
     transform: translateZ(0); /* Force GPU acceleration */
     backface-visibility: hidden;
+}
+
+/* Fix scrolling issues - ensure wrapper has no overflow constraints */
+body > * {
+    box-sizing: border-box;
+}
+
+/* Ensure header doesn't block scrolling */
+header {
+    pointer-events: auto;
+}
+
+/* Ensure main content scrolls properly */
+main {
+    overflow: visible !important;
 }

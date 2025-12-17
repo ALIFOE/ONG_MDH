@@ -3,21 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Parrainez un enfant avec l'L'Organisation MDH International Togo et changez une vie durablement.">
-    <title>Parrainage des enfants - MDH</title>
+    <meta name="description" content="Participez à notre programme de parrainage pour soutenir l'éducation des enfants au Togo.">
+    <meta name="keywords" content="parrainage enfant, sponsorship, éducation enfants Togo, soutien scolaire">
+    <meta name="author" content="MDH International Togo">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="canonical" content="https://modehumain.org/parrainage">
+    <title>Parrainage - MDH International Togo | Parrainer un Enfant</title>
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Parrainage - MDH International Togo">
+    <meta property="og:description" content="Parrainez un enfant et transformez sa vie à travers l'éducation.">
+    <meta property="og:url" content="https://modehumain.org/parrainage">
+    <meta property="og:image" content="https://modehumain.org/images/logo_mdh.png">
+    <meta property="og:site_name" content="MDH International Togo">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Parrainage - MDH International Togo">
+    <meta name="twitter:description" content="Parrainez un enfant et transformez sa vie à travers l'éducation.">
+    <meta name="twitter:image" content="https://modehumain.org/images/logo_mdh.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="css/style.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
     <script src="js/script.js" defer></script>
     <link rel="icon" href="images/favicon-mdh.png" type="image/png">
-    
-
     <link rel="stylesheet" href="css/floating-button.css">
-</head>
-<body class="font-sans bg-gray-100 text-gray-900">
+
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#1e293b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MDH Togo">
+    <link rel="apple-touch-icon" href="images/favicon-mdh.png">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Preconnect pour performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z7HJ66X9Q0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z7HJ66X9Q0');
+    </script>
+    
+    <!-- GA4 Advanced Events -->
+    <script src="js/ga4-events.js"></script>
+    
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://modehumain.org"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Programme de Parrainage",
+          "item": "https://modehumain.org/parrainage.html"
+        }
+      ]
+    }
+    </script>
+    </head>
+<body class="font-sans bg-gray-100 bg-gray-100">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-[#1e293b] focus:text-white focus:z-50">Aller au contenu principal</a>
+    
     <header class="bg-white/90 shadow-2xl fixed w-full z-50 backdrop-blur-md border-b border-gray-200">
         <nav class="max-w-7xl mx-auto px-4">
             <div class="flex items-center justify-between h-20">
@@ -26,6 +90,7 @@
                         <img src="images/logo_mdh.png" alt="L'Organisation MDH International Togo" class="h-12 w-auto object-contain">
                     </a>
                 </div>
+                
                 <div class="flex-1 flex items-center justify-between px-4">
                     <nav class="hidden md:flex items-center space-x-8">
                         <a href="index.html" class="nav-link" data-page="index">Accueil</a>
@@ -49,7 +114,7 @@
                         <a href="donation.html" class="py-2 px-6 bg-[#1e293b] text-white rounded-full hover:bg-yellow-400 hover:text-[#1e293b] font-bold shadow-md transition duration-300">Faire un don</a>
                     </div>
                 </div>
-                <!-- Mobile menu button -->
+                
                 <div class="md:hidden">
                     <button id="mobile-menu-button" class="mobile-menu-button p-2 rounded-xl hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1e293b]" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
                         <svg class="h-6 w-6 text-[#1e293b]" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -59,6 +124,7 @@
                     </button>
                 </div>
             </div>
+            
             <!-- Mobile menu -->
             <div class="hidden mobile-menu md:hidden" id="mobile-menu">
                 <div class="px-2 pt-2 pb-3 space-y-1">
@@ -78,38 +144,9 @@
                     <a href="donation.html" class="block px-3 py-2 bg-[#1e293b] text-white rounded-xl hover:bg-yellow-400 hover:text-[#1e293b] font-bold">Faire un don</a>
                 </div>
             </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="mobile-menu-button p-2 rounded-xl hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-[#1e293b]" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
-                        <svg class="h-6 w-6 text-[#1e293b]" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                            <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                            <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <div class="hidden mobile-menu md:hidden" id="mobile-menu">
-                <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="index.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="index">Accueil</a>
-                    <div class="relative group w-full">
-                        <details class="w-full">
-                            <summary class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl cursor-pointer">L'Organisation</summary>
-                            <div class="pl-4">
-                                <a href="association.html" class="block px-3 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">L'Organisation</a>
-                                <a href="notre-equipe.html" class="block px-3 py-2 text-[#1e293b] hover:bg-mdh-yellow hover:text-white rounded-xl">Notre équipe</a>
-                            </div>
-                        </details>
-                    </div>
-                    <a href="actions.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actions">Nos Actions</a>
-                    <a href="actualites.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="actualites">Nos Actualités</a>
-                    <a href="rejoindre.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="rejoindre">Rejoindre-nous</a>
-                    <a href="ecole.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="ecole">Notre École</a>
-                    <a href="contact.html" class="block px-3 py-2 text-[#1e293b] hover:bg-gray-200 rounded-xl" data-page="contact">Contactez-nous</a>
-                    <a href="donation.html" class="block px-3 py-2 bg-[#1e293b] text-white rounded-xl hover:bg-yellow-400 hover:text-[#1e293b] font-bold">Faire un don</a>
-                </div>
-            </div>
         </nav>
+        
         <script>
-        // Dropdown menu logic
         document.addEventListener('DOMContentLoaded', function () {
             var btn = document.getElementById('organisation-btn');
             var dropdown = document.getElementById('organisation-dropdown');
@@ -130,193 +167,327 @@
             }
         });
         </script>
-    <main id="main-content" class="container mx-auto px-2 md:px-8 py-16 mt-24">
-        <section class="text-center mb-16 max-w-6xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-yellow-400">
-                Parrainage des enfants
-            </h1>
-            <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-6">Parrainez un enfant et offrez-lui la chance d’un avenir meilleur grâce à l’éducation, la santé et un accompagnement personnalisé. Votre engagement change une vie durablement.</p>
-            <img src="images/image parrain.png" alt="Parrainage d'enfants" class="mx-auto rounded-3xl shadow-2xl w-full max-w-5xl h-96 object-cover object-center mb-8">
+    </header>
+
+    <main id="main-content" class="pt-0">
+        <!-- Hero Section with Background Image -->
+        <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1e293b]" role="banner" aria-label="Section de parrainage" style="background-image: url('images/image parrain.png'); background-size: cover; background-position: center 50%;">
+            <div class="absolute inset-0 bg-black opacity-45"></div>
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center w-full">
+                <div class="inline-block mb-6 px-5 py-2 bg-yellow-400/90 rounded-full border-2 border-yellow-300">
+                    <span class="text-[#1e293b] font-bold text-sm">❤️ Programme de Parrainage</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-8 drop-shadow-lg">
+                    Parrainage des <span class="text-yellow-400">Enfants</span>
+                </h1>
+                <p class="text-2xl md:text-3xl text-white/95 mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+                    Offrez à un enfant la chance d'un avenir meilleur. Votre engagement change une vie durablement à travers l'éducation, la santé et l'accompagnement.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#parrainage-form" class="px-8 py-4 bg-yellow-400 text-[#1e293b] rounded-full text-lg font-bold shadow-lg hover:bg-white hover:text-yellow-400 transition duration-300 transform hover:scale-105">
+                        <i class="fas fa-heart mr-2"></i>Parrainer un Enfant
+                    </a>
+                    <a href="#pourquoi" class="px-8 py-4 bg-white/90 text-[#1e293b] rounded-full text-lg font-bold shadow-lg hover:bg-[#1e293b] hover:text-white transition duration-300 transform hover:scale-105">
+                        <i class="fas fa-arrow-down mr-2"></i>En Savoir Plus
+                    </a>
+                </div>
+            </div>
         </section>
-        <section class="w-full max-w-6xl mx-auto bg-white/90 rounded-3xl shadow-2xl p-12 mb-12 border border-gray-200">
-            <h2 class="text-2xl font-extrabold tracking-tight mb-4 text-yellow-400">
-                Pourquoi parrainer&nbsp;?
-            </h2>
-            <ul class="list-disc list-inside text-gray-700 space-y-2 mb-6 text-left text-lg">
-                <li>Permettre à un enfant d’accéder à l’école et à des soins de santé</li>
-                <li>Offrir un accompagnement éducatif et social personnalisé</li>
-                <li>Créer un lien solidaire et humain entre le parrain/la marraine et l’enfant</li>
-                <li>Contribuer au développement de toute une communauté</li>
-            </ul>
-            <h2 class="text-2xl font-extrabold tracking-tight mb-4 text-[#1e293b]">
-                Comment ça marche&nbsp;?
-            </h2>
-            <ol class="list-decimal list-inside text-gray-700 space-y-2 mb-6 text-left text-lg">
-                <li>Remplissez le formulaire de parrainage ci-dessous</li>
-                <li>Nous vous contactons pour vous présenter un enfant à parrainer</li>
-                <li>Vous recevez régulièrement des nouvelles et des photos de votre filleul(e)</li>
-                <li>Vous pouvez échanger avec l’enfant et suivre son évolution</li>
-            </ol>
+
+        <!-- Statistics Section -->
+        <section class="py-16 bg-white/95" aria-label="Nos réalisations en chiffres">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-center text-[#1e293b] mb-12">Notre Impact à Travers le Parrainage</h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 p-8 rounded-2xl shadow-xl text-center transform hover:scale-105 transition duration-300 border-2 border-yellow-200">
+                        <div class="text-5xl font-extrabold text-yellow-500 mb-2">230+</div>
+                        <p class="text-gray-700 font-semibold text-lg">Enfants Accompagnés</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl shadow-xl text-center transform hover:scale-105 transition duration-300 border-2 border-blue-200">
+                        <div class="text-5xl font-extrabold text-blue-500 mb-2">150+</div>
+                        <p class="text-gray-700 font-semibold text-lg">Parrains Actifs</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl shadow-xl text-center transform hover:scale-105 transition duration-300 border-2 border-green-200">
+                        <div class="text-5xl font-extrabold text-green-500 mb-2">7+</div>
+                        <p class="text-gray-700 font-semibold text-lg">Années d'Expérience</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl shadow-xl text-center transform hover:scale-105 transition duration-300 border-2 border-purple-200">
+                        <div class="text-5xl font-extrabold text-purple-500 mb-2">100%</div>
+                        <p class="text-gray-700 font-semibold text-lg">Transparence</p>
+                    </div>
+                </div>
+            </div>
         </section>
-        <!-- Protection de l'enfance -->
-        <section class="w-full max-w-6xl mx-auto bg-white/90 rounded-3xl shadow-2xl p-12 mb-12 border border-gray-200">
-            <h2 class="text-3xl font-extrabold tracking-tight mb-4 text-[#1e293b]">
-                <span class="text-yellow-400">Protection de l'enfance</span>
-            </h2>
-            <p class="text-gray-700 mb-4 text-lg">
-                La protection de l’enfance constitue un pilier fondamental de la réussite scolaire et de l’intégration sociale.
-                Nombre des enfants que nous accompagnons grandissent dans des contextes familiaux difficiles, souvent marqués par l’abandon, la violence ou des abus.
-            </p>
-            <p class="text-gray-700 mb-4 text-lg">
-                Notre école solidaire ouvrira ses portes la rentrée prochaine et accueillera des enfants issus de cultures et d’origines diverses, s’exprimant parfois dans des dialectes variés. Cette richesse culturelle renforce notre engagement à créer un cadre bienveillant et inclusif, où chacun peut trouver sa place.
-            </p>
-            <h3 class="text-xl font-bold text-yellow-400 mb-2">Nos engagements concrets :</h3>
-            <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4 text-lg">
-                <li>Garantir la sécurité physique et émotionnelle de chaque enfant</li>
-                <li>Offrir un environnement d’apprentissage stimulant et respectueux</li>
-                <li>Encourager le respect des différences et valoriser l’unicité de chacun</li>
-            </ul>
-            <p class="text-gray-700 text-lg">
-                Pour que chaque enfant puisse se sentir en sécurité et s’épanouir pleinement, il est essentiel de leur transmettre les valeurs du respect mutuel, de l’écoute et de la solidarité.
-            </p>
+
+        <!-- Why and How Section -->
+        <section id="pourquoi" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold tracking-tight text-[#1e293b]">Pourquoi et Comment Parrainer</h2>
+                    <div class="w-24 h-1 bg-yellow-400 mx-auto mt-4 rounded-full"></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+                <!-- Why Section -->
+                <div class="bg-white/90 rounded-2xl shadow-xl p-10 border border-gray-200/50 hover:shadow-2xl transition duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="flex-shrink-0 w-12 h-12 bg-yellow-400/20 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-heart text-yellow-600 text-2xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-extrabold text-[#1e293b]">
+                            Pourquoi <span class="text-yellow-400">Parrainer</span>&nbsp;?
+                        </h2>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </span>
+                            <span class="text-gray-700 text-lg">Permettre à un enfant d'accéder à l'école et à des soins de santé</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </span>
+                            <span class="text-gray-700 text-lg">Offrir un accompagnement éducatif et social personnalisé</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </span>
+                            <span class="text-gray-700 text-lg">Créer un lien solidaire et humain durable</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="flex-shrink-0 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <i class="fas fa-check text-white text-sm"></i>
+                            </span>
+                            <span class="text-gray-700 text-lg">Contribuer au développement de toute une communauté</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- How Section -->
+                <div class="bg-white/90 rounded-2xl shadow-xl p-10 border border-gray-200/50 hover:shadow-2xl transition duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="flex-shrink-0 w-12 h-12 bg-[#1e293b]/10 rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-steps text-[#1e293b] text-2xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-extrabold text-[#1e293b]">
+                            Comment ça <span class="text-yellow-400">Marche</span>&nbsp;?
+                        </h2>
+                    </div>
+                    <ol class="space-y-4">
+                        <li class="flex">
+                            <span class="flex-shrink-0 w-8 h-8 bg-[#1e293b] rounded-full flex items-center justify-center mr-4 text-white font-bold text-sm">1</span>
+                            <span class="text-gray-700 text-lg pt-1">Remplissez le formulaire de parrainage</span>
+                        </li>
+                        <li class="flex">
+                            <span class="flex-shrink-0 w-8 h-8 bg-[#1e293b] rounded-full flex items-center justify-center mr-4 text-white font-bold text-sm">2</span>
+                            <span class="text-gray-700 text-lg pt-1">Nous vous contactons pour présenter un enfant</span>
+                        </li>
+                        <li class="flex">
+                            <span class="flex-shrink-0 w-8 h-8 bg-[#1e293b] rounded-full flex items-center justify-center mr-4 text-white font-bold text-sm">3</span>
+                            <span class="text-gray-700 text-lg pt-1">Recevez régulièrement des nouvelles et photos</span>
+                        </li>
+                        <li class="flex">
+                            <span class="flex-shrink-0 w-8 h-8 bg-[#1e293b] rounded-full flex items-center justify-center mr-4 text-white font-bold text-sm">4</span>
+                            <span class="text-gray-700 text-lg pt-1">Échangez et suivez l'évolution de votre filleul(e)</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
         </section>
-        <section class="w-full max-w-4xl md:max-w-5xl lg:max-w-4xl xl:max-w-3xl mx-auto bg-white/90 rounded-3xl shadow-2xl p-10 md:p-12 mb-12 border border-gray-200">
-            <h2 class="text-2xl font-extrabold tracking-tight mb-4 text-[#1e293b]">
-                <span class="text-yellow-400">Formulaire officiel de parrainage</span>
-            </h2>
-            <form action="https://formspree.io/f/mkgbydwe" method="post" class="space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label for="nom" class="block text-[#1e293b] font-semibold mb-1">Nom</label>
-                        <input type="text" id="nom" name="nom" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
-                    </div>
-                    <div>
-                        <label for="prenom" class="block text-[#1e293b] font-semibold mb-1">Prénom</label>
-                        <input type="text" id="prenom" name="prenom" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
-                    </div>
-                    <div>
-                        <label for="sexe" class="block text-[#1e293b] font-semibold mb-1">Sexe</label>
-                        <select id="sexe" name="sexe" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
-                            <option value="">Sélectionner</option>
-                            <option value="Femme">Femme</option>
-                            <option value="Homme">Homme</option>
-                            <option value="Autre">Autre</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="date_naissance" class="block text-[#1e293b] font-semibold mb-1">Date de naissance</label>
-                        <input type="date" id="date_naissance" name="date_naissance" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
-                    </div>
+
+        <!-- Engagement Section -->
+        <section class="py-20 bg-white/90">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold tracking-tight text-[#1e293b]">Notre Engagement</h2>
+                    <div class="w-24 h-1 bg-yellow-400 mx-auto mt-4 rounded-full"></div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label for="email" class="block text-[#1e293b] font-semibold mb-1">Email</label>
-                        <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white/90 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-6 mx-auto shadow-md">
+                            <i class="fas fa-shield-alt text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-center mb-4 text-[#1e293b]">Protection Garantie</h3>
+                        <p class="text-gray-700 text-center">Garantir la sécurité physique et émotionnelle de chaque enfant avec des protocoles stricts de protection.</p>
                     </div>
-                    <div>
-                        <label for="telephone" class="block text-[#1e293b] font-semibold mb-1">Téléphone</label>
-                        <input type="tel" id="telephone" name="telephone" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
+                    <div class="bg-white/90 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-6 mx-auto shadow-md">
+                            <i class="fas fa-book-reader text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-center mb-4 text-[#1e293b]">Éducation de Qualité</h3>
+                        <p class="text-gray-700 text-center">Offrir un environnement d'apprentissage stimulant, respectueux et inclusif pour chaque enfant.</p>
+                    </div>
+                    <div class="bg-white/90 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-6 mx-auto shadow-md">
+                            <i class="fas fa-heart text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-center mb-4 text-[#1e293b]">Accompagnement Humain</h3>
+                        <p class="text-gray-700 text-center">Encourager le respect des différences et valoriser l'unicité de chaque enfant avec bienveillance.</p>
                     </div>
                 </div>
-                <div>
-                    <label for="adresse" class="block text-[#1e293b] font-semibold mb-1">Adresse postale</label>
-                    <input type="text" id="adresse" name="adresse" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
-                </div>
-                <div>
-                    <label for="profession" class="block text-[#1e293b] font-semibold mb-1">Profession</label>
-                    <input type="text" id="profession" name="profession" class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
-                </div>
-                <div>
-                    <label for="type_parrainage" class="block text-[#1e293b] font-semibold mb-1">Type de parrainage souhaité</label>
-                    <select id="type_parrainage" name="type_parrainage" required class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
-                        <option value="">Sélectionner</option>
-                        <option value="ponctuel">Ponctuel</option>
-                        <option value="régulier">Régulier</option>
-                        <option value="collectif">Collectif</option>
-                    </select>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label for="age_prefere" class="block text-[#1e293b] font-semibold mb-1">Âge de l’enfant parrainé (préférence)</label>
-                        <input type="text" id="age_prefere" name="age_prefere" placeholder="ex : 6-12 ans" class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
-                    </div>
-                    <div>
-                        <label for="sexe_prefere" class="block text-[#1e293b] font-semibold mb-1">Sexe de l’enfant (préférence)</label>
-                        <select id="sexe_prefere" name="sexe_prefere" class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg">
-                            <option value="">Indifférent</option>
-                            <option value="Fille">Fille</option>
-                            <option value="Garçon">Garçon</option>
-                        </select>
-                    </div>
-                </div>
-                <div>
-                    <label for="message" class="block text-[#1e293b] font-semibold mb-1">Message à l’équipe (optionnel)</label>
-                    <textarea id="message" name="message" rows="3" class="w-full border border-gray-300 rounded-xl px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#1e293b] text-lg"></textarea>
-                </div>
-                <div class="flex items-start">
-                    <input type="checkbox" id="rgpd" name="rgpd" required class="mr-2 accent-[#1e293b]">
-                    <label for="rgpd" class="text-gray-700 text-sm">J’accepte que mes données soient utilisées par l’L'Organisation MDH dans le cadre du parrainage, conformément à la politique de confidentialité.</label>
-                </div>
-                <div class="flex items-start">
-                    <input type="checkbox" id="engagement" name="engagement" required class="mr-2 accent-[#1e293b]">
-                    <label for="engagement" class="text-gray-700 text-sm">Je m’engage à respecter l’esprit du parrainage et à soutenir l’enfant dans la durée.</label>
-                </div>
-                <button type="submit" class="w-full bg-yellow-400 text-[#1e293b] py-4 rounded-full font-bold shadow-lg hover:bg-[#1e293b] hover:text-white transition duration-300 text-lg">Envoyer ma demande de parrainage</button>
-            </form>
-            <div id="parrainage-message" class="mt-4 text-center text-lg font-semibold"></div>
-            <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const form = document.querySelector('form[action="https://formspree.io/f/mkgbydwe"]');
-                const messageDiv = document.getElementById('parrainage-message');
-                if(form) {
-                    form.addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        messageDiv.textContent = '';
-                        const formData = new FormData(form);
-                        fetch(form.action, {
-                            method: 'POST',
-                            body: formData,
-                            headers: { 'Accept': 'application/json' }
-                        })
-                        .then(response => {
-                            if(response.ok) {
-                                form.reset();
-                                messageDiv.textContent = 'Merci, votre demande de parrainage a bien été envoyée ! Nous vous contacterons rapidement.';
-                                messageDiv.className = 'mt-4 text-center text-lg font-semibold text-green-600';
-                                alert('Votre demande de parrainage a bien été envoyée ! Nous vous contacterons rapidement.');
-                            } else {
-                                return response.json().then(data => {
-                                    throw new Error(data.error || 'Une erreur est survenue. Merci de réessayer.');
-                                });
-                            }
-                        })
-                        .catch(() => {
-                            messageDiv.textContent = 'Une erreur est survenue lors de l’envoi. Merci de réessayer.';
-                            messageDiv.className = 'mt-4 text-center text-lg font-semibold text-red-600';
-                            alert('Erreur : votre demande n\'a pas pu être envoyée. Merci de réessayer.');
-                        });
-                    });
-                }
-            });
-            </script>
+            </div>
         </section>
-        <section class="w-full max-w-5xl mx-auto text-center mb-12">
-            <h2 class="text-2xl font-extrabold tracking-tight mb-4 text-[#1e293b]">
-                <span class="text-yellow-400">Des questions&nbsp;?</span>
-            </h2>
-            <p class="text-gray-700 mb-4 text-lg">Contactez-nous à <a href="mailto:modehumain@gmail.com" class="text-yellow-400 hover:underline">modehumain@gmail.com</a> ou via notre page <a href="contact.html" class="text-yellow-400 hover:underline">Contact</a>.</p>
-            <a href="donation.html" class="inline-block bg-yellow-400 text-[#1e293b] px-10 py-4 rounded-full font-bold shadow-lg hover:bg-[#1e293b] hover:text-white transition duration-300 text-lg">Faire un don</a>
+
+        <!-- Sponsorship Form Section -->
+        <section id="formulaire" class="py-20 bg-gray-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-extrabold tracking-tight text-[#1e293b]">Devenez Parrain</h2>
+                    <div class="w-24 h-1 bg-yellow-400 mx-auto mt-4 rounded-full"></div>
+                    <p class="text-lg text-gray-600 mt-6">Remplissez ce formulaire pour démarrer votre aventure de parrainage</p>
+                </div>
+
+                <div class="bg-gray-50 rounded-2xl shadow-2xl p-10 md:p-14 border border-gray-200/50">
+                <form id="parrainage-form-element" action="https://formspree.io/f/mkgbydwe" method="POST" class="space-y-8">
+                    <!-- Personal Information -->
+                    <div>
+                        <h3 class="text-lg font-bold text-[#1e293b] mb-6 pb-3 border-b-2 border-yellow-400/30">Informations Personnelles</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="nom" class="block text-[#1e293b] font-semibold mb-2">Nom <span class="text-red-500">*</span></label>
+                                <input type="text" id="nom" name="nom" required class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:outline-none focus:border-yellow-400 focus:bg-white transition duration-200 text-lg">
+                            </div>
+                            <div>
+                                <label for="prenom" class="block text-[#1e293b] font-semibold mb-2">Prénom <span class="text-red-500">*</span></label>
+                                <input type="text" id="prenom" name="prenom" required class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:outline-none focus:border-yellow-400 focus:bg-white transition duration-200 text-lg">
+                            </div>
+                            <div>
+                                <label for="sexe" class="block text-[#1e293b] font-semibold mb-2">Sexe <span class="text-red-500">*</span></label>
+                                <select id="sexe" name="sexe" required class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:outline-none focus:border-yellow-400 focus:bg-white transition duration-200 text-lg">
+                                    <option value="">Sélectionner</option>
+                                    <option value="Femme">Femme</option>
+                                    <option value="Homme">Homme</option>
+                                    <option value="Autre">Autre</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="date_naissance" class="block text-[#1e293b] font-semibold mb-2">Date de naissance <span class="text-red-500">*</span></label>
+                                <input type="date" id="date_naissance" name="date_naissance" required class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:outline-none focus:border-yellow-400 focus:bg-white transition duration-200 text-lg">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div>
+                        <h3 class="text-lg font-bold text-[#1e293b] mb-6 pb-3 border-b-2 border-yellow-400/30">Coordonnées</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="email" class="block text-[#1e293b] font-semibold mb-2">Email <span class="text-red-500">*</span></label>
+                                <input type="email" id="email" name="email" required class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:outline-none focus:border-yellow-400 focus:bg-white transition duration-200 text-lg">
+                            </div>
+                            <div>
+                                <label for="telephone" class="block text-[#1e293b] font-semibold mb-2">Téléphone <span class="text-red-500">*</span></label>
+                                <input type="tel" id="telephone" name="telephone" required class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:outline-none focus:border-yellow-400 focus:bg-white transition duration-200 text-lg">
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <label for="adresse" class="block text-[#1e293b] font-semibold mb-2">Adresse postale <span class="text-red-500">*</span></label>
+                            <input type="text" id="adresse" name="adresse" required class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:outline-none focus:border-yellow-400 focus:bg-white transition duration-200 text-lg">
+                        </div>
+                        <div class="mt-6">
+                            <label for="profession" class="block text-[#1e293b] font-semibold mb-2">Profession</label>
+                            <input type="text" id="profession" name="profession" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:outline-none focus:border-yellow-400 focus:bg-white transition duration-200 text-lg">
+                        </div>
+                    </div>
+
+                    <!-- Sponsorship Preferences -->
+                    <div>
+                        <h3 class="text-lg font-bold text-[#1e293b] mb-6 pb-3 border-b-2 border-yellow-400/30">Préférences de Parrainage</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="type_parrainage" class="block text-[#1e293b] font-semibold mb-2">Type de parrainage <span class="text-red-500">*</span></label>
+                                <select id="type_parrainage" name="type_parrainage" required class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:outline-none focus:border-yellow-400 focus:bg-white transition duration-200 text-lg">
+                                    <option value="">Sélectionner</option>
+                                    <option value="Ponctuel">Ponctuel (occasionnel)</option>
+                                    <option value="Régulier">Régulier (mensuel)</option>
+                                    <option value="Collectif">Collectif (groupe)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="age_prefere" class="block text-[#1e293b] font-semibold mb-2">Âge préféré de l'enfant</label>
+                                <input type="text" id="age_prefere" name="age_prefere" placeholder="ex: 6-12 ans" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:outline-none focus:border-yellow-400 focus:bg-white transition duration-200 text-lg">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="sexe_prefere" class="block text-[#1e293b] font-semibold mb-2">Sexe préféré de l'enfant</label>
+                            <select id="sexe_prefere" name="sexe_prefere" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:outline-none focus:border-yellow-400 focus:bg-white transition duration-200 text-lg">
+                                <option value="">Indifférent</option>
+                                <option value="Fille">Fille</option>
+                                <option value="Garçon">Garçon</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <h3 class="text-lg font-bold text-[#1e293b] mb-6 pb-3 border-b-2 border-yellow-400/30">Message</h3>
+                        <label for="message" class="block text-[#1e293b] font-semibold mb-2">Message à l'équipe (optionnel)</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Partagez vos motivations et vos attentes..." class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 bg-gray-50 focus:outline-none focus:border-yellow-400 focus:bg-white transition duration-200 text-lg"></textarea>
+                    </div>
+
+                    <!-- Consent -->
+                    <div class="bg-gray-50 rounded-lg p-6 border-2 border-gray-200">
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <input type="checkbox" id="rgpd" name="rgpd" required class="w-5 h-5 mt-1 mr-3 accent-yellow-400 cursor-pointer flex-shrink-0">
+                                <label for="rgpd" class="text-gray-700 text-base cursor-pointer">
+                                    J'accepte que mes données soient utilisées par l'ONG MDH dans le cadre du parrainage, conformément à la politique de confidentialité.
+                                </label>
+                            </div>
+                            <div class="flex items-start">
+                                <input type="checkbox" id="engagement" name="engagement" required class="w-5 h-5 mt-1 mr-3 accent-yellow-400 cursor-pointer flex-shrink-0">
+                                <label for="engagement" class="text-gray-700 text-base cursor-pointer">
+                                    Je m'engage à respecter l'esprit du parrainage et à soutenir l'enfant dans la durée.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-[#1e293b] py-4 rounded-lg font-bold shadow-lg hover:from-[#1e293b] hover:to-[#1e293b] to-yellow-500 transition duration-300 text-lg flex items-center justify-center">
+                        <i class="fas fa-heart mr-3"></i>Envoyer ma demande de parrainage
+                    </button>
+                </form>
+                <div id="parrainage-message" class="mt-6 text-center text-lg font-semibold hidden"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="py-16 bg-gray-900 relative overflow-hidden">
+            <div class="absolute inset-0 bg-black opacity-30"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+                        Ensemble, Changeons des Vies
+                    </h2>
+                    <p class="text-xl text-gray-200 mb-12 max-w-2xl mx-auto">
+                        Votre engagement peut transformer la vie d'un enfant. Rejoignez notre communauté de parrains et marraines dès maintenant.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <a href="contact.html" class="inline-flex items-center bg-white text-[#1e293b] px-8 py-4 rounded-lg font-bold shadow-lg hover:bg-gray-100 transition duration-300 text-lg">
+                            <i class="fas fa-envelope mr-3"></i>Nous Contacter
+                        </a>
+                        <a href="donation.html" class="inline-flex items-center bg-yellow-400 text-[#1e293b] px-8 py-4 rounded-lg font-bold shadow-lg hover:bg-yellow-500 transition duration-300 text-lg">
+                            <i class="fas fa-heart mr-3"></i>Faire un Don
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
+
+    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 bg-gray-900/95 rounded-2xl p-8 shadow-2xl">
-                <!-- About -->
                 <div>
                     <h3 class="text-xl font-extrabold tracking-tight mb-4">À propos de MDH</h3>
                     <p class="text-gray-300">MDH œuvre pour le développement humain à travers l'éducation et le soutien aux communautés vulnérables.</p>
                 </div>
-                <!-- Quick Links -->
                 <div>
                     <h3 class="text-xl font-extrabold tracking-tight mb-4">Liens Rapides</h3>
                     <ul class="space-y-2">
@@ -326,7 +497,6 @@
                         <li><a href="actualites.html" class="text-gray-300 hover:text-yellow-400 hover:underline focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-200">Actualités</a></li>
                     </ul>
                 </div>
-                <!-- Contact -->
                 <div>
                     <h3 class="text-xl font-extrabold tracking-tight mb-4">Contact</h3>
                     <ul class="space-y-2 text-gray-300">
@@ -335,7 +505,6 @@
                         <li><span class="font-semibold">Adresse :</span> Aflao-Sagbado (Apedokoè), Lomé, Togo</li>
                     </ul>
                 </div>
-                <!-- Social -->
                 <div>
                     <h3 class="text-xl font-extrabold tracking-tight mb-4">Suivez-nous</h3>
                     <div class="flex space-x-4">
@@ -363,14 +532,16 @@
                 </div>
             </div>
             <div class="mt-10 pt-8 border-t border-gray-800 text-center">
-                <p class="text-gray-400">&copy; 2024 L'Organisation MDH international Togo. Tous droits réservés.</p>
+                <p class="text-gray-400">&copy; 2024 L'Organisation MDH International Togo. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
+            
             if (mobileMenuButton && mobileMenu) {
                 mobileMenuButton.addEventListener('click', function() {
                     mobileMenu.classList.toggle('hidden');
@@ -383,6 +554,7 @@
                     );
                 });
             }
+            
             // Marquer le lien actif dans la navigation
             const currentPage = window.location.pathname.split('/').pop() || 'index.html';
             document.querySelectorAll('.nav-link').forEach(link => {
@@ -394,5 +566,8 @@
     </script>
 
     <a href="vacances-utiles-2025.html" class="floating-button">Programme de Vacances Utiles 2025</a>
-    </body>
+</body>
 </html>
+
+
+

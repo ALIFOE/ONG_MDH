@@ -1,25 +1,68 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="L'Organisation MDH International Togo - Rejoignez l'L'Organisation MDH Togo et participez à nos actions humanitaires.">
-    <title>Nous Rejoindre - MDH</title>
+    <meta name="description" content="Rejoignez MDH International Togo en tant que bénévole ou partenaire. Ensemble pour le développement du Togo.">
+    <meta name="keywords" content="bénévole MDH, rejoindre ONG, volontaire Togo, partenaire humanitaire">
+    <meta name="author" content="MDH International Togo">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="canonical" content="https://modehumain.org/rejoindre">
+    <title>Rejoindre-Nous - MDH International Togo | Devenir Bénévole</title>
     
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Rejoindre-Nous - MDH International Togo">
+    <meta property="og:description" content="Rejoignez notre organisation comme bénévole ou partenaire.">
+    <meta property="og:url" content="https://modehumain.org/rejoindre">
+    <meta property="og:image" content="https://modehumain.org/images/logo_mdh.png">
+    <meta property="og:site_name" content="MDH International Togo">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rejoindre-Nous - MDH International Togo">
+    <meta name="twitter:description" content="Rejoignez notre organisation comme bénévole ou partenaire.">
+    <meta name="twitter:image" content="https://modehumain.org/images/logo_mdh.png">
         <!-- Styles -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="css/tailwind-compiled.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
       <!-- Scripts -->
     <script src="js/script.js" defer></script>
     <link rel="icon" href="images/favicon-mdh.png" type="image/png">
-    
-
     <link rel="stylesheet" href="css/floating-button.css">
-</head>
+
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#1e293b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MDH Togo">
+    <link rel="apple-touch-icon" href="images/favicon-mdh.png">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Preconnect pour performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Prefetch pages importantes -->
+    <link rel="prefetch" href="donation.html">
+    <link rel="prefetch" href="contact.html">
+    
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z7HJ66X9Q0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z7HJ66X9Q0');
+    </script>
+    </head>
 <body class="font-sans bg-gray-100 text-gray-900">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-[#1e293b] focus:text-white focus:z-50">Aller au contenu principal</a>
     <header class="bg-white/90 shadow-2xl fixed w-full z-50 backdrop-blur-md border-b border-gray-200">
@@ -90,6 +133,129 @@
     </header>
 
     <main id="main-content" class="container mx-auto px-4 py-12 mt-20 bg-gray-100 min-h-screen">
+        <!-- Sponsorship Form Section (FIRST) -->
+        <section id="form-parrainage" class="bg-gradient-to-b from-gray-50 to-white py-20 rounded-2xl mb-12">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-4 text-[#1e293b]">
+                    Formulaire de <span class="text-yellow-400">parrainage</span>
+                </h2>
+                <p class="text-center text-gray-600 mb-12">Complétez ce formulaire pour débuter votre parrainage.</p>
+
+                <form action="https://formspree.io/f/mkgbydwe" method="post" class="bg-white rounded-2xl shadow-xl p-8 border border-gray-200 space-y-6">
+                    <!-- Personal Info -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[#1e293b] font-semibold mb-2">Nom <span class="text-red-500">*</span></label>
+                            <input type="text" name="nom" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition">
+                        </div>
+                        <div>
+                            <label class="block text-[#1e293b] font-semibold mb-2">Prénom <span class="text-red-500">*</span></label>
+                            <input type="text" name="prenom" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition">
+                        </div>
+                    </div>
+
+                    <!-- Gender & DOB -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[#1e293b] font-semibold mb-2">Sexe <span class="text-red-500">*</span></label>
+                            <select name="sexe" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition">
+                                <option value="">Sélectionner</option>
+                                <option value="Femme">Femme</option>
+                                <option value="Homme">Homme</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[#1e293b] font-semibold mb-2">Date de naissance <span class="text-red-500">*</span></label>
+                            <input type="date" name="date_naissance" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition">
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[#1e293b] font-semibold mb-2">Email <span class="text-red-500">*</span></label>
+                            <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition">
+                        </div>
+                        <div>
+                            <label class="block text-[#1e293b] font-semibold mb-2">Téléphone <span class="text-red-500">*</span></label>
+                            <input type="tel" name="telephone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition">
+                        </div>
+                    </div>
+
+                    <!-- Address & Profession -->
+                    <div>
+                        <label class="block text-[#1e293b] font-semibold mb-2">Adresse postale <span class="text-red-500">*</span></label>
+                        <input type="text" name="adresse" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-[#1e293b] font-semibold mb-2">Profession</label>
+                        <input type="text" name="profession" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition">
+                    </div>
+
+                    <!-- Sponsorship Type -->
+                    <div>
+                        <label class="block text-[#1e293b] font-semibold mb-3">Type de parrainage <span class="text-red-500">*</span></label>
+                        <div class="space-y-2">
+                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-yellow-50 transition">
+                                <input type="radio" name="type_parrainage" value="Ponctuel" required class="mr-3 accent-yellow-400">
+                                <span class="font-semibold text-[#1e293b]">Ponctuel</span>
+                            </label>
+                            <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-yellow-50 transition">
+                                <input type="radio" name="type_parrainage" value="Régulier" class="mr-3 accent-yellow-400">
+                                <span class="font-semibold text-[#1e293b]">Régulier</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Child Preferences -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[#1e293b] font-semibold mb-2">Âge préféré de l'enfant</label>
+                            <input type="text" name="age_prefere" placeholder="ex : 6-12 ans" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition">
+                        </div>
+                        <div>
+                            <label class="block text-[#1e293b] font-semibold mb-2">Sexe préféré de l'enfant</label>
+                            <select name="sexe_prefere" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition">
+                                <option value="">Indifférent</option>
+                                <option value="Fille">Fille</option>
+                                <option value="Garçon">Garçon</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label class="block text-[#1e293b] font-semibold mb-2">Message (optionnel)</label>
+                        <textarea name="message" rows="3" placeholder="Partagez vos motivations..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition"></textarea>
+                    </div>
+
+                    <!-- Checkboxes -->
+                    <div class="space-y-3">
+                        <label class="flex items-start p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                            <input type="checkbox" name="rgpd" required class="mr-3 accent-yellow-400 mt-1">
+                            <span class="text-gray-700 text-sm">J'accepte que mes données soient utilisées par l'Organisation MDH conformément à la politique de confidentialité.</span>
+                        </label>
+                        <label class="flex items-start p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition">
+                            <input type="checkbox" name="engagement" required class="mr-3 accent-yellow-400 mt-1">
+                            <span class="text-gray-700 text-sm">Je m'engage à respecter l'esprit du parrainage et à soutenir l'enfant dans la durée.</span>
+                        </label>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="w-full bg-gradient-to-r from-yellow-400 to-orange-400 text-[#1e293b] font-bold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 text-lg">
+                        <i class="fas fa-heart mr-2"></i> Envoyer ma demande
+                    </button>
+
+                    <p class="text-center text-gray-500 text-sm">
+                        <i class="fas fa-lock text-green-500 mr-1"></i> Vos informations sont sécurisées
+                    </p>
+                </form>
+
+                <div id="form-message" class="mt-4 text-center text-lg font-semibold"></div>
+            </div>
+        </section>
+
         <!-- Hero Section -->
         <section class="text-center mb-12">
             <nav class="text-sm text-gray-500 mb-3" aria-label="Breadcrumb">
@@ -665,6 +831,36 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Form submission for sponsorship
+            const form = document.querySelector('form[action="https://formspree.io/f/mkgbydwe"]');
+            const formMessage = document.getElementById('form-message');
+            
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const formData = new FormData(form);
+                    
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            form.reset();
+                            formMessage.textContent = '✓ Merci ! Votre demande a bien été envoyée. Nous vous contacterons rapidement.';
+                            formMessage.className = 'mt-4 text-center text-lg font-semibold text-green-600';
+                        } else {
+                            throw new Error('Erreur');
+                        }
+                    })
+                    .catch(error => {
+                        formMessage.textContent = '✗ Une erreur est survenue. Merci de réessayer.';
+                        formMessage.className = 'mt-4 text-center text-lg font-semibold text-red-600';
+                    });
+                });
+            }
+
             // Gestion du menu mobile
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');

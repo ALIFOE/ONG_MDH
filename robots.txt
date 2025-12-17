@@ -1,0 +1,17 @@
+# robots.txt
+User-agent: *
+Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Disallow private or admin areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
+# Sitemap
+Sitemap: https://modehumain.org/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1

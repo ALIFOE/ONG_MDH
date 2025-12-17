@@ -3,23 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="L'Organisation MDH International Togo - Découvrez les actions de l'L'Organisation MDH Togo dans les domaines de l'éducation, la santé et le développement durable.">
-    <title>Nos Actions - MDH</title>
+    <meta name="description" content="Découvrez nos actions et initiatives humanitaires en éducation, santé et développement économique au Togo.">
+    <meta name="keywords" content="actions humanitaires, initiatives MDH, projets Togo, développement durable">
+    <meta name="author" content="MDH International Togo">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="canonical" content="https://modehumain.org/actions">
+    <title>Nos Actions - MDH International Togo | Initiatives Humanitaires</title>
     
-    <!-- Styles -->
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nos Actions - MDH International Togo">
+    <meta property="og:description" content="Découvrez nos initiatives humanitaires et projets de développement au Togo.">
+    <meta property="og:url" content="https://modehumain.org/actions">
+    <meta property="og:image" content="https://modehumain.org/images/logo_mdh.png">
+    <meta property="og:site_name" content="MDH International Togo">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nos Actions - MDH International Togo">
+    <meta name="twitter:description" content="Découvrez nos initiatives humanitaires et projets de développement au Togo.">
+    <meta name="twitter:image" content="https://modehumain.org/images/logo_mdh.png">
+    <!-- Styles (chargement prioritaire) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="css/tailwind-compiled.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
       <!-- Scripts -->
     <script src="js/script.js" defer></script>
+    <script src="js/ga4-events.js" defer></script>
     <!-- Favicon -->
     <link rel="icon" href="images/favicon-mdh.png" type="image/png">
-    
-
     <link rel="stylesheet" href="css/floating-button.css">
-</head>
+
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#1e293b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MDH Togo">
+    <link rel="apple-touch-icon" href="images/favicon-mdh.png">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Preconnect pour performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Prefetch pages importantes -->
+    <link rel="prefetch" href="donation.html">
+    <link rel="prefetch" href="contact.html">
+    
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z7HJ66X9Q0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z7HJ66X9Q0');
+    </script>
+    
+    <!-- GA4 Advanced Events -->
+    <script src="js/ga4-events.js"></script>
+    
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Nos Actions - MDH International Togo",
+      "description": "Découvrez nos initiatives humanitaires en éducation, santé et développement économique au Togo",
+      "url": "https://modehumain.org/actions.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MDH International Togo",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://modehumain.org/images/logo_mdh.png"
+        }
+      }
+    }
+    </script>
+    </head>
 <body class="font-sans bg-gray-100 text-gray-900">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-[#1e293b] focus:text-white focus:z-50">Aller au contenu principal</a>
     <header class="bg-white/90 shadow-2xl fixed w-full z-50 backdrop-blur-md border-b border-gray-200">
@@ -249,7 +316,7 @@
                                 <div class="text-gray-600">École en construction</div>
                             </div>
                             <div class="bg-gray-50 p-4 rounded-lg text-center">
-                                <div class="text-3xl font-bold text-[#1e293b]">1000+</div>
+                                <div class="text-3xl font-bold text-[#1e293b]">230+</div>
                                 <div class="text-gray-600">Enfants déjà accompagnés</div>
                             </div>
                             <div class="bg-gray-50 p-4 rounded-lg text-center">
@@ -541,7 +608,7 @@
     <script>
             // Correction : chaque carte "Voir plus" fonctionne indépendamment
     (function() {
-        function toggleSection(cardSelector, contentSelector, gradientSelector, btnSelector) {
+        function toggleSection(cardSelector, contentSelector, gradientSelector, btnSelector, sectionName) {
             const cards = document.querySelectorAll(cardSelector);
             cards.forEach(card => {
                 const content = card.querySelector(contentSelector);
@@ -554,16 +621,26 @@
                         content.classList.remove('max-h-52', 'overflow-hidden');
                         if (gradient) gradient.style.display = 'none';
                         btn.textContent = 'Réduire';
+                        // GA4 Event Tracking
+                        if (typeof trackButtonClick === 'function') {
+                            trackButtonClick(`Voir plus - ${sectionName}`, 'actions_page');
+                            console.log(`✅ Action trackée: Section ${sectionName} expanded`);
+                        }
                     } else {
                         content.classList.add('max-h-52', 'overflow-hidden');
                         if (gradient) gradient.style.display = '';
                         btn.textContent = 'Voir plus';
+                        // GA4 Event Tracking
+                        if (typeof trackButtonClick === 'function') {
+                            trackButtonClick(`Réduire - ${sectionName}`, 'actions_page');
+                            console.log(`✅ Action trackée: Section ${sectionName} collapsed`);
+                        }
                     }
                 });
             });
         }
-        toggleSection('.enfance-card', '.enfance-content', '.enfance-gradient', '.enfance-toggle');
-        toggleSection('.education-card', '.education-content', '.education-gradient', '.education-toggle');
+        toggleSection('.enfance-card', '.enfance-content', '.enfance-gradient', '.enfance-toggle', 'Enfance');
+        toggleSection('.education-card', '.education-content', '.education-gradient', '.education-toggle', 'Éducation');
     })();
     </script>
     <style>

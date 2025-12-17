@@ -1,0 +1,92 @@
+{
+  "name": "MDH International Togo - Développement Humain Durable",
+  "short_name": "MDH Togo",
+  "description": "Organisation dédiée au développement humain durable à travers l'éducation, la santé et le développement économique.",
+  "start_url": "https://modehumain.org/",
+  "scope": "https://modehumain.org/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#1e293b",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "images/favicon-mdh.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/favicon-mdh.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/favicon-mdh.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["productivity", "business"],
+  "screenshots": [
+    {
+      "src": "images/screenshot-1.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "images/screenshot-2.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Faire un don",
+      "short_name": "Don",
+      "description": "Accédez directement à la page de donation",
+      "url": "https://modehumain.org/donation",
+      "icons": [
+        {
+          "src": "images/favicon-mdh.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Nous contacter",
+      "short_name": "Contact",
+      "description": "Accédez au formulaire de contact",
+      "url": "https://modehumain.org/contact",
+      "icons": [
+        {
+          "src": "images/favicon-mdh.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "files": [
+        {
+          "name": "media",
+          "accept": ["image/*", "video/*"]
+        }
+      ]
+    }
+  },
+  "screenshots_mobile": [
+    {
+      "src": "images/screenshot-mobile.png",
+      "sizes": "270x540",
+      "type": "image/png"
+    }
+  ]
+}

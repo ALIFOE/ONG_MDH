@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Search Console - Vérification Domaine</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #1e293b;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .subtitle {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+        .status-bar {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-left: 5px solid #10b981;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .status-bar strong {
+            color: #065f46;
+            font-size: 1.1em;
+        }
+        .step {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: start;
+        }
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .step-content h3 {
+            color: #1e293b;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        .step-content p {
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .step-content ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        .step-content li {
+            color: #475569;
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .step-content li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        .code-box {
+            background: #f3f4f6;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        .highlight {
+            background: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #92400e;
+            font-weight: bold;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        .button.secondary {
+            background: #64748b;
+        }
+        .button.secondary:hover {
+            background: #475569;
+        }
+        .warning {
+            background: #fee2e2;
+            border-left: 4px solid #ef4444;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #7f1d1d;
+        }
+        .success {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #065f46;
+        }
+        .section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e5e7eb;
+        }
+        .section h2 {
+            color: #1e293b;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        th {
+            background: #f3f4f6;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+        .timeline-marker {
+            width: 30px;
+            height: 30px;
+            background: #667eea;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+        .timeline-content h4 {
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+        .timeline-content p {
+            color: #64748b;
+            margin: 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e5e7eb;
+            color: #64748b;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Google Search Console</h1>
+        <p class="subtitle">Vérification de Propriété - MDH International Togo</p>
+
+        <div class="status-bar">
+            ✅ <strong>Fichier de Vérification Prêt</strong><br>
+            <small>google4ab0cfaba1063a18.html - Accessible sur votre site</small>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="step">
+            <div class="step-number">1️⃣</div>
+            <div class="step-content">
+                <h3>Accédez à Google Search Console</h3>
+                <p>Allez sur la plateforme officielle de Google pour webmasters:</p>
+                <div class="code-box">https://search.google.com/search-console</div>
+                <ul>
+                    <li>Connectez-vous avec votre compte Google</li>
+                    <li>Cliquez sur <span class="highlight">"Ajouter une propriété"</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+            <div class="step-number">2️⃣</div>
+            <div class="step-content">
+                <h3>Choisissez "Domaine"</h3>
+                <p>Sélectionnez le type de propriété (recommandé pour couvrir http et https):</p>
+                <ul>
+                    <li>Sélectionnez l'option <span class="highlight">"Domaine"</span></li>
+                    <li><strong>Pas</strong> "Préfixe URL"</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+            <div class="step-number">3️⃣</div>
+            <div class="step-content">
+                <h3>Entrez Votre Domaine</h3>
+                <p>Tapez votre domaine:</p>
+                <div class="code-box">modehumain.org</div>
+                <p style="margin-top: 15px;">👉 Cliquez sur <span class="highlight">"Continuer"</span></p>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step">
+            <div class="step-number">4️⃣</div>
+            <div class="step-content">
+                <h3>Sélectionnez "Fichier HTML"</h3>
+                <p>Google proposera plusieurs méthodes de vérification:</p>
+                <ul>
+                    <li>Choisissez <span class="highlight">"Fichier HTML"</span></li>
+                    <li>C'est la méthode la plus facile</li>
+                </ul>
+                <div class="success">
+                    ✅ Nous avons déjà placé le fichier pour vous:<br>
+                    <strong>google4ab0cfaba1063a18.html</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step">
+            <div class="step-number">5️⃣</div>
+            <div class="step-content">
+                <h3>Cliquez sur "VALIDER"</h3>
+                <p>Une fois le fichier téléchargé et placé:</p>
+                <ul>
+                    <li>Retournez à Google Search Console</li>
+                    <li>Cliquez sur <span class="highlight">"VALIDER"</span></li>
+                    <li>Google vérifiera la présence du fichier</li>
+                </ul>
+                <div class="warning">
+                    ⚠️ <strong>Important:</strong> Ne supprimez jamais ce fichier après validation! Il doit rester à la racine du site.
+                </div>
+            </div>
+        </div>
+
+        <!-- Fichier d'accès -->
+        <div class="section">
+            <h2>📁 Fichier de Vérification</h2>
+            <table>
+                <tr>
+                    <th>Propriété</th>
+                    <th>Valeur</th>
+                </tr>
+                <tr>
+                    <td>Nom du fichier</td>
+                    <td><code>google4ab0cfaba1063a18.html</code></td>
+                </tr>
+                <tr>
+                    <td>Emplacement</td>
+                    <td>Racine du site</td>
+                </tr>
+                <tr>
+                    <td>URL d'accès</td>
+                    <td><code>https://modehumain.org/google4ab0cfaba1063a18.html</code></td>
+                </tr>
+                <tr>
+                    <td>Contenu</td>
+                    <td><code>google-site-verification: google4ab0cfaba1063a18.html</code></td>
+                </tr>
+                <tr>
+                    <td>Statut</td>
+                    <td>✅ Déployé</td>
+                </tr>
+            </table>
+            
+            <div class="button-group">
+                <a href="https://modehumain.org/google4ab0cfaba1063a18.html" class="button" target="_blank">
+                    🔗 Vérifier le Fichier
+                </a>
+                <a href="https://search.google.com/search-console" class="button secondary" target="_blank">
+                    🚀 Aller à Google Search Console
+                </a>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="section">
+            <h2>📅 Timeline d'Indexation</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">✅</div>
+                    <div class="timeline-content">
+                        <h4>Jour 0: Aujourd'hui</h4>
+                        <p>Validation de propriété réussie</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h4>Jour 1: Soumission Sitemap</h4>
+                        <p>Soumettez sitemap.xml dans GSC pour accélérer l'indexation</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h4>Jour 2-3: Crawl</h4>
+                        <p>Google crawle vos pages et indexe le contenu</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h4>Jour 7+: Données Disponibles</h4>
+                        <p>Commencez à voir des performances de recherche organiques</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Après Validation -->
+        <div class="section">
+            <h2>🎯 Après Validation - Prochaines Étapes</h2>
+            
+            <h3 style="color: #1e293b; margin: 20px 0 15px;">1️⃣ Soumettre le Sitemap</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 10px;">1. Allez à: <strong>Sitemaps</strong> (menu gauche)</li>
+                <li style="margin-bottom: 10px;">2. Entrez: <strong>sitemap.xml</strong></li>
+                <li style="margin-bottom: 10px;">3. Cliquez: <strong>Envoyer</strong></li>
+            </ul>
+
+            <h3 style="color: #1e293b; margin: 20px 0 15px;">2️⃣ Vérifier l'Indexation</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 10px;">1. Allez à: <strong>Couverture</strong></li>
+                <li style="margin-bottom: 10px;">2. Voyez le statut de toutes vos pages</li>
+                <li style="margin-bottom: 10px;">3. Corrigez les erreurs si nécessaire</li>
+            </ul>
+
+            <h3 style="color: #1e293b; margin: 20px 0 15px;">3️⃣ Consulter les Performances</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 10px;">1. Allez à: <strong>Performances</strong></li>
+                <li style="margin-bottom: 10px;">2. Voyez: Clics, Impressions, CTR, Position</li>
+                <li style="margin-bottom: 10px;">3. Analysez les mots-clés et les requêtes</li>
+            </ul>
+        </div>
+
+        <!-- Données Disponibles -->
+        <div class="section">
+            <h2>📊 Données Disponibles Après Validation</h2>
+            <table>
+                <tr>
+                    <th>Métrique</th>
+                    <th>Description</th>
+                    <th>Disponibilité</th>
+                </tr>
+                <tr>
+                    <td><strong>Clics</strong></td>
+                    <td>Nombre de clics depuis la recherche Google</td>
+                    <td>Après 3-7 jours</td>
+                </tr>
+                <tr>
+                    <td><strong>Impressions</strong></td>
+                    <td>Nombre d'apparitions dans les résultats</td>
+                    <td>Après 3-7 jours</td>
+                </tr>
+                <tr>
+                    <td><strong>CTR</strong></td>
+                    <td>Pourcentage de clics par impression</td>
+                    <td>Après 3-7 jours</td>
+                </tr>
+                <tr>
+                    <td><strong>Position</strong></td>
+                    <td>Position moyenne dans les résultats</td>
+                    <td>Après 3-7 jours</td>
+                </tr>
+                <tr>
+                    <td><strong>Requêtes</strong></td>
+                    <td>Mots-clés utilisés pour trouver votre site</td>
+                    <td>Après 7 jours</td>
+                </tr>
+                <tr>
+                    <td><strong>Pages</strong></td>
+                    <td>Pages les plus visitées</td>
+                    <td>Après 7 jours</td>
+                </tr>
+                <tr>
+                    <td><strong>Appareils</strong></td>
+                    <td>Mobile vs Desktop vs Tablet</td>
+                    <td>Après 7 jours</td>
+                </tr>
+                <tr>
+                    <td><strong>Géolocalisation</strong></td>
+                    <td>Pays et régions des visiteurs</td>
+                    <td>Après 7 jours</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Support -->
+        <div class="section">
+            <h2>📞 En Cas de Problème</h2>
+            
+            <h3 style="color: #ef4444; margin: 20px 0 15px;">❌ Le fichier n'est pas trouvé?</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li>✓ Vérifiez l'URL: https://modehumain.org/google4ab0cfaba1063a18.html</li>
+                <li>✓ Vérifiez les droits d'accès du fichier</li>
+                <li>✓ Attendez quelques minutes (cache serveur)</li>
+                <li>✓ Videz le cache de votre navigateur</li>
+            </ul>
+
+            <h3 style="color: #ef4444; margin: 20px 0 15px;">❌ La validation échoue?</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li>✓ Assurez-vous que le serveur répond normalement</li>
+                <li>✓ Vérifiez qu'aucune redirection n'interfère</li>
+                <li>✓ Essayez une autre méthode (meta tag ou DNS)</li>
+                <li>✓ Contactez votre hébergeur si problème persiste</li>
+            </ul>
+
+            <h3 style="color: #ef4444; margin: 20px 0 15px;">❌ Pas de données après 7 jours?</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li>✓ Vérifiez le statut dans "Couverture"</li>
+                <li>✓ Cherchez les erreurs d'indexation</li>
+                <li>✓ Soumettez de nouveau le sitemap</li>
+                <li>✓ Attendez 2-3 semaines supplémentaires (normal)</li>
+            </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="section">
+            <h2>📚 Ressources Utiles</h2>
+            <div class="button-group">
+                <a href="https://support.google.com/webmasters" class="button" target="_blank">
+                    Help Google Search Console
+                </a>
+                <a href="https://support.google.com/webmasters/answer/9008080" class="button" target="_blank">
+                    Vérifier une Propriété
+                </a>
+                <a href="https://support.google.com/webmasters/answer/183668" class="button" target="_blank">
+                    Soumettre un Sitemap
+                </a>
+                <a href="https://support.google.com/webmasters/answer/6001104" class="button" target="_blank">
+                    Guide de Démarrage
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Google Search Console Setup</strong> - MDH International Togo</p>
+            <p>Domaine: modehumain.org | Fichier: google4ab0cfaba1063a18.html</p>
+            <p>Statut: ✅ Prêt pour Validation | Date: 17 décembre 2025</p>
+        </div>
+    </div>
+</body>
+</html>

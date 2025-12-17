@@ -11,6 +11,7 @@
     "body-parser": "^2.2.0",
     "browserslist": "^4.25.0",
     "caniuse-lite": "^1.0.30001721",
+    "compression": "^1.7.4",
     "electron-to-chromium": "^1.5.166",
     "escalade": "^3.2.0",
     "express": "^5.1.0",

@@ -2,13 +2,31 @@
 <html lang="fr" class="scroll-smooth">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet : Nouvelle École Primaire - MDH</title>
-    <meta name="description" content="Découvrez le projet de construction d'une nouvelle école primaire par l'L'Organisation MDH, avec 6 salles de classe, une bibliothèque et une cantine scolaire.">
+    <meta name="description" content="Découvrez notre projet d'école, visant à offrir une éducation de qualité aux enfants défavorisés.">
+    <meta name="keywords" content="projet école, construction école, éducation qualité, MDH école">
+    <meta name="author" content="MDH International Togo">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="canonical" content="https://modehumain.org/projet-ecole">
+    <title>Projet École - MDH International Togo | Construction et Développement</title>
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projet École - MDH International Togo">
+    <meta property="og:description" content="Notre projet pour construire et développer des établissements scolaires.">
+    <meta property="og:url" content="https://modehumain.org/projet-ecole">
+    <meta property="og:image" content="https://modehumain.org/images/logo_mdh.png">
+    <meta property="og:site_name" content="MDH International Togo">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projet École - MDH International Togo">
+    <meta name="twitter:description" content="Notre projet pour construire et développer des établissements scolaires.">
+    <meta name="twitter:image" content="https://modehumain.org/images/logo_mdh.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="css/tailwind-compiled.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
@@ -37,10 +55,56 @@
             }
         });
     </script>
-    
-
     <link rel="stylesheet" href="css/floating-button.css">
-</head>
+
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#1e293b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MDH Togo">
+    <link rel="apple-touch-icon" href="images/favicon-mdh.png">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Preconnect pour performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Prefetch pages importantes -->
+    <link rel="prefetch" href="donation.html">
+    <link rel="prefetch" href="contact.html">
+    
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z7HJ66X9Q0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z7HJ66X9Q0');
+    </script>
+    
+    <!-- GA4 Advanced Events -->
+    <script src="js/ga4-events.js"></script>
+    
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Project",
+      "name": "Projet École - MDH International Togo",
+      "description": "Projet de construction et développement d'établissements scolaires pour offrir une éducation de qualité",
+      "url": "https://modehumain.org/projet-ecole.html",
+      "sponsor": {
+        "@type": "Organization",
+        "name": "MDH International Togo",
+        "url": "https://modehumain.org"
+      },
+      "areaServed": "TG"
+    }
+    </script>
+    </head>
 <body class="font-sans bg-gray-100 text-gray-900">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-[#1e293b] focus:text-white focus:z-50">Aller au contenu principal</a>
     <header class="bg-white/90 shadow-2xl fixed w-full z-50 backdrop-blur-md border-b border-gray-200">

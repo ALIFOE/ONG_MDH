@@ -1,3 +1,17 @@
+
+// Service Worker Registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('js/service-worker.js')
+      .then(registration => {
+        console.log('✅ Service Worker enregistré');
+      })
+      .catch(error => {
+        console.log('Service Worker registration échoué:', error);
+      });
+  });
+}
+
 // Gestion du menu mobile et de la navigation
 document.addEventListener('DOMContentLoaded', function() {
     // Éléments du menu
