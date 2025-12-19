@@ -98,7 +98,8 @@
             type="submit" 
             class="bg-[#090e15] text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-yellow-400 hover:text-[#090e15] transition duration-300 w-full md:w-auto"
           >
-            Envoyer le message
+            <span v-if="!isSubmitting">Envoyer le message</span>
+            <span v-else><i class="fas fa-spinner fa-spin mr-2"></i>Envoi en cours...</span>
           </button>
         </form>
 
@@ -178,13 +179,69 @@ const form = ref({
 })
 
 const submitted = ref(false)
+const isSubmitting = ref(false)
 
-const handleSubmit = () => {
-  submitted.value = true
+const handleSubmit = async () => {
+  isSubmitting.value = true
   
-  setTimeout(() => {
-    form.value = { firstname: '', lastname: '', email: '', subject: '', message: '', privacy: false }
-    submitted.value = false
-  }, 3000)
+  try {
+    // Validation
+    if (!form.value.firstname || !form.value.lastname || !form.value.email || !form.value.subject || !form.value.message) {
+      alert('Veuillez remplir tous les champs obligatoires')
+      isSubmitting.value = false
+      return
+    }
+
+    if (!form.value.privacy) {
+      alert('Vous devez accepter les conditions de traitement de vos données')
+      isSubmitting.value = false
+      return
+    }
+
+    // Préparer les données pour Formspree
+    const formData = {
+      'Prénom': form.value.firstname,
+      'Nom': form.value.lastname,
+      'Email': form.value.email,
+      'Sujet': form.value.subject,
+      'Message': form.value.message
+    }
+
+    // Envoyer les données à Formspree
+    const response = await fetch('https://formspree.io/f/xwpbydgd', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+
+    if (!response.ok) {
+      throw new Error('Erreur lors de l\'envoi du formulaire')
+    }
+
+    submitted.value = true
+    alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.')
+    
+    // Réinitialiser le formulaire
+    form.value = { 
+      firstname: '', 
+      lastname: '', 
+      email: '', 
+      subject: '', 
+      message: '', 
+      privacy: false 
+    }
+    
+    setTimeout(() => {
+      submitted.value = false
+    }, 3000)
+  } catch (error) {
+    console.error('Erreur lors de l\'envoi:', error)
+    alert('Une erreur s\'est produite lors de l\'envoi du formulaire. Veuillez réessayer.')
+  } finally {
+    isSubmitting.value = false
+  }
 }
 </script>

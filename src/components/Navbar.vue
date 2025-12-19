@@ -32,6 +32,8 @@
           </div>
 
           <router-link to="/actions" class="px-3 py-2 rounded-lg font-semibold text-[#090e15] transition-all duration-300 hover:text-[#fbbf24] hover:bg-[#fbbf24]/5">Nos Actions</router-link>
+          <router-link to="/benevole" class="px-3 py-2 rounded-lg font-semibold text-[#090e15] transition-all duration-300 hover:text-[#fbbf24] hover:bg-[#fbbf24]/5">Bénévole</router-link>
+          <router-link to="/adhesion" class="px-3 py-2 rounded-lg font-semibold text-[#090e15] transition-all duration-300 hover:text-[#fbbf24] hover:bg-[#fbbf24]/5">Adhésion</router-link>
           <router-link to="/ecole" class="px-3 py-2 rounded-lg font-semibold text-[#090e15] transition-all duration-300 hover:text-[#fbbf24] hover:bg-[#fbbf24]/5">L'École</router-link>
           <router-link to="/actualites" class="px-3 py-2 rounded-lg font-semibold text-[#090e15] transition-all duration-300 hover:text-[#fbbf24] hover:bg-[#fbbf24]/5">Actualités</router-link>
           <router-link to="/galerie" class="px-3 py-2 rounded-lg font-semibold text-[#090e15] transition-all duration-300 hover:text-[#fbbf24] hover:bg-[#fbbf24]/5">Galerie</router-link>
@@ -82,6 +84,8 @@
             </details>
 
             <router-link to="/actions" class="block px-4 py-3 text-[#090e15] hover:bg-[#fbbf24]/10 hover:text-[#fbbf24] rounded-lg font-medium transition" @click="mobileMenuOpen = false">Nos Actions</router-link>
+            <router-link to="/benevole" class="block px-4 py-3 text-[#090e15] hover:bg-[#fbbf24]/10 hover:text-[#fbbf24] rounded-lg font-medium transition" @click="mobileMenuOpen = false">Bénévole</router-link>
+            <router-link to="/adhesion" class="block px-4 py-3 text-[#090e15] hover:bg-[#fbbf24]/10 hover:text-[#fbbf24] rounded-lg font-medium transition" @click="mobileMenuOpen = false">Adhésion</router-link>
             <router-link to="/ecole" class="block px-4 py-3 text-[#090e15] hover:bg-[#fbbf24]/10 hover:text-[#fbbf24] rounded-lg font-medium transition" @click="mobileMenuOpen = false">L'École</router-link>
             <router-link to="/actualites" class="block px-4 py-3 text-[#090e15] hover:bg-[#fbbf24]/10 hover:text-[#fbbf24] rounded-lg font-medium transition" @click="mobileMenuOpen = false">Actualités</router-link>
             <router-link to="/galerie" class="block px-4 py-3 text-[#090e15] hover:bg-[#fbbf24]/10 hover:text-[#fbbf24] rounded-lg font-medium transition" @click="mobileMenuOpen = false">Galerie</router-link>

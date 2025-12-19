@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../pages/Home.vue'
 import Association from '../pages/Association.vue'
 import Actions from '../pages/Actions.vue'
+import Benevole from '../pages/Benevole.vue'
 import Actualites from '../pages/Actualites.vue'
 import Rejoindre from '../pages/Rejoindre.vue'
 import Ecole from '../pages/Ecole.vue'
@@ -11,15 +12,21 @@ import Contact from '../pages/Contact.vue'
 import Donation from '../pages/Donation.vue'
 import NotreEquipe from '../pages/NotreEquipe.vue'
 import Galerie from '../pages/Galerie.vue'
+import Parrainage from '../pages/Parrainage.vue'
+import Adhesion from '../pages/Adhesion.vue'
 import NotFound from '../pages/NotFound.vue'
 
 // Import des pages d'articles
 import VacancesUtiles2025 from '../pages/articles/VacancesUtiles2025.vue'
+import InscriptionAdhesion from '../pages/InscriptionAdhesion.vue'
+import InscriptionVacances2025 from '../pages/articles/InscriptionVacances2025.vue'
 import SensibilisationGenreFoncier from '../pages/articles/SensibilisationGenreFoncier.vue'
 import MobilisationParlementaire from '../pages/articles/MobilisationParlementaire.vue'
 import ActivitesPratiques from '../pages/articles/ActivitesPratiques.vue'
 import SoutienScolaire from '../pages/articles/SoutienScolaire.vue'
 import SejournAllemands from '../pages/articles/SejournAllemands.vue'
+import AcademiesSuperEnfants from '../pages/articles/AcademiesSuperEnfants.vue'
+import RapportActivites2019 from '../pages/articles/RapportActivites2019.vue'
 
 const routes = [
   {
@@ -56,6 +63,15 @@ const routes = [
     meta: {
       title: 'Nos Actions - MDH International Togo',
       description: 'Découvrez nos différentes actions'
+    }
+  },
+  {
+    path: '/benevole',
+    name: 'Benevole',
+    component: Benevole,
+    meta: {
+      title: 'Devenir Bénévole - MDH International Togo',
+      description: 'Rejoignez notre programme de bénévolat'
     }
   },
   {
@@ -113,11 +129,45 @@ const routes = [
     }
   },
   {
+    path: '/parrainage',
+    name: 'Parrainage',
+    component: Parrainage,
+    meta: {
+      title: 'Parrainage - MDH International Togo',
+      description: 'Devenez parrain ou marraine'
+    }
+  },
+  {
+    path: '/adhesion',
+    name: 'Adhesion',
+    component: Adhesion,
+    meta: {
+      title: 'Adhésion - MDH International Togo',
+      description: 'Devenir membre de l\'ONG MDH'
+    }
+  },
+  {
+    path: '/inscription-adhesion',
+    name: 'InscriptionAdhesion',
+    component: InscriptionAdhesion,
+    meta: {
+      title: 'Inscription Adhésion - MDH International Togo'
+    }
+  },
+  {
     path: '/article/vacances-utiles-2025',
     name: 'VacancesUtiles2025',
     component: VacancesUtiles2025,
     meta: {
       title: 'Vacances Utiles 2025 - MDH International Togo'
+    }
+  },
+  {
+    path: '/inscription-vacances-2025',
+    name: 'InscriptionVacances2025',
+    component: InscriptionVacances2025,
+    meta: {
+      title: 'Inscription Vacances Utiles 2025 - MDH International Togo'
     }
   },
   {
@@ -158,6 +208,22 @@ const routes = [
     component: SejournAllemands,
     meta: {
       title: 'Séjour des Jeunes Allemands - MDH International Togo'
+    }
+  },
+  {
+    path: '/article/academies-super-enfants',
+    name: 'AcademiesSuperEnfants',
+    component: AcademiesSuperEnfants,
+    meta: {
+      title: 'Académie des Super-Enfants - MDH International Togo'
+    }
+  },
+  {
+    path: '/article/rapport-activites-2019',
+    name: 'RapportActivites2019',
+    component: RapportActivites2019,
+    meta: {
+      title: 'Rapport Activités 2019 - MDH International Togo'
     }
   },
   {

@@ -143,8 +143,8 @@
           Ces photos racontent l'histoire de nos initiatives. Votre soutien nous aide à faire la différence.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <router-link to="/donation" class="px-8 py-4 bg-[#fbbf24] text-[#090e15] rounded-full font-bold hover:bg-white transition duration-300 inline-block">
-            Faire un don
+          <router-link to="/actualites" class="px-8 py-4 bg-[#fbbf24] text-[#090e15] rounded-full font-bold hover:bg-white transition duration-300 inline-block">
+            Nos actualités
           </router-link>
           <router-link to="/rejoindre" class="px-8 py-4 bg-white text-[#090e15] rounded-full font-bold hover:bg-gray-100 transition duration-300 inline-block">
             Nous rejoindre

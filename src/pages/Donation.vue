@@ -118,6 +118,16 @@
               <i class="fas fa-lock text-green-500 mr-1"></i> Paiement sécurisé via PayPal
             </p>
           </form>
+
+          <!-- PayPal Direct Link -->
+          <div class="mt-8 text-center">
+            <p class="text-gray-600 mb-4 font-semibold">Ou donnez directement via PayPal:</p>
+            <a href="https://www.paypal.com/mep/dashboard" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#0070ba] to-[#003087] text-white rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:scale-105 transition duration-300">
+              <i class="fab fa-paypal text-xl"></i>
+              Donner sur PayPal
+            </a>
+            <p class="text-xs text-gray-500 mt-3">Lien sécurisé PayPal - Ouvre dans une nouvelle fenêtre</p>
+          </div>
         </div>
       </div>
     </section>

@@ -5,22 +5,21 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
         <!-- About Section -->
         <div>
-          <h3 class="text-xl font-bold mb-4 text-[#fbbf24]">À Propos</h3>
+          <h3 class="text-xl font-bold mb-4 text-[#fbbf24]">À propos de MDH</h3>
           <img src="/images/logo_mdh.png" alt="MDH Logo" class="h-10 w-auto mb-4">
-          <p class="text-gray-300 text-sm">
-            MDH International Togo est dédiée au développement humain durable à travers l'éducation, la santé et le développement économique.
+          <p class="text-gray-300 text-sm leading-relaxed">
+            MDH œuvre pour le développement humain à travers l'éducation et le soutien aux communautés vulnérables.
           </p>
         </div>
 
         <!-- Quick Links -->
         <div>
-          <h3 class="text-xl font-bold mb-4 text-[#fbbf24]">Accès Rapide</h3>
+          <h3 class="text-xl font-bold mb-4 text-[#fbbf24]">Liens Rapides</h3>
           <ul class="space-y-2">
-            <li><router-link to="/" class="text-gray-300 hover:text-[#fbbf24] transition">Accueil</router-link></li>
             <li><router-link to="/association" class="text-gray-300 hover:text-[#fbbf24] transition">L'Organisation</router-link></li>
             <li><router-link to="/actions" class="text-gray-300 hover:text-[#fbbf24] transition">Nos Actions</router-link></li>
+            <li><router-link to="/ecole" class="text-gray-300 hover:text-[#fbbf24] transition">Notre École</router-link></li>
             <li><router-link to="/actualites" class="text-gray-300 hover:text-[#fbbf24] transition">Actualités</router-link></li>
-            <li><router-link to="/contact" class="text-gray-300 hover:text-[#fbbf24] transition">Contact</router-link></li>
           </ul>
         </div>
 
@@ -29,34 +28,34 @@
           <h3 class="text-xl font-bold mb-4 text-[#fbbf24]">Contact</h3>
           <ul class="space-y-3 text-sm text-gray-300">
             <li class="flex items-start">
-              <i class="fas fa-map-marker-alt mr-3 mt-1 text-[#fbbf24]"></i>
-              <span>Adresse, Togo</span>
+              <i class="fas fa-envelope mr-3 mt-1 text-[#fbbf24]"></i>
+              <span>Email: modehumain@gmail.com</span>
             </li>
             <li class="flex items-start">
               <i class="fas fa-phone mr-3 mt-1 text-[#fbbf24]"></i>
-              <span>+228 XX XX XX XX</span>
+              <span>Tél: +228 92 12 95 49</span>
             </li>
             <li class="flex items-start">
-              <i class="fas fa-envelope mr-3 mt-1 text-[#fbbf24]"></i>
-              <span>contact@mdh-togo.org</span>
+              <i class="fas fa-map-marker-alt mr-3 mt-1 text-[#fbbf24]"></i>
+              <span>Adresse: Aflao-Sagbado (Apedokoè), Lomé, Togo</span>
             </li>
           </ul>
         </div>
 
         <!-- Social Media -->
         <div>
-          <h3 class="text-xl font-bold mb-4 text-[#fbbf24]">Nous Suivre</h3>
+          <h3 class="text-xl font-bold mb-4 text-[#fbbf24]">Suivez-nous</h3>
           <div class="flex space-x-4">
-            <a href="#" class="w-10 h-10 bg-[#fbbf24] text-[#090e15] rounded-full flex items-center justify-center hover:bg-white transition">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-[#fbbf24] text-[#090e15] rounded-full flex items-center justify-center hover:bg-white transition">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="#" class="w-10 h-10 bg-[#fbbf24] text-[#090e15] rounded-full flex items-center justify-center hover:bg-white transition">
+            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-[#fbbf24] text-[#090e15] rounded-full flex items-center justify-center hover:bg-white transition">
               <i class="fab fa-twitter"></i>
             </a>
-            <a href="#" class="w-10 h-10 bg-[#fbbf24] text-[#090e15] rounded-full flex items-center justify-center hover:bg-white transition">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-[#fbbf24] text-[#090e15] rounded-full flex items-center justify-center hover:bg-white transition">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="#" class="w-10 h-10 bg-[#fbbf24] text-[#090e15] rounded-full flex items-center justify-center hover:bg-white transition">
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-[#fbbf24] text-[#090e15] rounded-full flex items-center justify-center hover:bg-white transition">
               <i class="fab fa-linkedin-in"></i>
             </a>
           </div>
