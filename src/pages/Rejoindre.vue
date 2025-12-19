@@ -15,7 +15,7 @@
     <!-- Form Section -->
     <section class="py-16 bg-gray-100">
       <div class="max-w-4xl mx-auto px-4">
-        <form action="https://formspree.io/f/mkgbydwe" method="post" class="bg-white rounded-2xl shadow-xl p-8 border border-gray-200 space-y-6">
+        <form action="https://formspree.io/f/mwpbyqgw" method="post" class="bg-white rounded-2xl shadow-xl p-8 border border-gray-200 space-y-6">
           
           <!-- Personal Info -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
