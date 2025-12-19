@@ -11,8 +11,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -26,12 +24,10 @@ jobs:
     - name: Build
       run: npm run build
     
-    - name: Deploy to GitHub Pages
-      run: |
-        cd dist
-        git init
-        git config user.email "action@github.com"
-        git config user.name "GitHub Action"
-        git add -A
-        git commit -m "Deploy to GitHub Pages"
-        git push -f https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git main:gh-pages
+    - name: Deploy to gh-pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
