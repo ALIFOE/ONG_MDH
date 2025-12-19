@@ -1,0 +1,53 @@
+:root {
+  --mdh-blue: #090e15;
+  --mdh-yellow: #fbbf24;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Navigation Links */
+.nav-link {
+  @apply text-[#090e15] font-medium hover:text-[#fbbf24] transition duration-300 relative;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-[#fbbf24] transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+/* Button Styles */
+.btn-primary {
+  @apply py-2 px-6 bg-[#090e15] text-white rounded-full hover:bg-[#fbbf24] hover:text-[#090e15] font-bold shadow-md transition duration-300;
+}
+
+.btn-secondary {
+  @apply py-2 px-6 bg-[#fbbf24] text-[#090e15] rounded-full hover:bg-[#090e15] hover:text-white font-bold shadow-md transition duration-300;
+}
+
+/* Scroll to top smooth */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}

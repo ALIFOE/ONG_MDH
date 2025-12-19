@@ -1,35 +1,29 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./**/*.{html,js}"],
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
-      colors: {
-        'mdh-blue': {
-          light: '#B7E4F4',
-          DEFAULT: '#87CEEB',
-          dark: '#5EBAE2'
-        },
-        'mdh-yellow': {
-          light: '#FFE14D',
-          DEFAULT: '#FFD700',
-          dark: '#E6C200'
-        }
+      fontFamily: {
+        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'sans-serif'],
       },
       animation: {
-        'float': 'float 6s ease-in-out infinite',
-        'shine': 'shine 1.5s ease-in-out infinite'
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-up': 'slideUp 0.5s ease-out',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' }
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
-        shine: {
-          '0%': { left: '-100%' },
-          '100%': { left: '100%' }
-        }
-      }
-    }
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 }
