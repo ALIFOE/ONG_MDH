@@ -16,7 +16,7 @@
       <div class="max-w-7xl mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <!-- Image Placeholder -->
-          <img src="/images/image ecole 8 MDH.jpg" alt="Notre école au Togo" class="rounded-2xl h-96 w-full object-cover shadow-xl" />
+          <img :src="ecoleImage" alt="Notre école au Togo" class="rounded-2xl h-96 w-full object-cover shadow-xl" />
 
           <!-- School Info -->
           <div class="space-y-6">
@@ -112,5 +112,34 @@
 </template>
 
 <script setup>
-// École page component
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import ecoleImage from '../../images/image ecole 8 MDH.jpg'
+
+const router = useRouter()
+const statsAnimated = ref(false)
+
+// Animer les statistiques au scroll
+onMounted(() => {
+  const statsObserverOptions = {
+    threshold: 0.5,
+    rootMargin: '0px 0px -100px 0px'
+  }
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !statsAnimated.value) {
+        statsAnimated.value = true
+        // Déclencher l'animation des stats
+        entry.target.classList.add('animate-in')
+      }
+    })
+  }, statsObserverOptions)
+
+  // Observer la section des statistiques
+  const statsSection = document.querySelector('.grid:has(.text-3xl.font-bold.text-\\[\\#1e293b\\])')
+  if (statsSection) {
+    statsObserver.observe(statsSection)
+  }
+})
 </script>
