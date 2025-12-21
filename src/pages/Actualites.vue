@@ -13,7 +13,7 @@
     <section class="max-w-7xl mx-auto px-4 pb-20">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         <article class="bg-white/90 rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-[#090e15]/10">
-          <img src="/images/rapport2.png" alt="Rapport 2019" class="h-48 w-full object-cover" />
+          <img :src="rapport2" alt="Rapport 2019" class="h-48 w-full object-cover" />
           <div class="p-6">
             <span class="text-yellow-400 font-semibold">Année 2019</span>
             <h2 class="text-xl font-bold text-[#090e15] mt-2 mb-3">Rapport Général de la Mise en Œuvre des Activités de 2019</h2>
@@ -23,7 +23,7 @@
         </article>
 
         <article class="bg-white/90 rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-[#090e15]/10">
-          <img src="/images/rapport1.png" alt="Académie des Super-Enfants" class="h-48 w-full object-cover" />
+          <img :src="rapport1" alt="Académie des Super-Enfants" class="h-48 w-full object-cover" />
           <div class="p-6">
             <span class="text-yellow-400 font-semibold">Septembre - Novembre 2025</span>
             <h2 class="text-xl font-bold text-[#090e15] mt-2 mb-3">Rapport d'Activité du Programme Académie des Super-Enfants</h2>
@@ -97,4 +97,6 @@
 </template>
 
 <script setup>
+import rapport1 from '@/assets/images/rapport1.png'
+import rapport2 from '@/assets/images/rapport2.png'
 </script>

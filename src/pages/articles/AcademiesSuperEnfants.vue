@@ -16,7 +16,7 @@
     <section class="py-16 bg-white">
       <div class="max-w-4xl mx-auto px-4">
         <div class="prose prose-lg max-w-none">
-          <img src="/images/rapport1.png" alt="Académie des Super-Enfants" class="w-full h-96 object-cover rounded-2xl shadow-xl mb-12" />
+          <img :src="rapport1" alt="Académie des Super-Enfants" class="w-full h-96 object-cover rounded-2xl shadow-xl mb-12" />
 
           <div class="space-y-6 text-gray-700 leading-relaxed">
             <p class="text-xl font-semibold text-[#090e15]">
@@ -109,4 +109,5 @@
 </template>
 
 <script setup>
+import rapport1 from '@/assets/images/rapport1.png'
 </script>

@@ -1,3 +1,58 @@
+<script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+import photo2 from '@/assets/images/photo2.jpg'
+import votreecole from '@/assets/images/votreecole.jpg'
+import imagEcole3 from '@/assets/images/image ecole 3 MDH.jpg'
+
+// State pour les sections visibles
+const visibleSections = ref({
+  hero: false,
+  statistics: false,
+  engagement: false,
+  project: false,
+  cta: false,
+  testimonials: false
+})
+
+// Intersection Observer pour les animations au scroll
+let observerInstances = []
+
+onMounted(() => {
+  // Observer pour les sections
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const sectionName = entry.target.dataset.section
+        if (sectionName) {
+          visibleSections.value[sectionName] = true
+        }
+      }
+    })
+  }, observerOptions)
+
+  // Observer toutes les sections
+  document.querySelectorAll('[data-section]').forEach(section => {
+    observer.observe(section)
+  })
+
+  observerInstances.push(observer)
+
+  // Scroll smooth
+  document.documentElement.style.scrollBehavior = 'smooth'
+})
+
+onBeforeUnmount(() => {
+  // Nettoyer les observers
+  observerInstances.forEach(observer => observer.disconnect())
+  observerInstances = []
+})
+</script>
+
 <template>
   <div class="w-full overflow-hidden">
     <!-- Hero Section -->
@@ -10,7 +65,7 @@
       </div>
       
       <!-- Background Image with Overlay -->
-      <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url('/images/photo2.jpg');"></div>
+      <div class="absolute inset-0 bg-cover bg-center opacity-20" :style="{backgroundImage: `url(${photo2})`}"></div>
       
       <!-- Hero Content -->
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center w-full py-20">
@@ -140,7 +195,7 @@
           <div class="relative group">
             <div class="absolute -inset-1 bg-gradient-to-r from-amber-400 to-amber-600 rounded-3xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
             <div class="relative w-full h-96 bg-gradient-to-br from-amber-400 to-amber-600 rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden">
-              <img src="/images/votreecole.jpg" alt="Notre Histoire - MDH" class="w-full h-full object-cover" />
+              <img :src="votreecole" alt="Notre Histoire - MDH" class="w-full h-full object-cover" />
             </div>
           </div>
           <!-- Content -->
@@ -307,7 +362,7 @@
           <div class="relative group order-2 lg:order-1">
             <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-blue-400 rounded-3xl blur opacity-25 group-hover:opacity-75 transition duration-500 group-hover:duration-200"></div>
             <div class="relative w-full h-96 bg-gradient-to-br from-blue-400 to-blue-600 rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden group-hover:shadow-2xl transition-shadow duration-300">
-              <img src="/images/image ecole 3 MDH.jpg" alt="Notre dernier projet - École" class="w-full h-full object-cover" />
+              <img :src="imagEcole3" alt="Notre dernier projet - École" class="w-full h-full object-cover" />
             </div>
             <div class="absolute -bottom-4 -right-4 bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 px-6 py-3 rounded-xl shadow-2xl font-bold text-lg transform group-hover:scale-110 transition-transform duration-300">
               <i class="fas fa-calendar-alt mr-2"></i> Juin 2025
@@ -508,61 +563,4 @@
     </section>
   </div>
 </template>
-
-<script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-
-// State pour les sections visibles
-const visibleSections = ref({
-  hero: false,
-  statistics: false,
-  engagement: false,
-  project: false,
-  cta: false,
-  testimonials: false
-})
-
-// Intersection Observer pour les animations au scroll
-let observerInstances = []
-
-onMounted(() => {
-  // Observer pour les sections
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const sectionName = entry.target.dataset.section
-        if (sectionName) {
-          visibleSections.value[sectionName] = true
-        }
-      }
-    })
-  }, observerOptions)
-
-  // Observer toutes les sections
-  document.querySelectorAll('[data-section]').forEach(section => {
-    observer.observe(section)
-  })
-
-  observerInstances.push(observer)
-
-  // Scroll smooth
-  document.documentElement.style.scrollBehavior = 'smooth'
-})
-
-onBeforeUnmount(() => {
-  // Nettoyer les observers
-  observerInstances.forEach(observer => observer.disconnect())
-  observerInstances = []
-})
-
-// Fonction pour tracker les clics
-const trackClick = (action) => {
-  console.log(`Utilisateur a cliqué sur: ${action}`)
-}
-</script>
 

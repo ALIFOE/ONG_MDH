@@ -1,8 +1,33 @@
+<script setup>
+import { ref } from 'vue'
+import imageEcole4 from '@/assets/images/image ecole 4 MDH.jpg'
+
+const form = ref({
+  amount: '',
+  firstname: '',
+  lastname: '',
+  email: '',
+  phone: '',
+  message: ''
+})
+
+const submitted = ref(false)
+
+const handleSubmit = () => {
+  submitted.value = true
+  
+  setTimeout(() => {
+    form.value = { amount: '', firstname: '', lastname: '', email: '', phone: '', message: '' }
+    submitted.value = false
+  }, 3000)
+}
+</script>
+
 <template>
   <div>
     <!-- Hero Section - Redesigned with gradient -->
     <section class="relative overflow-hidden py-20 lg:py-32 mt-24">
-      <div class="absolute inset-0 bg-cover bg-center opacity-40" style="background-image: url('/images/image ecole 4 MDH.jpg');"></div>
+      <div class="absolute inset-0 bg-cover bg-center opacity-40" :style="{backgroundImage: `url(${imageEcole4})`}"></div>
       <div class="absolute inset-0 bg-gradient-to-br from-[#090e15] via-[#334155] to-[#0f172a] opacity-85"></div>
       
       <div class="relative container mx-auto px-4 text-center">
@@ -189,28 +214,4 @@
     </section>
   </div>
 </template>
-
-<script setup>
-import { ref } from 'vue'
-
-const form = ref({
-  amount: '',
-  firstname: '',
-  lastname: '',
-  email: '',
-  phone: '',
-  message: ''
-})
-
-const submitted = ref(false)
-
-const handleSubmit = () => {
-  submitted.value = true
-  
-  setTimeout(() => {
-    form.value = { amount: '', firstname: '', lastname: '', email: '', phone: '', message: '' }
-    submitted.value = false
-  }, 3000)
-}
-</script>
 

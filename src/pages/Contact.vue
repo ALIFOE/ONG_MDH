@@ -1,8 +1,85 @@
+<script setup>
+import { ref } from 'vue'
+import image1 from '@/assets/images/image1.jpg'
+import rapport1 from '@/assets/images/rapport1.png'
+
+const form = ref({
+  firstname: '',
+  lastname: '',
+  email: '',
+  subject: '',
+  message: '',
+  privacy: false
+})
+
+const submitted = ref(false)
+const isSubmitting = ref(false)
+
+const handleSubmit = async () => {
+  isSubmitting.value = true
+  
+  try {
+    // Validation
+    if (!form.value.firstname || !form.value.lastname || !form.value.email || !form.value.subject || !form.value.message) {
+      alert('Veuillez remplir tous les champs obligatoires')
+      isSubmitting.value = false
+      return
+    }
+
+    if (!form.value.privacy) {
+      alert('Vous devez accepter les conditions de traitement de vos données')
+      isSubmitting.value = false
+      return
+    }
+
+    // Préparer les données pour Formspree
+    const formData = {
+      'Prénom': form.value.firstname,
+      'Nom': form.value.lastname,
+      'Email': form.value.email,
+      'Sujet': form.value.subject,
+      'Message': form.value.message
+    }
+
+    // Envoyer les données à Formspree
+    const response = await fetch('https://formspree.io/f/xwpbydgd', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+
+    if (!response.ok) {
+      throw new Error('Erreur lors de l\'envoi du formulaire')
+    }
+
+    submitted.value = true
+    alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.')
+    
+    // Réinitialiser le formulaire
+    form.value = {
+      firstname: '',
+      lastname: '',
+      email: '',
+      subject: '',
+      message: '',
+      privacy: false
+    }
+  } catch (error) {
+    alert('Erreur lors de l\'envoi du message: ' + error.message)
+  } finally {
+    isSubmitting.value = false
+  }
+}
+</script>
+
 <template>
   <div>
     <!-- Hero Section -->
     <section class="text-center mb-16 bg-gray-100 px-4 py-12 mt-24 relative overflow-hidden">
-      <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url('/images/image1.jpg');"></div>
+      <div class="absolute inset-0 bg-cover bg-center opacity-20" :style="{backgroundImage: `url(${image1})`}"></div>
       <div class="relative z-10">
         <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-[#090e15] mb-4">Contactez-nous</h1>
         <p class="text-xl text-gray-700 max-w-3xl mx-auto">
@@ -113,7 +190,7 @@
         <div class="grid grid-cols-1 gap-8">
           <!-- Image and Quick Info -->
           <div class="bg-white/90 rounded-3xl shadow-2xl p-8 border border-gray-200 overflow-hidden">
-            <img src="/images/votreecole.jpg" alt="Siège de MDH" class="w-full h-48 object-cover rounded-lg mb-4" />
+            <img :src="rapport1" alt="Siège de MDH" class="w-full h-48 object-cover rounded-lg mb-4" />
             <h3 class="text-2xl font-bold text-[#090e15] mb-2">Nos Locaux</h3>
             <p class="text-gray-600">Visitez notre siège pour discuter de nos projets et nos missions.</p>
           </div>
@@ -124,7 +201,7 @@
               <i class="fas fa-phone text-yellow-400 text-3xl mr-4"></i>
               Téléphone
             </h3>
-            <p class="text-lg text-gray-700 font-semibold">+228 XX XX XX XX</p>
+            <p class="text-lg text-gray-700 font-semibold">+228 92 12 95 49</p>
             <p class="text-gray-600">Disponible du lundi au vendredi de 8h à 18h</p>
           </div>
 
@@ -134,7 +211,7 @@
               <i class="fas fa-envelope text-yellow-400 text-3xl mr-4"></i>
               Email
             </h3>
-            <p class="text-lg text-gray-700 font-semibold">contact@mdh-togo.org</p>
+            <p class="text-lg text-gray-700 font-semibold">modehumain@gmail.com</p>
             <p class="text-gray-600">Nous répondons sous 24-48 heures</p>
           </div>
 
@@ -144,8 +221,8 @@
               <i class="fas fa-map-marker-alt text-yellow-400 text-3xl mr-4"></i>
               Adresse
             </h3>
-            <p class="text-lg text-gray-700 font-semibold">Lomé, Togo</p>
-            <p class="text-gray-600">Quartier/Rue principal</p>
+            <p class="text-lg text-gray-700 font-semibold">Aflao-Sagbado (Apedokoè)</p>
+            <p class="text-gray-600">Lomé, Togo</p>
           </div>
         </div>
       </section>
@@ -165,83 +242,3 @@
     </section>
   </div>
 </template>
-
-<script setup>
-import { ref } from 'vue'
-
-const form = ref({
-  firstname: '',
-  lastname: '',
-  email: '',
-  subject: '',
-  message: '',
-  privacy: false
-})
-
-const submitted = ref(false)
-const isSubmitting = ref(false)
-
-const handleSubmit = async () => {
-  isSubmitting.value = true
-  
-  try {
-    // Validation
-    if (!form.value.firstname || !form.value.lastname || !form.value.email || !form.value.subject || !form.value.message) {
-      alert('Veuillez remplir tous les champs obligatoires')
-      isSubmitting.value = false
-      return
-    }
-
-    if (!form.value.privacy) {
-      alert('Vous devez accepter les conditions de traitement de vos données')
-      isSubmitting.value = false
-      return
-    }
-
-    // Préparer les données pour Formspree
-    const formData = {
-      'Prénom': form.value.firstname,
-      'Nom': form.value.lastname,
-      'Email': form.value.email,
-      'Sujet': form.value.subject,
-      'Message': form.value.message
-    }
-
-    // Envoyer les données à Formspree
-    const response = await fetch('https://formspree.io/f/xwpbydgd', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-
-    if (!response.ok) {
-      throw new Error('Erreur lors de l\'envoi du formulaire')
-    }
-
-    submitted.value = true
-    alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.')
-    
-    // Réinitialiser le formulaire
-    form.value = { 
-      firstname: '', 
-      lastname: '', 
-      email: '', 
-      subject: '', 
-      message: '', 
-      privacy: false 
-    }
-    
-    setTimeout(() => {
-      submitted.value = false
-    }, 3000)
-  } catch (error) {
-    console.error('Erreur lors de l\'envoi:', error)
-    alert('Une erreur s\'est produite lors de l\'envoi du formulaire. Veuillez réessayer.')
-  } finally {
-    isSubmitting.value = false
-  }
-}
-</script>

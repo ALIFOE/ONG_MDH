@@ -1,8 +1,12 @@
+<script setup>
+import imageParrain from '@/assets/images/image parrain.png'
+</script>
+
 <template>
   <div>
     <!-- Hero Section -->
     <section class="text-center bg-gray-100 py-12 mt-24 relative overflow-hidden">
-      <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url('/images/image parrain.png');"></div>
+      <div class="absolute inset-0 bg-cover bg-center opacity-20" :style="{backgroundImage: `url(${imageParrain})`}"></div>
       <div class="max-w-7xl mx-auto px-4 relative z-10">
         <h1 class="text-5xl font-extrabold text-[#090e15] mb-4 tracking-tight">Rejoindre-nous</h1>
         <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-4">
@@ -130,7 +134,4 @@
     </section>
   </div>
 </template>
-<script setup>
-// Rejoindre page component
-</script>
 
