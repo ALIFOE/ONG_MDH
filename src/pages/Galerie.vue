@@ -164,45 +164,45 @@ const currentLightboxIndex = ref(0)
 
 const images = ref([
   // Éducation
-  { url: '/images/education1.jpg', title: 'Classe moderne', category: 'Éducation' },
-  { url: '/images/education2.jpg', title: 'Apprentissage', category: 'Éducation' },
-  { url: '/images/image ecole 3 MDH.jpg', title: 'École en construction', category: 'Éducation' },
-  { url: '/images/image ecole 4 MDH.jpg', title: 'Infrastructure scolaire', category: 'Éducation' },
-  { url: '/images/image ecole 5 MDH.jpg', title: 'Soutien scolaire', category: 'Éducation' },
-  { url: '/images/image ecole 8 MDH.jpg', title: 'Notre école', category: 'Éducation' },
-  { url: '/images/image formation MDH.jpg', title: 'Formation d\'enseignants', category: 'Éducation' },
-  { url: '/images/photo ecole MDH.jpeg', title: 'Vie scolaire', category: 'Éducation' },
+  { url: new URL('@/assets/images/education1.jpg', import.meta.url).href, title: 'Classe moderne', category: 'Éducation' },
+  { url: new URL('@/assets/images/education2.jpg', import.meta.url).href, title: 'Apprentissage', category: 'Éducation' },
+  { url: new URL('@/assets/images/image ecole 3 MDH.jpg', import.meta.url).href, title: 'École en construction', category: 'Éducation' },
+  { url: new URL('@/assets/images/image ecole 4 MDH.jpg', import.meta.url).href, title: 'Infrastructure scolaire', category: 'Éducation' },
+  { url: new URL('@/assets/images/image ecole 5 MDH.jpg', import.meta.url).href, title: 'Soutien scolaire', category: 'Éducation' },
+  { url: new URL('@/assets/images/image ecole 8 MDH.jpg', import.meta.url).href, title: 'Notre école', category: 'Éducation' },
+  { url: new URL('@/assets/images/image formation MDH.jpg', import.meta.url).href, title: 'Formation d\'enseignants', category: 'Éducation' },
+  { url: new URL('@/assets/images/photo ecole MDH.jpeg', import.meta.url).href, title: 'Vie scolaire', category: 'Éducation' },
   
   // Santé
-  { url: '/images/sante1.jpg', title: 'Campagne de santé', category: 'Santé' },
+  { url: new URL('@/assets/images/sante1.jpg', import.meta.url).href, title: 'Campagne de santé', category: 'Santé' },
   
   // Développement Durable
-  { url: '/images/agriculture1.jpg', title: 'Agriculture durable', category: 'Développement' },
-  { url: '/images/gestion de déchets MDH.jpg', title: 'Gestion des déchets', category: 'Développement' },
+  { url: new URL('@/assets/images/agriculture1.jpg', import.meta.url).href, title: 'Agriculture durable', category: 'Développement' },
+  { url: new URL('@/assets/images/gestion de déchets MDH.jpg', import.meta.url).href, title: 'Gestion des déchets', category: 'Développement' },
   
   // Actualités et projets
-  { url: '/images/article1.jpg', title: 'Vacances utiles', category: 'Éducation' },
-  { url: '/images/article2.jpg', title: 'Mobilisation', category: 'Développement' },
-  { url: '/images/article3.jpg', title: 'Échanges internationaux', category: 'Équipe' },
-  { url: '/images/sensibilisation1.jpg', title: 'Sensibilisation', category: 'Développement' },
-  { url: '/images/image debut chantier.jpg', title: 'Chantier de construction', category: 'Développement' },
+  { url: new URL('@/assets/images/article1.jpg', import.meta.url).href, title: 'Vacances utiles', category: 'Éducation' },
+  { url: new URL('@/assets/images/article2.jpg', import.meta.url).href, title: 'Mobilisation', category: 'Développement' },
+  { url: new URL('@/assets/images/article3.jpg', import.meta.url).href, title: 'Échanges internationaux', category: 'Équipe' },
+  { url: new URL('@/assets/images/sensibilisation1.jpg', import.meta.url).href, title: 'Sensibilisation', category: 'Développement' },
+  { url: new URL('@/assets/images/image debut chantier.jpg', import.meta.url).href, title: 'Chantier de construction', category: 'Développement' },
   
   // Équipe et partenaires
-  { url: '/images/image parrain.png', title: 'Équipe de direction', category: 'Équipe' },
-  { url: '/images/saoute2.jpg', title: 'Directeur exécutif', category: 'Équipe' },
-  { url: '/images/saoute3.jpg', title: 'Équipe sur le terrain', category: 'Équipe' },
-  { url: '/images/saoute4.jpg', title: 'Réunion d\'équipe', category: 'Équipe' },
+  { url: new URL('@/assets/images/image parrain.png', import.meta.url).href, title: 'Équipe de direction', category: 'Équipe' },
+  { url: new URL('@/assets/images/saoute2.jpg', import.meta.url).href, title: 'Directeur exécutif', category: 'Équipe' },
+  { url: new URL('@/assets/images/saoute3.jpg', import.meta.url).href, title: 'Équipe sur le terrain', category: 'Équipe' },
+  { url: new URL('@/assets/images/saoute4.jpg', import.meta.url).href, title: 'Réunion d\'équipe', category: 'Équipe' },
   
   // Autres
-  { url: '/images/visite1.jpg', title: 'Visite du projet', category: 'Développement' },
-  { url: '/images/votreecole.jpg', title: 'Siège de l\'organisation', category: 'Équipe' },
-  { url: '/images/photo2.jpg', title: 'Activités', category: 'Éducation' },
-  { url: '/images/image1.jpg', title: 'Moment du projet', category: 'Développement' },
-  { url: '/images/image2.jpg', title: 'Terrain d\'action', category: 'Développement' },
-  { url: '/images/image3.jpg', title: 'Bénéficiaires', category: 'Éducation' },
-  { url: '/images/image4.jpg', title: 'Impact social', category: 'Développement' },
-  { url: '/images/image1projet.jpg', title: 'Projet en cours', category: 'Développement' },
-  { url: '/images/saoute4.jpg', title: 'Sur le terrain', category: 'Équipe' },
+  { url: new URL('@/assets/images/visite1.jpg', import.meta.url).href, title: 'Visite du projet', category: 'Développement' },
+  { url: new URL('@/assets/images/votreecole.jpg', import.meta.url).href, title: 'Siège de l\'organisation', category: 'Équipe' },
+  { url: new URL('@/assets/images/photo2.jpg', import.meta.url).href, title: 'Activités', category: 'Éducation' },
+  { url: new URL('@/assets/images/image1.jpg', import.meta.url).href, title: 'Moment du projet', category: 'Développement' },
+  { url: new URL('@/assets/images/image2.jpg', import.meta.url).href, title: 'Terrain d\'action', category: 'Développement' },
+  { url: new URL('@/assets/images/image3.jpg', import.meta.url).href, title: 'Bénéficiaires', category: 'Éducation' },
+  { url: new URL('@/assets/images/image4.jpg', import.meta.url).href, title: 'Impact social', category: 'Développement' },
+  { url: new URL('@/assets/images/image1projet.jpg', import.meta.url).href, title: 'Projet en cours', category: 'Développement' },
+  { url: new URL('@/assets/images/saoute4.jpg', import.meta.url).href, title: 'Sur le terrain', category: 'Équipe' },
 ])
 
 const filteredImages = computed(() => {
