@@ -1,5 +1,8 @@
 <template>
   <div id="main-content" class="flex flex-col min-h-screen">
+    <!-- Meta Tags Manager -->
+    <MetaTags />
+
     <!-- Navigation -->
     <Navbar />
 
@@ -14,6 +17,7 @@
 </template>
 
 <script setup>
+import MetaTags from './components/MetaTags.vue'
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 </script>

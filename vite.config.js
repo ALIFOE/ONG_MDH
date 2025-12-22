@@ -12,11 +12,18 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    host: 'localhost',
+    host: '127.0.0.1',
+    strictPort: true,
+    hmr: {
+      protocol: 'ws',
+      host: '127.0.0.1',
+      port: 5173,
+    },
   },
   build: {
     target: 'esnext',
     minify: 'terser',
+    sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks: {

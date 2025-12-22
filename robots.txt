@@ -1,14 +1,16 @@
-# robots.txt
+# robots.txt - MDH International Togo
 User-agent: *
-Allow: /
-Allow: /css/
-Allow: /js/
-Allow: /images/
+Allow: /ONG_MDH/
+Allow: /ONG_MDH/css/
+Allow: /ONG_MDH/js/
+Allow: /ONG_MDH/assets/
 
 # Disallow private or admin areas
 Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
+Disallow: /.env
+Disallow: /.git
 
 # Sitemap
 Sitemap: https://modehumain.org/sitemap.xml
