@@ -11,8 +11,20 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Security middleware
-app.use(helmet());
+// Security middleware with proper CSP
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", "data:", "https:"],
+      fontSrc: ["'self'"],
+      connectSrc: ["'self'"]
+    }
+  },
+  crossOriginEmbedderPolicy: false
+}));
 
 // Rate limiting
 const limiter = rateLimit({
@@ -24,6 +36,18 @@ app.use(limiter);
 // Compression
 app.use(compression());
 
+// Custom middleware to set correct MIME types
+app.use((req, res, next) => {
+  if (req.url.endsWith('.js') || req.url.endsWith('.mjs')) {
+    res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
+  } else if (req.url.endsWith('.css')) {
+    res.setHeader('Content-Type', 'text/css; charset=utf-8');
+  } else if (req.url.endsWith('.woff') || req.url.endsWith('.woff2')) {
+    res.setHeader('Content-Type', 'application/font-woff');
+  }
+  next();
+});
+
 // Serve static files from dist folder with caching
 app.use(express.static(path.join(__dirname, 'dist'), {
   maxAge: '1d',
@@ -32,6 +56,7 @@ app.use(express.static(path.join(__dirname, 'dist'), {
 
 // Handle SPA routing - redirect all requests to index.html
 app.use((req, res) => {
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.sendFile(path.join(__dirname, 'dist', 'index.html'), {
     maxAge: '1h'
   });
