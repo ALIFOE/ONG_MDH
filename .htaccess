@@ -6,26 +6,60 @@
 # Activer le module de réécriture
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    
-    # Définir la base de réécriture (racine du site)
     RewriteBase /
     
-    # Éviter les boucles infinies
+    # NE PAS réécrire les fichiers/dossiers existants
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
     
-    # Réécrire toutes les routes non-existantes vers index.html
-    RewriteRule ^(?!.*\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$).*$ index.html [QSA,L]
+    # NE PAS réécrire les extensions spécifiques
+    RewriteCond %{REQUEST_URI} \.(js|mjs|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|otf|eot|json|map)$ [NC]
+    RewriteRule ^ - [L]
+    
+    # Réécrire toutes les autres routes vers index.html (SPA routing)
+    RewriteRule ^(.*)$ index.html [QSA,L]
+</IfModule>
+
+# ============================================================================
+# Types MIME - TRÈS IMPORTANT pour le serveur cPanel
+# ============================================================================
+<IfModule mod_mime.c>
+    # JavaScript
+    AddType application/javascript js mjs
+    AddEncoding gzip js mjs
+    
+    # CSS
+    AddType text/css css
+    AddEncoding gzip css
+    
+    # Fonts
+    AddType application/font-woff woff
+    AddType application/font-woff2 woff2
+    AddType application/font-ttf ttf
+    AddType application/font-otf otf
+    AddType application/vnd.ms-fontobject eot
+    
+    # JSON
+    AddType application/json json
+    AddType application/json map
+    
+    # Images
+    AddType image/svg+xml svg svgz
+    AddEncoding gzip svgz
 </IfModule>
 
 # ============================================================================
 # Compression GZIP
 # ============================================================================
 <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html text/plain text/xml
-    AddOutputFilterByType DEFLATE text/css text/javascript
-    AddOutputFilterByType DEFLATE application/javascript application/json
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/json
     AddOutputFilterByType DEFLATE image/svg+xml
 </IfModule>
 
@@ -34,8 +68,9 @@
 # ============================================================================
 <IfModule mod_expires.c>
     ExpiresActive On
+    ExpiresDefault "access plus 2 days"
     
-    # Images
+    # Images - 1 an
     ExpiresByType image/jpeg "access plus 1 year"
     ExpiresByType image/gif "access plus 1 year"
     ExpiresByType image/png "access plus 1 year"
@@ -43,53 +78,38 @@
     ExpiresByType image/svg+xml "access plus 1 year"
     ExpiresByType image/x-icon "access plus 1 year"
     
-    # Styles et scripts
-    ExpiresByType text/css "access plus 1 month"
-    ExpiresByType text/javascript "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
-    
-    # Fonts
+    # Fonts - 1 an
     ExpiresByType font/ttf "access plus 1 year"
     ExpiresByType font/otf "access plus 1 year"
     ExpiresByType font/woff "access plus 1 year"
     ExpiresByType font/woff2 "access plus 1 year"
     ExpiresByType application/font-woff "access plus 1 year"
     
-    # Default
-    ExpiresDefault "access plus 2 days"
+    # Styles et scripts - 1 mois
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    
+    # HTML - 2 jours
+    ExpiresByType text/html "access plus 2 days"
 </IfModule>
 
 # ============================================================================
-# Types MIME corrects
+# Headers de sécurité
 # ============================================================================
-<IfModule mod_mime.c>
-    AddType application/javascript js mjs
-    AddType application/json json
-    AddType application/font-woff woff
-    AddType application/font-woff2 woff2
-    AddEncoding gzip svgz
-    AddType image/svg+xml svg svgz
+<IfModule mod_headers.c>
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
 </IfModule>
 
 # ============================================================================
 # Sécurité - Empêcher l'accès aux fichiers sensibles
 # ============================================================================
-<FilesMatch "\.(env|htaccess|htpasswd|json|lock)$">
+<FilesMatch "\.(env|htaccess|htpasswd|json|lock|git)$">
     Order allow,deny
     Deny from all
 </FilesMatch>
-
-# ============================================================================
-# En-têtes de sécurité
-# ============================================================================
-<IfModule mod_headers.c>
-    # Éviter le clickjacking
-    Header set X-Frame-Options "SAMEORIGIN"
-    # Empêcher le MIME sniffing
-    Header set X-Content-Type-Options "nosniff"
-    # Activer la protection XSS
-    Header set X-XSS-Protection "1; mode=block"
-</IfModule>
   AddOutputFilterByType DEFLATE text/css
   AddOutputFilterByType DEFLATE application/javascript
   AddOutputFilterByType DEFLATE application/json
