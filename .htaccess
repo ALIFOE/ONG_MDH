@@ -1,115 +1,28 @@
-# ============================================================================
-# Vue.js SPA Router Configuration pour cPanel
-# Site à la racine du domaine (https://modehumain.org/)
-# ============================================================================
-
-# Activer le module de réécriture
 <IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /
-    
-    # NE PAS réécrire les fichiers/dossiers existants
-    RewriteCond %{REQUEST_FILENAME} -f [OR]
-    RewriteCond %{REQUEST_FILENAME} -d
-    RewriteRule ^ - [L]
-    
-    # NE PAS réécrire les extensions spécifiques
-    RewriteCond %{REQUEST_URI} \.(js|mjs|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|otf|eot|json|map)$ [NC]
-    RewriteRule ^ - [L]
-    
-    # Réécrire toutes les autres routes vers index.html (SPA routing)
-    RewriteRule ^(.*)$ index.html [QSA,L]
+  RewriteEngine On
+  RewriteBase /
+  
+  # Étape 1: Si c'est un fichier réel, le servir directement
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+  
+  # Étape 2: Si c'est un dossier réel, le servir directement
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  
+  # Étape 3: Sinon, réécrire vers index.html (SPA routing)
+  RewriteRule ^(.*)$ index.html [QSA,L]
 </IfModule>
 
-# ============================================================================
-# Types MIME - TRÈS IMPORTANT pour le serveur cPanel
-# ============================================================================
+# Types MIME
 <IfModule mod_mime.c>
-    # JavaScript
-    AddType application/javascript js mjs
-    AddEncoding gzip js mjs
-    
-    # CSS
-    AddType text/css css
-    AddEncoding gzip css
-    
-    # Fonts
-    AddType application/font-woff woff
-    AddType application/font-woff2 woff2
-    AddType application/font-ttf ttf
-    AddType application/font-otf otf
-    AddType application/vnd.ms-fontobject eot
-    
-    # JSON
-    AddType application/json json
-    AddType application/json map
-    
-    # Images
-    AddType image/svg+xml svg svgz
-    AddEncoding gzip svgz
+  AddType application/javascript js mjs
+  AddType text/css css
+  AddType application/json json
+  AddType image/svg+xml svg svgz
+  AddType application/font-woff woff
+  AddType application/font-woff2 woff2
 </IfModule>
-
-# ============================================================================
-# Compression GZIP
-# ============================================================================
-<IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/html
-    AddOutputFilterByType DEFLATE text/plain
-    AddOutputFilterByType DEFLATE text/xml
-    AddOutputFilterByType DEFLATE text/css
-    AddOutputFilterByType DEFLATE text/javascript
-    AddOutputFilterByType DEFLATE application/javascript
-    AddOutputFilterByType DEFLATE application/json
-    AddOutputFilterByType DEFLATE image/svg+xml
-</IfModule>
-
-# ============================================================================
-# Cache browser
-# ============================================================================
-<IfModule mod_expires.c>
-    ExpiresActive On
-    ExpiresDefault "access plus 2 days"
-    
-    # Images - 1 an
-    ExpiresByType image/jpeg "access plus 1 year"
-    ExpiresByType image/gif "access plus 1 year"
-    ExpiresByType image/png "access plus 1 year"
-    ExpiresByType image/webp "access plus 1 year"
-    ExpiresByType image/svg+xml "access plus 1 year"
-    ExpiresByType image/x-icon "access plus 1 year"
-    
-    # Fonts - 1 an
-    ExpiresByType font/ttf "access plus 1 year"
-    ExpiresByType font/otf "access plus 1 year"
-    ExpiresByType font/woff "access plus 1 year"
-    ExpiresByType font/woff2 "access plus 1 year"
-    ExpiresByType application/font-woff "access plus 1 year"
-    
-    # Styles et scripts - 1 mois
-    ExpiresByType text/css "access plus 1 month"
-    ExpiresByType text/javascript "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
-    
-    # HTML - 2 jours
-    ExpiresByType text/html "access plus 2 days"
-</IfModule>
-
-# ============================================================================
-# Headers de sécurité
-# ============================================================================
-<IfModule mod_headers.c>
-    Header set X-Frame-Options "SAMEORIGIN"
-    Header set X-Content-Type-Options "nosniff"
-    Header set X-XSS-Protection "1; mode=block"
-</IfModule>
-
-# ============================================================================
-# Sécurité - Empêcher l'accès aux fichiers sensibles
-# ============================================================================
-<FilesMatch "\.(env|htaccess|htpasswd|json|lock|git)$">
-    Order allow,deny
-    Deny from all
-</FilesMatch>
   AddOutputFilterByType DEFLATE text/css
   AddOutputFilterByType DEFLATE application/javascript
   AddOutputFilterByType DEFLATE application/json
