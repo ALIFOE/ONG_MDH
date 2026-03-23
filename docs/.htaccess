@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Types MIME corrects pour éviter les erreurs
+<IfModule mod_mime.c>
+    AddType application/javascript js
+    AddType application/javascript mjs
+    AddType application/json json
+    AddType image/svg+xml svg svgz
+    AddType font/woff2 woff2
+    AddType font/woff woff
+</IfModule>
