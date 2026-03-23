@@ -1,28 +1,23 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  
-  # Ne pas réécrire si c'est un fichier existant
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
-  RewriteCond %{REQUEST_FILENAME} -d
-  RewriteRule ^ - [L]
-  
-  # Ne pas réécrire les extensions statiques
-  RewriteCond %{REQUEST_URI} !\.(?:js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|json|map|webp)$ [NC]
-  # Réécrire seulement les autres vers index.html
-  RewriteRule ^.*$ index.html [L]
-</IfModule>
+Options -MultiViews
+RewriteEngine On
+RewriteBase /
 
-# Types MIME corrects
+# Ne pas réécrire si c'est un fichier réel ou un répertoire
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# IMPORTANT: Exclure TOUTES les extensions statiques de la réécriture
+RewriteCond %{REQUEST_URI} !\.(?:js|mjs|css|json|map|png|gif|jpg|jpeg|svg|webp|ico|woff|woff2|ttf|eot|otf)$ [NC]
+# Réécrire uniquement les routes frontend vers index.html
+RewriteRule ^ /index.html [L]
+
+# Types MIME corrects pour éviter les erreurs
 <IfModule mod_mime.c>
     AddType application/javascript js mjs
     AddType application/json json
     AddType image/svg+xml svg svgz
-</IfModule>
-
-# Compression et caching
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+    AddType font/woff2 woff2
 </IfModule>
 
 <IfModule mod_expires.c>
