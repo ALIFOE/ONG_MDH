@@ -1,17 +1,19 @@
-Options -MultiViews
-RewriteEngine On
-RewriteBase /
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Ne pas réécrire si c'est un fichier existant
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  
+  # Ne pas réécrire les extensions statiques
+  RewriteCond %{REQUEST_URI} !\.(?:js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|json|map|webp)$ [NC]
+  # Réécrire seulement les autres vers index.html
+  RewriteRule ^.*$ index.html [L]
+</IfModule>
 
-# Ne pas réécrire si c'est un fichier réel ou un répertoire
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
-
-# N'appliquer la réécriture que si ce n'est pas un fichier statique
-RewriteCond %{REQUEST_URI} !\.(?:js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|json|map|webp)$ [NC]
-RewriteRule ^ /index.html [L]
-
-# Configuration MIME pour éviter les erreurs
+# Types MIME corrects
 <IfModule mod_mime.c>
     AddType application/javascript js mjs
     AddType application/json json
