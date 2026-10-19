@@ -242,6 +242,9 @@ const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
+    } else if (to.hash) {
+      // Ancres internes (ex. /actions#education), décalées sous l'en-tête fixe
+      return { el: to.hash, top: 110, behavior: 'smooth' }
     } else {
       return { top: 0 }
     }
@@ -251,7 +254,6 @@ const router = createRouter({
 // Mise à jour du titre de la page
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title || 'MDH International Togo'
-  window.scrollTo(0, 0)
   next()
 })
 

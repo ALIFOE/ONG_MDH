@@ -1,23 +1,21 @@
 <script setup>
 import { ref } from 'vue'
-import imageEcole4 from '@/assets/images/image ecole 4 MDH.jpg'
+import PageBanner from '@/components/PageBanner.vue'
+import images from '@/data/images.js'
+import { contact } from '@/data/site.js'
 
-const form = ref({
-  amount: '',
-  firstname: '',
-  lastname: '',
-  email: '',
-  phone: '',
-  message: ''
-})
+const presets = [10, 20, 50, 100, 200]
+
+const emptyForm = () => ({ amount: '', firstname: '', lastname: '', email: '', phone: '', message: '' })
+const form = ref(emptyForm())
 
 const submitted = ref(false)
 
 const handleSubmit = () => {
   submitted.value = true
-  
+
   setTimeout(() => {
-    form.value = { amount: '', firstname: '', lastname: '', email: '', phone: '', message: '' }
+    form.value = emptyForm()
     submitted.value = false
   }, 3000)
 }
@@ -25,193 +23,136 @@ const handleSubmit = () => {
 
 <template>
   <div>
-    <!-- Hero Section - Redesigned with gradient -->
-    <section class="relative overflow-hidden py-20 lg:py-32 mt-24">
-      <div class="absolute inset-0 bg-cover bg-center opacity-40" :style="{backgroundImage: `url(${imageEcole4})`}"></div>
-      <div class="absolute inset-0 bg-gradient-to-br from-[#090e15] via-[#334155] to-[#0f172a] opacity-85"></div>
-      
-      <div class="relative container mx-auto px-4 text-center">
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-[#090e15] mb-6 leading-tight">
-          Transformez une vie<br>
-          <span class="text-yellow-400">par votre générosité</span>
-        </h1>
-        <p class="text-xl md:text-2xl text-[#090e15] max-w-3xl mx-auto mb-8 leading-relaxed">
-          Votre contribution soutient directement nos projets d'éducation, de santé et de développement durable au Togo.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#donation-form" class="px-8 py-4 bg-yellow-400 text-[#090e15] rounded-full font-bold text-lg hover:bg-white shadow-lg transition duration-300 inline-block">
-            Donner maintenant
-          </a>
-          <a href="#impact" class="px-8 py-4 bg-[#090e15] text-white rounded-full font-bold text-lg hover:bg-gray-900 backdrop-blur-sm transition duration-300 inline-block">
-            Voir l'impact
-          </a>
-        </div>
-      </div>
-    </section>
+    <PageBanner
+      title="Faire un don"
+      :crumbs="[{ label: `S'engager` }, { label: 'Faire un don' }]"
+      :image="images.ecole4"
+      subtitle="Transformez une vie par votre générosité."
+    />
 
-    <!-- Donation Form Section -->
-    <section id="donation-form" class="bg-gradient-to-b from-gray-50 to-white py-20">
-      <div class="container mx-auto px-4">
-        <div class="max-w-3xl mx-auto">
-          <h2 class="text-4xl font-bold text-center mb-4 text-[#090e15]">
-            Faites un don <span class="text-yellow-400">dès maintenant</span>
-          </h2>
-          <p class="text-center text-gray-600 mb-12">
-            Remplissez le formulaire ci-dessous pour effectuer votre contribution sécurisée.
-          </p>
-
-          <form @submit.prevent="handleSubmit" class="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
-            <!-- Donation Amount Input -->
-            <div class="mb-8">
-              <label class="block text-[#090e15] font-bold mb-4 text-lg" for="donation-amount">Montant du don (€) <span class="text-red-500">*</span></label>
-              <input 
-                type="number" 
-                id="donation-amount" 
-                v-model="form.amount"
-                min="1" 
-                step="0.01" 
-                placeholder="Entrez le montant de votre choix..." 
-                class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition duration-300" 
-                required
-              >
-            </div>
-
-            <!-- Personal Information -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div>
-                <label class="block text-[#090e15] font-semibold mb-2" for="firstname">Prénom <span class="text-red-500">*</span></label>
-                <input 
-                  type="text" 
-                  id="firstname" 
-                  v-model="form.firstname"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition duration-300" 
-                  required
-                >
+    <div class="pt-110 lg-pt-80 pb-140 lg-pb-80">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="case-details">
+              <div class="media-bg" :style="{ backgroundImage: `url(${images.ecole4})` }">
+                <div class="tags">Éducation · Santé · Développement durable</div>
               </div>
-              <div>
-                <label class="block text-[#090e15] font-semibold mb-2" for="lastname">Nom <span class="text-red-500">*</span></label>
-                <input 
-                  type="text" 
-                  id="lastname" 
-                  v-model="form.lastname"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition duration-300" 
-                  required
-                >
+
+              <h2>Transformez une vie par votre générosité</h2>
+              <p>
+                Votre contribution soutient directement nos projets d'éducation, de santé et de développement durable au Togo. Chaque don, quel que soit son montant, aide les enfants et les familles que nous accompagnons à construire un avenir meilleur.
+              </p>
+
+              <h3>Ce que votre don rend possible</h3>
+              <div class="bg-pink case-feature mt-30">
+                <h5>1. Une éducation de qualité</h5>
+                <p>Construction d'écoles, fournitures scolaires, formation d'enseignants et soutien scolaire pour plus de 230 enfants.</p>
+                <h5>2. La santé et le bien-être</h5>
+                <p>Campagnes de sensibilisation, hygiène et accès aux soins de base pour les familles vulnérables.</p>
+                <h5>3. Un développement durable</h5>
+                <p>Agroécologie, accès à l'eau potable et formation des femmes et des jeunes.</p>
               </div>
-              <div>
-                <label class="block text-[#090e15] font-semibold mb-2" for="email">Email <span class="text-red-500">*</span></label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  v-model="form.email"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition duration-300" 
-                  required
-                >
-              </div>
-              <div>
-                <label class="block text-[#090e15] font-semibold mb-2" for="phone">Téléphone</label>
-                <input 
-                  type="tel" 
-                  id="phone" 
-                  v-model="form.phone"
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition duration-300"
-                >
-              </div>
-            </div>
 
-            <!-- Message -->
-            <div class="mb-8">
-              <label class="block text-[#090e15] font-semibold mb-2" for="message">Message (optionnel)</label>
-              <textarea 
-                id="message" 
-                v-model="form.message"
-                rows="3" 
-                placeholder="Partagez vos motivations..." 
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-yellow-400 focus:ring-2 focus:ring-yellow-200 transition duration-300"
-              ></textarea>
-            </div>
+              <div class="media-bg-two" :style="{ backgroundImage: `url(${images.ecole3})` }"></div>
 
-            <!-- Submit -->
-            <button 
-              type="submit" 
-              class="w-full bg-gradient-to-r from-yellow-400 to-orange-400 text-[#090e15] font-bold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 text-lg"
-            >
-              <i class="fas fa-heart mr-2"></i> Procéder au paiement PayPal
-            </button>
+              <form id="donation-form" class="bg-pink donation-wrapper" @submit.prevent="handleSubmit">
+                <h3>Faites un don dès maintenant</h3>
+                <div class="donate-amount">
+                  <ul class="style-none d-flex flex-wrap custom-donation">
+                    <li><label for="donation-amount" class="m-0">Montant du don (€) *</label></li>
+                    <li>
+                      €
+                      <input id="donation-amount" v-model="form.amount" type="number" min="1" step="0.01" placeholder="0.00" required>
+                    </li>
+                  </ul>
+                  <ul class="style-none d-flex flex-wrap donation-filter">
+                    <li v-for="preset in presets" :key="preset">
+                      <input :id="`preset-${preset}`" v-model="form.amount" type="radio" name="donateAmount" :value="preset">
+                      <label :for="`preset-${preset}`">{{ preset }} €</label>
+                    </li>
+                  </ul>
+                </div>
 
-            <p class="text-center text-gray-500 text-sm mt-4">
-              <i class="fas fa-lock text-green-500 mr-1"></i> Paiement sécurisé via PayPal
-            </p>
-          </form>
+                <h3>Vos informations</h3>
+                <div class="info-form">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <input v-model="form.firstname" type="text" placeholder="Prénom *" aria-label="Prénom" required>
+                    </div>
+                    <div class="col-lg-6">
+                      <input v-model="form.lastname" type="text" placeholder="Nom *" aria-label="Nom" required>
+                    </div>
+                    <div class="col-lg-6">
+                      <input v-model="form.email" type="email" placeholder="Email *" aria-label="Email" required>
+                    </div>
+                    <div class="col-lg-6">
+                      <input v-model="form.phone" type="tel" placeholder="Téléphone" aria-label="Téléphone">
+                    </div>
+                    <div class="col-12">
+                      <textarea v-model="form.message" placeholder="Partagez vos motivations... (optionnel)" aria-label="Message"></textarea>
+                    </div>
+                  </div>
+                </div>
 
-          <!-- PayPal Direct Link -->
-          <div class="mt-8 text-center">
-            <p class="text-gray-600 mb-4 font-semibold">Ou donnez directement via PayPal:</p>
-            <a href="https://www.paypal.com/mep/dashboard" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#0070ba] to-[#003087] text-white rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:scale-105 transition duration-300">
-              <i class="fab fa-paypal text-xl"></i>
-              Donner sur PayPal
-            </a>
-            <p class="text-xs text-gray-500 mt-3">Lien sécurisé PayPal - Ouvre dans une nouvelle fenêtre</p>
-          </div>
-        </div>
-      </div>
-    </section>
+                <h6>Total du don : <span>{{ form.amount ? `${form.amount} €` : '—' }}</span></h6>
+                <div class="payment-selected-box d-flex flex-column justify-content-center align-items-center">
+                  <span><i class="fa-solid fa-lock me-2"></i>Paiement sécurisé via PayPal</span>
+                  <i class="fa-brands fa-paypal fs-1 mt-2" style="color: #003087;"></i>
+                </div>
+                <button type="submit" class="donate-cta tran3s"><i class="fa-solid fa-heart me-2"></i>Procéder au paiement PayPal</button>
 
-    <!-- Direct Payment Section -->
-    <section class="container mx-auto px-4 py-20">
-      <h2 class="text-4xl font-bold text-center mb-4 text-[#090e15]">
-        Autres moyens de <span class="text-yellow-400">contribuer</span>
-      </h2>
-      <p class="text-center text-gray-600 max-w-2xl mx-auto mb-16">
-        Si vous préférez, vous pouvez nous soutenir par virement bancaire ou Mobile Money directement.
-      </p>
+                <div v-if="submitted" class="mdh-alert success" role="status">
+                  <i class="fa-solid fa-circle-check me-2"></i>Merci pour votre générosité ! Finalisez votre don via le lien PayPal ci-dessous.
+                </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <!-- Virement Bancaire -->
-        <div class="bg-white rounded-2xl shadow-xl p-8 border-l-4 border-blue-400">
-          <div class="flex items-center mb-6">
-            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-              <i class="fas fa-university text-xl text-blue-500"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-[#090e15]">Virement Bancaire</h3>
-          </div>
-          <div class="space-y-4">
-            <div>
-              <p class="text-sm text-gray-600 font-semibold">Banque</p>
-              <p class="text-lg font-bold text-[#090e15]">IBANK</p>
-            </div>
-            <div>
-              <p class="text-sm text-gray-600 font-semibold">Titulaire</p>
-              <p class="text-lg font-bold text-[#090e15]">Mode Humain International</p>
-            </div>
-            <div>
-              <p class="text-sm text-gray-600 font-semibold">IBAN</p>
-              <p class="font-mono text-[#090e15] break-all bg-gray-100 p-3 rounded-lg">TG80370240103902769900010133</p>
+                <div class="mt-40">
+                  <p class="fw-500 mb-15">Ou donnez directement via PayPal :</p>
+                  <a href="https://www.paypal.com/mep/dashboard" target="_blank" rel="noopener noreferrer" class="btn-one xs">
+                    <i class="fa-brands fa-paypal me-2"></i>Donner sur PayPal
+                  </a>
+                  <p class="fs-16 mt-10 mb-0">Lien sécurisé PayPal - s'ouvre dans une nouvelle fenêtre</p>
+                </div>
+              </form>
             </div>
           </div>
-        </div>
 
-        <!-- Mobile Money -->
-        <div class="bg-white rounded-2xl shadow-xl p-8 border-l-4 border-green-400">
-          <div class="flex items-center mb-6">
-            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
-              <i class="fas fa-mobile-alt text-xl text-green-500"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-[#090e15]">Mobile Money</h3>
-          </div>
-          <div class="space-y-4">
-            <div>
-              <p class="text-sm text-gray-600 font-semibold">Mix by YAs</p>
-              <p class="text-lg font-bold text-[#090e15] bg-gray-100 p-3 rounded-lg">+228 92 12 95 49</p>
-            </div>
-            <div>
-              <p class="text-sm text-gray-600 font-semibold">Note</p>
-              <p class="text-gray-700">Référence: MDH Donation</p>
-            </div>
+          <div class="col-lg-4">
+            <aside class="template-sidebar ps-xxl-4 md-mt-60">
+              <div class="widget-banner-one text-center border-10 overflow-hidden position-relative z-1">
+                <div class="amount font-amita rounded-circle d-flex align-items-center justify-content-center"><i class="fa-solid fa-heart"></i></div>
+                <h5>Votre don fait une réelle différence</h5>
+                <router-link :to="{ hash: '#donation-form' }" class="btn-one inverse">Donner maintenant</router-link>
+              </div>
+
+              <div class="widget-banner-two border-10 overflow-hidden position-relative z-1 mt-40">
+                <h4 class="text-center">Virement bancaire</h4>
+                <p class="fs-16 text-center pb-10">Vous pouvez nous soutenir par virement bancaire directement.</p>
+                <div class="payment-logos text-center mb-10"><img :src="images.logoIbank" alt="IBANK"></div>
+                <dl class="bank-details m-0">
+                  <dt>Banque</dt>
+                  <dd>IBANK</dd>
+                  <dt>Titulaire</dt>
+                  <dd>Mode Humain International</dd>
+                  <dt>IBAN</dt>
+                  <dd><span class="iban">TG80370240103902769900010133</span></dd>
+                </dl>
+              </div>
+
+              <div class="widget-banner-three border-10 overflow-hidden position-relative z-1 mt-40">
+                <h5 class="sidebar-title">Mobile Money</h5>
+                <div class="payment-logos mb-20"><img :src="images.logoMixByYas" alt="Mix by Yas"></div>
+                <dl class="bank-details m-0">
+                  <dt>Mix by Yas</dt>
+                  <dd><a :href="contact.phoneHref">{{ contact.phone }}</a></dd>
+                  <dt>Référence</dt>
+                  <dd>MDH Donation</dd>
+                </dl>
+              </div>
+            </aside>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 </template>
-

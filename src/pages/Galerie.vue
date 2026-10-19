@@ -1,248 +1,157 @@
 <template>
   <div>
-    <!-- Hero Section -->
-    <section class="text-center bg-gray-100 py-12 mt-24">
-      <div class="max-w-7xl mx-auto px-4">
-        <h1 class="text-5xl font-extrabold text-[#090e15] mb-4 tracking-tight">Galerie</h1>
-        <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-6">
-          Découvrez nos projets et actions à travers une sélection de photos.
-        </p>
-        <div class="w-24 h-1 bg-[#fbbf24] mx-auto rounded-full"></div>
-      </div>
-    </section>
+    <PageBanner
+      title="Galerie"
+      :crumbs="[{ label: `L'Organisation`, to: '/association' }, { label: 'Galerie' }]"
+      :image="images.image4"
+      subtitle="Découvrez nos projets et actions à travers une sélection de photos."
+    />
 
-    <!-- Filter Buttons -->
-    <section class="py-8 bg-white sticky top-20 z-40 shadow-sm">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="flex flex-wrap justify-center gap-3">
-          <button 
-            @click="activeCategory = 'all'"
-            :class="['px-6 py-2 rounded-full font-semibold transition duration-300', activeCategory === 'all' ? 'bg-[#fbbf24] text-[#090e15]' : 'bg-gray-200 text-[#090e15] hover:bg-gray-300']"
-          >
-            Tous
-          </button>
-          <button 
-            @click="activeCategory = 'education'"
-            :class="['px-6 py-2 rounded-full font-semibold transition duration-300', activeCategory === 'education' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-[#090e15] hover:bg-gray-300']"
-          >
-            Éducation
-          </button>
-          <button 
-            @click="activeCategory = 'sante'"
-            :class="['px-6 py-2 rounded-full font-semibold transition duration-300', activeCategory === 'sante' ? 'bg-orange-700 text-white' : 'bg-gray-200 text-[#090e15] hover:bg-gray-300']"
-          >
-            Santé
-          </button>
-          <button 
-            @click="activeCategory = 'developpement'"
-            :class="['px-6 py-2 rounded-full font-semibold transition duration-300', activeCategory === 'developpement' ? 'bg-green-700 text-white' : 'bg-gray-200 text-[#090e15] hover:bg-gray-300']"
-          >
-            Développement
-          </button>
-          <button 
-            @click="activeCategory = 'equipe'"
-            :class="['px-6 py-2 rounded-full font-semibold transition duration-300', activeCategory === 'equipe' ? 'bg-purple-600 text-white' : 'bg-gray-200 text-[#090e15] hover:bg-gray-300']"
-          >
-            Équipe
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Gallery Grid -->
-    <section class="py-20 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div 
-            v-for="(image, index) in filteredImages" 
-            :key="index"
-            class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer h-64"
-            @click="openLightbox(image)"
-          >
-            <img 
-              :src="image.url" 
-              :alt="image.title"
-              class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
-              <div>
-                <h3 class="text-white font-bold text-lg">{{ image.title }}</h3>
-                <p class="text-yellow-400 text-sm font-semibold">{{ image.category }}</p>
-              </div>
-            </div>
-            <div class="absolute top-4 right-4 bg-[#fbbf24] text-[#090e15] px-3 py-1 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transition">
-              <i class="fas fa-search-plus mr-1"></i> Voir
-            </div>
-          </div>
+    <div class="pt-130 lg-pt-80 pb-140 lg-pb-80">
+      <div class="container">
+        <div class="title-one text-center mb-40" data-sal="slide-up" data-sal-duration="900">
+          <div class="upper-title">En images</div>
+          <h2>Nos projets sur le terrain</h2>
         </div>
 
-        <!-- Empty State -->
-        <div v-if="filteredImages.length === 0" class="text-center py-20">
-          <i class="fas fa-image text-6xl text-gray-300 mb-4"></i>
-          <p class="text-gray-500 text-xl">Aucune image dans cette catégorie</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Lightbox Modal -->
-    <transition name="fade">
-      <div 
-        v-if="lightboxImage"
-        class="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
-        @click="closeLightbox"
-      >
-        <div 
-          class="relative max-w-4xl w-full"
-          @click.stop
-        >
-          <!-- Close Button -->
-          <button 
-            @click="closeLightbox"
-            class="absolute -top-12 right-0 text-white hover:text-yellow-400 transition text-3xl"
+        <div class="gallery-filter d-flex flex-wrap justify-content-center mb-40" role="group" aria-label="Filtrer par catégorie">
+          <button
+            v-for="filter in filters"
+            :key="filter.value"
+            type="button"
+            :class="{ active: activeCategory === filter.value }"
+            :aria-pressed="activeCategory === filter.value ? 'true' : 'false'"
+            @click="activeCategory = filter.value"
           >
-            <i class="fas fa-times"></i>
+            {{ filter.label }}
           </button>
+        </div>
 
-          <!-- Image -->
-          <img 
-            :src="lightboxImage.url" 
-            :alt="lightboxImage.title"
-            class="w-full max-h-96 object-cover rounded-lg shadow-2xl"
-          />
-
-          <!-- Caption -->
-          <div class="text-center mt-6 text-white">
-            <h2 class="text-2xl font-bold mb-2">{{ lightboxImage.title }}</h2>
-            <p class="text-yellow-400 font-semibold">{{ lightboxImage.category }}</p>
-          </div>
-
-          <!-- Navigation -->
-          <div class="absolute left-0 right-0 top-1/2 transform -translate-y-1/2 flex justify-between px-4">
-            <button 
-              @click="previousImage"
-              class="bg-white/20 hover:bg-white/40 text-white w-12 h-12 rounded-full flex items-center justify-center transition text-xl"
-            >
-              <i class="fas fa-chevron-left"></i>
-            </button>
-            <button 
-              @click="nextImage"
-              class="bg-white/20 hover:bg-white/40 text-white w-12 h-12 rounded-full flex items-center justify-center transition text-xl"
-            >
-              <i class="fas fa-chevron-right"></i>
+        <div class="row g-4">
+          <div v-for="(image, index) in filteredImages" :key="image.url + index" class="col-lg-4 col-md-6">
+            <button type="button" class="gallery-item" @click="openLightbox(index)">
+              <img :src="image.url" :alt="image.title" loading="lazy">
+              <span class="caption">
+                <strong>{{ image.title }}</strong>
+                <span>{{ image.category }}</span>
+              </span>
             </button>
           </div>
         </div>
-      </div>
-    </transition>
 
-    <!-- CTA Section -->
-    <section class="bg-gradient-to-r from-[#090e15] to-[#1e293b] py-16">
-      <div class="max-w-4xl mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold text-white mb-4">Soutenez nos projets</h2>
-        <p class="text-gray-300 mb-8 text-lg">
-          Ces photos racontent l'histoire de nos initiatives. Votre soutien nous aide à faire la différence.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <router-link to="/actualites" class="px-8 py-4 bg-[#fbbf24] text-[#090e15] rounded-full font-bold hover:bg-white transition duration-300 inline-block">
-            Nos actualités
-          </router-link>
-          <router-link to="/rejoindre" class="px-8 py-4 bg-white text-[#090e15] rounded-full font-bold hover:bg-gray-100 transition duration-300 inline-block">
-            Nous rejoindre
-          </router-link>
+        <!-- État vide -->
+        <div v-if="filteredImages.length === 0" class="text-center py-5">
+          <i class="fa-solid fa-image fs-1 mb-3 d-block" style="color: #c6dad3;"></i>
+          <p>Aucune image dans cette catégorie</p>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- Visionneuse -->
+    <Transition name="fade">
+      <div v-if="lightboxImage" class="lightbox" role="dialog" aria-modal="true" :aria-label="lightboxImage.title" @click="closeLightbox">
+        <button type="button" class="lb-btn lb-close" aria-label="Fermer" @click.stop="closeLightbox"><i class="fa-solid fa-xmark"></i></button>
+        <button type="button" class="lb-btn lb-prev" aria-label="Image précédente" @click.stop="previousImage"><i class="fa-solid fa-chevron-left"></i></button>
+        <figure @click.stop>
+          <img :src="lightboxImage.url" :alt="lightboxImage.title">
+          <figcaption>
+            {{ lightboxImage.title }}
+            <span>{{ lightboxImage.category }}</span>
+          </figcaption>
+        </figure>
+        <button type="button" class="lb-btn lb-next" aria-label="Image suivante" @click.stop="nextImage"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </Transition>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import PageBanner from '@/components/PageBanner.vue'
+import images from '@/data/images.js'
+
+const filters = [
+  { value: 'all', label: 'Tous' },
+  { value: 'Éducation', label: 'Éducation' },
+  { value: 'Santé', label: 'Santé' },
+  { value: 'Développement', label: 'Développement' },
+  { value: 'Équipe', label: 'Équipe' }
+]
 
 const activeCategory = ref('all')
-const lightboxImage = ref(null)
-const currentLightboxIndex = ref(0)
+const currentLightboxIndex = ref(null)
 
-const images = ref([
+const gallery = [
   // Éducation
-  { url: new URL('@/assets/images/education1.jpg', import.meta.url).href, title: 'Classe moderne', category: 'Éducation' },
-  { url: new URL('@/assets/images/education2.jpg', import.meta.url).href, title: 'Apprentissage', category: 'Éducation' },
-  { url: new URL('@/assets/images/image ecole 3 MDH.jpg', import.meta.url).href, title: 'École en construction', category: 'Éducation' },
-  { url: new URL('@/assets/images/image ecole 4 MDH.jpg', import.meta.url).href, title: 'Infrastructure scolaire', category: 'Éducation' },
-  { url: new URL('@/assets/images/image ecole 5 MDH.jpg', import.meta.url).href, title: 'Soutien scolaire', category: 'Éducation' },
-  { url: new URL('@/assets/images/image ecole 8 MDH.jpg', import.meta.url).href, title: 'Notre école', category: 'Éducation' },
-  { url: new URL('@/assets/images/image formation MDH.jpg', import.meta.url).href, title: 'Formation d\'enseignants', category: 'Éducation' },
-  { url: new URL('@/assets/images/photo ecole MDH.jpeg', import.meta.url).href, title: 'Vie scolaire', category: 'Éducation' },
-  
+  { url: images.education1, title: 'Classe moderne', category: 'Éducation' },
+  { url: images.education2, title: 'Apprentissage', category: 'Éducation' },
+  { url: images.ecole3, title: 'École en construction', category: 'Éducation' },
+  { url: images.ecole4, title: 'Infrastructure scolaire', category: 'Éducation' },
+  { url: images.ecole5, title: 'Soutien scolaire', category: 'Éducation' },
+  { url: images.ecole8, title: 'Notre école', category: 'Éducation' },
+  { url: images.formation, title: "Formation d'enseignants", category: 'Éducation' },
+  { url: images.photoEcole, title: 'Vie scolaire', category: 'Éducation' },
+
   // Santé
-  { url: new URL('@/assets/images/sante1.jpg', import.meta.url).href, title: 'Campagne de santé', category: 'Santé' },
-  
+  { url: images.sante1, title: 'Campagne de santé', category: 'Santé' },
+
   // Développement Durable
-  { url: new URL('@/assets/images/agriculture1.jpg', import.meta.url).href, title: 'Agriculture durable', category: 'Développement' },
-  { url: new URL('@/assets/images/gestion de déchets MDH.jpg', import.meta.url).href, title: 'Gestion des déchets', category: 'Développement' },
-  
+  { url: images.agriculture1, title: 'Agriculture durable', category: 'Développement' },
+  { url: images.gestionDechets, title: 'Gestion des déchets', category: 'Développement' },
+
   // Actualités et projets
-  { url: new URL('@/assets/images/article1.jpg', import.meta.url).href, title: 'Vacances utiles', category: 'Éducation' },
-  { url: new URL('@/assets/images/article2.jpg', import.meta.url).href, title: 'Mobilisation', category: 'Développement' },
-  { url: new URL('@/assets/images/article3.jpg', import.meta.url).href, title: 'Échanges internationaux', category: 'Équipe' },
-  { url: new URL('@/assets/images/sensibilisation1.jpg', import.meta.url).href, title: 'Sensibilisation', category: 'Développement' },
-  { url: new URL('@/assets/images/image debut chantier.jpg', import.meta.url).href, title: 'Chantier de construction', category: 'Développement' },
-  
+  { url: images.article1, title: 'Vacances utiles', category: 'Éducation' },
+  { url: images.article2, title: 'Mobilisation', category: 'Développement' },
+  { url: images.article3, title: 'Échanges internationaux', category: 'Équipe' },
+  { url: images.sensibilisation1, title: 'Sensibilisation', category: 'Développement' },
+  { url: images.debutChantier, title: 'Chantier de construction', category: 'Développement' },
+
   // Équipe et partenaires
-  { url: new URL('@/assets/images/image parrain.png', import.meta.url).href, title: 'Équipe de direction', category: 'Équipe' },
-  { url: new URL('@/assets/images/saoute2.jpg', import.meta.url).href, title: 'Directeur exécutif', category: 'Équipe' },
-  { url: new URL('@/assets/images/saoute3.jpg', import.meta.url).href, title: 'Équipe sur le terrain', category: 'Équipe' },
-  { url: new URL('@/assets/images/saoute4.jpg', import.meta.url).href, title: 'Réunion d\'équipe', category: 'Équipe' },
-  
+  { url: images.parrain, title: 'Équipe de direction', category: 'Équipe' },
+  { url: images.saoute2, title: 'Directeur exécutif', category: 'Équipe' },
+  { url: images.saoute3, title: 'Équipe sur le terrain', category: 'Équipe' },
+  { url: images.saoute4, title: "Réunion d'équipe", category: 'Équipe' },
+
   // Autres
-  { url: new URL('@/assets/images/visite1.jpg', import.meta.url).href, title: 'Visite du projet', category: 'Développement' },
-  { url: new URL('@/assets/images/votreecole.jpg', import.meta.url).href, title: 'Siège de l\'organisation', category: 'Équipe' },
-  { url: new URL('@/assets/images/photo2.jpg', import.meta.url).href, title: 'Activités', category: 'Éducation' },
-  { url: new URL('@/assets/images/image1.jpg', import.meta.url).href, title: 'Moment du projet', category: 'Développement' },
-  { url: new URL('@/assets/images/image2.jpg', import.meta.url).href, title: 'Terrain d\'action', category: 'Développement' },
-  { url: new URL('@/assets/images/image3.jpg', import.meta.url).href, title: 'Bénéficiaires', category: 'Éducation' },
-  { url: new URL('@/assets/images/image4.jpg', import.meta.url).href, title: 'Impact social', category: 'Développement' },
-  { url: new URL('@/assets/images/image1projet.jpg', import.meta.url).href, title: 'Projet en cours', category: 'Développement' },
-  { url: new URL('@/assets/images/saoute4.jpg', import.meta.url).href, title: 'Sur le terrain', category: 'Équipe' },
-])
+  { url: images.visite1, title: 'Visite du projet', category: 'Développement' },
+  { url: images.votreecole, title: "Siège de l'organisation", category: 'Équipe' },
+  { url: images.photo2, title: 'Activités', category: 'Éducation' },
+  { url: images.image1, title: 'Moment du projet', category: 'Développement' },
+  { url: images.image2, title: "Terrain d'action", category: 'Développement' },
+  { url: images.image3, title: 'Bénéficiaires', category: 'Éducation' },
+  { url: images.image4, title: 'Impact social', category: 'Développement' },
+  { url: images.image1projet, title: 'Projet en cours', category: 'Développement' }
+]
 
-const filteredImages = computed(() => {
-  if (activeCategory.value === 'all') {
-    return images.value
-  }
-  return images.value.filter(img => img.category === 
-    (activeCategory.value === 'education' ? 'Éducation' :
-     activeCategory.value === 'sante' ? 'Santé' :
-     activeCategory.value === 'developpement' ? 'Développement' :
-     activeCategory.value === 'equipe' ? 'Équipe' : '')
-  )
-})
+const filteredImages = computed(() => activeCategory.value === 'all'
+  ? gallery
+  : gallery.filter(img => img.category === activeCategory.value))
 
-const openLightbox = (image) => {
-  lightboxImage.value = image
-  currentLightboxIndex.value = filteredImages.value.findIndex(img => img.url === image.url)
+const lightboxImage = computed(() => currentLightboxIndex.value === null ? null : filteredImages.value[currentLightboxIndex.value])
+
+const openLightbox = (index) => {
+  currentLightboxIndex.value = index
 }
 
 const closeLightbox = () => {
-  lightboxImage.value = null
+  currentLightboxIndex.value = null
 }
 
 const nextImage = () => {
   currentLightboxIndex.value = (currentLightboxIndex.value + 1) % filteredImages.value.length
-  lightboxImage.value = filteredImages.value[currentLightboxIndex.value]
 }
 
 const previousImage = () => {
   currentLightboxIndex.value = (currentLightboxIndex.value - 1 + filteredImages.value.length) % filteredImages.value.length
-  lightboxImage.value = filteredImages.value[currentLightboxIndex.value]
 }
+
+const onKeydown = (event) => {
+  if (currentLightboxIndex.value === null) return
+  if (event.key === 'Escape') closeLightbox()
+  if (event.key === 'ArrowRight') nextImage()
+  if (event.key === 'ArrowLeft') previousImage()
+}
+
+onMounted(() => window.addEventListener('keydown', onKeydown))
+onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
 </script>
-
-<style scoped>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from, .fade-leave-to {
-  opacity: 0;
-}
-</style>

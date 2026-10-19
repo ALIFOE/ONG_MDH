@@ -1,145 +1,103 @@
 <template>
   <div>
-    <!-- Hero Section -->
-    <section class="text-center bg-gray-100 py-12 mt-24">
-      <div class="max-w-7xl mx-auto px-4">
-        <h1 class="text-5xl font-extrabold text-[#090e15] mb-4 tracking-tight">
-          <span class="text-[#fbbf24]">Notre équipe</span>
-        </h1>
-        <div class="w-24 h-1 bg-[#fbbf24] mx-auto rounded-full mb-8"></div>
-        <p class="text-lg text-gray-700 max-w-2xl mx-auto">
-          Découvrez les membres du Conseil d'Administration, du Bureau Exécutif, ainsi que nos bénévoles et partenaires qui font vivre L'Organisation MDH.
-        </p>
-      </div>
-    </section>
+    <PageBanner
+      title="Notre équipe"
+      :crumbs="[{ label: `L'Organisation`, to: '/association' }, { label: 'Notre équipe' }]"
+      :image="images.saoute3"
+    />
 
-    <!-- Conseil d'Administration Section -->
-    <section class="py-16 bg-gray-100">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-8 text-[#090e15]">Conseil d'Administration (CA)</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-8">
-          <!-- Président -->
-          <div class="bg-white/90 rounded-2xl shadow-xl overflow-hidden border border-[#090e15]/10">
-            <div class="bg-gradient-to-br from-blue-300 to-blue-100 h-56 flex items-center justify-center">
-              <img src="/images/image parrain.png" alt="Prof N'kERE komi" class="h-56 w-full object-cover" />
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-[#090e15]">Prof N'kERE komi</h3>
-              <p class="text-[#fbbf24] mb-2 font-semibold">Président</p>
-              <p class="text-gray-700">Enseignant chercheur à l'UL/Kara.</p>
-            </div>
-          </div>
-
-          <!-- Secrétaire Général -->
-          <div class="bg-white/90 rounded-2xl shadow-xl overflow-hidden border border-[#090e15]/10">
-            <div class="bg-gradient-to-br from-purple-300 to-purple-100 h-56 flex items-center justify-center">
-              <i class="fas fa-user text-5xl text-purple-500 opacity-50"></i>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-[#090e15]">TOHOULEBA Koboyo</h3>
-              <p class="text-[#fbbf24] mb-2 font-semibold">Secrétaire Général</p>
-              <p class="text-gray-700">----</p>
-            </div>
-          </div>
-
-          <!-- Trésorière -->
-          <div class="bg-white/90 rounded-2xl shadow-xl overflow-hidden border border-[#090e15]/10">
-            <div class="bg-gradient-to-br from-pink-300 to-pink-100 h-56 flex items-center justify-center">
-              <i class="fas fa-user text-5xl text-pink-500 opacity-50"></i>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-[#090e15]">DZOMEDA Adjo Elom</h3>
-              <p class="text-[#fbbf24] mb-2 font-semibold">Trésorière</p>
-              <p class="text-gray-700">Entrepreneuse.</p>
+    <div class="volunteer-section pt-140 lg-pt-80">
+      <div class="container">
+        <div class="row">
+          <div class="col-xxl-9 col-lg-10 m-auto">
+            <div class="title-one text-center mb-85 lg-mb-40" data-sal="slide-up" data-sal-duration="900">
+              <div class="upper-title">Celles et ceux qui font vivre MDH</div>
+              <h2>Une équipe engagée au service des communautés</h2>
+              <p class="mt-25">
+                Découvrez les membres du Conseil d'Administration, du Bureau Exécutif, ainsi que nos bénévoles et partenaires qui font vivre l'Organisation MDH.
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Bureau Exécutif Section -->
-    <section class="py-16 bg-gray-100">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-8 text-[#090e15]">Bureau Exécutif</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-8">
-          <!-- Directeur Exécutif -->
-          <div class="bg-white/90 rounded-2xl shadow-xl overflow-hidden border border-[#090e15]/10">
-            <div class="bg-gradient-to-br from-green-300 to-green-100 h-56 flex items-center justify-center">
-              <img src="/images/saoute2.jpg" alt="ATARMILA Saoute" class="h-56 w-full object-cover" />
+      <div class="bg-wrapper">
+        <div class="container">
+          <template v-for="(group, g) in groups" :key="group.title">
+            <h3 class="team-group-title" :class="{ 'mt-80': g > 0 }">{{ group.title }}</h3>
+            <div class="row justify-content-center">
+              <div v-for="(member, i) in group.members" :key="member.name" class="col-lg-4 col-md-6">
+                <div class="volunteer-block mt-30" data-sal="slide-up" data-sal-duration="900" :data-sal-delay="(i % 3) * 200">
+                  <div class="media-wrapper position-relative z-2">
+                    <div class="img-meta position-relative z-1 overflow-hidden">
+                      <img v-if="member.photo" :src="member.photo" :alt="member.name" class="w-100">
+                      <div v-else class="placeholder-photo" aria-hidden="true">{{ initials(member.name) }}</div>
+                    </div>
+                  </div>
+                  <div class="text text-center position-relative z-1">
+                    <h5 class="name">{{ member.name }}</h5>
+                    <div class="role">{{ member.role }}</div>
+                    <p v-if="member.bio">{{ member.bio }}</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-[#090e15]">ATARMILA Saoute</h3>
-              <p class="text-[#fbbf24] mb-2 font-semibold">Directeur Exécutif</p>
-              <p class="text-gray-700">---.</p>
-            </div>
-          </div>
-
-          <!-- Assistant Administratif -->
-          <div class="bg-white/90 rounded-2xl shadow-xl overflow-hidden border border-[#090e15]/10">
-            <div class="bg-gradient-to-br from-orange-300 to-orange-100 h-56 flex items-center justify-center">
-              <i class="fas fa-user text-5xl text-orange-500 opacity-50"></i>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-[#090e15]">AGBOKOU Paul</h3>
-              <p class="text-[#fbbf24] mb-2 font-semibold">Assistant Administratif</p>
-              <p class="text-gray-700">---.</p>
-            </div>
-          </div>
-
-          <!-- Chargé de projet -->
-          <div class="bg-white/90 rounded-2xl shadow-xl overflow-hidden border border-[#090e15]/10">
-            <div class="bg-gradient-to-br from-indigo-300 to-indigo-100 h-56 flex items-center justify-center">
-              <i class="fas fa-user text-5xl text-indigo-500 opacity-50"></i>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-[#090e15]">N'DAH Lafoh</h3>
-              <p class="text-[#fbbf24] mb-2 font-semibold">Chargé de projet</p>
-              <p class="text-gray-700">---.</p>
-            </div>
-          </div>
-
-          <!-- Comptable -->
-          <div class="bg-white/90 rounded-2xl shadow-xl overflow-hidden border border-[#090e15]/10">
-            <div class="bg-gradient-to-br from-red-300 to-red-100 h-56 flex items-center justify-center">
-              <i class="fas fa-user text-5xl text-red-500 opacity-50"></i>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-[#090e15]">YAKOUBA Djibril</h3>
-              <p class="text-[#fbbf24] mb-2 font-semibold">Comptable</p>
-              <p class="text-gray-700">---.</p>
-            </div>
-          </div>
-
-          <!-- IT & web support Technician -->
-          <div class="bg-white/90 rounded-2xl shadow-xl overflow-hidden border border-[#090e15]/10">
-            <div class="bg-gradient-to-br from-cyan-300 to-cyan-100 h-56 flex items-center justify-center">
-              <i class="fas fa-user text-5xl text-cyan-500 opacity-50"></i>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold mb-2 text-[#090e15]">Baudoin Kokou ALIFOE</h3>
-              <p class="text-[#fbbf24] mb-2 font-semibold">IT & web support Technician</p>
-              <p class="text-gray-700">Développeur web mobile.</p>
-            </div>
-          </div>
+          </template>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- CTA Section -->
-    <section class="py-16 bg-gray-100">
-      <div class="max-w-4xl mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold mb-6 text-[#090e15]">Rejoignez-nous !</h2>
-        <p class="text-gray-700 text-lg mb-8">
-          Grâce à notre dédication collective et à notre équipe de bénévoles, nous accomplissons chaque jour des actions qui changent les vies.
-        </p>
-        <router-link to="/rejoindre" class="inline-block bg-gradient-to-r from-[#fbbf24] to-orange-400 text-[#090e15] font-bold py-4 px-8 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition duration-300">
-          <i class="fas fa-heart mr-2"></i> Devenir bénévole
-        </router-link>
+    <!-- Rejoindre -->
+    <div class="pt-130 lg-pt-80 pb-130 lg-pb-80 text-center">
+      <div class="container">
+        <div class="title-one mb-25" data-sal="slide-up" data-sal-duration="900">
+          <div class="upper-title">Et pourquoi pas vous ?</div>
+          <h2>Rejoignez-nous !</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 m-auto">
+            <p class="mb-40">
+              Grâce à notre dévouement collectif et à notre équipe de bénévoles, nous accomplissons chaque jour des actions qui changent les vies.
+            </p>
+          </div>
+        </div>
+        <router-link to="/rejoindre" class="btn-one">Devenir bénévole</router-link>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
 <script setup>
-// Notre Équipe page component
+import PageBanner from '@/components/PageBanner.vue'
+import images from '@/data/images.js'
+
+const groups = [
+  {
+    title: "Conseil d'Administration (CA)",
+    members: [
+      // photo: '...' — ajouter un portrait importé depuis src/data/images.js quand il sera disponible
+      { name: "Prof N'kERE Komi", role: 'Président', bio: "Enseignant chercheur à l'UL/Kara." },
+      { name: 'TOHOULEBA Koboyo', role: 'Secrétaire Général' },
+      { name: 'DZOMEDA Adjo Elom', role: 'Trésorière', bio: 'Entrepreneuse.' }
+    ]
+  },
+  {
+    title: 'Bureau Exécutif',
+    members: [
+      { name: 'ATARMILA Saoute', role: 'Directeur Exécutif' },
+      { name: 'AGBOKOU Paul', role: 'Assistant Administratif' },
+      { name: "N'DAH Lafoh", role: 'Chargé de projet' },
+      { name: 'YAKOUBA Djibril', role: 'Comptable' },
+      { name: 'Baudoin Kokou ALIFOE', role: 'IT & web support Technician', bio: 'Développeur web mobile.' }
+    ]
+  }
+]
+
+const initials = name => name
+  .replace(/^Prof\s+/i, '')
+  .split(/\s+/)
+  .slice(0, 2)
+  .map(part => part[0])
+  .join('')
+  .toUpperCase()
 </script>

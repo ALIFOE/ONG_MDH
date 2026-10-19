@@ -1,9 +1,13 @@
 <script setup>
 import { ref } from 'vue'
-import image1 from '@/assets/images/image1.jpg'
-import rapport1 from '@/assets/images/rapport1.png'
+import PageBanner from '@/components/PageBanner.vue'
+import ContactBlocks from '@/components/ContactBlocks.vue'
+import images from '@/data/images.js'
+import { contact } from '@/data/site.js'
 
-const form = ref({
+const mapUrl = `https://maps.google.com/maps?hl=fr&q=${encodeURIComponent(contact.mapQuery)}&t=&z=14&ie=UTF8&iwloc=B&output=embed`
+
+const emptyForm = () => ({
   firstname: '',
   lastname: '',
   email: '',
@@ -12,26 +16,29 @@ const form = ref({
   privacy: false
 })
 
+const form = ref(emptyForm())
 const submitted = ref(false)
 const isSubmitting = ref(false)
+const errorMessage = ref('')
 
 const handleSubmit = async () => {
+  errorMessage.value = ''
+  submitted.value = false
+
+  // Validation
+  if (!form.value.firstname || !form.value.lastname || !form.value.email || !form.value.subject || !form.value.message) {
+    errorMessage.value = 'Veuillez remplir tous les champs obligatoires.'
+    return
+  }
+
+  if (!form.value.privacy) {
+    errorMessage.value = 'Vous devez accepter les conditions de traitement de vos données.'
+    return
+  }
+
   isSubmitting.value = true
-  
+
   try {
-    // Validation
-    if (!form.value.firstname || !form.value.lastname || !form.value.email || !form.value.subject || !form.value.message) {
-      alert('Veuillez remplir tous les champs obligatoires')
-      isSubmitting.value = false
-      return
-    }
-
-    if (!form.value.privacy) {
-      alert('Vous devez accepter les conditions de traitement de vos données')
-      isSubmitting.value = false
-      return
-    }
-
     // Préparer les données pour Formspree
     const formData = {
       'Prénom': form.value.firstname,
@@ -56,19 +63,9 @@ const handleSubmit = async () => {
     }
 
     submitted.value = true
-    alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.')
-    
-    // Réinitialiser le formulaire
-    form.value = {
-      firstname: '',
-      lastname: '',
-      email: '',
-      subject: '',
-      message: '',
-      privacy: false
-    }
+    form.value = emptyForm()
   } catch (error) {
-    alert('Erreur lors de l\'envoi du message: ' + error.message)
+    errorMessage.value = 'Erreur lors de l\'envoi du message : ' + error.message
   } finally {
     isSubmitting.value = false
   }
@@ -77,168 +74,122 @@ const handleSubmit = async () => {
 
 <template>
   <div>
-    <!-- Hero Section -->
-    <section class="text-center mb-16 bg-gray-100 px-4 py-12 mt-24 relative overflow-hidden">
-      <div class="absolute inset-0 bg-cover bg-center opacity-20" :style="{backgroundImage: `url(${image1})`}"></div>
-      <div class="relative z-10">
-        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-[#090e15] mb-4">Contactez-nous</h1>
-        <p class="text-xl text-gray-700 max-w-3xl mx-auto">
-          Une question ? Un projet ? N'hésitez pas à nous contacter. Nous sommes là pour vous répondre.
-        </p>
+    <PageBanner
+      title="Contactez-nous"
+      :crumbs="[{ label: 'Contact' }]"
+      :image="images.image1"
+      subtitle="Une question ? Un projet ? N'hésitez pas à nous contacter. Nous sommes là pour vous répondre."
+    />
+
+    <div class="contact-map-banner w-100" style="height: 480px;">
+      <div class="gmap_canvas h-100 w-100">
+        <iframe
+          class="gmap_iframe h-100 w-100 border-0"
+          :src="mapUrl"
+          title="Localisation du siège de MDH à Apédokoè, Lomé"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
-    </section>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto px-4 pb-20">
-      <!-- Contact Form -->
-      <section class="bg-white/90 rounded-3xl shadow-2xl p-8 border border-gray-200">
-        <h2 class="text-2xl font-bold text-[#090e15] mb-6">Formulaire de contact</h2>
-        <form @submit.prevent="handleSubmit" class="space-y-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-[#090e15] mb-2 font-semibold" for="firstname">Prénom</label>
-              <input 
-                type="text" 
-                id="firstname" 
-                v-model="form.firstname"
-                class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#090e15] focus:border-[#090e15] bg-gray-50"
-                required
-              >
-            </div>
-            <div>
-              <label class="block text-[#090e15] mb-2 font-semibold" for="lastname">Nom</label>
-              <input 
-                type="text" 
-                id="lastname" 
-                v-model="form.lastname"
-                class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#090e15] focus:border-[#090e15] bg-gray-50"
-                required
-              >
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-[#090e15] mb-2 font-semibold" for="email">Email</label>
-            <input 
-              type="email" 
-              id="email" 
-              v-model="form.email"
-              class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#090e15] focus:border-[#090e15] bg-gray-50"
-              required
-            >
-          </div>
-
-          <div>
-            <label class="block text-[#090e15] mb-2 font-semibold" for="subject">Sujet</label>
-            <select 
-              id="subject" 
-              v-model="form.subject"
-              class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#090e15] focus:border-[#090e15] bg-gray-50"
-              required
-            >
-              <option value="">Choisissez un sujet</option>
-              <option value="general">Question générale</option>
-              <option value="donation">Question sur les dons</option>
-              <option value="volunteer">Devenir bénévole</option>
-              <option value="partnership">Proposition de partenariat</option>
-              <option value="press">Contact presse</option>
-              <option value="other">Autre</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block text-[#090e15] mb-2 font-semibold" for="message">Message</label>
-            <textarea 
-              id="message" 
-              v-model="form.message"
-              rows="6" 
-              class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#090e15] focus:border-[#090e15] bg-gray-50"
-              required
-            ></textarea>
-          </div>
-
-          <div class="flex items-start">
-            <div class="flex items-center h-5">
-              <input 
-                id="privacy" 
-                v-model="form.privacy"
-                type="checkbox" 
-                class="mr-2 rounded border-gray-300 focus:ring-[#090e15]"
-                required
-              >
-            </div>
-            <label class="text-sm text-gray-500" for="privacy">
-              J'accepte que mes données soient traitées pour la gestion de ma demande de contact
-            </label>
-          </div>
-
-          <button 
-            type="submit" 
-            class="bg-[#090e15] text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-yellow-400 hover:text-[#090e15] transition duration-300 w-full md:w-auto"
-          >
-            <span v-if="!isSubmitting">Envoyer le message</span>
-            <span v-else><i class="fas fa-spinner fa-spin mr-2"></i>Envoi en cours...</span>
-          </button>
-        </form>
-
-        <div v-if="submitted" class="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg text-center">
-          <i class="fas fa-check-circle mr-2"></i> Message envoyé avec succès !
-        </div>
-      </section>
-
-      <!-- Contact Info -->
-      <section>
-        <div class="grid grid-cols-1 gap-8">
-          <!-- Image and Quick Info -->
-          <div class="bg-white/90 rounded-3xl shadow-2xl p-8 border border-gray-200 overflow-hidden">
-            <img :src="rapport1" alt="Siège de MDH" class="w-full h-48 object-cover rounded-lg mb-4" />
-            <h3 class="text-2xl font-bold text-[#090e15] mb-2">Nos Locaux</h3>
-            <p class="text-gray-600">Visitez notre siège pour discuter de nos projets et nos missions.</p>
-          </div>
-
-          <!-- Phone -->
-          <div class="bg-white/90 rounded-3xl shadow-2xl p-8 border border-gray-200">
-            <h3 class="text-2xl font-bold text-[#090e15] mb-6 flex items-center">
-              <i class="fas fa-phone text-yellow-400 text-3xl mr-4"></i>
-              Téléphone
-            </h3>
-            <p class="text-lg text-gray-700 font-semibold">+228 92 12 95 49</p>
-            <p class="text-gray-600">Disponible du lundi au vendredi de 8h à 18h</p>
-          </div>
-
-          <!-- Email -->
-          <div class="bg-white/90 rounded-3xl shadow-2xl p-8 border border-gray-200">
-            <h3 class="text-2xl font-bold text-[#090e15] mb-6 flex items-center">
-              <i class="fas fa-envelope text-yellow-400 text-3xl mr-4"></i>
-              Email
-            </h3>
-            <p class="text-lg text-gray-700 font-semibold">modehumain@gmail.com</p>
-            <p class="text-gray-600">Nous répondons sous 24-48 heures</p>
-          </div>
-
-          <!-- Address -->
-          <div class="bg-white/90 rounded-3xl shadow-2xl p-8 border border-gray-200">
-            <h3 class="text-2xl font-bold text-[#090e15] mb-6 flex items-center">
-              <i class="fas fa-map-marker-alt text-yellow-400 text-3xl mr-4"></i>
-              Adresse
-            </h3>
-            <p class="text-lg text-gray-700 font-semibold">Aflao-Sagbado (Apedokoè)</p>
-            <p class="text-gray-600">Lomé, Togo</p>
-          </div>
-        </div>
-      </section>
     </div>
 
-    <!-- Map Section -->
-    <section class="bg-gray-200 py-12 mt-12">
-      <div class="max-w-7xl mx-auto px-4">
-        <h3 class="text-2xl font-bold mb-6 text-[#090e15]">Nous Localiser</h3>
-        <div class="w-full h-96 bg-gray-300 rounded-lg flex items-center justify-center">
-          <p class="text-gray-600 text-lg">
-            <i class="fas fa-map mr-2"></i>
-            Carte Google Maps à intégrer
-          </p>
+    <div class="contact-section pt-130 lg-pt-80 pb-140 lg-pb-80">
+      <div class="container">
+        <ContactBlocks />
+
+        <div class="contact-form-section position-relative z-1 mt-100 lg-mt-60">
+          <div class="row">
+            <div class="col-lg-8 m-auto">
+              <h2>N'hésitez pas à nous envoyer votre message</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="form-style-one md-mb-40">
+                <h4>Formulaire de contact</h4>
+                <form novalidate @submit.prevent="handleSubmit">
+                  <div class="row controls">
+                    <div class="col-md-6">
+                      <div class="input-wrapper mb-20">
+                        <label class="field-label" for="firstname">Prénom *</label>
+                        <input id="firstname" v-model="form.firstname" type="text" placeholder="Votre prénom" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-wrapper mb-20">
+                        <label class="field-label" for="lastname">Nom *</label>
+                        <input id="lastname" v-model="form.lastname" type="text" placeholder="Votre nom" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-wrapper mb-20">
+                        <label class="field-label" for="email">Email *</label>
+                        <input id="email" v-model="form.email" type="email" placeholder="vous@exemple.com" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-wrapper mb-20">
+                        <label class="field-label" for="subject">Sujet *</label>
+                        <select id="subject" v-model="form.subject" required>
+                          <option value="">Choisissez un sujet</option>
+                          <option value="general">Question générale</option>
+                          <option value="donation">Question sur les dons</option>
+                          <option value="volunteer">Devenir bénévole</option>
+                          <option value="partnership">Proposition de partenariat</option>
+                          <option value="press">Contact presse</option>
+                          <option value="other">Autre</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="input-wrapper mb-20">
+                        <label class="field-label" for="message">Message *</label>
+                        <textarea id="message" v-model="form.message" class="tall" placeholder="Écrivez votre message..." required></textarea>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <label class="mdh-check mb-25">
+                        <input v-model="form.privacy" type="checkbox" required>
+                        <span>J'accepte que mes données soient traitées pour la gestion de ma demande de contact</span>
+                      </label>
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn-one w-100" :disabled="isSubmitting">
+                        <span v-if="!isSubmitting">Envoyer le message</span>
+                        <span v-else><i class="fa-solid fa-spinner fa-spin me-2"></i>Envoi en cours...</span>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+
+                <div v-if="submitted" class="mdh-alert success" role="status">
+                  <i class="fa-solid fa-circle-check me-2"></i>Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.
+                </div>
+                <div v-if="errorMessage" class="mdh-alert error" role="alert">
+                  <i class="fa-solid fa-circle-exclamation me-2"></i>{{ errorMessage }}
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="address-block version-two text-center mt-15">
+                <div class="icon m-auto rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="fa-solid fa-building"></i>
+                </div>
+                <h6>Visitez notre siège</h6>
+                <p>{{ contact.address }}, {{ contact.city }}</p>
+              </div>
+              <div class="address-block version-two text-center mt-15">
+                <div class="icon m-auto rounded-circle d-flex align-items-center justify-content-center">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <h6>Contact rapide</h6>
+                <p class="fs-20"><a :href="contact.phoneHref">{{ contact.phone }}</a></p>
+              </div>
+              <img :src="images.rapport1" alt="Activités au siège de MDH" class="mdh-rounded-img mt-30 mx-auto d-none d-lg-block" style="max-width: 300px;">
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 </template>

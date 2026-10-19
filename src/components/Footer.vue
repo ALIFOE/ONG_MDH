@@ -1,91 +1,98 @@
 <template>
-  <footer class="bg-[#090e15] text-white pt-12 pb-6 mt-12">
-    <div class="max-w-7xl mx-auto px-4">
-      <!-- Footer Content Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-        <!-- About Section -->
-        <div>
-          <h3 class="text-xl font-bold mb-4 text-[#fbbf24]">À propos de MDH</h3>
-          <img src="/images/logo_mdh.png" alt="MDH Logo" class="h-10 w-auto mb-4">
-          <p class="text-gray-300 text-sm leading-relaxed">
-            MDH œuvre pour le développement humain à travers l'éducation et le soutien aux communautés vulnérables.
-          </p>
-        </div>
+  <footer class="main-footer bg-one top-space">
+    <div class="container">
+      <div class="position-relative top-footer">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="footer-intro mb-30 md-mb-50">
+              <router-link to="/"><img :src="images.logo" alt="MDH International Togo" class="footer-logo"></router-link>
+              <p class="mt-20 mb-30 fs-16">
+                MDH œuvre pour le développement humain à travers l'éducation et le soutien aux communautés vulnérables du Togo.
+              </p>
+              <ul class="style-none social-icon d-flex align-items-center">
+                <li class="text-white">Suivez-nous</li>
+                <li v-for="social in socials" :key="social.label">
+                  <a :href="social.href" target="_blank" rel="noopener noreferrer" :aria-label="social.label"><i class="fa-brands" :class="social.icon"></i></a>
+                </li>
+              </ul>
+              <router-link to="/rejoindre" class="btn-three">Nous rejoindre</router-link>
+            </div>
+          </div>
 
-        <!-- Quick Links -->
-        <div>
-          <h3 class="text-xl font-bold mb-4 text-[#fbbf24]">Liens Rapides</h3>
-          <ul class="space-y-2">
-            <li><router-link to="/association" class="text-gray-300 hover:text-[#fbbf24] transition">L'Organisation</router-link></li>
-            <li><router-link to="/actions" class="text-gray-300 hover:text-[#fbbf24] transition">Nos Actions</router-link></li>
-            <li><router-link to="/ecole" class="text-gray-300 hover:text-[#fbbf24] transition">Notre École</router-link></li>
-            <li><router-link to="/actualites" class="text-gray-300 hover:text-[#fbbf24] transition">Actualités</router-link></li>
-          </ul>
-        </div>
+          <div class="col-lg-2 col-md-3">
+            <div class="footer-nav ps-xxl-4 mb-30">
+              <h6 class="footer-title">Liens rapides</h6>
+              <ul class="footer-nav-link style-none">
+                <li><router-link to="/association">L'Organisation</router-link></li>
+                <li><router-link to="/actions">Nos Actions</router-link></li>
+                <li><router-link to="/ecole">Notre École</router-link></li>
+                <li><router-link to="/benevole">Bénévolat</router-link></li>
+                <li><router-link to="/parrainage">Parrainage</router-link></li>
+                <li><router-link to="/galerie">Galerie</router-link></li>
+              </ul>
+            </div>
+          </div>
 
-        <!-- Contact Info -->
-        <div>
-          <h3 class="text-xl font-bold mb-4 text-[#fbbf24]">Contact</h3>
-          <ul class="space-y-3 text-sm text-gray-300">
-            <li class="flex items-start">
-              <i class="fas fa-envelope mr-3 mt-1 text-[#fbbf24]"></i>
-              <span>Email: modehumain@gmail.com</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-phone mr-3 mt-1 text-[#fbbf24]"></i>
-              <span>Tél: +228 92 12 95 49</span>
-            </li>
-            <li class="flex items-start">
-              <i class="fas fa-map-marker-alt mr-3 mt-1 text-[#fbbf24]"></i>
-              <span>Adresse: Aflao-Sagbado (Apedokoè), Lomé, Togo</span>
-            </li>
-          </ul>
-        </div>
+          <div class="col-lg-3 col-md-5">
+            <div class="ps-xxl-4 mb-30">
+              <h6 class="footer-title">Contact</h6>
+              <ul class="contact-info style-none">
+                <li>
+                  <div class="icon d-flex align-items-center justify-content-center rounded-circle"><i class="fa-solid fa-phone"></i></div>
+                  <p class="m0 d-flex flex-column">
+                    <a :href="contact.phoneHref">{{ contact.phone }}</a>
+                    <a :href="`mailto:${contact.email}`">{{ contact.email }}</a>
+                  </p>
+                </li>
+                <li>
+                  <div class="icon d-flex align-items-center justify-content-center rounded-circle"><i class="fa-solid fa-location-dot"></i></div>
+                  {{ contact.address }}, {{ contact.city }}
+                </li>
+              </ul>
+            </div>
+          </div>
 
-        <!-- Social Media -->
-        <div>
-          <h3 class="text-xl font-bold mb-4 text-[#fbbf24]">Suivez-nous</h3>
-          <div class="flex space-x-4">
-            <a href="https://www.facebook.com/mdhtogoofficial" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-[#fbbf24] text-[#090e15] rounded-full flex items-center justify-center hover:bg-white transition">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://twitter.com/mdhtogo" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-[#fbbf24] text-[#090e15] rounded-full flex items-center justify-center hover:bg-white transition">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://www.instagram.com/mdhtogo" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-[#fbbf24] text-[#090e15] rounded-full flex items-center justify-center hover:bg-white transition">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.linkedin.com/company/mdh-togo" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-[#fbbf24] text-[#090e15] rounded-full flex items-center justify-center hover:bg-white transition">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
+          <div class="col-lg-4 col-md-4">
+            <div class="footer-news mb-30 ps-xxl-4">
+              <h6 class="footer-title">Dernières actualités</h6>
+              <ul class="style-none">
+                <li v-for="post in latest" :key="post.to">
+                  <article class="d-flex align-items-center">
+                    <figure class="post-img" :style="{ backgroundImage: `url(${post.image})` }"></figure>
+                    <div class="post-data">
+                      <div class="date">{{ post.date }}</div>
+                      <h5 class="blog-title m0"><router-link :to="post.to" class="line-bg inverse">{{ post.title }}</router-link></h5>
+                    </div>
+                  </article>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Divider -->
-      <hr class="border-gray-700 my-8">
-
-      <!-- Bottom Footer -->
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <p class="text-gray-400 text-sm mb-4 md:mb-0">
-          &copy; 2025 MDH International Togo. Tous droits réservés.
-        </p>
-        <!-- <div class="flex space-x-6 text-gray-400 text-sm">
-          <a href="#" class="hover:text-[#fbbf24] transition">Politique de confidentialité</a>
-          <a href="#" class="hover:text-[#fbbf24] transition">Conditions d'utilisation</a>
-          <a href="#" class="hover:text-[#fbbf24] transition">Mentions légales</a>
-        </div> -->
+    </div>
+    <div class="container">
+      <div class="bottom-footer">
+        <div class="d-md-flex align-items-center justify-content-between">
+          <div class="d-flex justify-content-center align-items-center sm-mb-10 order-md-last">
+            <ul class="style-none d-flex justify-content-center">
+              <li><router-link to="/adhesion">Adhésion</router-link></li>
+              <li><router-link to="/donation">Faire un don</router-link></li>
+              <li><router-link to="/contact">Contact</router-link></li>
+            </ul>
+          </div>
+          <p class="copyright-text text-center m0">&copy; {{ year }} MDH International Togo. Tous droits réservés.</p>
+        </div>
       </div>
     </div>
   </footer>
 </template>
 
 <script setup>
-// Footer component - no state needed
-</script>
+import images from '@/data/images.js'
+import { contact, socials } from '@/data/site.js'
+import { articles } from '@/data/articles.js'
 
-<style scoped>
-footer a {
-  transition: color 0.3s ease;
-}
-</style>
+const latest = articles.slice(0, 2)
+const year = new Date().getFullYear()
+</script>
