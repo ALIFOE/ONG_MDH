@@ -1,0 +1,88 @@
+-- Schéma de la base de l'espace admin MDH (MySQL 5.7+ / MariaDB 10.2+)
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(120) NOT NULL,
+  email VARCHAR(190) NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  role VARCHAR(20) NOT NULL DEFAULT 'editor',
+  active TINYINT(1) NOT NULL DEFAULT 1,
+  last_login_at DATETIME NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY users_email (email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS login_attempts (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  ip VARCHAR(45) NOT NULL,
+  email VARCHAR(190) NOT NULL,
+  attempted_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  KEY login_attempts_ip (ip),
+  KEY login_attempts_email (email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Formulaires reçus : contact, bénévolat, adhésion, parrainage, dons, inscriptions
+CREATE TABLE IF NOT EXISTS submissions (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  type VARCHAR(20) NOT NULL,
+  status VARCHAR(20) NOT NULL DEFAULT 'nouveau',
+  name VARCHAR(190) NOT NULL,
+  email VARCHAR(190) NOT NULL,
+  phone VARCHAR(60) NOT NULL DEFAULT '',
+  amount DECIMAL(12,2) NULL,
+  fields LONGTEXT NOT NULL,
+  notes TEXT NULL,
+  ip_hash CHAR(64) NOT NULL DEFAULT '',
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  KEY submissions_type_status (type, status),
+  KEY submissions_created (created_at),
+  KEY submissions_ip (ip_hash, created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS articles (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(190) NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  category VARCHAR(80) NOT NULL DEFAULT '',
+  date_label VARCHAR(80) NOT NULL DEFAULT '',
+  published_at DATE NULL,
+  excerpt TEXT NULL,
+  image VARCHAR(255) NOT NULL DEFAULT '',
+  content LONGTEXT NULL,
+  status VARCHAR(20) NOT NULL DEFAULT 'draft',
+  author_id INT UNSIGNED NULL,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY articles_slug (slug),
+  KEY articles_status_date (status, published_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS gallery_items (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  image VARCHAR(255) NOT NULL,
+  title VARCHAR(190) NOT NULL DEFAULT '',
+  category VARCHAR(80) NOT NULL DEFAULT '',
+  sort_order INT NOT NULL DEFAULT 0,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS team_members (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(190) NOT NULL,
+  role VARCHAR(190) NOT NULL DEFAULT '',
+  group_name VARCHAR(120) NOT NULL DEFAULT '',
+  bio TEXT NULL,
+  photo VARCHAR(255) NOT NULL DEFAULT '',
+  sort_order INT NOT NULL DEFAULT 0,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Coordonnées, réseaux sociaux, informations de don, notifications (valeurs JSON)
+CREATE TABLE IF NOT EXISTS settings (
+  name VARCHAR(60) NOT NULL PRIMARY KEY,
+  value LONGTEXT NOT NULL,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

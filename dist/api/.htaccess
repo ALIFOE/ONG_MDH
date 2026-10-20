@@ -1,0 +1,13 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^index\.php$ - [L]
+  RewriteRule ^install\.php$ - [L]
+  # Toutes les autres requêtes (y compris lib/, routes/, config.php) passent par le routeur
+  RewriteRule ^ index.php [L]
+</IfModule>
+
+<FilesMatch "^(config\.php|config\.example\.php|schema\.sql|dev-router\.php)$">
+  Require all denied
+</FilesMatch>
