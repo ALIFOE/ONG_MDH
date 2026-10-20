@@ -49,3 +49,8 @@ credentials.json
 *.zip
 *.rar
 ONG_MDH_deployment.zip
+
+# Espace admin : configuration locale et images téléversées
+api/config.php
+uploads/
+

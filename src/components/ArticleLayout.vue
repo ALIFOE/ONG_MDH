@@ -118,14 +118,16 @@ import { useRoute } from 'vue-router'
 import PageBanner from './PageBanner.vue'
 import { articles, categories } from '@/data/articles.js'
 
-defineProps({
+const props = defineProps({
   // { title, text, to, label } — encart d'appel à l'action en fin d'article
-  cta: { type: Object, default: null }
+  cta: { type: Object, default: null },
+  // Article publié depuis l'admin (sinon, l'article est retrouvé d'après l'adresse de la page)
+  entry: { type: Object, default: null }
 })
 
 const route = useRoute()
 const index = computed(() => articles.findIndex(a => a.to === route.path))
-const article = computed(() => articles[index.value] || articles[0])
+const article = computed(() => props.entry || articles[index.value] || articles[0])
 const previous = computed(() => articles[index.value + 1] || null)
 const next = computed(() => articles[index.value - 1] || null)
 const others = computed(() => articles.filter(a => a.to !== article.value.to).slice(0, 3))

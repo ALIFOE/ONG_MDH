@@ -246,7 +246,7 @@
 
               <div v-if="submitSuccess" class="mdh-alert success" role="status">
                 <h5 class="mb-2"><i class="fa-solid fa-circle-check me-2"></i>Adhésion enregistrée !</h5>
-                <p class="mb-15">Merci de votre adhésion. Un email de confirmation a été envoyé à votre adresse. Nous vous accueillerons bientôt dans notre communauté !</p>
+                <p class="mb-15">Merci de votre adhésion. Notre équipe vous contactera très prochainement pour finaliser votre inscription. Nous vous accueillerons bientôt dans notre communauté !</p>
                 <router-link to="/adhesion" class="btn-two xs">Retour à la page Adhésion</router-link>
               </div>
 
@@ -266,6 +266,7 @@
 import { ref } from 'vue'
 import PageBanner from '@/components/PageBanner.vue'
 import images from '@/data/images.js'
+import { sendForm } from '@/api/public.js'
 
 const types = [
   { value: 'individuelle', label: 'Adhésion Individuelle', hint: 'Pour personnes physiques' },
@@ -348,7 +349,7 @@ const handleSubmit = async () => {
   try {
     // Préparer les données du formulaire
     const formData = {
-      'Type d\'adhésion': form.value.typeAdhesion,
+      'Type d\'adhésion': types.find(t => t.value === form.value.typeAdhesion)?.label || form.value.typeAdhesion,
       'Prénom': form.value.prenom,
       'Nom': form.value.nom,
       'Email': form.value.email,
@@ -389,25 +390,17 @@ const handleSubmit = async () => {
       formData['Email entreprise'] = form.value.entreprise.email
     }
 
-    // Envoyer à Formspree
-    const response = await fetch('https://formspree.io/f/movwrnad', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(formData)
+    await sendForm('adhesion', {
+      name: `${form.value.prenom} ${form.value.nom}`,
+      email: form.value.email,
+      phone: form.value.telephone,
+      fields: formData
     })
 
-    if (response.ok) {
-      submitSuccess.value = true
-      form.value = emptyForm()
-    } else {
-      submitError.value = 'Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.'
-    }
+    submitSuccess.value = true
+    form.value = emptyForm()
   } catch (error) {
-    console.error('Erreur:', error)
-    submitError.value = 'Une erreur est survenue. Veuillez réessayer plus tard.'
+    submitError.value = error.message
   } finally {
     isSubmitting.value = false
   }

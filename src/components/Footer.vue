@@ -89,10 +89,11 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import images from '@/data/images.js'
 import { contact, socials } from '@/data/site.js'
 import { articles } from '@/data/articles.js'
 
-const latest = articles.slice(0, 2)
+const latest = computed(() => articles.slice(0, 2))
 const year = new Date().getFullYear()
 </script>

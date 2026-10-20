@@ -283,7 +283,7 @@
                   </div>
                 </div>
                 <div class="col-lg-6">
-                  <div class="feature-box mt-20" style="background: #e0f6ef;">
+                  <div class="feature-box mt-20" style="background: #e0e9f6;">
                     <div class="d-flex align-items-center">
                       <div class="icon rounded-circle"></div>
                       <h5>Bénévolat</h5>
@@ -358,7 +358,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import BlogCard from '@/components/BlogCard.vue'
 import images from '@/data/images.js'
 import { articles } from '@/data/articles.js'
@@ -430,7 +430,7 @@ const partners = [
   { icon: 'fa-building-columns', title: 'Institutions éducatives' }
 ]
 
-const latestPosts = articles.slice(0, 4)
+const latestPosts = computed(() => articles.slice(0, 4))
 
 const current = ref(0)
 const nextTestimonial = () => { current.value = (current.value + 1) % testimonials.length }

@@ -1,5 +1,8 @@
 <template>
-  <div class="main-page-wrapper">
+  <!-- L'espace admin a sa propre mise en page -->
+  <router-view v-if="route.meta.admin" />
+
+  <div v-else class="main-page-wrapper">
     <!-- Meta Tags Manager -->
     <MetaTags />
 
@@ -25,12 +28,14 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { useRoute } from 'vue-router'
 import MetaTags from './components/MetaTags.vue'
 import Navbar from './components/Navbar.vue'
 import CtaBanner from './components/CtaBanner.vue'
 import Footer from './components/Footer.vue'
 import { setupScrollAnimations } from './utils/animations.js'
 
+const route = useRoute()
 const showScrollTop = ref(false)
 let teardownAnimations = () => {}
 

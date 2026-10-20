@@ -1,8 +1,9 @@
+import { reactive } from 'vue'
 import images from './images.js'
+import { fetchPublic } from '@/api/public.js'
 
-// Liste des actualités, de la plus récente à la plus ancienne.
-// Utilisée par la page Actualités, l'accueil, le pied de page et la barre latérale des articles.
-export const articles = [
+// Articles historiques, intégrés au code (une page .vue chacun), du plus récent au plus ancien.
+export const staticArticles = [
   {
     to: '/article/academies-super-enfants',
     title: "Rapport d'Activité du Programme Académie des Super-Enfants",
@@ -69,7 +70,43 @@ export const articles = [
   }
 ]
 
-export const categories = [...new Set(articles.map(a => a.category))].map(name => ({
+// Liste affichée par la page Actualités, l'accueil, le pied de page et la barre latérale des articles :
+// les articles publiés depuis l'admin d'abord, puis les articles historiques.
+export const articles = reactive([...staticArticles])
+
+const countCategories = () => [...new Set(articles.map(a => a.category).filter(Boolean))].map(name => ({
   name,
   count: articles.filter(a => a.category === name).length
 }))
+
+export const categories = reactive(countCategories())
+
+const dateFormat = new Intl.DateTimeFormat('fr-FR', { month: 'long', year: 'numeric' })
+
+// Article de l'API au format des cartes d'actualité
+export function toArticleCard(article) {
+  const date = article.published_at ? dateFormat.format(new Date(`${article.published_at}T12:00:00`)) : ''
+  return {
+    to: `/actualites/${article.slug}`,
+    slug: article.slug,
+    title: article.title,
+    date: article.date_label || date.replace(/^./, c => c.toUpperCase()),
+    category: article.category,
+    image: article.image || images.logo,
+    excerpt: article.excerpt
+  }
+}
+
+let remoteLoad = null
+
+export function loadRemoteArticles() {
+  remoteLoad ??= fetchPublic('/articles')
+    .then(data => {
+      articles.splice(0, articles.length, ...data.items.map(toArticleCard), ...staticArticles)
+      categories.splice(0, categories.length, ...countCategories())
+    })
+    .catch(() => {
+      // API indisponible : seuls les articles historiques sont affichés
+    })
+  return remoteLoad
+}

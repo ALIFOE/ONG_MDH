@@ -1,11 +1,64 @@
 <script setup>
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import PageBanner from '@/components/PageBanner.vue'
 import images from '@/data/images.js'
+import { sendForm } from '@/api/public.js'
 
 // Mission choisie depuis la page « Nos actions » (?mission=mission5)
 const route = useRoute()
 const mission = route.query.mission || ''
+
+// Libellés affichés dans l'admin pour chaque champ du formulaire
+const labels = {
+  mission: 'Mission choisie',
+  nom: 'Nom',
+  prenom: 'Prénom',
+  sexe: 'Sexe',
+  date_naissance: 'Date de naissance',
+  adresse: 'Adresse postale',
+  profession: 'Profession',
+  type_parrainage: "Type d'engagement",
+  age_prefere: "Âge préféré de l'enfant",
+  sexe_prefere: "Sexe préféré de l'enfant",
+  message: 'Message'
+}
+
+const isSubmitting = ref(false)
+const submitted = ref(false)
+const errorMessage = ref('')
+
+const handleSubmit = async event => {
+  const formElement = event.target
+  errorMessage.value = ''
+  submitted.value = false
+  if (!formElement.checkValidity()) {
+    formElement.reportValidity()
+    return
+  }
+
+  const data = Object.fromEntries(new FormData(formElement))
+  const fields = {}
+  for (const [key, label] of Object.entries(labels)) {
+    if (data[key]) fields[label] = data[key]
+  }
+
+  isSubmitting.value = true
+  try {
+    await sendForm('benevole', {
+      name: `${data.prenom} ${data.nom}`,
+      email: data.email,
+      phone: data.telephone,
+      fields
+    })
+    submitted.value = true
+    formElement.reset()
+  } catch (error) {
+    errorMessage.value = error.message
+  } finally {
+    isSubmitting.value = false
+  }
+}
 </script>
 
 <template>
@@ -28,7 +81,7 @@ const mission = route.query.mission || ''
             </div>
 
             <div class="form-wrapper-card form-style-one">
-              <form action="https://formspree.io/f/mwpbyqgw" method="post">
+              <form @submit.prevent="handleSubmit">
                 <input v-if="mission" type="hidden" name="mission" :value="mission">
 
                 <h4 class="form-section-title"><i class="fa-solid fa-user"></i>Vos informations</h4>
@@ -137,9 +190,18 @@ const mission = route.query.mission || ''
                   <span>Je m'engage à respecter l'esprit du parrainage et à soutenir l'enfant dans la durée.</span>
                 </label>
 
-                <button type="submit" class="btn-one w-100"><i class="fa-solid fa-heart me-2"></i>Envoyer ma demande</button>
+                <button type="submit" class="btn-one w-100" :disabled="isSubmitting">
+                  <i class="fa-solid me-2" :class="isSubmitting ? 'fa-spinner fa-spin' : 'fa-heart'"></i>{{ isSubmitting ? 'Envoi en cours...' : 'Envoyer ma demande' }}
+                </button>
                 <p class="text-center fs-16 mt-20 mb-0"><i class="fa-solid fa-lock me-1"></i> Vos informations sont sécurisées</p>
               </form>
+
+              <div v-if="submitted" class="mdh-alert success" role="status">
+                <i class="fa-solid fa-circle-check me-2"></i>Merci pour votre engagement ! Votre demande a bien été reçue, notre équipe vous contactera très bientôt.
+              </div>
+              <div v-if="errorMessage" class="mdh-alert error" role="alert">
+                <i class="fa-solid fa-circle-exclamation me-2"></i>{{ errorMessage }}
+              </div>
             </div>
           </div>
         </div>

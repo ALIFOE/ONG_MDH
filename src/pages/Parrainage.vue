@@ -19,7 +19,7 @@
               </div>
               <div class="row">
                 <div v-for="(reason, i) in reasons" :key="reason.title" class="col-md-6">
-                  <div class="feature-box mt-20" :style="{ background: i % 3 === 0 ? '#fbf8e8' : '#e0f6ef' }">
+                  <div class="feature-box mt-20" :style="{ background: i % 3 === 0 ? '#fbf8e8' : '#e0e9f6' }">
                     <div class="d-flex align-items-center">
                       <div class="icon rounded-circle"></div>
                       <h5>{{ reason.title }}</h5>
@@ -171,6 +171,7 @@
 import { ref } from 'vue'
 import PageBanner from '@/components/PageBanner.vue'
 import images from '@/data/images.js'
+import { sendForm } from '@/api/public.js'
 
 const reasons = [
   { title: "Accès à l'école", text: "Permettre à un enfant d'accéder à l'école et à des soins de santé." },
@@ -226,41 +227,28 @@ const submitForm = async () => {
   isSubmitting.value = true
 
   try {
-    // Préparer les données pour Formspree
-    const formData = {
-      'Nom': form.value.nom,
-      'Prénom': form.value.prenom,
-      'Sexe': form.value.sexe,
-      'Date de naissance': form.value.dateNaissance,
-      'Email': form.value.email,
-      'Téléphone': form.value.telephone,
-      'Adresse': form.value.adresse,
-      'Profession': form.value.profession,
-      'Type de parrainage': form.value.typeParrainage,
-      'Âge préféré': form.value.agePreference || 'Non spécifié',
-      'Sexe préféré': form.value.sexePreference || 'Indifférent',
-      'Message': form.value.message || 'Aucun message'
-    }
-
-    // Envoyer les données à Formspree
-    const response = await fetch('https://formspree.io/f/mkgbydwe', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(formData)
+    await sendForm('parrainage', {
+      name: `${form.value.prenom} ${form.value.nom}`,
+      email: form.value.email,
+      phone: form.value.telephone,
+      fields: {
+        'Nom': form.value.nom,
+        'Prénom': form.value.prenom,
+        'Sexe': { male: 'Homme', female: 'Femme' }[form.value.sexe] || '',
+        'Date de naissance': form.value.dateNaissance,
+        'Adresse': form.value.adresse,
+        'Profession': form.value.profession,
+        'Type de parrainage': { education: 'Éducation', health: 'Santé', complete: 'Complet' }[form.value.typeParrainage] || '',
+        'Âge préféré': form.value.agePreference || 'Non spécifié',
+        'Sexe préféré': { male: 'Garçon', female: 'Fille' }[form.value.sexePreference] || 'Indifférent',
+        'Message': form.value.message || 'Aucun message'
+      }
     })
-
-    if (!response.ok) {
-      throw new Error('Erreur lors de l\'envoi du formulaire')
-    }
 
     successMessage.value = 'Merci ! Votre demande de parrainage a bien été reçue. Notre équipe vous contactera bientôt.'
     form.value = emptyForm()
   } catch (error) {
-    console.error('Erreur lors de l\'envoi:', error)
-    errorMessage.value = 'Une erreur s\'est produite lors de l\'envoi du formulaire. Veuillez réessayer ou nous contacter directement.'
+    errorMessage.value = error.message
   } finally {
     isSubmitting.value = false
   }

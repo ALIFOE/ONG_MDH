@@ -6,7 +6,8 @@ Allow: /ONG_MDH/js/
 Allow: /ONG_MDH/assets/
 
 # Disallow private or admin areas
-Disallow: /admin/
+Disallow: /admin
+Disallow: /api/
 Disallow: /private/
 Disallow: /temp/
 Disallow: /.env

@@ -178,6 +178,7 @@ import { useRouter } from 'vue-router'
 import PageBanner from '@/components/PageBanner.vue'
 import images from '@/data/images.js'
 import { contact } from '@/data/site.js'
+import { sendForm } from '@/api/public.js'
 
 const router = useRouter()
 const isSubmitting = ref(false)
@@ -234,7 +235,6 @@ const submitInscription = async () => {
   isSubmitting.value = true
 
   try {
-    // Préparer les données pour Formspree
     const formData = {
       'Nom du parent': form.value.parentNom,
       'Prénom du parent': form.value.parentPrenom,
@@ -255,19 +255,12 @@ const submitInscription = async () => {
       'Accepte photos': form.value.acceptPhotos ? 'Oui' : 'Non'
     }
 
-    // Envoyer les données à Formspree
-    const response = await fetch('https://formspree.io/f/xwpqqyza', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(formData)
+    await sendForm('vacances', {
+      name: `${form.value.parentPrenom} ${form.value.parentNom}`,
+      email: form.value.parentEmail,
+      phone: form.value.parentTelephone,
+      fields: formData
     })
-
-    if (!response.ok) {
-      throw new Error('Erreur lors de l\'envoi du formulaire')
-    }
 
     successMessage.value = 'Inscription réussie ! Merci d\'avoir inscrit votre enfant. Nous vous contacterons bientôt pour confirmer.'
     form.value = emptyForm()
@@ -277,8 +270,7 @@ const submitInscription = async () => {
       router.push('/article/vacances-utiles-2025')
     }, 2000)
   } catch (error) {
-    console.error('Erreur lors de l\'inscription:', error)
-    errorMessage.value = 'Une erreur s\'est produite lors de l\'envoi du formulaire. Veuillez réessayer ou nous contacter directement.'
+    errorMessage.value = error.message
   } finally {
     isSubmitting.value = false
   }

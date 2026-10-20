@@ -1,11 +1,21 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import PageBanner from '@/components/PageBanner.vue'
 import ContactBlocks from '@/components/ContactBlocks.vue'
 import images from '@/data/images.js'
 import { contact } from '@/data/site.js'
+import { sendForm } from '@/api/public.js'
 
-const mapUrl = `https://maps.google.com/maps?hl=fr&q=${encodeURIComponent(contact.mapQuery)}&t=&z=14&ie=UTF8&iwloc=B&output=embed`
+const mapUrl = computed(() => `https://maps.google.com/maps?hl=fr&q=${encodeURIComponent(contact.mapQuery)}&t=&z=14&ie=UTF8&iwloc=B&output=embed`)
+
+const subjects = {
+  general: 'Question générale',
+  donation: 'Question sur les dons',
+  volunteer: 'Devenir bénévole',
+  partnership: 'Proposition de partenariat',
+  press: 'Contact presse',
+  other: 'Autre'
+}
 
 const emptyForm = () => ({
   firstname: '',
@@ -39,33 +49,21 @@ const handleSubmit = async () => {
   isSubmitting.value = true
 
   try {
-    // Préparer les données pour Formspree
-    const formData = {
-      'Prénom': form.value.firstname,
-      'Nom': form.value.lastname,
-      'Email': form.value.email,
-      'Sujet': form.value.subject,
-      'Message': form.value.message
-    }
-
-    // Envoyer les données à Formspree
-    const response = await fetch('https://formspree.io/f/xwpbydgd', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(formData)
+    await sendForm('contact', {
+      name: `${form.value.firstname} ${form.value.lastname}`,
+      email: form.value.email,
+      fields: {
+        'Prénom': form.value.firstname,
+        'Nom': form.value.lastname,
+        'Sujet': subjects[form.value.subject] || form.value.subject,
+        'Message': form.value.message
+      }
     })
-
-    if (!response.ok) {
-      throw new Error('Erreur lors de l\'envoi du formulaire')
-    }
 
     submitted.value = true
     form.value = emptyForm()
   } catch (error) {
-    errorMessage.value = 'Erreur lors de l\'envoi du message : ' + error.message
+    errorMessage.value = error.message
   } finally {
     isSubmitting.value = false
   }

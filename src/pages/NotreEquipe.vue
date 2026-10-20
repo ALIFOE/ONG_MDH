@@ -26,7 +26,7 @@
           <template v-for="(group, g) in groups" :key="group.title">
             <h3 class="team-group-title" :class="{ 'mt-80': g > 0 }">{{ group.title }}</h3>
             <div class="row justify-content-center">
-              <div v-for="(member, i) in group.members" :key="member.name" class="col-lg-4 col-md-6">
+              <div v-for="(member, i) in group.members" :key="member.id || member.name" class="col-lg-4 col-md-6">
                 <div class="volunteer-block mt-30" data-sal="slide-up" data-sal-duration="900" :data-sal-delay="(i % 3) * 200">
                   <div class="media-wrapper position-relative z-2">
                     <div class="img-meta position-relative z-1 overflow-hidden">
@@ -68,10 +68,13 @@
 </template>
 
 <script setup>
+import { ref, computed, onMounted } from 'vue'
 import PageBanner from '@/components/PageBanner.vue'
 import images from '@/data/images.js'
+import { fetchPublic } from '@/api/public.js'
 
-const groups = [
+// Équipe d'origine, affichée tant que l'équipe gérée depuis l'admin n'est pas disponible
+const staticGroups = [
   {
     title: "Conseil d'Administration (CA)",
     members: [
@@ -92,6 +95,27 @@ const groups = [
     ]
   }
 ]
+
+const remoteMembers = ref([])
+
+// Membres de l'admin regroupés dans l'ordre de leur premier membre
+const groups = computed(() => {
+  if (!remoteMembers.value.length) return staticGroups
+  const map = new Map()
+  for (const member of remoteMembers.value) {
+    if (!map.has(member.group)) map.set(member.group, [])
+    map.get(member.group).push(member)
+  }
+  return [...map].map(([title, members]) => ({ title, members }))
+})
+
+onMounted(async () => {
+  try {
+    remoteMembers.value = (await fetchPublic('/team')).items
+  } catch {
+    // API indisponible : équipe d'origine
+  }
+})
 
 const initials = name => name
   .replace(/^Prof\s+/i, '')

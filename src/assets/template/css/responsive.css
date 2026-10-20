@@ -176,7 +176,7 @@
   .feedback-section-one .feedback-wrapper .bg-wrapper {padding: 25px 20px 15px;}
   .feature-block-four .media-bg,.feature-block-four .media-bg.version-two {width: 450px; height: 450px; border-width: 20px; margin: 40px auto 0; position: relative; transform: none; top:auto; right: 0;}
   .main-footer.bg-one.top-space {padding-top: 335px;}
-  .hero-banner-two .media-wrapper {position: relative; top:auto; right: auto; max-width: 500px; margin: 40px auto 0; outline: none; border: 10px solid #93d2be; border-radius: 0;}
+  .hero-banner-two .media-wrapper {position: relative; top:auto; right: auto; max-width: 500px; margin: 40px auto 0; outline: none; border: 10px solid #93acd2; border-radius: 0;}
   .hero-banner-two .shape_02 {top:8%;}
   .card-style-two.version-two .info-meta {padding-left: 20px; padding-right: 20px;}
   .card-style-two.version-two .info-meta .supporters {margin-top: 0;}
@@ -226,7 +226,7 @@
   .hero-banner-two .media-wrapper .card-wrapper-two {position: static; transform: none; max-width: 100%;}
   .hero-banner-two .media-wrapper .card-wrapper-two p {font-size: 20px;}
   .hero-banner-two .media-wrapper .icon-shape {bottom: 87%; right: 0; width: 85px; height: 85px;}
-  .card-style-four.border-style {border-right: none; border-bottom: 1px solid #3e8f75;}
+  .card-style-four.border-style {border-right: none; border-bottom: 1px solid #0064f5;}
   .feature-block-five .bg-wrapper {padding: 30px 15px;}
   .card-style-five {padding: 0 12px 30px;}
   .hero-banner-three .slider-bg:before {height: 100%;}
@@ -256,7 +256,7 @@
   .feature-block-four .media-bg,.feature-block-four .media-bg.version-two {width: auto;}
   .blog-meta-one .post-meta {padding: 25px 20px 30px 20px;}
   .theme-main-menu .inner-content .search-form-one {width: 100%;}
-  .theme-main-menu .inner-content .search-form-one input {border: 1px solid #41685b;}
+  .theme-main-menu .inner-content .search-form-one input {border: 1px solid #415168;}
   .hero-banner-two:after {width: calc(100% - 24px);}
   .main-footer.version-two .top-footer .shape_03,.main-footer.version-two .top-footer .shape_04 {top:30%; transform: none; max-width: 40%;}
   .hero-banner-three .slider-arrows {display: none !important;}

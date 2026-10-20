@@ -2,7 +2,8 @@
 import { ref } from 'vue'
 import PageBanner from '@/components/PageBanner.vue'
 import images from '@/data/images.js'
-import { contact } from '@/data/site.js'
+import { donation } from '@/data/site.js'
+import { sendForm } from '@/api/public.js'
 
 const presets = [10, 20, 50, 100, 200]
 
@@ -10,14 +11,34 @@ const emptyForm = () => ({ amount: '', firstname: '', lastname: '', email: '', p
 const form = ref(emptyForm())
 
 const submitted = ref(false)
+const isSubmitting = ref(false)
+const errorMessage = ref('')
 
-const handleSubmit = () => {
-  submitted.value = true
-
-  setTimeout(() => {
+// Le don est enregistré dans l'admin, puis le donateur finalise le paiement sur PayPal
+const handleSubmit = async () => {
+  errorMessage.value = ''
+  isSubmitting.value = true
+  try {
+    await sendForm('don', {
+      name: `${form.value.firstname} ${form.value.lastname}`,
+      email: form.value.email,
+      phone: form.value.phone,
+      amount: form.value.amount,
+      fields: {
+        'Prénom': form.value.firstname,
+        'Nom': form.value.lastname,
+        'Montant': `${form.value.amount} €`,
+        'Message': form.value.message || 'Aucun message'
+      }
+    })
+    submitted.value = true
     form.value = emptyForm()
-    submitted.value = false
-  }, 3000)
+    window.open(donation.paypalUrl, '_blank', 'noopener')
+  } catch (error) {
+    errorMessage.value = error.message
+  } finally {
+    isSubmitting.value = false
+  }
 }
 </script>
 
@@ -100,15 +121,20 @@ const handleSubmit = () => {
                   <span><i class="fa-solid fa-lock me-2"></i>Paiement sécurisé via PayPal</span>
                   <i class="fa-brands fa-paypal fs-1 mt-2" style="color: #003087;"></i>
                 </div>
-                <button type="submit" class="donate-cta tran3s"><i class="fa-solid fa-heart me-2"></i>Procéder au paiement PayPal</button>
+                <button type="submit" class="donate-cta tran3s" :disabled="isSubmitting">
+                  <i class="fa-solid me-2" :class="isSubmitting ? 'fa-spinner fa-spin' : 'fa-heart'"></i>Procéder au paiement PayPal
+                </button>
 
                 <div v-if="submitted" class="mdh-alert success" role="status">
-                  <i class="fa-solid fa-circle-check me-2"></i>Merci pour votre générosité ! Finalisez votre don via le lien PayPal ci-dessous.
+                  <i class="fa-solid fa-circle-check me-2"></i>Merci pour votre générosité ! Finalisez votre don dans la fenêtre PayPal (ou via le lien ci-dessous si elle ne s'est pas ouverte).
+                </div>
+                <div v-if="errorMessage" class="mdh-alert error" role="alert">
+                  <i class="fa-solid fa-circle-exclamation me-2"></i>{{ errorMessage }}
                 </div>
 
                 <div class="mt-40">
                   <p class="fw-500 mb-15">Ou donnez directement via PayPal :</p>
-                  <a href="https://www.paypal.com/mep/dashboard" target="_blank" rel="noopener noreferrer" class="btn-one xs">
+                  <a :href="donation.paypalUrl" target="_blank" rel="noopener noreferrer" class="btn-one xs">
                     <i class="fa-brands fa-paypal me-2"></i>Donner sur PayPal
                   </a>
                   <p class="fs-16 mt-10 mb-0">Lien sécurisé PayPal - s'ouvre dans une nouvelle fenêtre</p>
@@ -128,25 +154,25 @@ const handleSubmit = () => {
               <div class="widget-banner-two border-10 overflow-hidden position-relative z-1 mt-40">
                 <h4 class="text-center">Virement bancaire</h4>
                 <p class="fs-16 text-center pb-10">Vous pouvez nous soutenir par virement bancaire directement.</p>
-                <div class="payment-logos text-center mb-10"><img :src="images.logoIbank" alt="IBANK"></div>
+                <div class="payment-logos text-center mb-10"><img :src="images.logoIbank" :alt="donation.bankName"></div>
                 <dl class="bank-details m-0">
                   <dt>Banque</dt>
-                  <dd>IBANK</dd>
+                  <dd>{{ donation.bankName }}</dd>
                   <dt>Titulaire</dt>
-                  <dd>Mode Humain International</dd>
+                  <dd>{{ donation.bankHolder }}</dd>
                   <dt>IBAN</dt>
-                  <dd><span class="iban">TG80370240103902769900010133</span></dd>
+                  <dd><span class="iban">{{ donation.iban }}</span></dd>
                 </dl>
               </div>
 
               <div class="widget-banner-three border-10 overflow-hidden position-relative z-1 mt-40">
                 <h5 class="sidebar-title">Mobile Money</h5>
-                <div class="payment-logos mb-20"><img :src="images.logoMixByYas" alt="Mix by Yas"></div>
+                <div class="payment-logos mb-20"><img :src="images.logoMixByYas" :alt="donation.mobileMoneyName"></div>
                 <dl class="bank-details m-0">
-                  <dt>Mix by Yas</dt>
-                  <dd><a :href="contact.phoneHref">{{ contact.phone }}</a></dd>
+                  <dt>{{ donation.mobileMoneyName }}</dt>
+                  <dd><a :href="`tel:${donation.mobileMoneyNumber.replace(/[^\d+]/g, '')}`">{{ donation.mobileMoneyNumber }}</a></dd>
                   <dt>Référence</dt>
-                  <dd>MDH Donation</dd>
+                  <dd>{{ donation.mobileMoneyReference }}</dd>
                 </dl>
               </div>
             </aside>

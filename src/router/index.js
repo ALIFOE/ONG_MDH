@@ -227,6 +227,43 @@ const routes = [
     }
   },
   {
+    path: '/actualites/:slug',
+    name: 'Article',
+    component: () => import('../pages/ArticleView.vue'),
+    meta: {
+      title: 'Actualités - MDH International Togo'
+    }
+  },
+
+  // Espace d'administration (chargé à part, uniquement quand on l'ouvre)
+  {
+    path: '/admin/connexion',
+    name: 'AdminLogin',
+    component: () => import('../admin/pages/Login.vue'),
+    meta: { admin: true, title: 'Connexion - Admin MDH' }
+  },
+  {
+    path: '/admin',
+    component: () => import('../admin/AdminLayout.vue'),
+    meta: { admin: true, requiresAuth: true },
+    children: [
+      { path: '', name: 'AdminDashboard', component: () => import('../admin/pages/Dashboard.vue'), meta: { title: 'Tableau de bord - Admin MDH' } },
+      { path: 'demandes/:type(adhesion|benevole|parrainage|don|vacances|contact)', name: 'AdminSubmissions', component: () => import('../admin/pages/Submissions.vue'), meta: { title: 'Demandes reçues - Admin MDH', roles: ['admin'] } },
+      { path: 'demandes/fiche/:id(\\d+)', name: 'AdminSubmission', component: () => import('../admin/pages/SubmissionDetail.vue'), meta: { title: 'Demande - Admin MDH', roles: ['admin'] } },
+      { path: 'articles', name: 'AdminArticles', component: () => import('../admin/pages/Articles.vue'), meta: { title: 'Articles - Admin MDH' } },
+      { path: 'articles/nouveau', name: 'AdminArticleNew', component: () => import('../admin/pages/ArticleEdit.vue'), meta: { title: 'Nouvel article - Admin MDH' } },
+      { path: 'articles/:id(\\d+)', name: 'AdminArticle', component: () => import('../admin/pages/ArticleEdit.vue'), meta: { title: 'Modifier un article - Admin MDH' } },
+      { path: 'galerie', name: 'AdminGallery', component: () => import('../admin/pages/Gallery.vue'), meta: { title: 'Galerie - Admin MDH' } },
+      { path: 'equipe', name: 'AdminTeam', component: () => import('../admin/pages/Team.vue'), meta: { title: 'Équipe - Admin MDH' } },
+      { path: 'parametres', name: 'AdminSettings', component: () => import('../admin/pages/Settings.vue'), meta: { title: 'Infos du site - Admin MDH' } },
+      { path: 'utilisateurs', name: 'AdminUsers', component: () => import('../admin/pages/Users.vue'), meta: { title: 'Utilisateurs - Admin MDH', roles: ['admin'] } },
+      { path: 'mon-compte', name: 'AdminAccount', component: () => import('../admin/pages/Account.vue'), meta: { title: 'Mon compte - Admin MDH' } },
+      { path: 'demandes', redirect: '/admin/demandes/adhesion' },
+      { path: ':pathMatch(.*)*', redirect: '/admin' }
+    ]
+  },
+
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: NotFound,
@@ -251,10 +288,38 @@ const router = createRouter({
   }
 })
 
-// Mise à jour du titre de la page
-router.beforeEach((to, from, next) => {
-  document.title = to.meta.title || 'MDH International Togo'
-  next()
+// Accès à l'admin : session vérifiée auprès de l'API, puis rôle requis par la page
+router.beforeEach(async to => {
+  if (!to.meta.admin) return true
+  setNoIndex()
+  const { session, loadSession } = await import('../admin/api.js')
+  if (!session.checked) {
+    try {
+      await loadSession()
+    } catch {
+      session.user = null
+    }
+  }
+  if (to.name === 'AdminLogin') return session.user ? '/admin' : true
+  if (!session.user) return { path: '/admin/connexion', query: to.fullPath !== '/admin' ? { redirect: to.fullPath } : {} }
+  if (to.meta.roles && !to.meta.roles.includes(session.user.role)) return '/admin'
+  return true
 })
+
+// Mise à jour du titre de la page
+router.afterEach(to => {
+  document.title = to.meta.title || 'MDH International Togo'
+})
+
+// Les pages de l'admin ne doivent pas être indexées par les moteurs de recherche
+function setNoIndex() {
+  if (document.querySelector('meta[name="robots"][data-admin]')) return
+  document.querySelector('meta[name="robots"]')?.remove()
+  const tag = document.createElement('meta')
+  tag.name = 'robots'
+  tag.content = 'noindex, nofollow'
+  tag.dataset.admin = ''
+  document.head.appendChild(tag)
+}
 
 export default router
