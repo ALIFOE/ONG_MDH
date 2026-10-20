@@ -1,4 +1,8 @@
+# Dépendances : réinstallées avec « npm ci » (voir package-lock.json)
+node_modules/
 
+# Copie de référence du thème Hopeu, non publiée
+template/
 
 # Variables d'environnement
 .env
