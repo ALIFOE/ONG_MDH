@@ -27,9 +27,13 @@
           </button>
         </div>
 
+        <div v-if="!galleryState.loaded" class="text-center py-5" aria-busy="true">
+          <i class="fa-solid fa-spinner fa-spin fs-1" style="color: var(--mdh-blue);"></i>
+        </div>
+
         <div class="row g-4">
-          <div v-for="(image, index) in filteredImages" :key="image.url + index" class="col-lg-4 col-md-6">
-            <button type="button" class="gallery-item" @click="openLightbox(index)">
+          <div v-for="(image, index) in filteredImages" :key="image.id" class="col-lg-4 col-md-6">
+            <button type="button" class="gallery-item" @click="lightboxIndex = index">
               <img :src="image.url" :alt="image.title" loading="lazy">
               <span class="caption">
                 <strong>{{ image.title }}</strong>
@@ -40,36 +44,22 @@
         </div>
 
         <!-- État vide -->
-        <div v-if="filteredImages.length === 0" class="text-center py-5">
+        <div v-if="galleryState.loaded && filteredImages.length === 0" class="text-center py-5">
           <i class="fa-solid fa-image fs-1 mb-3 d-block" style="color: #c6ceda;"></i>
-          <p>Aucune image dans cette catégorie</p>
+          <p>{{ galleryState.failed ? 'La galerie ne peut pas être chargée pour le moment. Réessayez dans quelques instants.' : 'Aucune image dans cette catégorie' }}</p>
         </div>
       </div>
     </div>
 
-    <!-- Visionneuse -->
-    <Transition name="fade">
-      <div v-if="lightboxImage" class="lightbox" role="dialog" aria-modal="true" :aria-label="lightboxImage.title" @click="closeLightbox">
-        <button type="button" class="lb-btn lb-close" aria-label="Fermer" @click.stop="closeLightbox"><i class="fa-solid fa-xmark"></i></button>
-        <button type="button" class="lb-btn lb-prev" aria-label="Image précédente" @click.stop="previousImage"><i class="fa-solid fa-chevron-left"></i></button>
-        <figure @click.stop>
-          <img :src="lightboxImage.url" :alt="lightboxImage.title">
-          <figcaption>
-            {{ lightboxImage.title }}
-            <span>{{ lightboxImage.category }}</span>
-          </figcaption>
-        </figure>
-        <button type="button" class="lb-btn lb-next" aria-label="Image suivante" @click.stop="nextImage"><i class="fa-solid fa-chevron-right"></i></button>
-      </div>
-    </Transition>
+    <PhotoLightbox v-model="lightboxIndex" :photos="filteredImages" />
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { ref, reactive, computed, onMounted } from 'vue'
 import PageBanner from '@/components/PageBanner.vue'
+import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import images from '@/data/images.js'
-import { staticGallery } from '@/data/gallery.js'
 import { fetchPublic } from '@/api/public.js'
 
 const filters = [
@@ -81,48 +71,23 @@ const filters = [
 ]
 
 const activeCategory = ref('all')
-const currentLightboxIndex = ref(null)
+const lightboxIndex = ref(null)
 
-// Photos ajoutées depuis l'admin, affichées avant les photos historiques
-const remoteGallery = ref([])
-const gallery = computed(() => [...remoteGallery.value, ...staticGallery])
+// Photos gérées depuis l'admin (« Galerie »), dans l'ordre choisi
+const gallery = ref([])
+const galleryState = reactive({ loaded: false, failed: false })
 
 const filteredImages = computed(() => activeCategory.value === 'all'
   ? gallery.value
   : gallery.value.filter(img => img.category === activeCategory.value))
 
-const lightboxImage = computed(() => currentLightboxIndex.value === null ? null : filteredImages.value[currentLightboxIndex.value])
-
-const openLightbox = (index) => {
-  currentLightboxIndex.value = index
-}
-
-const closeLightbox = () => {
-  currentLightboxIndex.value = null
-}
-
-const nextImage = () => {
-  currentLightboxIndex.value = (currentLightboxIndex.value + 1) % filteredImages.value.length
-}
-
-const previousImage = () => {
-  currentLightboxIndex.value = (currentLightboxIndex.value - 1 + filteredImages.value.length) % filteredImages.value.length
-}
-
-const onKeydown = (event) => {
-  if (currentLightboxIndex.value === null) return
-  if (event.key === 'Escape') closeLightbox()
-  if (event.key === 'ArrowRight') nextImage()
-  if (event.key === 'ArrowLeft') previousImage()
-}
-
 onMounted(async () => {
-  window.addEventListener('keydown', onKeydown)
   try {
-    remoteGallery.value = (await fetchPublic('/gallery')).items
+    gallery.value = (await fetchPublic('/gallery')).items
   } catch {
-    // API indisponible : seules les photos historiques sont affichées
+    galleryState.failed = true
+  } finally {
+    galleryState.loaded = true
   }
 })
-onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
 </script>

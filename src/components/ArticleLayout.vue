@@ -27,10 +27,13 @@
 
                 <div v-if="cta" class="mdh-note d-sm-flex align-items-center justify-content-between mt-40">
                   <div class="pe-sm-4 mb-20 mb-sm-0">
-                    <h5 class="mb-1">{{ cta.title }}</h5>
+                    <h5 v-if="cta.title" class="mb-1">{{ cta.title }}</h5>
                     <span>{{ cta.text }}</span>
                   </div>
-                  <router-link :to="cta.to" class="btn-one xs flex-shrink-0">{{ cta.label }}</router-link>
+                  <template v-if="cta.to">
+                    <router-link v-if="cta.to.startsWith('/')" :to="cta.to" class="btn-one xs flex-shrink-0">{{ cta.label }}</router-link>
+                    <a v-else :href="cta.to" class="btn-one xs flex-shrink-0" target="_blank" rel="noopener noreferrer">{{ cta.label }}</a>
+                  </template>
                 </div>
 
                 <div class="post-tags-widget">
@@ -121,14 +124,15 @@ import { articles, categories } from '@/data/articles.js'
 const props = defineProps({
   // { title, text, to, label } — encart d'appel à l'action en fin d'article
   cta: { type: Object, default: null },
-  // Article publié depuis l'admin (sinon, l'article est retrouvé d'après l'adresse de la page)
-  entry: { type: Object, default: null }
+  // Article affiché, au format des cartes d'actualité (src/data/articles.js)
+  entry: { type: Object, required: true }
 })
 
 const route = useRoute()
 const index = computed(() => articles.findIndex(a => a.to === route.path))
-const article = computed(() => props.entry || articles[index.value] || articles[0])
-const previous = computed(() => articles[index.value + 1] || null)
-const next = computed(() => articles[index.value - 1] || null)
+const article = computed(() => props.entry)
+// Liens vers l'article plus ancien / plus récent, une fois la liste des actualités chargée
+const previous = computed(() => (index.value === -1 ? null : articles[index.value + 1] || null))
+const next = computed(() => (index.value > 0 ? articles[index.value - 1] : null))
 const others = computed(() => articles.filter(a => a.to !== article.value.to).slice(0, 3))
 </script>

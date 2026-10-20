@@ -6,7 +6,7 @@ function settings_defaults(): array
 {
     return [
         'contact' => [
-            'email' => 'modehumain@gmail.com',
+            'email' => 'info@modehumain.org',
             'phone' => '+228 92 12 95 49',
             'address' => 'Aflao-Sagbado (Apedokoè)',
             'city' => 'Lomé, Togo',
@@ -30,7 +30,7 @@ function settings_defaults(): array
         ],
         'notifications' => [
             'enabled' => true,
-            'email' => 'modehumain@gmail.com',
+            'email' => 'info@modehumain.org',
         ],
     ];
 }

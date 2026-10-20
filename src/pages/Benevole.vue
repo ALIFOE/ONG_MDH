@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Bouton flottant : Vacances Utiles 2025 -->
-    <router-link to="/article/vacances-utiles-2025" class="btn-one inverse floating-cta">
+    <router-link to="/actualites/vacances-utiles-2025" class="btn-one inverse floating-cta">
       <i class="fa-solid fa-star"></i>Programme de Vacances Utiles 2025
     </router-link>
 

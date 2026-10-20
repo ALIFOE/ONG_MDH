@@ -2,8 +2,10 @@
 declare(strict_types=1);
 
 /*
- * Installation de la base de l'espace admin.
- * Crée les tables manquantes, importe l'équipe actuelle du site, puis le premier compte administrateur.
+ * Installation et mise à jour de la base de l'espace admin.
+ * Crée les tables manquantes, applique les mises à jour (api/lib/migrations.php),
+ * importe l'équipe actuelle du site, puis crée le premier compte administrateur.
+ * À relancer après chaque déploiement qui modifie la base.
  *
  *  - En ligne de commande :
  *      php api/install.php --name="Prénom Nom" --email=admin@exemple.org --password="mot-de-passe"
@@ -14,6 +16,7 @@ declare(strict_types=1);
  */
 
 require __DIR__ . '/bootstrap.php';
+require __DIR__ . '/lib/migrations.php';
 
 $isCli = PHP_SAPI === 'cli';
 
@@ -69,6 +72,7 @@ function create_first_admin(string $name, string $email, string $password): ?str
 
 try {
     run_schema();
+    $applied = run_migrations();
     $hasUsers = (int) db_value('SELECT COUNT(*) FROM users') > 0;
     if (!$hasUsers) {
         seed_team();
@@ -86,6 +90,9 @@ try {
 if ($isCli) {
     $options = getopt('', ['name:', 'email:', 'password:']);
     echo "Tables à jour." . PHP_EOL;
+    foreach ($applied as $name) {
+        echo "Mise à jour appliquée : $name" . PHP_EOL;
+    }
     if ($hasUsers) {
         echo "Un compte existe déjà : aucun administrateur créé." . PHP_EOL;
         exit(0);
@@ -140,6 +147,9 @@ header('X-Robots-Tag: noindex');
 <body>
 <main>
   <h1>Installation de l'espace admin</h1>
+  <?php if ($applied): ?>
+    <p>Mises à jour de la base appliquées : <?= $e(implode(', ', $applied)) ?>.</p>
+  <?php endif; ?>
   <?php if ($done): ?>
     <p>Le compte administrateur est créé. Supprimez maintenant le fichier <code>api/install.php</code> du serveur, puis connectez-vous.</p>
     <a class="btn" href="/admin">Aller à l'espace admin</a>

@@ -357,21 +357,6 @@ a {
   color: inherit;
 }
 
-.blog-details-meta .mark-text {
-  background: #f5f7f9;
-  border-left: 4px solid var(--mdh-blue);
-  border-radius: 10px;
-  padding: 25px 30px;
-  margin: 30px 0;
-}
-
-.blog-details-meta .mark-text blockquote {
-  font-size: 20px;
-  font-style: italic;
-  color: var(--mdh-blue-dark);
-  margin: 0;
-}
-
 /* ---------- Bandeau défilant ---------- */
 .event-text-slider-bg {
   overflow: hidden;
@@ -1007,51 +992,67 @@ a {
 }
 
 /* ---------- Articles ---------- */
-.blog-details-meta .post-meta h3 {
-  font-size: 28px;
-  font-weight: 600;
-  margin: 35px 0 15px;
-}
-
-.blog-details-meta .post-meta h4 {
-  font-size: 22px;
-  font-weight: 600;
-  margin: 25px 0 10px;
-}
-
 .blog-details-meta .post-meta .lead-text {
   font-size: 20px;
   font-weight: 500;
   color: var(--mdh-blue-dark);
 }
 
-.blog-details-meta .post-meta ul.mdh-check-list li {
-  font-size: 16px;
-}
-
-/* Contenu des articles publiés depuis l'admin */
-.article-content h2 {
-  font-size: 32px;
+/* Contenu saisi dans l'éditeur de l'admin */
+.blog-details-meta .article-content h2 {
+  font-size: 28px;
   font-weight: 600;
   margin: 35px 0 15px;
 }
 
+.blog-details-meta .article-content h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 25px 0 10px;
+}
+
+.blog-details-meta .article-content h4 {
+  font-size: 19px;
+  font-weight: 600;
+  margin: 20px 0 8px;
+}
+
 .article-content ul,
 .article-content ol {
-  padding-left: 1.4em;
   margin: 15px 0 20px;
 }
 
+/* Listes à puces : coche bleue, comme les autres listes du site */
 .article-content ul {
-  list-style: disc;
+  list-style: none;
+  padding: 0;
+}
+
+.article-content ul li {
+  position: relative;
+  padding-left: 30px;
+  color: var(--mdh-blue-dark);
+}
+
+.article-content ul li::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: var(--mdh-blue);
 }
 
 .article-content ol {
   list-style: decimal;
+  padding-left: 1.4em;
 }
 
 .article-content li {
-  margin-bottom: 6px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.6em;
 }
 
 .article-content li p {
@@ -1073,8 +1074,8 @@ a {
   background: #f5f7f9;
   border-left: 4px solid var(--mdh-blue);
   border-radius: 10px;
-  padding: 20px 25px;
-  margin: 25px 0;
+  padding: 25px 30px;
+  margin: 30px 0;
   font-size: 20px;
   font-style: italic;
   color: var(--mdh-blue-dark);
@@ -1088,6 +1089,17 @@ a {
   border: none;
   border-top: 1px solid #e3e6eb;
   margin: 30px 0;
+}
+
+/* Photos ajoutées à l'article depuis l'admin */
+.article-photos .gallery-item {
+  height: 200px;
+  border-radius: 14px;
+  cursor: zoom-in;
+}
+
+@media (max-width: 575px) {
+  .article-photos .gallery-item { height: 140px; }
 }
 
 .blog-details-meta .back-link {

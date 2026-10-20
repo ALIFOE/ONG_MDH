@@ -2,7 +2,7 @@
   <div>
     <PageBanner
       title="Inscription Vacances Utiles 2025"
-      :crumbs="[{ label: 'Vacances Utiles 2025', to: '/article/vacances-utiles-2025' }, { label: 'Inscription' }]"
+      :crumbs="[{ label: 'Vacances Utiles 2025', to: '/actualites/vacances-utiles-2025' }, { label: 'Inscription' }]"
       :image="images.article1"
       subtitle="Inscrivez votre enfant au programme « L'Académie des Super-Enfants »."
     />
@@ -267,7 +267,7 @@ const submitInscription = async () => {
 
     // Redirection vers la page du programme
     setTimeout(() => {
-      router.push('/article/vacances-utiles-2025')
+      router.push('/actualites/vacances-utiles-2025')
     }, 2000)
   } catch (error) {
     errorMessage.value = error.message

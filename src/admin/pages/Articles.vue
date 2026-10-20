@@ -8,17 +8,12 @@
       <router-link to="/admin/articles/nouveau" class="adm-btn adm-btn-primary"><i class="fa-solid fa-plus"></i>Nouvel article</router-link>
     </div>
 
-    <div class="adm-alert is-info mb-3">
-      <i class="fa-solid fa-circle-info"></i>
-      <span>Les {{ legacyCount }} articles historiques du site restent affichés après ceux créés ici. Ils sont intégrés au code du site et ne se modifient pas depuis l'admin.</span>
-    </div>
-
     <div class="adm-card">
       <div v-if="error" class="adm-card-body"><div class="adm-alert is-error" role="alert"><i class="fa-solid fa-circle-exclamation"></i>{{ error }}</div></div>
       <div v-else-if="!items" class="adm-loading"><i class="fa-solid fa-spinner fa-spin"></i> Chargement…</div>
       <div v-else-if="!items.length" class="adm-empty">
         <i class="fa-solid fa-newspaper d-block"></i>
-        <strong>Aucun article créé depuis l'admin</strong>
+        <strong>Aucun article</strong>
         Publiez votre première actualité pour la voir apparaître sur le site.
         <div class="mt-3"><router-link to="/admin/articles/nouveau" class="adm-btn adm-btn-primary"><i class="fa-solid fa-plus"></i>Nouvel article</router-link></div>
       </div>
@@ -68,12 +63,10 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { api, notify } from '../api.js'
 import { formatDate } from '../format.js'
-import { staticArticles } from '@/data/articles.js'
 
 const router = useRouter()
 const items = ref(null)
 const error = ref('')
-const legacyCount = staticArticles.length
 
 onMounted(async () => {
   try {

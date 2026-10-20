@@ -50,7 +50,13 @@ CREATE TABLE IF NOT EXISTS articles (
   published_at DATE NULL,
   excerpt TEXT NULL,
   image VARCHAR(255) NOT NULL DEFAULT '',
+  -- Photos affichées sous le texte de l'article (liste JSON d'adresses)
+  photos LONGTEXT NULL,
   content LONGTEXT NULL,
+  cta_title VARCHAR(190) NOT NULL DEFAULT '',
+  cta_text VARCHAR(500) NOT NULL DEFAULT '',
+  cta_label VARCHAR(80) NOT NULL DEFAULT '',
+  cta_url VARCHAR(500) NOT NULL DEFAULT '',
   status VARCHAR(20) NOT NULL DEFAULT 'draft',
   author_id INT UNSIGNED NULL,
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -78,6 +84,12 @@ CREATE TABLE IF NOT EXISTS team_members (
   sort_order INT NOT NULL DEFAULT 0,
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Mises à jour de la base déjà appliquées (voir api/lib/migrations.php)
+CREATE TABLE IF NOT EXISTS migrations (
+  name VARCHAR(120) NOT NULL PRIMARY KEY,
+  applied_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Coordonnées, réseaux sociaux, informations de don, notifications (valeurs JSON)

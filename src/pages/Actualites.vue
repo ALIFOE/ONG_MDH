@@ -24,6 +24,13 @@
         </div>
       </div>
 
+      <div v-if="!articlesState.loaded" class="text-center pt-40" aria-busy="true">
+        <i class="fa-solid fa-spinner fa-spin fs-1" style="color: var(--mdh-blue);"></i>
+      </div>
+      <p v-else-if="!filtered.length" class="text-center pt-40">
+        {{ articlesState.failed ? 'Les actualités ne peuvent pas être chargées pour le moment. Réessayez dans quelques instants.' : 'Aucune actualité pour le moment.' }}
+      </p>
+
       <div class="box-layout-two">
         <div class="row">
           <div v-for="(post, i) in filtered" :key="post.to" class="col-xxl-3 col-lg-4 col-md-6" data-sal="slide-up" data-sal-duration="900" :data-sal-delay="(i % 4) * 100">
@@ -41,7 +48,7 @@ import { useRoute } from 'vue-router'
 import PageBanner from '@/components/PageBanner.vue'
 import BlogCard from '@/components/BlogCard.vue'
 import images from '@/data/images.js'
-import { articles, categories } from '@/data/articles.js'
+import { articles, categories, articlesState } from '@/data/articles.js'
 
 const route = useRoute()
 const activeCategory = computed(() => route.query.categorie || '')

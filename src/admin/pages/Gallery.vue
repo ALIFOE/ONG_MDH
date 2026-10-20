@@ -3,7 +3,7 @@
     <div class="adm-page-head">
       <div>
         <h1>Galerie photos</h1>
-        <p>Les photos ajoutées ici s'affichent en premier sur la page Galerie, avant les {{ legacyCount }} photos historiques du site.</p>
+        <p>Photos affichées sur la page Galerie du site, dans cet ordre. Les nouvelles photos s'ajoutent en tête.</p>
       </div>
     </div>
 
@@ -34,7 +34,7 @@
     <div v-else-if="!items" class="adm-loading"><i class="fa-solid fa-spinner fa-spin"></i> Chargement…</div>
     <div v-else-if="!items.length" class="adm-card adm-empty">
       <i class="fa-solid fa-images d-block"></i>
-      <strong>Aucune photo ajoutée pour le moment</strong>
+      <strong>Aucune photo dans la galerie</strong>
       Les photos que vous ajoutez apparaîtront ici et sur le site.
     </div>
     <div v-else class="adm-gallery">
@@ -77,9 +77,7 @@ import { api, uploadImage, notify } from '../api.js'
 import { galleryCategories } from '../constants.js'
 import Drawer from '../components/Drawer.vue'
 import ImageField from '../components/ImageField.vue'
-import { staticGallery } from '@/data/gallery.js'
 
-const legacyCount = staticGallery.length
 const items = ref(null)
 const error = ref('')
 const fileInput = ref(null)

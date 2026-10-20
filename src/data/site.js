@@ -4,7 +4,7 @@ import { fetchPublic } from '@/api/public.js'
 // Coordonnées et liens partagés par l'en-tête, le pied de page et les pages.
 // Valeurs par défaut, remplacées au chargement par celles saisies dans l'admin (« Infos du site »).
 export const contact = reactive({
-  email: 'modehumain@gmail.com',
+  email: 'info@modehumain.org',
   phone: '+228 92 12 95 49',
   address: 'Aflao-Sagbado (Apedokoè)',
   city: 'Lomé, Togo',

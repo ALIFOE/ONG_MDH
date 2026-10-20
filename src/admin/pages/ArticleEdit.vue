@@ -37,6 +37,12 @@
             <span class="adm-label">Contenu de l'article</span>
             <RichEditor v-model="form.content" />
           </section>
+
+          <section class="adm-card adm-card-body">
+            <h2 class="mb-1">Photos de l'article</h2>
+            <p class="adm-hint mt-0 mb-3">Affichées sous le texte, dans cet ordre. Un clic sur une photo l'agrandit sur le site.</p>
+            <PhotosField v-model="form.photos" />
+          </section>
         </div>
 
         <aside class="adm-stack">
@@ -74,6 +80,30 @@
           </section>
 
           <section class="adm-card adm-card-body">
+            <h2 class="mb-1">Encadré de fin d'article</h2>
+            <p class="adm-hint mt-0 mb-3">Laissé vide, l'article se termine par l'encadré « Soutenez nos actions » avec le bouton « Faire un don ».</p>
+            <label class="adm-field">
+              <span class="adm-label">Titre</span>
+              <input v-model="form.cta_title" class="adm-input" type="text" maxlength="190" placeholder="Ex. : Inscrivez vos enfants !">
+            </label>
+            <label class="adm-field">
+              <span class="adm-label">Texte</span>
+              <textarea v-model="form.cta_text" class="adm-input" rows="2" maxlength="500" style="min-height: 70px;"></textarea>
+            </label>
+            <label class="adm-field">
+              <span class="adm-label">Texte du bouton</span>
+              <input v-model="form.cta_label" class="adm-input" type="text" maxlength="80" placeholder="Ex. : S'inscrire">
+            </label>
+            <label class="adm-field">
+              <span class="adm-label">Lien du bouton</span>
+              <input v-model="form.cta_url" class="adm-input" type="text" list="site-pages" maxlength="500" placeholder="/donation ou https://…">
+              <datalist id="site-pages">
+                <option v-for="page in sitePages" :key="page.to" :value="page.to">{{ page.label }}</option>
+              </datalist>
+            </label>
+          </section>
+
+          <section class="adm-card adm-card-body">
             <h2 class="mb-3">Adresse de la page</h2>
             <label class="adm-field">
               <span class="adm-label">/actualites/…</span>
@@ -96,6 +126,7 @@ import { api, notify } from '../api.js'
 import { articleCategories } from '../constants.js'
 import RichEditor from '../components/RichEditor.vue'
 import ImageField from '../components/ImageField.vue'
+import PhotosField from '../components/PhotosField.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -107,7 +138,18 @@ const saving = ref(false)
 const error = ref('')
 const fieldError = ref('')
 
-const fields = ['title', 'slug', 'category', 'date_label', 'published_at', 'excerpt', 'image', 'content', 'status']
+const fields = ['title', 'slug', 'category', 'date_label', 'published_at', 'excerpt', 'image', 'photos', 'content', 'status', 'cta_title', 'cta_text', 'cta_label', 'cta_url']
+
+// Pages proposées pour le bouton de l'encadré
+const sitePages = [
+  { to: '/donation', label: 'Faire un don' },
+  { to: '/rejoindre', label: 'Nous rejoindre (bénévolat)' },
+  { to: '/adhesion', label: 'Adhésion' },
+  { to: '/parrainage', label: 'Parrainage' },
+  { to: '/inscription-vacances-2025', label: 'Inscription Vacances Utiles' },
+  { to: '/contact', label: 'Contact' },
+  { to: '/actions', label: 'Nos actions' }
+]
 const snapshot = value => JSON.stringify(fields.map(key => value?.[key] ?? ''))
 let savedSnapshot = ''
 const dirty = computed(() => form.value && snapshot(form.value) !== savedSnapshot)
@@ -115,6 +157,7 @@ const dirty = computed(() => form.value && snapshot(form.value) !== savedSnapsho
 const load = data => {
   saved.value = data
   form.value = Object.fromEntries(fields.map(key => [key, data[key] ?? '']))
+  form.value.photos = Array.isArray(data.photos) ? [...data.photos] : []
   savedSnapshot = snapshot(form.value)
 }
 

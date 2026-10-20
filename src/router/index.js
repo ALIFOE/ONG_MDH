@@ -16,17 +16,9 @@ import Parrainage from '../pages/Parrainage.vue'
 import Adhesion from '../pages/Adhesion.vue'
 import NotFound from '../pages/NotFound.vue'
 
-// Import des pages d'articles
-import VacancesUtiles2025 from '../pages/articles/VacancesUtiles2025.vue'
+// Formulaires d'inscription
 import InscriptionAdhesion from '../pages/InscriptionAdhesion.vue'
 import InscriptionVacances2025 from '../pages/articles/InscriptionVacances2025.vue'
-import SensibilisationGenreFoncier from '../pages/articles/SensibilisationGenreFoncier.vue'
-import MobilisationParlementaire from '../pages/articles/MobilisationParlementaire.vue'
-import ActivitesPratiques from '../pages/articles/ActivitesPratiques.vue'
-import SoutienScolaire from '../pages/articles/SoutienScolaire.vue'
-import SejournAllemands from '../pages/articles/SejournAllemands.vue'
-import AcademiesSuperEnfants from '../pages/articles/AcademiesSuperEnfants.vue'
-import RapportActivites2019 from '../pages/articles/RapportActivites2019.vue'
 
 const routes = [
   {
@@ -155,14 +147,6 @@ const routes = [
     }
   },
   {
-    path: '/article/vacances-utiles-2025',
-    name: 'VacancesUtiles2025',
-    component: VacancesUtiles2025,
-    meta: {
-      title: 'Vacances Utiles 2025 - MDH International Togo'
-    }
-  },
-  {
     path: '/inscription-vacances-2025',
     name: 'InscriptionVacances2025',
     component: InscriptionVacances2025,
@@ -170,61 +154,10 @@ const routes = [
       title: 'Inscription Vacances Utiles 2025 - MDH International Togo'
     }
   },
+  // Anciennes adresses des articles, d'avant leur gestion dans l'admin
   {
-    path: '/article/sensibilisation-genre-foncier',
-    name: 'SensibilisationGenreFoncier',
-    component: SensibilisationGenreFoncier,
-    meta: {
-      title: 'Sensibilisation Genre et Foncier - MDH International Togo'
-    }
-  },
-  {
-    path: '/article/mobilisation-parlementaire',
-    name: 'MobilisationParlementaire',
-    component: MobilisationParlementaire,
-    meta: {
-      title: 'Mobilisation Parlementaire - MDH International Togo'
-    }
-  },
-  {
-    path: '/article/activites-pratiques',
-    name: 'ActivitesPratiques',
-    component: ActivitesPratiques,
-    meta: {
-      title: 'Activités Pratiques - MDH International Togo'
-    }
-  },
-  {
-    path: '/article/soutien-scolaire',
-    name: 'SoutienScolaire',
-    component: SoutienScolaire,
-    meta: {
-      title: 'Soutien Scolaire - MDH International Togo'
-    }
-  },
-  {
-    path: '/article/sejour-allemands',
-    name: 'SejournAllemands',
-    component: SejournAllemands,
-    meta: {
-      title: 'Séjour des Jeunes Allemands - MDH International Togo'
-    }
-  },
-  {
-    path: '/article/academies-super-enfants',
-    name: 'AcademiesSuperEnfants',
-    component: AcademiesSuperEnfants,
-    meta: {
-      title: 'Académie des Super-Enfants - MDH International Togo'
-    }
-  },
-  {
-    path: '/article/rapport-activites-2019',
-    name: 'RapportActivites2019',
-    component: RapportActivites2019,
-    meta: {
-      title: 'Rapport Activités 2019 - MDH International Togo'
-    }
+    path: '/article/:slug',
+    redirect: to => `/actualites/${to.params.slug}`
   },
   {
     path: '/actualites/:slug',

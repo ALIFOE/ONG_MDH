@@ -10,14 +10,14 @@
       </button>
       <span class="sep"></span>
       <button type="button" :class="{ 'is-active': editor.isActive('link') }" title="Lien" aria-label="Lien" @click="setLink"><i class="fa-solid fa-link"></i></button>
-      <button type="button" title="Insérer une image" aria-label="Insérer une image" :disabled="uploading" @click="fileInput.click()">
+      <button type="button" title="Insérer des images" aria-label="Insérer des images" :disabled="uploading" @click="fileInput.click()">
         <i class="fa-solid" :class="uploading ? 'fa-spinner fa-spin' : 'fa-image'"></i>
       </button>
       <button type="button" title="Séparateur" aria-label="Séparateur" @click="editor.chain().focus().setHorizontalRule().run()"><i class="fa-solid fa-minus"></i></button>
       <span class="sep"></span>
       <button type="button" title="Annuler" aria-label="Annuler" :disabled="!editor.can().undo()" @click="editor.chain().focus().undo().run()"><i class="fa-solid fa-rotate-left"></i></button>
       <button type="button" title="Rétablir" aria-label="Rétablir" :disabled="!editor.can().redo()" @click="editor.chain().focus().redo().run()"><i class="fa-solid fa-rotate-right"></i></button>
-      <input ref="fileInput" type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden @change="insertImage">
+      <input ref="fileInput" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple hidden @change="insertImages">
     </div>
     <EditorContent :editor="editor" />
   </div>
@@ -81,19 +81,21 @@ const setLink = () => {
   chain().extendMarkRange('link').setLink({ href }).run()
 }
 
-const insertImage = async event => {
-  const file = event.target.files[0]
+// Images insérées l'une après l'autre à l'emplacement du curseur, dans l'ordre choisi
+const insertImages = async event => {
+  const files = [...event.target.files]
   event.target.value = ''
-  if (!file) return
+  if (!files.length) return
   uploading.value = true
-  try {
-    const src = await uploadImage(file)
-    chain().setImage({ src, alt: '' }).run()
-  } catch (e) {
-    notify(e.message, 'error')
-  } finally {
-    uploading.value = false
+  for (const file of files) {
+    try {
+      const src = await uploadImage(file)
+      chain().setImage({ src, alt: '' }).run()
+    } catch (e) {
+      notify(`${file.name} : ${e.message}`, 'error')
+    }
   }
+  uploading.value = false
 }
 
 // Contenu chargé après coup (ouverture d'un article existant)

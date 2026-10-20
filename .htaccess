@@ -1,9 +1,15 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+  # Toujours en HTTPS : le CDN indique le protocole d'origine dans X-Forwarded-Proto
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)(:\d+)?$
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
   RewriteRule ^index\.html$ - [L]
   # API PHP et images téléversées depuis l'admin : jamais renvoyées vers l'application Vue
   RewriteRule ^(api|uploads)(/|$) - [L]
+  # Anciennes adresses des articles : /article/… est devenu /actualites/…
+  RewriteRule ^article/(.+)$ https://%{HTTP_HOST}/actualites/$1 [R=301,L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]

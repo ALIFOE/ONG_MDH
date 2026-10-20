@@ -955,6 +955,38 @@ a.adm-stat:hover {
   background: var(--adm-blue-soft) !important;
 }
 
+.adm-dropzone-sm { min-height: 110px; padding: 16px; }
+
+/* Photos d'un article */
+.adm-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.adm-photos-item {
+  margin: 0;
+  border: 1px solid var(--adm-line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.adm-photos-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--adm-bg);
+}
+
+.adm-photos-actions {
+  display: flex;
+  gap: 4px;
+  padding: 6px;
+}
+
+.adm-photos-actions .adm-btn-icon { width: 30px; height: 30px; }
+
 /* ---------- Équipe ---------- */
 .adm-member {
   display: flex;

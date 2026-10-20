@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index.js'
 import { loadSiteSettings } from './data/site.js'
-import { loadRemoteArticles } from './data/articles.js'
+import { loadArticles } from './data/articles.js'
 
 // Feuilles de style du template Hopeu
 import './assets/template/css/bootstrap.min.css'
@@ -20,5 +20,5 @@ app.mount('#app')
 // sauf dans l'admin qui n'en a pas besoin
 if (!location.pathname.startsWith('/admin')) {
   loadSiteSettings()
-  loadRemoteArticles()
+  loadArticles()
 }
