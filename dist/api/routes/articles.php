@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 const ARTICLE_STATUSES = ['draft', 'published'];
+const ARTICLE_MAX_PHOTOS = 60;
 
 function slugify(string $text): string
 {
@@ -44,8 +45,37 @@ function format_article(array $row, bool $withContent = false): array
     ];
     if ($withContent) {
         $article['content'] = $row['content'] ?? '';
+        $article['photos'] = article_photos($row);
+        $article += article_cta($row);
     }
     return $article;
+}
+
+/** Photos affichées sous le texte de l'article, dans l'ordre choisi. */
+function article_photos(array $row): array
+{
+    $photos = json_decode((string) ($row['photos'] ?? ''), true);
+    return is_array($photos) ? array_values(array_filter($photos, 'is_string')) : [];
+}
+
+function photos_payload($photos): string
+{
+    $urls = array_filter(array_map(fn ($url) => safe_url((string) $url), is_array($photos) ? $photos : []));
+    if (count($urls) > ARTICLE_MAX_PHOTOS) {
+        abort(422, 'Un article peut contenir ' . ARTICLE_MAX_PHOTOS . ' photos au maximum.');
+    }
+    return json_encode(array_values(array_unique($urls)), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+}
+
+/** Encadré de fin d'article ; vide, le site affiche l'encadré « Faire un don » par défaut. */
+function article_cta(array $row): array
+{
+    return [
+        'cta_title' => $row['cta_title'] ?? '',
+        'cta_text' => $row['cta_text'] ?? '',
+        'cta_label' => $row['cta_label'] ?? '',
+        'cta_url' => $row['cta_url'] ?? '',
+    ];
 }
 
 function article_payload(array $in, int $id = 0): array
@@ -72,7 +102,12 @@ function article_payload(array $in, int $id = 0): array
         'published_at' => $publishedAt !== '' ? $publishedAt : null,
         'excerpt' => text($in['excerpt'] ?? '', 1000),
         'image' => safe_url((string) ($in['image'] ?? '')),
+        'photos' => photos_payload($in['photos'] ?? []),
         'content' => sanitize_html((string) ($in['content'] ?? '')),
+        'cta_title' => line($in['cta_title'] ?? '', 190),
+        'cta_text' => line($in['cta_text'] ?? '', 500),
+        'cta_label' => line($in['cta_label'] ?? '', 80),
+        'cta_url' => safe_url((string) ($in['cta_url'] ?? ''), true),
         'status' => $status,
     ];
 }
@@ -103,22 +138,24 @@ route('POST', '/admin/articles', function () {
 route('PUT', '/admin/articles/{id}', function ($params) {
     require_user();
     $id = (int) $params['id'];
-    $previous = db_one('SELECT image FROM articles WHERE id = ?', [$id]);
+    $previous = db_one('SELECT image, photos FROM articles WHERE id = ?', [$id]);
     if (!$previous) {
         abort(404, 'Article introuvable.');
     }
     db_update('articles', $id, article_payload(input(), $id));
     delete_upload_if_unused($previous['image']);
+    array_map('delete_upload_if_unused', article_photos($previous));
     return format_article(db_one(ARTICLE_SELECT . ' WHERE articles.id = ?', [$id]), true);
 });
 
 route('DELETE', '/admin/articles/{id}', function ($params) {
     require_user();
     $id = (int) $params['id'];
-    $previous = db_one('SELECT image FROM articles WHERE id = ?', [$id]);
+    $previous = db_one('SELECT image, photos FROM articles WHERE id = ?', [$id]);
     db_query('DELETE FROM articles WHERE id = ?', [$id]);
     if ($previous) {
         delete_upload_if_unused($previous['image']);
+        array_map('delete_upload_if_unused', article_photos($previous));
     }
     return ['ok' => true];
 });

@@ -138,7 +138,7 @@ function delete_upload_if_unused(?string $url): void
     $like = '%' . $url . '%';
     $used = (int) db_value('SELECT COUNT(*) FROM gallery_items WHERE image = ?', [$url])
         + (int) db_value('SELECT COUNT(*) FROM team_members WHERE photo = ?', [$url])
-        + (int) db_value('SELECT COUNT(*) FROM articles WHERE image = ? OR content LIKE ?', [$url, $like]);
+        + (int) db_value('SELECT COUNT(*) FROM articles WHERE image = ? OR content LIKE ? OR photos LIKE ?', [$url, $like, $like]);
     if ($used === 0) {
         @unlink(uploads_dir() . '/' . $relative);
     }

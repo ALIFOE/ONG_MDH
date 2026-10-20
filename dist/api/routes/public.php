@@ -22,7 +22,7 @@ route('GET', '/public/articles/{slug}', function ($params) {
     if (!$row) {
         abort(404, 'Article introuvable.');
     }
-    return format_article_card($row) + ['content' => $row['content'] ?? ''];
+    return format_article_card($row) + ['content' => $row['content'] ?? '', 'photos' => article_photos($row)] + article_cta($row);
 });
 
 route('GET', '/public/gallery', function () {
